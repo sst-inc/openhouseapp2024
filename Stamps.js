@@ -22,7 +22,7 @@ const Stamps = ({ navigation }) => {
                                         colors={['#D9D9D9', 'transparent']}
                                         style={{ borderRadius: 24 }}
                                     >
-                                        <Circle cx="24" cy="24" r="24" fillOpacity="0.2" />
+                                    <Circle cx="24" cy="24" r="24" fillOpacity="0.2" />
                                     </LinearGradient>
                                     <Circle cx="24" cy="24" r="23.5" strokeOpacity="0.65" />
                                     <Circle cx="24" cy="28" r="23.5" strokeOpacity="0.2" />
