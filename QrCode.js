@@ -1,68 +1,79 @@
-import { useState, useEffect } from "react";
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Button, Alert, Platform } from 'react-native';
-import QRCodeScanner from "react-native-qrcode-scanner";
-import { RNCamera } from "react-native-camera";
-import { check, PERMISSIONS, RESULTS, request } from 'react-native-permissions';
-import { ViewPropTypes } from 'deprecated-react-native-prop-types';
+import { Platform } from 'react-native';
+import { PermissionsIOS, PermissionsAndroid } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View, TouchableOpacity } from 'react-native';
+import { RNCamera } from 'react-native-camera';
 
-const QRCode = ({ navigation }) => { 
-  const onSuccess = e => {
-    console.log(e.data); // This will log the data encoded in the scanned QR code
-    navigation.navigate('Stamps', { qrData: e.data }); // Navigate to a screen with the scanned data
-  };
 
-  const requestCameraPermission = async () => {
+const requestCameraPermission = async () => {
+  if (Platform.OS === 'android') {
     try {
-      const permission = Platform.OS === 'ios' ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA;
-      const result = await check(permission);
-
-      if (result === RESULTS.DENIED) {
-        Alert.alert(
-          'Camera Permission',
-          'This app needs access to your camera',
-          [
-            {
-              text: 'Cancel',
-              onPress: () => navigation.navigate('Stamps'),
-              style: 'cancel',
-            },
-            {
-              text: 'OK',
-              onPress: async () => {
-                const requestResult = await request(permission);
-                if (requestResult !== RESULTS.GRANTED) {
-                  console.log('Camera permission denied');
-                  navigation.navigate('Stamps');
-                }
-              },
-            },
-          ],
-          { cancelable: false },
-        );
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: 'Camera Permission',
+          message: 'The app needs access to your camera to scan QR codes.',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        }
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('You can use the camera');
+      } else {
+        console.log('Camera permission denied');
       }
     } catch (err) {
       console.warn(err);
     }
+  }
+};
+
+const QRCodeScanner = () => {
+    const [hasPermission, setHasPermission] = useState(null);
+    const [type, setType] = useState(RNCamera.Constants.Type.back);
+  
+    useEffect(() => {
+      (async () => {
+        const granted = await requestCameraPermission();
+        setHasPermission(granted);
+      })();
+    }, []);
+  
+    if (hasPermission === null) {
+      return <Text>Requesting for camera permission</Text>;
+    }
+    if (hasPermission === false) {
+      return <Text>No access to camera</Text>;
+    }
+  
+    const handleBarCodeRead = ({ data }) => {
+      // Handle the scanned QR code data
+      console.log(data);
+    };
+  
+    return (
+      <RNCamera
+        style={{ flex: 1 }}
+        type={type}
+        onBarCodeRead={handleBarCodeRead}
+        captureAudio={false}
+      >
+        <View style={{ flex: 1, backgroundColor: 'transparent', flexDirection: 'row' }}>
+          <TouchableOpacity
+            style={{ flex: 0.1, alignSelf: 'flex-end', alignItems: 'center' }}
+            onPress={() => {
+              setType(
+                type === RNCamera.Constants.Type.back
+                  ? RNCamera.Constants.Type.front
+                  : RNCamera.Constants.Type.back
+              );
+            }}
+          >
+            <Text style={{ fontSize: 18, marginBottom: 10, color: 'white' }}>{' '}Flip</Text>
+          </TouchableOpacity>
+        </View>
+      </RNCamera>
+    );
   };
-
-  useEffect(() => {
-    requestCameraPermission();
-  }, []);
-
-  return(
-    <View>
-      <ImageBackground source={require('./assets/background.png')} >
-        <QRCodeScanner
-          onRead={onSuccess}
-          reactivate={true} // this prop will make the scanner to continue scan after a QR code is detected
-          reactivateTimeout={3000} // time (in ms) between each scan
-          showMarker={true} // It will show a marker in the center of the scanner
-          markerStyle={{ borderColor: '#FFF' }} // This is the marker style
-          cameraStyle={{ height: '100%' }} // You can set the height to whatever you want
-        />
-      </ImageBackground>
-    </View>
-  );
-}
-
-export default QRCode;
+  
+  export default QRCodeScanner;
