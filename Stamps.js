@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
-import Svg, { Circle,Path, Line } from 'react-native-svg';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView , SafeAreaView} from 'react-native';
+import Svg, { Circle,Path, Line, Image } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
@@ -17,6 +17,7 @@ const Stamps = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('./assets/background.png')} style={styles.imageBackground}>
+            <ScrollView >
                 <View style={styles.container1}>
                     <View style={styles.topSidebar}>
                         <Text style={styles.header}>Stamps</Text> 
@@ -41,10 +42,31 @@ const Stamps = ({ navigation }) => {
                     </View>
                     <View style={styles.container2}>
                         <Text style={styles.collectionHeader}>Your Stamp Collection</Text>
-                        <View></View>     
-                        <View></View>                        
-                        <View></View>                        
-                        <View></View>   
+                        <View style={styles.stampCollection}>
+                            <View style={styles.stamp}>
+                              <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
+
+                              </ImageBackground>
+                            </View >     
+                            <View style={styles.stamp}>
+                                <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%'}} >
+    
+                                </ImageBackground>
+                            </View>
+                        </View>
+                        <View style={styles.stampCollection}>                    
+                        <View style={styles.stamp}>
+                              <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
+
+                              </ImageBackground>
+                            </View >     
+                            <View style={styles.stamp}>
+                                <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%'}} >
+    
+                                </ImageBackground>
+                            </View>
+                        </View>    
+                        
                         <TouchableOpacity style={styles.button} onPress={() => navigation.push("QRCode")} >
                             <View style={{flexDirection:'row', marginLeft:'34%'}}>
                                 <Svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -55,6 +77,7 @@ const Stamps = ({ navigation }) => {
                         </TouchableOpacity>                                        
                     </View>
                 </View>
+                </ScrollView>
             </ImageBackground>
         </View>
     );
@@ -116,13 +139,31 @@ const styles = StyleSheet.create({
     },
     button: {
         width: '90%',
-        height: '40%',
+        height: '15%',
         alignItems: 'flex-start',
         flexShrink: 0,
         borderRadius: 24,
         backgroundColor: '#EBEBEF',
         justifyContent: 'center',
         marginLeft: '5%',
+        marginTop: '4%',
+    },
+    stampCollection:{
+        marginTop: '2%',
+        flexDirection: 'row',
+        gap: 5,
+        justifyContent: 'center',
+        height: '38%',
+        padding: 0,
+    },
+    stamp:{
+        border: '1px solid',
+        borderColor: 'black',
+        flexShrink: 0,
+        width: 160,
+        height: 160,
+        borderRadius: 20,
+        overflow: 'hidden',
     },
 });
 
