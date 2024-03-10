@@ -50,6 +50,5 @@
 	<false/>
 	<key>NSCameraUsageDescription</key>
 	<string>Your message to user when the camera is accessed for the first time</string>
-    <string>The app needs access to your camera to scan QR codes.</string>
 </dict>
 </plist>
