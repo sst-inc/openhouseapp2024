@@ -2,12 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView , SafeAreaView} from 'react-native';
 import Svg, { Circle,Path, Line, Image } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
-import QRCodeScanner from 'react-native-qrcode-scanner';
-import { RNCamera } from 'react-native-camera';
-import { useNavigation } from '@react-navigation/native';
-import { check, PERMISSIONS, RESULTS, request } from 'react-native-permissions';
 
 
 
@@ -43,27 +37,63 @@ const Stamps = ({ navigation }) => {
                     <View style={styles.container2}>
                         <Text style={styles.collectionHeader}>Your Stamp Collection</Text>
                         <View style={styles.stampCollection}>
+                        <View style={styles.stamp}>
+                            <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
+                                <LinearGradient
+                                    colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
+                                    start={{x: 0.0, y: 1.0}} 
+                                    end={{x: 0.0, y: 0.0}} // Changed direction to vertical
+                                    locations={[0.0112, 0.4001]}
+                                >
+                                    <Text style={styles.stampName}>Stamp Name</Text>
+                                    <Text style={styles.stampLocation}>@Auditorium</Text>
+                                    <View style={{marginTop: '6%'}} />
+                                </LinearGradient>
+                            </ImageBackground>
+                        </View>
                             <View style={styles.stamp}>
-                              <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
-
-                              </ImageBackground>
-                            </View >     
-                            <View style={styles.stamp}>
-                                <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%'}} >
-    
-                                </ImageBackground>
+                            <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
+                                <LinearGradient
+                                    colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
+                                    start={{x: 0.0, y: 1.0}} 
+                                    end={{x: 0.0, y: 0.0}} // Changed direction to vertical
+                                    locations={[0.0112, 0.4001]}
+                                >
+                                    <Text style={styles.stampName}>Stamp Name</Text>
+                                    <Text style={styles.stampLocation}>@Auditorium</Text>
+                                    <View style={{marginTop: '6%'}} />
+                                </LinearGradient>
+                            </ImageBackground>
                             </View>
                         </View>
                         <View style={styles.stampCollection}>                    
                         <View style={styles.stamp}>
-                              <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
-
-                              </ImageBackground>
+                        <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
+                                <LinearGradient
+                                    colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
+                                    start={{x: 0.0, y: 1.0}} 
+                                    end={{x: 0.0, y: 0.0}} // Changed direction to vertical
+                                    locations={[0.0112, 0.4001]}
+                                >
+                                    <Text style={styles.stampName}>Stamp Name</Text>
+                                    <Text style={styles.stampLocation}>@Auditorium</Text>
+                                    <View style={{marginTop: '6%'}} />
+                                </LinearGradient>
+                            </ImageBackground>
                             </View >     
                             <View style={styles.stamp}>
-                                <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%'}} >
-    
-                                </ImageBackground>
+                            <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
+                                <LinearGradient
+                                    colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
+                                    start={{x: 0.0, y: 1.0}} 
+                                    end={{x: 0.0, y: 0.0}} // Changed direction to vertical
+                                    locations={[0.0112, 0.4001]}
+                                >
+                                    <Text style={styles.stampName}>Stamp Name</Text>
+                                    <Text style={styles.stampLocation}>@Auditorium</Text>
+                                    <View style={{marginTop: '6%'}} />
+                                </LinearGradient>
+                            </ImageBackground>
                             </View>
                         </View>    
                         
@@ -136,6 +166,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         marginLeft: '6%',
         flexDirection: 'column',
+        marginBottom: '2%',
     },
     button: {
         width: '90%',
@@ -149,7 +180,7 @@ const styles = StyleSheet.create({
         marginTop: '4%',
     },
     stampCollection:{
-        marginTop: '2%',
+        marginTop: '1%',
         flexDirection: 'row',
         gap: 5,
         justifyContent: 'center',
@@ -164,6 +195,25 @@ const styles = StyleSheet.create({
         height: 160,
         borderRadius: 20,
         overflow: 'hidden',
+    },
+    stampName:{
+        color: '#FFF',
+        textAlign: 'center',
+        fontFamily: 'Lato',
+        fontSize: 16,
+        fontWeight: '600',
+        lineHeight: 19,
+        marginRight: '20%',
+        marginTop: '70%',
+    },
+    stampLocation:{
+        color: 'rgba(235, 235, 239, 0.70)',
+        textAlign: 'center',
+        marginRight: '20%',
+        fontFamily: 'Lato',
+        fontSize: 16,
+        fontWeight: '400',
+        lineHeight: 19
     },
 });
 
