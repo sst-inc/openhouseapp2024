@@ -5,8 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import LoginFunction from './Login';
-import Stamps from './Stamps';
-import QRCodeScanner from './QrCode';
+import { Stamps, QRCodeScanner } from './Stamps';
 import BoothInfo from './BoothInfo';
 
 const Stack = createNativeStackNavigator();

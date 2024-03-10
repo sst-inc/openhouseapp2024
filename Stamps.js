@@ -1,13 +1,119 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Platform } from 'react-native';
+import { PermissionsIOS, PermissionsAndroid } from 'react-native';
+import { RNCamera } from 'react-native-camera';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView , SafeAreaView} from 'react-native';
 import Svg, { Circle,Path, Line, Image } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 
 
+const scannedDataArray = [];
 
+const LockIcon = () => (
+    <Svg xmlns="http://www.w3.org/2000/svg" width="24" height="27" viewBox="0 0 24 27" fill="none">
+      <Path d="M22 9H18V6C18 4.4087 17.3679 2.88258 16.2426 1.75736C15.1174 0.632141 13.5913 0 12 0C10.4087 0 8.88258 0.632141 7.75736 1.75736C6.63214 2.88258 6 4.4087 6 6V9H2C1.46957 9 0.960859 9.21071 0.585786 9.58579C0.210714 9.96086 0 10.4696 0 11V25C0 25.5304 0.210714 26.0391 0.585786 26.4142C0.960859 26.7893 1.46957 27 2 27H22C22.5304 27 23.0391 26.7893 23.4142 26.4142C23.7893 26.0391 24 25.5304 24 25V11C24 10.4696 23.7893 9.96086 23.4142 9.58579C23.0391 9.21071 22.5304 9 22 9ZM13 18.8288V22C13 22.2652 12.8946 22.5196 12.7071 22.7071C12.5196 22.8946 12.2652 23 12 23C11.7348 23 11.4804 22.8946 11.2929 22.7071C11.1054 22.5196 11 22.2652 11 22V18.8288C10.3328 18.5929 9.77045 18.1287 9.41237 17.5183C9.05429 16.9079 8.92353 16.1905 9.0432 15.493C9.16288 14.7955 9.52527 14.1628 10.0663 13.7066C10.6074 13.2505 11.2923 13.0003 12 13.0003C12.7077 13.0003 13.3926 13.2505 13.9337 13.7066C14.4747 14.1628 14.8371 14.7955 14.9568 15.493C15.0765 16.1905 14.9457 16.9079 14.5876 17.5183C14.2296 18.1287 13.6672 18.5929 13 18.8288ZM16 9H8V6C8 4.93913 8.42143 3.92172 9.17157 3.17157C9.92172 2.42143 10.9391 2 12 2C13.0609 2 14.0783 2.42143 14.8284 3.17157C15.5786 3.92172 16 4.93913 16 6V9Z" fill="#EBEBEF"/>
+    </Svg>
+  );
 
+const requestCameraPermission = async () => {
+  if (Platform.OS === 'android') {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: 'Camera Permission',
+          message: 'The app needs access to your camera to scan QR codes.',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        }
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('You can use the camera');
+      } else {
+        console.log('Camera permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  }
+};
+
+const QRCodeScanner = () => {
+  const [hasPermission, setHasPermission] = useState(null);
+  const [type, setType] = useState(RNCamera.Constants.Type.back);
+  useEffect(() => {
+    (async () => {
+      const granted = await requestCameraPermission();
+      setHasPermission(granted);
+    })();
+  }, []);
+
+  if (hasPermission === null) {
+    return <Text>Requesting for camera permission</Text>;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+
+  const handleBarCodeRead = ({ data }) => {
+    // Handle the scanned QR code data
+    console.log(data);
+    // Add scanned data to the array
+    scannedDataArray.push(data);
+  };
+
+  return (
+    <RNCamera
+      style={{ flex: 1 }}
+      type={type}
+      onBarCodeRead={handleBarCodeRead}
+      captureAudio={false}
+    >
+      <View style={{ flex: 1, backgroundColor: 'transparent', flexDirection: 'row' }}>
+        <TouchableOpacity
+          style={{ flex: 0.1, alignSelf: 'flex-end', alignItems: 'center' }}
+          onPress={() => {
+            setType(
+              type === RNCamera.Constants.Type.back
+                ? RNCamera.Constants.Type.front
+                : RNCamera.Constants.Type.back
+            );
+          }}
+        >
+          <Text style={{ fontSize: 18, marginBottom: 10, color: 'white' }}>{' '}Flip</Text>
+        </TouchableOpacity>
+      </View>
+    </RNCamera>
+  );
+};
 
 const Stamps = ({ navigation }) => {
+    const [stamp1, setStamp1] = useState(false);
+    const [stamp2, setStamp2] = useState(false);
+    const [stamp3, setStamp3] = useState(false);
+    const [stamp4, setStamp4] = useState(false);
+
+    function handleCheckStamp1() {
+        if (scannedDataArray.includes('1')) {
+            setStamp1(true);
+        }
+    }
+    function handleCheckStamp2() {
+        if (scannedDataArray.includes('2')) {
+            setStamp2(true);
+        }
+    }
+    function handleCheckStamp3() {
+        if (scannedDataArray.includes('3')) {
+            setStamp3(true);
+        }
+    }
+    function handleCheckStamp4() {
+        if (scannedDataArray.includes('4')) {
+            setStamp4(true);
+        }
+    }
+
     return (
         <View style={styles.container}>
             <ImageBackground source={require('./assets/background.png')} style={styles.imageBackground}>
@@ -37,61 +143,65 @@ const Stamps = ({ navigation }) => {
                     <View style={styles.container2}>
                         <Text style={styles.collectionHeader}>Your Stamp Collection</Text>
                         <View style={styles.stampCollection}>
-                        <View style={styles.stamp}>
+                            <View style={stamp1 ? styles.stamp : styles.stampLocked}>
                             <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
                                 <LinearGradient
-                                    colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
-                                    start={{x: 0.0, y: 1.0}} 
-                                    end={{x: 0.0, y: 0.0}} // Changed direction to vertical
-                                    locations={[0.0112, 0.4001]}
+                                colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
+                                start={{x: 0.0, y: 1.0}} 
+                                end={{x: 0.0, y: 0.0}} 
+                                locations={[0.0112, 0.4001]}
                                 >
-                                    <Text style={styles.stampName}>Stamp Name</Text>
-                                    <Text style={styles.stampLocation}>@Auditorium</Text>
-                                    <View style={{marginTop: '6%'}} />
+                                <Text style={styles.stampName}>Stamp Name</Text>
+                                <Text style={styles.stampLocation}>@Auditorium</Text>
+                                {!stamp1 && <LockIcon />} 
+                                <View style={{marginTop: '6%'}} />
                                 </LinearGradient>
                             </ImageBackground>
-                        </View>
-                            <View style={styles.stamp}>
+                            </View>
+                            <View style={stamp2 ? styles.stamp : styles.stampLocked}>
                             <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
                                 <LinearGradient
-                                    colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
-                                    start={{x: 0.0, y: 1.0}} 
-                                    end={{x: 0.0, y: 0.0}} // Changed direction to vertical
-                                    locations={[0.0112, 0.4001]}
+                                colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
+                                start={{x: 0.0, y: 1.0}} 
+                                end={{x: 0.0, y: 0.0}} 
+                                locations={[0.0112, 0.4001]}
                                 >
-                                    <Text style={styles.stampName}>Stamp Name</Text>
-                                    <Text style={styles.stampLocation}>@Auditorium</Text>
-                                    <View style={{marginTop: '6%'}} />
+                                <Text style={styles.stampName}>Stamp Name</Text>
+                                <Text style={styles.stampLocation}>@Auditorium</Text>
+                                {!stamp2 && <LockIcon />} 
+                                <View style={{marginTop: '6%'}} />
                                 </LinearGradient>
                             </ImageBackground>
                             </View>
                         </View>
                         <View style={styles.stampCollection}>                    
-                        <View style={styles.stamp}>
-                        <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
-                                <LinearGradient
-                                    colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
-                                    start={{x: 0.0, y: 1.0}} 
-                                    end={{x: 0.0, y: 0.0}} // Changed direction to vertical
-                                    locations={[0.0112, 0.4001]}
-                                >
-                                    <Text style={styles.stampName}>Stamp Name</Text>
-                                    <Text style={styles.stampLocation}>@Auditorium</Text>
-                                    <View style={{marginTop: '6%'}} />
-                                </LinearGradient>
-                            </ImageBackground>
-                            </View >     
-                            <View style={styles.stamp}>
+                        <View style={stamp3 ? styles.stamp : styles.stampLocked}>
                             <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
                                 <LinearGradient
-                                    colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
-                                    start={{x: 0.0, y: 1.0}} 
-                                    end={{x: 0.0, y: 0.0}} // Changed direction to vertical
-                                    locations={[0.0112, 0.4001]}
+                                colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
+                                start={{x: 0.0, y: 1.0}} 
+                                end={{x: 0.0, y: 0.0}}
+                                locations={[0.0112, 0.4001]}
                                 >
-                                    <Text style={styles.stampName}>Stamp Name</Text>
-                                    <Text style={styles.stampLocation}>@Auditorium</Text>
-                                    <View style={{marginTop: '6%'}} />
+                                <Text style={styles.stampName}>Stamp Name</Text>
+                                <Text style={styles.stampLocation}>@Auditorium</Text>
+                                {!stamp3 && <LockIcon />} 
+                                <View style={{marginTop: '6%'}} />
+                                </LinearGradient>
+                            </ImageBackground>
+                            </View>    
+                            <View style={stamp4 ? styles.stamp : styles.stampLocked}>
+                            <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
+                                <LinearGradient
+                                colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
+                                start={{x: 0.0, y: 1.0}} 
+                                end={{x: 0.0, y: 0.0}} 
+                                locations={[0.0112, 0.4001]}
+                                >
+                                <Text style={styles.stampName}>Stamp Name</Text>
+                                <Text style={styles.stampLocation}>@Auditorium</Text>
+                                {!stamp4 && <LockIcon />} 
+                                <View style={{marginTop: '6%'}} />
                                 </LinearGradient>
                             </ImageBackground>
                             </View>
@@ -215,6 +325,18 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         lineHeight: 19
     },
+    stampLocked:{
+        border: '1px solid',
+        borderColor: 'black',
+        flexShrink: 0,
+        width: 160,
+        height: 160,
+        borderRadius: 20,
+        overflow: 'hidden',
+        backgroundColor: 'rgba(28, 28, 34, 0.50)',
+        transform: [{ translateX: 0 }, { translateY: 0 }] //
+    },
 });
 
-export default Stamps;
+
+export { Stamps, QRCodeScanner};
