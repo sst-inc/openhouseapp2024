@@ -7,6 +7,7 @@ import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import LoginFunction from './Login';
 import { Stamps, QRCodeScanner } from './Stamps';
 import BoothInfo from './BoothInfo';
+import EventsPage from './Events';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ const App = () => {
         <Stack.Screen name="Stamps" component={Stamps}  options={{ headerShown: false }}  />
         <Stack.Screen name="QRCode" component={QRCodeScanner} />
         <Stack.Screen name="BoothInfo" component={BoothInfo} />
+        <Stack.Screen name="Events" component={EventsPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -137,14 +137,10 @@ const Stamps = ({ navigation }) => {
                                         colors={['#D9D9D9', 'transparent']}
                                         style={{ borderRadius: 24 }}
                                     >
-                                    <Circle cx="24" cy="24" r="24" fillOpacity="0.2" />
                                     </LinearGradient>
-                                    <Circle cx="24" cy="24" r="23.5" strokeOpacity="0.65" />
-                                    <Circle cx="24" cy="28" r="23.5" strokeOpacity="0.2" />
                                     <Line x1="12" y1="16.5" x2="36" y2="16.5" stroke="#EBEBEF" />
                                     <Line x1="12" y1="24.5" x2="36" y2="24.5" stroke="#EBEBEF" />
                                     <Line x1="12" y1="32.5" x2="36" y2="32.5" stroke="#EBEBEF" />
-                                    <Circle cx="24" cy="26" r="26" stroke="#F5F5F5" strokeWidth="2" fill="none" />
                                 </Svg>
                             </TouchableOpacity>
                         </View>
@@ -292,7 +288,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 20,
-        width: '100%',
+        width: '90%',
         position: 'absolute',
         top: 0,
         left: 0,
