@@ -18,7 +18,7 @@ const App = () => {
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}  />
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="Login" component={LoginFunction} options={{ headerShown: false }} />
-        <Stack.Screen name="Stamps" component={Stamps} />
+        <Stack.Screen name="Stamps" component={Stamps}  options={{ headerShown: false }}  />
         <Stack.Screen name="QRCode" component={QRCodeScanner} />
         <Stack.Screen name="BoothInfo" component={BoothInfo} />
       </Stack.Navigator>

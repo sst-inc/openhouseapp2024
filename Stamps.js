@@ -5,12 +5,26 @@ import { RNCamera } from 'react-native-camera';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView , SafeAreaView} from 'react-native';
 import Svg, { Circle,Path, Line, Image } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
+import { BlurView } from "@react-native-community/blur";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 
 const scannedDataArray = [];
 
+export const saveData = async () => {
+  try {
+    const jsonData = JSON.stringify(scannedDataArray);
+    await AsyncStorage.setItem('@scannedData', jsonData);
+  } catch (e) {
+    // saving error
+    console.error(e);
+  }
+};
+
+
 const LockIcon = () => (
-    <Svg xmlns="http://www.w3.org/2000/svg" width="24" height="27" viewBox="0 0 24 27" fill="none">
+    <Svg xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" viewBox="0 0 24 27" fill="none">
       <Path d="M22 9H18V6C18 4.4087 17.3679 2.88258 16.2426 1.75736C15.1174 0.632141 13.5913 0 12 0C10.4087 0 8.88258 0.632141 7.75736 1.75736C6.63214 2.88258 6 4.4087 6 6V9H2C1.46957 9 0.960859 9.21071 0.585786 9.58579C0.210714 9.96086 0 10.4696 0 11V25C0 25.5304 0.210714 26.0391 0.585786 26.4142C0.960859 26.7893 1.46957 27 2 27H22C22.5304 27 23.0391 26.7893 23.4142 26.4142C23.7893 26.0391 24 25.5304 24 25V11C24 10.4696 23.7893 9.96086 23.4142 9.58579C23.0391 9.21071 22.5304 9 22 9ZM13 18.8288V22C13 22.2652 12.8946 22.5196 12.7071 22.7071C12.5196 22.8946 12.2652 23 12 23C11.7348 23 11.4804 22.8946 11.2929 22.7071C11.1054 22.5196 11 22.2652 11 22V18.8288C10.3328 18.5929 9.77045 18.1287 9.41237 17.5183C9.05429 16.9079 8.92353 16.1905 9.0432 15.493C9.16288 14.7955 9.52527 14.1628 10.0663 13.7066C10.6074 13.2505 11.2923 13.0003 12 13.0003C12.7077 13.0003 13.3926 13.2505 13.9337 13.7066C14.4747 14.1628 14.8371 14.7955 14.9568 15.493C15.0765 16.1905 14.9457 16.9079 14.5876 17.5183C14.2296 18.1287 13.6672 18.5929 13 18.8288ZM16 9H8V6C8 4.93913 8.42143 3.92172 9.17157 3.17157C9.92172 2.42143 10.9391 2 12 2C13.0609 2 14.0783 2.42143 14.8284 3.17157C15.5786 3.92172 16 4.93913 16 6V9Z" fill="#EBEBEF"/>
     </Svg>
   );
@@ -93,26 +107,21 @@ const Stamps = ({ navigation }) => {
     const [stamp3, setStamp3] = useState(false);
     const [stamp4, setStamp4] = useState(false);
 
-    function handleCheckStamp1() {
-        if (scannedDataArray.includes('1')) {
-            setStamp1(true);
-        }
+    function handleCheckStamp() {
+      if (scannedDataArray.includes('1')) {
+          setStamp1(true);
+      } else if (scannedDataArray.includes('2')) {
+          setStamp2(true);
+      } else if (scannedDataArray.includes('3')) {
+          setStamp3(true);
+      } else if (scannedDataArray.includes('4')) {
+          setStamp4(true);
+      }
     }
-    function handleCheckStamp2() {
-        if (scannedDataArray.includes('2')) {
-            setStamp2(true);
-        }
-    }
-    function handleCheckStamp3() {
-        if (scannedDataArray.includes('3')) {
-            setStamp3(true);
-        }
-    }
-    function handleCheckStamp4() {
-        if (scannedDataArray.includes('4')) {
-            setStamp4(true);
-        }
-    }
+
+    useEffect(() => {
+      handleCheckStamp();
+    }, [scannedDataArray]);
 
     return (
         <View style={styles.container}>
@@ -153,7 +162,17 @@ const Stamps = ({ navigation }) => {
                                 >
                                 <Text style={styles.stampName}>Stamp Name</Text>
                                 <Text style={styles.stampLocation}>@Auditorium</Text>
-                                {!stamp1 && <LockIcon />} 
+                                {!stamp1 &&                                
+                                    <BlurView
+                                    style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+                                    blurType="dark"
+                                    blurAmount={10}
+                                    reducedTransparencyFallbackColor="white"
+                                  >
+                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                      <LockIcon />
+                                    </View>
+                                  </BlurView>} 
                                 <View style={{marginTop: '6%'}} />
                                 </LinearGradient>
                             </ImageBackground>
@@ -168,7 +187,17 @@ const Stamps = ({ navigation }) => {
                                 >
                                 <Text style={styles.stampName}>Stamp Name</Text>
                                 <Text style={styles.stampLocation}>@Auditorium</Text>
-                                {!stamp2 && <LockIcon />} 
+                                {!stamp2 &&                                 
+                                    <BlurView
+                                    style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+                                    blurType="dark"
+                                    blurAmount={10}
+                                    reducedTransparencyFallbackColor="white"
+                                  >
+                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                      <LockIcon />
+                                    </View>
+                                  </BlurView>} 
                                 <View style={{marginTop: '6%'}} />
                                 </LinearGradient>
                             </ImageBackground>
@@ -185,7 +214,17 @@ const Stamps = ({ navigation }) => {
                                 >
                                 <Text style={styles.stampName}>Stamp Name</Text>
                                 <Text style={styles.stampLocation}>@Auditorium</Text>
-                                {!stamp3 && <LockIcon />} 
+                                {!stamp3 &&                                
+                                    <BlurView
+                                    style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+                                    blurType="dark"
+                                    blurAmount={10}
+                                    reducedTransparencyFallbackColor="white"
+                                  >
+                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                      <LockIcon />
+                                    </View>
+                                  </BlurView>} 
                                 <View style={{marginTop: '6%'}} />
                                 </LinearGradient>
                             </ImageBackground>
@@ -200,7 +239,17 @@ const Stamps = ({ navigation }) => {
                                 >
                                 <Text style={styles.stampName}>Stamp Name</Text>
                                 <Text style={styles.stampLocation}>@Auditorium</Text>
-                                {!stamp4 && <LockIcon />} 
+                                {!stamp4 &&       
+                                    <BlurView
+                                    style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+                                    blurType="dark"
+                                    blurAmount={10}
+                                    reducedTransparencyFallbackColor="white"
+                                  >
+                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                      <LockIcon />
+                                    </View>
+                                  </BlurView>} 
                                 <View style={{marginTop: '6%'}} />
                                 </LinearGradient>
                             </ImageBackground>
