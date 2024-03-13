@@ -22,7 +22,7 @@ const App = () => {
         <Stack.Screen name="Stamps" component={Stamps}  options={{ headerShown: false }}  />
         <Stack.Screen name="QRCode" component={QRCodeScanner} />
         <Stack.Screen name="BoothInfo" component={BoothInfo} />
-        <Stack.Screen name="Events" component={EventsPage} />
+        <Stack.Screen name="Events" component={EventsPage} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

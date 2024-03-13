@@ -127,11 +127,12 @@ const Stamps = ({ navigation }) => {
         <View style={styles.container}>
             <ImageBackground source={require('./assets/background.png')} style={styles.imageBackground}>
             <ScrollView >
+              <View  style={{marginTop:10}}/>
                 <View style={styles.container1}>
                     <View style={styles.topSidebar}>
                         <Text style={styles.header}>Stamps</Text> 
                         <View style={styles.icons}>
-                            <TouchableOpacity style={styles.hamburgerIconPress} onPress={() => navigation.openDrawer()}>
+                            <TouchableOpacity  onPress={() => navigation.openDrawer()}>
                                 <Svg width="48" height="52" viewBox="0 0 48 52" fill="none">
                                     <LinearGradient
                                         colors={['#D9D9D9', 'transparent']}
@@ -285,9 +286,10 @@ const styles = StyleSheet.create({
     },
     topSidebar:{
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
+        gap: 150,
         alignItems: 'center',
-        padding: 20,
+        padding: 30,
         width: '90%',
         position: 'absolute',
         top: 0,
@@ -309,6 +311,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Lato',
         fontSize: 40,
         fontWeight: 'normal',
+        marginLeft: '4%',
     },
     svg: {
         width: 31,

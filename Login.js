@@ -81,7 +81,7 @@ export default function LoginFunction({ navigation }) {
                             </View>
                             </>
                         )}
-                            <Button style={styles.skip} title='Skip' onPress={() => navigation.navigate("Events")} /> 
+                            <Button style={styles.skip} title='Skip' onPress={() => navigation.navigate("Stamps")} /> 
                         </View>
             </ImageBackground>
         </View>

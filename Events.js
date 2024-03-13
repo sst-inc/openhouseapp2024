@@ -1,13 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView } from 'react-native';
 import Svg, { Circle,Path, Line, Image, G } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
+import { RFValue } from "react-native-responsive-fontsize";
 
 
 const EventsPage = () => {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('./assets/background.png')} style={styles.imageBackground} resizeMode='cover'>
+                <View style={{marginTop:10}}/>
+                <ScrollView>
                 <Text style={styles.discover}>Discover</Text>
                 <View >
                     <View style={styles.topSidebar}>
@@ -76,6 +79,83 @@ const EventsPage = () => {
                         <Text style={styles.generalText}> 0800 - 0900</Text>
                     </View>
                 </View>
+                <View style={styles.seperator}>
+                    <Svg xmlns="http://www.w3.org/2000/svg" width="30" height="2" viewBox="0 0 28 2" fill="none">
+                        <Path d="M27 1.5H27.5V0.5H27V1.5ZM0 1.5H27V0.5H0V1.5Z" fill="#EBEBEF"/>
+                    </Svg>
+                    <Svg xmlns="http://www.w3.org/2000/svg" width="30" height="2" viewBox="0 0 28 2" fill="none">
+                        <Path d="M27 1.5H27.5V0.5H27V1.5ZM0 1.5H27V0.5H0V1.5Z" fill="#EBEBEF"/>
+                    </Svg>
+                    <Text style={styles.basicText}>Now</Text>
+                    <Svg xmlns="http://www.w3.org/2000/svg" width="300" height="2" viewBox="0 0 334 2" fill="none">
+                        <Path d="M333 1.49997C333.276 1.49997 333.5 1.27611 333.5 0.999971C333.5 0.723828 333.276 0.499971 333 0.499971L333 1.49997ZM4.37114e-08 1.5L333 1.49997L333 0.499971L-4.37114e-08 0.5L4.37114e-08 1.5Z" fill="#EBEBEF"/>
+                    </Svg>
+                </View>
+                <View style={styles.eventsContainer}>
+                    <View style={styles.eventsBox}>
+                        <Text style={styles.basicText}>8.00 am</Text>
+                        <View style={styles.eventsDetailsBox}>
+                            <View style={{flexDirection:'row', marginLeft:'4%', marginTop:'3.5%'}}>
+                                <Text style={styles.basicText}>Principal’s Talk</Text>
+                                <Text style={styles.generalText}> @Auditorium</Text>
+                            </View>
+                            <Text style={styles.generalText}>   8:00am - 9:00am</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={{marginTop: '5%'}}/>
+                <View style={styles.eventsContainer}>
+                    <View style={styles.eventsBox}>
+                        <Text style={styles.basicText}>9.00 am</Text>
+                        <View style={styles.eventsDetailsBox}>
+                            <View style={{flexDirection:'row', marginLeft:'4%', marginTop:'3.5%'}}>
+                                <Text style={styles.basicText}>SSTed Talks</Text>
+                                <Text style={styles.generalText}> @SST Inc. HQ</Text>
+                            </View>
+                            <Text style={styles.generalText}>   9:00am - 10:00am</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={{marginTop: '5%'}}/>
+                <View style={styles.eventsContainer}>
+                    <View style={styles.eventsBox}>
+                        <Text style={styles.basicText}>9.00 am</Text>
+                        <View style={styles.eventsDetailsBox}>
+                            <View style={{flexDirection:'row', marginLeft:'4%', marginTop:'3.5%'}}>
+                                <Text style={styles.basicText}>Student Panel</Text>
+                                <Text style={styles.generalText}> @InfoHub</Text>
+                            </View>
+                            <Text style={styles.generalText}>   9:00am - 10:00am</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={{marginTop: '5%'}}/>
+                <View style={styles.eventsContainer}>
+                    <View style={styles.eventsBox}>
+                        <Text style={styles.basicText}>10.00 am</Text>
+                        <View style={styles.eventsDetailsBox}>
+                            <View style={{flexDirection:'row', marginLeft:'4%', marginTop:'3.5%'}}>
+                                <Text style={styles.basicText}>Balik Kampung</Text>
+                                <Text style={styles.generalText}> @MPR4</Text>
+                            </View>
+                            <Text style={styles.generalText}>   10:00am - 11:00am</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={{marginTop: '5%'}}/>
+                <View style={styles.eventsContainer}>
+                    <View style={styles.eventsBox}>
+                        <Text style={styles.basicText}>10.00 am</Text>
+                        <View style={styles.eventsDetailsBox}>
+                            <View style={{flexDirection:'row', marginLeft:'4%', marginTop:'3.5%'}}>
+                                <Text style={styles.basicText}>Willy Wonka Visit</Text>
+                                <Text style={styles.generalText}> @ChocFact</Text>
+                            </View>
+                            <Text style={styles.generalText}>   10:00am - 11:00am</Text>
+                        </View>
+                    </View>
+                </View>
+             </ScrollView>
             </ImageBackground>
         </View>
     );
@@ -98,7 +178,7 @@ const styles = StyleSheet.create({
         color: '#EBEBEF',
         textAlign: 'center',
         fontFamily: 'Lato',
-        fontSize: 40,
+        fontSize: RFValue(40),
         fontWeight: 'normal',
     },   
     discover: {
@@ -131,7 +211,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Lato',
         fontSize: 32,
         fontWeight: '400',
-        lineHeight: 32,
     },
     topBoxPart1: {
         flexDirection: 'row',
@@ -151,7 +230,40 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '400',
         lineHeight: 19,
-    }
+    },
+    seperator: {
+        marginTop: '9%',
+        flexDirection: 'row',
+        display: 'inline-flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        gap: 8,
+    },
+    basicText: {
+        color: '#EBEBEF',
+        fontFamily: 'Lato',
+        fontSize: 16,
+        fontStyle: 'normal',
+        fontWeight: '400',
+    },
+    eventsContainer: {
+        flexDirection:'column',
+    },
+    eventsBox: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 19,
+    },
+    eventsDetailsBox: {
+        width: '69.3%',
+        height: 64,
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: 'rgba(235, 235, 239, 0.20)',
+        backgroundColor: 'rgba(235, 235, 239, 0.20)',
+    },
+
 });
 
 export default EventsPage;
