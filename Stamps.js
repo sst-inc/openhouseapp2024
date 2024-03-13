@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Platform } from 'react-native';
+import React, { useState, useEffect, useRef, createContext } from 'react';
+import { Alert, Platform } from 'react-native';
 import { PermissionsIOS, PermissionsAndroid } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView , SafeAreaView} from 'react-native';
@@ -10,7 +10,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
-const scannedDataArray = [];
 
 export const saveData = async () => {
   try {
@@ -51,16 +50,23 @@ const requestCameraPermission = async () => {
     }
   }
 };
-
 const QRCodeScanner = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(RNCamera.Constants.Type.back);
+  const [scannedDataArray, setScannedDataArray] = useState([]); // Add this line
+
   useEffect(() => {
     (async () => {
       const granted = await requestCameraPermission();
       setHasPermission(granted);
     })();
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      await AsyncStorage.setItem('scannedDataArray', JSON.stringify(scannedDataArray));
+    })();
+  }, [scannedDataArray]); // Save to AsyncStorage whenever scannedDataArray changes
 
   if (hasPermission === null) {
     return <Text>Requesting for camera permission</Text>;
@@ -69,34 +75,27 @@ const QRCodeScanner = () => {
     return <Text>No access to camera</Text>;
   }
 
-  const handleBarCodeRead = ({ data }) => {
-    // Handle the scanned QR code data
-    console.log(data);
-    // Add scanned data to the array
-    scannedDataArray.push(data);
+  const barcodeRecognized = ({ barcodes }) => {
+    const newDataArray = [...scannedDataArray];
+    barcodes.forEach(barcode => {
+      console.log(barcode.data);
+      newDataArray.push(barcode.data);
+    });
+    setScannedDataArray(newDataArray);
   };
 
   return (
     <RNCamera
-      style={{ flex: 1 }}
-      type={type}
-      onBarCodeRead={handleBarCodeRead}
+      ref={ref => {
+        this.camera = ref;
+      }}
+      style={{
+        flex: 1,
+        width: '100%',
+      }}
+      onGoogleVisionBarcodesDetected={barcodeRecognized}
       captureAudio={false}
     >
-      <View style={{ flex: 1, backgroundColor: 'transparent', flexDirection: 'row' }}>
-        <TouchableOpacity
-          style={{ flex: 0.1, alignSelf: 'flex-end', alignItems: 'center' }}
-          onPress={() => {
-            setType(
-              type === RNCamera.Constants.Type.back
-                ? RNCamera.Constants.Type.front
-                : RNCamera.Constants.Type.back
-            );
-          }}
-        >
-          <Text style={{ fontSize: 18, marginBottom: 10, color: 'white' }}>{' '}Flip</Text>
-        </TouchableOpacity>
-      </View>
     </RNCamera>
   );
 };
@@ -106,21 +105,26 @@ const Stamps = ({ navigation }) => {
     const [stamp2, setStamp2] = useState(false);
     const [stamp3, setStamp3] = useState(false);
     const [stamp4, setStamp4] = useState(false);
-
-    function handleCheckStamp() {
-      if (scannedDataArray.includes('1')) {
-          setStamp1(true);
-      } else if (scannedDataArray.includes('2')) {
-          setStamp2(true);
-      } else if (scannedDataArray.includes('3')) {
-          setStamp3(true);
-      } else if (scannedDataArray.includes('4')) {
-          setStamp4(true);
-      }
-    }
+    const [scannedDataArray, setScannedDataArray] = useState([]); // Add this line
 
     useEffect(() => {
-      handleCheckStamp();
+      (async () => {
+        const storedScannedDataArray = await AsyncStorage.getItem('scannedDataArray');
+        const parsedArray = storedScannedDataArray ? JSON.parse(storedScannedDataArray) : [];
+        setScannedDataArray(parsedArray); // Add this line
+        if (scannedDataArray.includes('1')) {
+          setStamp1(true);
+        }
+        if (scannedDataArray.includes('2')) {
+          setStamp2(true);
+        }
+        if (scannedDataArray.includes('3')) {
+          setStamp3(true);
+        }
+        if (scannedDataArray.includes('4')) {
+          setStamp4(true);
+        }
+      })();
     }, [scannedDataArray]);
 
     return (
@@ -148,6 +152,7 @@ const Stamps = ({ navigation }) => {
                     </View>
                     <View style={styles.container2}>
                         <Text style={styles.collectionHeader}>Your Stamp Collection</Text>
+                        <View style={{marginTop:'5%'}}/>
                         <View style={styles.stampCollection}>
                             <View style={stamp1 ? styles.stamp : styles.stampLocked}>
                             <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
@@ -166,7 +171,7 @@ const Stamps = ({ navigation }) => {
                                     blurAmount={10}
                                     reducedTransparencyFallbackColor="white"
                                   >
-                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                    <View style={{  justifyContent: 'center', alignItems: 'center' }}>
                                       <LockIcon />
                                     </View>
                                   </BlurView>} 
@@ -191,7 +196,7 @@ const Stamps = ({ navigation }) => {
                                     blurAmount={10}
                                     reducedTransparencyFallbackColor="white"
                                   >
-                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                    <View style={{  justifyContent: 'center', alignItems: 'center' }}>
                                       <LockIcon />
                                     </View>
                                   </BlurView>} 
@@ -218,7 +223,7 @@ const Stamps = ({ navigation }) => {
                                     blurAmount={10}
                                     reducedTransparencyFallbackColor="white"
                                   >
-                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                                       <LockIcon />
                                     </View>
                                   </BlurView>} 
@@ -243,7 +248,7 @@ const Stamps = ({ navigation }) => {
                                     blurAmount={10}
                                     reducedTransparencyFallbackColor="white"
                                   >
-                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                                       <LockIcon />
                                     </View>
                                   </BlurView>} 
@@ -385,6 +390,11 @@ const styles = StyleSheet.create({
         transform: [{ translateX: 0 }, { translateY: 0 }] //
     },
 });
+
+
+
+
+
 
 
 export { Stamps, QRCodeScanner};
