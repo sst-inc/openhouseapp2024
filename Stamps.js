@@ -286,7 +286,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-
     },
     container1: {
         marginTop: "3%",
