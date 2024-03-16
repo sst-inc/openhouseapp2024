@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { RFValue } from "react-native-responsive-fontsize";
 
 
-const EventsPage = () => {
+const EventsPage = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('./assets/background.png')} style={styles.imageBackground} resizeMode='cover'>

@@ -1,77 +1,40 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, StyleSheet, Image, ImageBackground } from 'react-native';
+import React from 'react';
+import { ImageBackground, TouchableOpacity, View, Alert } from 'react-native';
 
 const BoothInfo = () => {
-    const [showPopup, setShowPopup] = useState(false);
-
-    const togglePopup = () => {
-        setShowPopup(!showPopup);
-    };
-
-    return (
-        <View style={styles.container}>
-            <ImageBackground source={require('./assets/placeholderImage.png')} style={styles.imageBackground}>
-            <View>
-                <View >
-                    <TouchableOpacity style={styles.button} onPress={togglePopup}>
-                        <Text style={styles.buttonText}>Placeholder</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-                <Modal visible={showPopup} animationType="fade" transparent>
-                    <View style={styles.popup}>
-                        <Text style={styles.popupText}>Extra Information</Text>
-                        <TouchableOpacity style={styles.closeButton} onPress={togglePopup}>
-                            <Text style={styles.closeButtonText}>Close</Text>
-                        </TouchableOpacity>
-                    </View>
-                </Modal>
-                </ImageBackground >
-        </View>
+  const handlePointPress = (point) => {
+    Alert.alert(
+      `Point ${point.id}`,
+      `More information about point ${point.id}: ${point.info}`,
+      [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+      { cancelable: true }
     );
+  };
+
+  const points = [
+    { id: '1', top: 50, left: 50, info: 'Info about point 1' },
+    { id: '2', top: 100, left: 100, info: 'Info about point 2' },
+    // Add more points as needed
+  ];
+
+  return (
+    <ImageBackground source={{ uri: 'https://example.com/your-image.jpg' }} style={{ width: '100%', height: '100%' }}>
+      {points.map((point) => (
+        <TouchableOpacity
+          key={point.id}
+          onPress={() => handlePointPress(point)}
+          style={{
+            position: 'absolute',
+            top: point.top,
+            left: point.left,
+            width: 20,
+            height: 20,
+            backgroundColor: 'red',
+          }}
+        />
+      ))}
+    </ImageBackground>
+  );
 };
-
-const styles = StyleSheet.create({
-    imageBackground: {
-        width: '100%',
-        height: '100%',
-    },
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-
-    },
-    button: {
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        backgroundColor: 'grey',
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 16,
-    },
-    popup: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'grey',
-    },
-    popupText: {
-        color: 'white',
-        fontSize: 20,
-        marginBottom: 20,
-    },
-    closeButton: {
-        backgroundColor: 'blue',
-        padding: 10,
-        borderRadius: 5,
-    },
-    closeButtonText: {
-        color: 'white',
-        fontSize: 16,
-    },
-});
 
 export default BoothInfo;

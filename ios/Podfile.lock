@@ -1064,6 +1064,8 @@ PODS:
     - React-Core
   - react-native-camera/RN (4.2.1):
     - React-Core
+  - react-native-maps (1.11.3):
+    - React-Core
   - react-native-safe-area-context (4.9.0):
     - React-Core
   - React-nativeconfig (0.73.5)
@@ -1246,11 +1248,20 @@ PODS:
     - React-Core
   - RNPermissions (4.1.4):
     - React-Core
+  - RNReanimated (3.8.1):
+    - glog
+    - RCT-Folly (= 2022.05.16.00)
+    - React-Core
+    - ReactCommon/turbomodule/core
   - RNScreens (3.29.0):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
   - RNSVG (15.0.0):
+    - React-Core
+  - RNVectorIcons (10.0.3):
+    - glog
+    - RCT-Folly (= 2022.05.16.00)
     - React-Core
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
@@ -1318,6 +1329,7 @@ DEPENDENCIES:
   - react-native-camera/BarcodeDetectorMLKit (from `../node_modules/react-native-camera`)
   - react-native-camera/FaceDetectorMLKit (from `../node_modules/react-native-camera`)
   - react-native-camera/TextDetector (from `../node_modules/react-native-camera`)
+  - react-native-maps (from `../node_modules/react-native-maps`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
@@ -1344,8 +1356,10 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
+  - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1435,6 +1449,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/blur"
   react-native-camera:
     :path: "../node_modules/react-native-camera"
+  react-native-maps:
+    :path: "../node_modules/react-native-maps"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   React-nativeconfig:
@@ -1487,10 +1503,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNPermissions:
     :path: "../node_modules/react-native-permissions"
+  RNReanimated:
+    :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNSVG:
     :path: "../node_modules/react-native-svg"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1546,6 +1566,7 @@ SPEC CHECKSUMS:
   React-Mapbuffer: 7c35cd53a22d0be04d3f26f7881c7fb7dd230216
   react-native-blur: 799045500f56146afc46245148080e7b7623cb75
   react-native-camera: 3eae183c1d111103963f3dd913b65d01aef8110f
+  react-native-maps: 79610ffcd0ec2ca8e0cefb48aa8ae7c62a75d7cc
   react-native-safe-area-context: b97eb6f9e3b7f437806c2ce5983f479f8eb5de4b
   React-nativeconfig: 1166714a4f7ea57a0df5c2cb44fbc70f98d580f9
   React-NativeModulesApple: 726664e9829eb5eed8170241000e46ead269a05f
@@ -1572,8 +1593,10 @@ SPEC CHECKSUMS:
   RNFBApp: 495bf6662800c670fe8e9629d4de0cba72c78b0a
   RNGestureHandler: 67fb54b3e6ca338a8044e85cd6f340265aa41091
   RNPermissions: e8d5f054c1d7e704220028b2b2b13b64b1bc28c9
+  RNReanimated: 8a4d86eb951a4a99d8e86266dc71d7735c0c30a9
   RNScreens: 17e2f657f1b09a71ec3c821368a04acbb7ebcb46
   RNSVG: 3f65a03e0c61a8495dee92bf82545ed9041cbf3b
+  RNVectorIcons: 73ab573085f65a572d3b6233e68996d4707fd505
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: a716eea57d0d3430219c0a5a233e1e93ee931eb7
 

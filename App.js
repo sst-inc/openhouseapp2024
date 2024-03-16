@@ -9,21 +9,21 @@ import { Stamps, QRCodeScanner } from './Stamps';
 import BoothInfo from './BoothInfo';
 import EventsPage from './Events';
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
 
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" >
-        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}  />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-        <Stack.Screen name="Login" component={LoginFunction} options={{ headerShown: false }} />
-        <Stack.Screen name="Stamps" component={Stamps}  options={{ headerShown: false }}  />
-        <Stack.Screen name="QRCode" component={QRCodeScanner} />
-        <Stack.Screen name="BoothInfo" component={BoothInfo} />
-        <Stack.Screen name="Events" component={EventsPage} options={{ headerShown: false }}/>
-      </Stack.Navigator>
+      <Drawer.Navigator initialRouteName="Home" screenOptions={{drawerPosition:"right"}} options={{ headerShown: false }}   >
+        <Drawer.Screen name="Home" component={HomeScreen} options={{ drawerLabel: 'Home' }}  options={{ drawerItemStyle: { height: 0 } ,headerShown: false}}/>
+        <Drawer.Screen name="Login" component={LoginFunction} options={{ drawerLabel: 'Login' }} options={{ drawerItemStyle: { height: 0 } ,headerShown: false}} />
+        <Drawer.Screen name="Stamps" component={Stamps} options={{ drawerLabel: 'Stamps' }} options={{ headerShown: false }}  />
+        <Drawer.Screen name="QRCode" component={QRCodeScanner} options={{ drawerLabel: 'QR Code' }} options={{ drawerItemStyle: { height: 0 } ,headerShown: false}} />
+        <Drawer.Screen name="BoothInfo" component={BoothInfo} options={{ drawerLabel: 'Booth Info' }} options={{ headerShown: false }}   />
+        <Drawer.Screen name="Events" component={EventsPage} options={{ drawerLabel: 'Events' }} options={{ headerShown: false }}  />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
