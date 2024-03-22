@@ -1,21 +1,32 @@
-import { View, TextInput, Button, ActivityIndicator, StyleSheet, ImageBackground, Text} from 'react-native';
-import React, { useState } from 'react';
+import { View, TextInput, Button, ActivityIndicator, StyleSheet, ImageBackground, Text, Animated, TouchableOpacity, Pressable } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
 import { FIREBASE_AUTH } from './firebaseConfig.js';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import LinearGradient from 'react-native-linear-gradient';
+import { BoxShadow } from 'react-native-shadow';
 
 export default function LoginFunction({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const auth = FIREBASE_AUTH;
+    
+    const positionAnim = useRef(new Animated.Value(1)).current;
+
+    useEffect(() => {
+        Animated.timing(positionAnim, {
+            toValue: 0,
+            duration: 500,
+            useNativeDriver: true,
+        }).start();
+    }, []);
 
     const signIn = async () => { 
         setLoading(true);
         try {
             const response = await signInWithEmailAndPassword(auth, email, password);
             console.log(response);
-            navigation.navigate('Stamps');
+            navigation.navigate('Events');
         } catch (error) {
             console.log(error);
             alert('Sign in failed:' + error.message);
@@ -30,7 +41,7 @@ export default function LoginFunction({ navigation }) {
             const response = await createUserWithEmailAndPassword(auth, email, password);
             console.log(response);
             alert('Account successfully created');
-            navigation.navigate('Stamps');
+            navigation.navigate('Events');
         } catch (error) {
             console.log(error);
             alert('Sign up failed:' + error.message);
@@ -39,50 +50,48 @@ export default function LoginFunction({ navigation }) {
         }
     }
 
+
     return (
         <View style={styles.container}>
             <ImageBackground
                 source={require('./assets/background.png')}
                 resizeMode="cover"
                 style={styles.image}>
-                    <View style={styles.innerContainer}>
-                        <View style={styles.rectangle}>
-                        <LinearGradient
-                        colors={['rgba(190, 190, 190, 0.16)', 'rgba(213, 213, 213, 0.16)']}
-                        start={{x: 0.0, y: 0.0}} 
-                        end={{x: 0.0, y: 1.0}}
-                        style={{flex: 1}}
-                        >
-                           <Text style={styles.signInTexter}>Sign in here!</Text>
-                        </LinearGradient>
-                        </View>
+                    <Animated.View style={[styles.innerContainer, { transform: [{ translateY: positionAnim.interpolate({ inputRange: [0, 1], outputRange: [0, -500] }) }] }]}>
+                         <Text style={styles.signInTexter}>Ready to start your SST journey?</Text>
                         <TextInput
                             style={styles.input}
-                            placeholder='email'
+                            placeholder='Email'
                             autoCapitalize='none'
                             onChangeText={(text) => setEmail(text)}
                             placeholderTextColor='#c9c9c9'
                         />
+                        <View style={{marginTop:'1.5%'}}/>
                         <TextInput
                             style={styles.input}
                             secureTextEntry={true}
-                            placeholder='password'
+                            placeholder='Password'
                             autoCapitalize='none'
                             onChangeText={(text) => setPassword(text)}
                             placeholderTextColor='#c9c9c9'
                         />
                         {loading ? <ActivityIndicator size='large' color='blue' /> : (
                             <>
-                          <View style={styles.button}>
-                                <Button title='Sign in' color='white' onPress={signIn} />
-                            </View>
-                            <View style={styles.button}>
-                                <Button title='Create account' color='white' onPress={signUp} />
+                            <TouchableOpacity style={styles.button} onPress={signIn}>
+                                <Text style={styles.buttonText}>LOGIN</Text>
+                            </TouchableOpacity>
+                            <View style={{flexDirection:'row', marginTop:'5%'}}>
+                            <Text style={{color:'grey'}}>Don't have an account?</Text>
+                            <Pressable onPress={signUp} >
+                                <Text style={styles.signUpButton}>  SIGN UP</Text>
+                            </Pressable>
                             </View>
                             </>
                         )}
-                            <Button style={styles.skip} title='Skip' onPress={() => navigation.navigate("Events")} /> 
-                        </View>
+                            <Pressable onPress={() => navigation.navigate("Events")} >
+                                <Text style={{color:'grey',fontWeight:'500',textDecorationLine: 'underline',marginTop:'3%'}} >Skip</Text>    
+                            </Pressable> 
+                        </Animated.View>
             </ImageBackground>
         </View>
     );
@@ -90,11 +99,18 @@ export default function LoginFunction({ navigation }) {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: 'transparent', // Transparent button
-        width: '100%',
+        width: '65%',
+        marginTop: '5%',
         alignItems: 'center',
-        borderRadius: 5,
+        justifyContent: 'center',
+        borderRadius: 20,
         marginBottom: 10,
+        backgroundColor: '#bfbfbf',
+        height: '8%',
+    },
+    buttonText:{
+        color: 'black',
+        fontSize: 25,
     },
     container: {
         flex: 1,
@@ -104,61 +120,41 @@ const styles = StyleSheet.create({
     input: {
         padding: 10,
         borderWidth: 1,
-        borderColor: 'gray',
+        borderColor: '#bfbfbf',
         width: '80%', // Set a fixed width for the input space
-        height: 50,
+        height: '9%',
         marginBottom: 10,
         fontSize: 20,
         color: 'white',
+        borderRadius: 12,
     },
     image: {
         flex: 1,
         width: '100%',
         height: '100%',
     },
-    skip: {
-        color: 'grey',
-        fontSize: 5,
-    },
     box: {
         height: 117,
         width: 391,
       },
-    rectangle: {
-        width: '90%',
-        height: 117,
-        borderRadius: 20,
-        borderWidth: 1,
-        borderColor: 'rgba(255, 255, 255, 0.00)',
-        opacity: 0.35,
-        backgroundColor: 'rgba(213, 213, 213, 0.16)',
-        shadowColor: 'rgba(255, 255, 255, 0.70)',
-        marginBottom:"5%",
-        shadowOffset: {
-          width: 0,
-          height: 4,
-        },
-        shadowOpacity: 1,
-        shadowRadius: 28,
-        elevation: 5, // For Android shadow
-        borderBottomWidth: 0, // For Android shadow
-        borderTopWidth: 0, // For Android shadow
-        borderRightWidth: 0, // For Android shadow
-        borderLeftWidth: 0, // For Android shadow
-      },
+
       innerContainer: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
       },
-    signInTexter: {
+      signInTexter: {
         color: '#FFFFFF',
         textAlign: 'center',
-        textShadowColor: 'rgba(255, 255, 255, 0.50)',
-        textShadowOffset: {width: -1, height: 1},
-        textShadowRadius: 10,
-        fontSize: 40,
-        alignSelf: 'center',
-        marginTop: '9%',
-},
+        justifyContent: 'center',
+        marginTop: '4.5%',
+        fontFamily: 'Lato',
+        fontSize: 35, // convert rem to pixels
+        marginBottom: '5%',
+        padding: '4%',
+      },
+      signUpButton:{
+        color:'#1a75ff',
+        textDecorationLine: 'underline',
+      },
 });

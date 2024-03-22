@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
       },
       topBox: {
         width: '95%',
-        height: '23.5%',
+        height: '21%',
         borderRadius: 20,
         borderWidth: 1,
         borderColor: '#EBEBEF',

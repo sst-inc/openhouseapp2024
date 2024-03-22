@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { ImageBackground, TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native';
+import { ImageBackground, TouchableOpacity, View, Text, StyleSheet, Image, Modal } from 'react-native';
 import Svg, { Circle,Path, Line } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
-
 
 const BoothInfo = ({ navigation }) => {
   const [selectedPoint, setSelectedPoint] = useState(null);
@@ -12,8 +11,8 @@ const BoothInfo = ({ navigation }) => {
   };
 
   const points = [
-    { id: '1', top: 50, left: 220, info: 'Info about point 1' },
-    { id: '2', top: 150, left: 160, info: 'Info about point 2' },
+    { id: '1', top: '17%', left: '65%', info: 'Info about point 1' },
+    { id: '2', top: '40%', left: 160, info: 'Info about point 2' },
     // Add more points as needed
   ];
 
@@ -37,8 +36,8 @@ const BoothInfo = ({ navigation }) => {
             </Svg>
             </TouchableOpacity>
         </View>
-    <View>
-      <Image source={require('./assets/Level1.png')} style={{width:'100%', height:'50%'}} />
+    <View style={{marginTop:'5%'}}>
+      <Image source={require('./assets/Level1.png')} style={{width:'100%', height:'55%'}} />
         {points.map((point) => (
           <TouchableOpacity
             key={point.id}
@@ -54,10 +53,14 @@ const BoothInfo = ({ navigation }) => {
             }}
           />
         ))}
-      {selectedPoint && (
+      {selectedPoint ? (
         <View style={{ padding: 20, backgroundColor: 'white' }}>
           <Text>{`Point ${selectedPoint.id}`}</Text>
           <Text>{`More information about point ${selectedPoint.id}: ${selectedPoint.info}`}</Text>
+        </View>
+      ) : (
+        <View style={{ padding: 20, backgroundColor: 'white' }}>
+          <Text>Click on the black buttons to get more information for that area.</Text>
         </View>
       )}
     </View>
@@ -87,3 +90,10 @@ const styles = StyleSheet.create({
     });
 
 export default BoothInfo;
+
+
+
+
+
+
+
