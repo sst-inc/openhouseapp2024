@@ -83,7 +83,7 @@ const QRCodeScanner = ({ navigation }) => {
   };
   
   return (
-    <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <Icon 
         name="arrow-back-outline" 
         size={30} 
@@ -102,7 +102,7 @@ const QRCodeScanner = ({ navigation }) => {
         onGoogleVisionBarcodesDetected={barcodeRecognized}
         captureAudio={false}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -136,10 +136,8 @@ const Stamps = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('./assets/background.png')} style={styles.imageBackground}>
-            <ScrollView >
-              <View  style={{marginTop:10}}/>
-                <View style={styles.container1}>
-                    <View style={styles.topSidebar}>
+              <SafeAreaView>
+                      <View style={styles.navBar}>
                         <Text style={styles.header}>Stamps</Text> 
                         <View style={styles.icons}>
                             <TouchableOpacity  onPress={() => navigation.openDrawer()}>
@@ -279,8 +277,7 @@ const Stamps = ({ navigation }) => {
                             </View>
                         </TouchableOpacity>                                        
                     </View>
-                </View>
-                </ScrollView>
+                </SafeAreaView>
             </ImageBackground>
         </View>
     );
@@ -297,7 +294,7 @@ const styles = StyleSheet.create({
         marginTop: "3%",
      },
     container2: { 
-        marginTop:'35%',
+        marginTop:'15%',
     },
     topSidebar:{
         flexDirection: 'row',
@@ -309,6 +306,12 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 0,
         left: 0,
+    },
+    navBar: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: '90%',
+      marginLeft: '5%',
     },
     icons: { 
         flexDirection: 'row',
@@ -400,7 +403,7 @@ const styles = StyleSheet.create({
         padding: 0,
     },
     entireStampCollection:{
-      gap: 24
+      gap: -24
     },
     lockText: {
       color: '#EBEBEF',

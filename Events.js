@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView,FlatList } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView,FlatList, SafeAreaView } from 'react-native';
 import Svg, { Circle,Path, Line, Image, G } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import { RFValue } from "react-native-responsive-fontsize";
@@ -32,6 +32,7 @@ const EventsPage = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('./assets/background.png')} style={styles.imageBackground} resizeMode='cover'>
+                <SafeAreaView>
                 <View style={{marginTop:10}}/>
                 <Text style={styles.discover}>Discover</Text>
                 <View >
@@ -59,7 +60,7 @@ const EventsPage = ({ navigation }) => {
                     </View>
                     <View style={styles.topBoxPart1}>
                         <Text style={styles.topBoxHeader}>Principal’s{'\n'}talk</Text>
-                            <Svg style={{ transform: [{ translateY: -25 }] }} xmlns="http://www.w3.org/2000/svg" width="190" height="170" viewBox="0 0 198 172" fill="none">
+                            <Svg style={{ transform: [{ translateY: -25 }] }} xmlns="http://www.w3.org/2000/svg" width="190" height="190" viewBox="0 0 198 172" fill="none">
                                 <G filter="url(#filter0_d_14_166)">
                                     <Path d="M156.815 102.98H28.9929C27.1848 102.924 25 100.739 25 98.9885V28.9919C25 27.1848 27.1848 25 28.9929 25H155.007C156.815 25 159 27.1848 159 28.9919V98.9905C159 100.739 156.004 102.982 155.007 102.982L156.815 102.98Z" fill="#2F2E41"/>
                                 </G>
@@ -107,11 +108,8 @@ const EventsPage = ({ navigation }) => {
                     </View>
                 </View>
                 <View style={styles.seperator}>
-                    <Svg xmlns="http://www.w3.org/2000/svg" width="30" height="2" viewBox="0 0 28 2" fill="none">
-                        <Path d="M27 1.5H27.5V0.5H27V1.5ZM0 1.5H27V0.5H0V1.5Z" fill="#EBEBEF"/>
-                    </Svg>
-                    <Svg xmlns="http://www.w3.org/2000/svg" width="30" height="2" viewBox="0 0 28 2" fill="none">
-                        <Path d="M27 1.5H27.5V0.5H27V1.5ZM0 1.5H27V0.5H0V1.5Z" fill="#EBEBEF"/>
+                <Svg xmlns="http://www.w3.org/2000/svg" width="300" height="2" viewBox="0 0 334 2" fill="none">
+                        <Path d="M333 1.49997C333.276 1.49997 333.5 1.27611 333.5 0.999971C333.5 0.723828 333.276 0.499971 333 0.499971L333 1.49997ZM4.37114e-08 1.5L333 1.49997L333 0.499971L-4.37114e-08 0.5L4.37114e-08 1.5Z" fill="#EBEBEF"/>
                     </Svg>
                     <Text style={styles.basicText}>Now</Text>
                     <Svg xmlns="http://www.w3.org/2000/svg" width="300" height="2" viewBox="0 0 334 2" fill="none">
@@ -124,6 +122,7 @@ const EventsPage = ({ navigation }) => {
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                 />
+                </SafeAreaView>
             </ImageBackground>
         </View>
     );
@@ -186,6 +185,7 @@ const styles = StyleSheet.create({
         marginLeft: '0%',
         top: '-5.7%',
         alignItems: 'center',
+        justifyContent: 'center',
       },
     topBoxHeader: {
         color: '#EBEBEF',

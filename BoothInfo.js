@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageBackground, TouchableOpacity, View, Text, StyleSheet, Image, Modal } from 'react-native';
+import { ImageBackground, TouchableOpacity, View, Text, StyleSheet, Image, Modal, SafeAreaView } from 'react-native';
 import Svg, { Circle,Path, Line } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -19,7 +19,8 @@ const BoothInfo = ({ navigation }) => {
   return (
     <View style={styles.container}>
         <ImageBackground source={require('./assets/background.png')} style={styles.imageBackground}>
-        <View style={{flexDirection:'row', gap:170, marginTop:'5%'}}>
+          <SafeAreaView>
+        <View style={{flexDirection:'row', marginTop:'5%',justifyContent:'space-between'}}>
             <Text style={styles.header}>Level 1</Text>
             <TouchableOpacity  
                 onPress={() => navigation.openDrawer()}
@@ -36,8 +37,8 @@ const BoothInfo = ({ navigation }) => {
             </Svg>
             </TouchableOpacity>
         </View>
-    <View style={{marginTop:'5%'}}>
-      <Image source={require('./assets/Level1.png')} style={{width:'100%', height:'55%'}} />
+    <View style={{marginTop:'7%'}}>
+      <Image source={require('./assets/Level1.png')} style={{width:'100%', height:'56%'}} />
         {points.map((point) => (
           <TouchableOpacity
             key={point.id}
@@ -64,6 +65,7 @@ const BoothInfo = ({ navigation }) => {
         </View>
       )}
     </View>
+    </SafeAreaView>
     </ImageBackground>
     </View>
   );

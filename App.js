@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { View, StyleSheet, ImageBackground, TouchableOpacity, Animated } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -15,7 +15,6 @@ const App = () => {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home" screenOptions={{drawerPosition:"right"}} options={{ headerShown: false }}   >
         <Drawer.Screen name="Home" component={HomeScreen} options={{ drawerLabel: 'Home',drawerItemStyle: { height: 0 } ,headerShown: false }} />
-        <Drawer.Screen name="Login" component={LoginFunction} options={{ drawerLabel: 'Login' ,headerShown: false}}  />
         <Drawer.Screen name="Stamps" component={Stamps} options={{ drawerLabel: 'Stamps',headerShown: false }}   />
         <Drawer.Screen name="QRCode" component={QRCodeScanner} options={{ drawerLabel: 'QR Code',drawerItemStyle: { height: 0 } ,headerShown: false }} />
         <Drawer.Screen name="BoothInfo" component={BoothInfo} options={{ drawerLabel: 'Booth Info',headerShown: false }}    />
@@ -26,30 +25,39 @@ const App = () => {
 }
 
 const HomeScreen = ({ navigation }) => {
-  const [email, setEmail] = useState('');
+  const fadeAnim = useRef(new Animated.Value(0)).current;  // Initial value for opacity: 0
+  const AnimatedImageBackground = Animated.createAnimatedComponent(ImageBackground);
+
   useEffect(() => {
-    const retrieveEmail = async () => {
-      const storedEmail = await AsyncStorage.getItem('email');
-      if (storedEmail) {
-        setEmail(storedEmail);
+    Animated.timing(
+      fadeAnim,
+      {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
       }
-    };
-    retrieveEmail();
-  }, []);
+    ).start();
+  }, [fadeAnim]);
 
   function whereToGo() {
-    if (email !== '') {
-      navigation.navigate('Events');
-    } else {
-      navigation.navigate('Login');
-    }
+    Animated.timing(
+      fadeAnim,
+      {
+        toValue: 0,
+        duration: 100,
+        useNativeDriver: true,
+      }
+    ).start(() => navigation.navigate('Events'));  // Navigate after the animation completes
   }
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('./assets/startingPage.png')} style={styles.imageBackground}>
+      <AnimatedImageBackground
+        source={require('./assets/startingPage.png')}
+        style={[styles.imageBackground, { opacity: fadeAnim }]}
+      >
         <TouchableOpacity style={{ width:"100%",height:'100%'}} onPress={whereToGo} />
-      </ImageBackground>
+      </AnimatedImageBackground>
     </View>
   );
 };
@@ -63,7 +71,7 @@ const styles = StyleSheet.create({
   imageBackground: {
     width: '100%',
     height: '100%'
-  }
+  },
 });
 
 export default App;
