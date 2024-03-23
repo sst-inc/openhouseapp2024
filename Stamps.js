@@ -353,7 +353,7 @@ const styles = StyleSheet.create({
     },
     stampCollection:{
         flexDirection: 'row',
-        gap: 1,
+        gap: 8,
         justifyContent: 'center',
         height: '38%',
         padding: 0,
@@ -400,7 +400,7 @@ const styles = StyleSheet.create({
         padding: 0,
     },
     entireStampCollection:{
-      gap: 22
+      gap: 24
     },
     lockText: {
       color: '#EBEBEF',

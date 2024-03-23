@@ -1,16 +1,39 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView,FlatList } from 'react-native';
 import Svg, { Circle,Path, Line, Image, G } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import { RFValue } from "react-native-responsive-fontsize";
 
 
 const EventsPage = ({ navigation }) => {
+    const events = [
+        { id: '1', time: '9.00 am', name: 'Principal’s talk', location: '  @Auditorium', timeRange: '9:00am - 10:00am' },
+        { id: '2', time: '9.30 am', name: 'Maths Quiz', location: '  @Room 101', timeRange: '9:30am - 10:30am'},
+        { id: '3', time: '9.45 am', name: 'Science Fair', location: '  @Science Lab', timeRange: '9:45am - 10:45am' },
+        { id: '4', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am' },
+    ]
+    
+    const renderItem = ({ item }) => (
+        <>
+          <View style={styles.eventsContainer}>
+              <View style={styles.eventsBox}>
+                  <Text style={styles.basicText}>{item.time}</Text>
+                  <View style={styles.eventsDetailsBox}>
+                      <View style={{flexDirection:'row', marginLeft:'4%', marginTop:'3.5%'}}>
+                          <Text style={styles.basicText}>{item.name}</Text>
+                          <Text style={styles.generalText}>{item.location}</Text>
+                      </View>
+                      <Text style={styles.generalText}>   {item.timeRange}</Text>
+                  </View>
+              </View>
+          </View>
+          <View style={{marginTop: '5%'}}/>
+        </>
+      );
     return (
         <View style={styles.container}>
             <ImageBackground source={require('./assets/background.png')} style={styles.imageBackground} resizeMode='cover'>
                 <View style={{marginTop:10}}/>
-                <ScrollView>
                 <Text style={styles.discover}>Discover</Text>
                 <View >
                     <View style={styles.topSidebar}>
@@ -30,6 +53,11 @@ const EventsPage = ({ navigation }) => {
                     </View>
                 </View>
                 <View style={styles.topBox}> 
+                    <View style={styles.redCircle}>
+                        <Text style={{  color: '#EBEBEF', fontFamily: 'Lato', fontSize: 14, fontWeight: '400', lineHeight: 16, includeFontPadding: false, textAlignVertical: 'top', }}>
+                            Important!
+                        </Text>
+                    </View>
                     <View style={styles.topBoxPart1}>
                         <Text style={styles.topBoxHeader}>Principal’s{'\n'}talk</Text>
                             <Svg style={{ transform: [{ translateY: -25 }] }} xmlns="http://www.w3.org/2000/svg" width="190" height="170" viewBox="0 0 198 172" fill="none">
@@ -91,71 +119,12 @@ const EventsPage = ({ navigation }) => {
                         <Path d="M333 1.49997C333.276 1.49997 333.5 1.27611 333.5 0.999971C333.5 0.723828 333.276 0.499971 333 0.499971L333 1.49997ZM4.37114e-08 1.5L333 1.49997L333 0.499971L-4.37114e-08 0.5L4.37114e-08 1.5Z" fill="#EBEBEF"/>
                     </Svg>
                 </View>
-                <View style={styles.eventsContainer}>
-                    <View style={styles.eventsBox}>
-                        <Text style={styles.basicText}>8.00 am</Text>
-                        <View style={styles.eventsDetailsBox}>
-                            <View style={{flexDirection:'row', marginLeft:'4%', marginTop:'3.5%'}}>
-                                <Text style={styles.basicText}>Principal’s Talk</Text>
-                                <Text style={styles.generalText}> @Auditorium</Text>
-                            </View>
-                            <Text style={styles.generalText}>   8:00am - 9:00am</Text>
-                        </View>
-                    </View>
-                </View>
                 <View style={{marginTop: '5%'}}/>
-                <View style={styles.eventsContainer}>
-                    <View style={styles.eventsBox}>
-                        <Text style={styles.basicText}>9.00 am</Text>
-                        <View style={styles.eventsDetailsBox}>
-                            <View style={{flexDirection:'row', marginLeft:'4%', marginTop:'3.5%'}}>
-                                <Text style={styles.basicText}>SSTed Talks</Text>
-                                <Text style={styles.generalText}> @SST Inc. HQ</Text>
-                            </View>
-                            <Text style={styles.generalText}>   9:00am - 10:00am</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={{marginTop: '5%'}}/>
-                <View style={styles.eventsContainer}>
-                    <View style={styles.eventsBox}>
-                        <Text style={styles.basicText}>9.00 am</Text>
-                        <View style={styles.eventsDetailsBox}>
-                            <View style={{flexDirection:'row', marginLeft:'4%', marginTop:'3.5%'}}>
-                                <Text style={styles.basicText}>Student Panel</Text>
-                                <Text style={styles.generalText}> @InfoHub</Text>
-                            </View>
-                            <Text style={styles.generalText}>   9:00am - 10:00am</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={{marginTop: '5%'}}/>
-                <View style={styles.eventsContainer}>
-                    <View style={styles.eventsBox}>
-                        <Text style={styles.basicText}>10.00 am</Text>
-                        <View style={styles.eventsDetailsBox}>
-                            <View style={{flexDirection:'row', marginLeft:'4%', marginTop:'3.5%'}}>
-                                <Text style={styles.basicText}>Balik Kampung</Text>
-                                <Text style={styles.generalText}> @MPR4</Text>
-                            </View>
-                            <Text style={styles.generalText}>   10:00am - 11:00am</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={{marginTop: '5%'}}/>
-                <View style={styles.eventsContainer}>
-                    <View style={styles.eventsBox}>
-                        <Text style={styles.basicText}>10.00 am</Text>
-                        <View style={styles.eventsDetailsBox}>
-                            <View style={{flexDirection:'row', marginLeft:'4%', marginTop:'3.5%'}}>
-                                <Text style={styles.basicText}>Willy Wonka Visit</Text>
-                                <Text style={styles.generalText}> @ChocFact</Text>
-                            </View>
-                            <Text style={styles.generalText}>   10:00am - 11:00am</Text>
-                        </View>
-                    </View>
-                </View>
-             </ScrollView>
+                <FlatList
+                    data={events}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                />
             </ImageBackground>
         </View>
     );
@@ -205,7 +174,20 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         marginLeft: '3%',
         marginTop: '7%',
+        position: 'relative',
     },
+    redCircle: {
+        width: '25%',
+        height: '15%',
+        borderRadius: 10, 
+        backgroundColor: '#CD4F4F',
+        position: 'absolute', 
+        borderWidth: 1,
+        borderColor: '#EBEBEF',
+        marginLeft: '0%',
+        top: '-5.7%',
+        alignItems: 'center',
+      },
     topBoxHeader: {
         color: '#EBEBEF',
         fontFamily: 'Lato',

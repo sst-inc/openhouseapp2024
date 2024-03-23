@@ -1,17 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Animated } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import LoginFunction from './Login';
 import { Stamps, QRCodeScanner } from './Stamps';
 import BoothInfo from './BoothInfo';
 import EventsPage from './Events';
 
 const Drawer = createDrawerNavigator();
-
-
 
 const App = () => {
   return (
@@ -29,20 +26,34 @@ const App = () => {
 }
 
 
-
-
 const HomeScreen = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  useEffect(() => {
+    const retrieveEmail = async () => {
+      const storedEmail = await AsyncStorage.getItem('email');
+      if (storedEmail) {
+        setEmail(storedEmail);
+      }
+    };
+    retrieveEmail();
+  }, []);
+
+  function whereToGo() {
+    if (email !== '') {
+      navigation.navigate('Events');
+    } else {
+      navigation.navigate('Login');
+    }
+  }
+
   return (
     <View style={styles.container}>
       <ImageBackground source={require('./assets/startingPage.png')} style={styles.imageBackground}>
-        <TouchableOpacity style={{ width:"100%",height:'100%'}} onPress={() => navigation.navigate('Login')} />
+        <TouchableOpacity style={{ width:"100%",height:'100%'}} onPress={whereToGo} />
       </ImageBackground>
     </View>
   );
 };
-
-
-
 
 const styles = StyleSheet.create({
   container: {

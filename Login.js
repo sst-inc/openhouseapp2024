@@ -4,7 +4,7 @@ import { FIREBASE_AUTH } from './firebaseConfig.js';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import LinearGradient from 'react-native-linear-gradient';
 import { BoxShadow } from 'react-native-shadow';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function LoginFunction({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -26,6 +26,8 @@ export default function LoginFunction({ navigation }) {
         try {
             const response = await signInWithEmailAndPassword(auth, email, password);
             console.log(response);
+            // Store email in AsyncStorage after successful login
+            await AsyncStorage.setItem('email', email);
             navigation.navigate('Events');
         } catch (error) {
             console.log(error);
@@ -34,13 +36,15 @@ export default function LoginFunction({ navigation }) {
             setLoading(false);
         }
     }
-
+    
     const signUp = async () => {
         setLoading(true);
         try {
             const response = await createUserWithEmailAndPassword(auth, email, password);
             console.log(response);
             alert('Account successfully created');
+            // Store email in AsyncStorage after successful sign up
+            await AsyncStorage.setItem('email', email);
             navigation.navigate('Events');
         } catch (error) {
             console.log(error);
