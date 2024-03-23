@@ -1,4 +1,4 @@
-import { View, TextInput, Button, ActivityIndicator, StyleSheet, ImageBackground, Text, Animated, TouchableOpacity, Pressable } from 'react-native';
+/* import { View, TextInput, Button, ActivityIndicator, StyleSheet, ImageBackground, Text, Animated, TouchableOpacity, Pressable } from 'react-native';
 import React, { useState, useEffect, useRef } from 'react';
 import { FIREBASE_AUTH } from './firebaseConfig.js';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
@@ -161,4 +161,4 @@ const styles = StyleSheet.create({
         color:'#1a75ff',
         textDecorationLine: 'underline',
       },
-});
+}); */

@@ -47,21 +47,22 @@ const BoothInfo = ({ navigation }) => {
                 position: 'absolute',
                 top: point.top,
                 left: point.left,
-                width: 10,
-                height: 10,
-                backgroundColor: 'black',
+                width: 12.5,
+                height: 12.5,
                 borderRadius: 5,
+                overflow: 'hidden',
+                backgroundColor: 'black',
             }}
           />
         ))}
       {selectedPoint ? (
         <View style={{ padding: 20, backgroundColor: 'white' }}>
-          <Text>{`Point ${selectedPoint.id}`}</Text>
-          <Text>{`More information about point ${selectedPoint.id}: ${selectedPoint.info}`}</Text>
+          <Text style={{color:'black'}}>{`Point ${selectedPoint.id}`}</Text>
+          <Text style={{color:'black'}}>{`More information about point ${selectedPoint.id}: ${selectedPoint.info}`}</Text>
         </View>
       ) : (
         <View style={{ padding: 20, backgroundColor: 'white' }}>
-          <Text>Click on the black buttons to get more information for that area.</Text>
+          <Text style={{color:'black'}}>Click on the black buttons to get more information for that area.</Text>
         </View>
       )}
     </View>
