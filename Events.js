@@ -4,7 +4,6 @@ import Svg, { Circle,Path, Line, Image, G } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import { RFValue } from "react-native-responsive-fontsize";
 
-
 const EventsPage = ({ navigation }) => {
     const events = [
         { id: '1', time: '9.00 am', name: 'Principal’s talk', location: '  @Auditorium', timeRange: '9:00am - 10:00am' },

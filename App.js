@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Animated } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -15,7 +15,7 @@ const App = () => {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home" screenOptions={{drawerPosition:"right"}} options={{ headerShown: false }}   >
         <Drawer.Screen name="Home" component={HomeScreen} options={{ drawerLabel: 'Home',drawerItemStyle: { height: 0 } ,headerShown: false }} />
-        <Drawer.Screen name="Login" component={LoginFunction} options={{ drawerLabel: 'Login', drawerItemStyle: { height: 0 } ,headerShown: false}}  />
+        <Drawer.Screen name="Login" component={LoginFunction} options={{ drawerLabel: 'Login' ,headerShown: false}}  />
         <Drawer.Screen name="Stamps" component={Stamps} options={{ drawerLabel: 'Stamps',headerShown: false }}   />
         <Drawer.Screen name="QRCode" component={QRCodeScanner} options={{ drawerLabel: 'QR Code',drawerItemStyle: { height: 0 } ,headerShown: false }} />
         <Drawer.Screen name="BoothInfo" component={BoothInfo} options={{ drawerLabel: 'Booth Info',headerShown: false }}    />
@@ -24,7 +24,6 @@ const App = () => {
     </NavigationContainer>
   );
 }
-
 
 const HomeScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
