@@ -79,19 +79,20 @@ const QRCodeScanner = ({ navigation }) => {
       let isNewValueScanned = false;
       barcodes.forEach(barcode => {
         console.log(barcode.data);
-        if (!newSet.has(barcode.data)) {
+        if (!newSet.has(barcode.data) && ['1', '2', '3', '4'].includes(barcode.data)) {
           isNewValueScanned = true;
+          newSet.add(barcode.data);
+        } else if (!['1', '2', '3', '4'].includes(barcode.data)) {
+          Alert.alert("Wrong QR Code Scanned", "The scanned QR code is not valid.");
         }
-        newSet.add(barcode.data);
       });
       if (isNewValueScanned) {
         Alert.alert("New QR Code Scanned", "A new QR code has been scanned and its data has been added.");
+        navigation.navigate('Stamps')
       }
       return newSet;
     });
   };
-  
-
   
   return (
     <View>
@@ -151,7 +152,10 @@ const Stamps = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('./assets/background.png')} style={styles.imageBackground}>
+            <ScrollView>
+
               <SafeAreaView>
+                <View style={{marginTop:'5%'}}/>
                       <View style={styles.navBar}>
                         <Text style={styles.header}>Stamps</Text> 
                         <View style={styles.icons}>
@@ -172,12 +176,12 @@ const Stamps = ({ navigation }) => {
                     <View style={styles.container2}>
                         <Text style={styles.collectionHeader}>Your Stamp Collection</Text>
                         <View style={{marginTop:'5%'}}/>
-                        <View style={styles.entireStampCollection}>
+                        <View >
                         <View style={styles.stampCollection}>
                             <View style={stamp1 ? styles.stamp : styles.stampLocked}>
                             <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
                                 <LinearGradient
-                                colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
+                                colors={['rgba(28, 28, 34, 0.75)', 'rgba(28, 28, 34, 0.00)']}
                                 start={{x: 0.0, y: 1.0}} 
                                 end={{x: 0.0, y: 0.0}} 
                                 locations={[0.0112, 0.4001]}
@@ -203,7 +207,7 @@ const Stamps = ({ navigation }) => {
                             <View style={stamp2 ? styles.stamp : styles.stampLocked}>
                             <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
                                 <LinearGradient
-                                colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
+                                colors={['rgba(28, 28, 34, 0.75)', 'rgba(28, 28, 34, 0.00)']}
                                 start={{x: 0.0, y: 1.0}} 
                                 end={{x: 0.0, y: 0.0}} 
                                 locations={[0.0112, 0.4001]}
@@ -231,7 +235,7 @@ const Stamps = ({ navigation }) => {
                         <View style={stamp3 ? styles.stamp : styles.stampLocked}>
                             <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
                                 <LinearGradient
-                                colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
+                                colors={['rgba(28, 28, 34, 0.75)', 'rgba(28, 28, 34, 0.00)']}
                                 start={{x: 0.0, y: 1.0}} 
                                 end={{x: 0.0, y: 0.0}}
                                 locations={[0.0112, 0.4001]}
@@ -257,7 +261,7 @@ const Stamps = ({ navigation }) => {
                             <View style={stamp4 ? styles.stamp : styles.stampLocked}>
                             <ImageBackground source={require('./assets/stampsPlaceholder.png')} style={{width: '100%', height: '100%',}} >
                                 <LinearGradient
-                                colors={['rgba(28, 28, 34, 0.50)', 'rgba(28, 28, 34, 0.00)']}
+                                colors={['rgba(28, 28, 34, 0.75)', 'rgba(28, 28, 34, 0.00)']}
                                 start={{x: 0.0, y: 1.0}} 
                                 end={{x: 0.0, y: 0.0}} 
                                 locations={[0.0112, 0.4001]}
@@ -282,7 +286,7 @@ const Stamps = ({ navigation }) => {
                             </View>
                             </View>
                         </View>    
-                        
+                        <View style={{alignItems:'center',justifyContent:'center',flex:1, marginTop:'5%'}}>
                         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("QRCode")} >
                             <View style={{flexDirection:'row', marginLeft:'34%'}}>
                                 <Svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -290,9 +294,11 @@ const Stamps = ({ navigation }) => {
                                 </Svg>
                                 <Text style={{color:'black'}}> Scan A Stamp</Text>
                             </View>
-                        </TouchableOpacity>                                        
+                        </TouchableOpacity>   
+                        </View>
                     </View>
                 </SafeAreaView>
+                </ScrollView>
             </ImageBackground>
         </View>
     );
@@ -309,34 +315,17 @@ const styles = StyleSheet.create({
         marginTop: "3%",
      },
     container2: { 
-        marginTop:'15%',
-    },
-    topSidebar:{
-        flexDirection: 'row',
-        justifyContent: 'center',
-        gap: 150,
-        alignItems: 'center',
-        padding: 30,
-        width: '90%',
-        position: 'absolute',
-        top: 0,
-        left: 0,
+        marginTop:'25%',
     },
     navBar: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      width: '90%',
-      marginLeft: '5%',
     },
-    icons: { 
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        gap: 20,
-    },
+
     imageBackground: {
         width: '100%',
-        height: '100%'
+        height: '100%',
+        padding : 0,
       },
     header: {
         color: '#EBEBEF',
@@ -345,11 +334,7 @@ const styles = StyleSheet.create({
         fontSize: 40,
         fontWeight: 'normal',
         marginLeft: '4%',
-    },
-    svg: {
-        width: 31,
-        height: 32,
-        flexShrink: 0,
+        padding : 0,
     },
     collectionHeader:{
         color: '#FFF',
@@ -358,30 +343,30 @@ const styles = StyleSheet.create({
         marginLeft: '6%',
         flexDirection: 'column',
         marginBottom: '2%',
+        padding : 0,
     },
     button: {
-        width: '90%',
-        height: '10%',
+        width: '94%',
+        height: 50,
         alignItems: 'flex-start',
-        flexShrink: 0,
         borderRadius: 24,
         backgroundColor: '#EBEBEF',
         justifyContent: 'center',
-        marginLeft: '5%',
+        padding : 10,
     },
     stampCollection:{
         flexDirection: 'row',
-        gap: 8,
+        gap: 15,
         justifyContent: 'center',
-        height: '38%',
+        height: 180,
         padding: 0,
     },
     stamp:{
         border: '1px solid',
         borderColor: 'black',
         flexShrink: 0,
-        width: 160,
-        height: 160,
+        width: '45%',
+        height: 179,
         borderRadius: 20,
         overflow: 'hidden',
         padding : 0,
@@ -403,23 +388,20 @@ const styles = StyleSheet.create({
         fontFamily: 'Lato',
         fontSize: 16,
         fontWeight: '400',
-        lineHeight: 19
     },
     stampLocked:{
         border: '1px solid',
         borderColor: 'black',
         flexShrink: 0,
-        width: 160,
-        height: 160,
+        width: '45%',
+        height: 179,
         borderRadius: 20,
         overflow: 'hidden',
         backgroundColor: 'rgba(28, 28, 34, 0.50)',
         transform: [{ translateX: 0 }, { translateY: 0 }], 
         padding: 0,
     },
-    entireStampCollection:{
-      gap: -24
-    },
+
     lockText: {
       color: '#EBEBEF',
       textAlign: 'center',

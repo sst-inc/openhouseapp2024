@@ -10,6 +10,12 @@ const EventsPage = ({ navigation }) => {
         { id: '2', time: '9.30 am', name: 'Maths Quiz', location: '  @Room 101', timeRange: '9:30am - 10:30am'},
         { id: '3', time: '9.45 am', name: 'Science Fair', location: '  @Science Lab', timeRange: '9:45am - 10:45am' },
         { id: '4', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am' },
+        { id: '5', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am' },
+        { id: '6', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am' },
+        { id: '7', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am' },
+        { id: '8', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am' },
+
+
     ]
     
     const renderItem = ({ item }) => (
@@ -32,9 +38,8 @@ const EventsPage = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('./assets/background.png')} style={styles.imageBackground} resizeMode='cover'>
-                <SafeAreaView>
-                <View style={{marginTop:10}}/>
-                <Text style={styles.discover}>Discover</Text>
+                <SafeAreaView style={{flex:1}}>
+                <View style={{marginTop:'5%'}}/>
                 <View >
                     <View style={styles.topSidebar}>
                         <Text style={styles.header}>Events</Text> 
@@ -60,7 +65,7 @@ const EventsPage = ({ navigation }) => {
                     </View>
                     <View style={styles.topBoxPart1}>
                         <Text style={styles.topBoxHeader}>Principal’s{'\n'}talk</Text>
-                            <Svg style={{ transform: [{ translateY: -25 }] }} xmlns="http://www.w3.org/2000/svg" width="190" height="190" viewBox="0 0 198 172" fill="none">
+                            <Svg style={{ transform: [{ translateY: -31 }] }} xmlns="http://www.w3.org/2000/svg" width="191" height="191" viewBox="0 0 198 172" fill="none">
                                 <G filter="url(#filter0_d_14_166)">
                                     <Path d="M156.815 102.98H28.9929C27.1848 102.924 25 100.739 25 98.9885V28.9919C25 27.1848 27.1848 25 28.9929 25H155.007C156.815 25 159 27.1848 159 28.9919V98.9905C159 100.739 156.004 102.982 155.007 102.982L156.815 102.98Z" fill="#2F2E41"/>
                                 </G>
@@ -161,7 +166,7 @@ const styles = StyleSheet.create({
       },
       topBox: {
         width: '95%',
-        height: '21%',
+        height: 150,
         borderRadius: 20,
         borderWidth: 1,
         borderColor: '#EBEBEF',

@@ -12,7 +12,7 @@ const BoothInfo = ({ navigation }) => {
 
   const points = [
     { id: '1', top: '17%', left: '65%', info: 'Info about point 1' },
-    { id: '2', top: '40%', left: 160, info: 'Info about point 2' },
+    { id: '2', top: '40%', left: '40%', info: 'Info about point 2' },
     // Add more points as needed
   ];
 
@@ -38,7 +38,7 @@ const BoothInfo = ({ navigation }) => {
             </TouchableOpacity>
         </View>
     <View style={{marginTop:'7%'}}>
-      <Image source={require('./assets/Level1.png')} style={{width:'100%', height:'56%'}} />
+      <Image source={require('./assets/Level1.png')} style={{width:'100%', height:'60%'}} />
         {points.map((point) => (
           <TouchableOpacity
             key={point.id}
