@@ -98,13 +98,13 @@ const QRCodeScanner = ({ navigation }) => {
     <View>
       <ImageBackground source={require('./assets/background.png')} style={styles.imageBackground}>
         <SafeAreaView style={{ flex: 1 }}>
-          <Icon 
-            name="arrow-back-outline" 
-            size={30} 
-            color="white" 
-            style={{ padding: 10 }} 
-            onPress={() => navigation.navigate('Stamps')} 
-          />
+          <View style={{height:50}}> 
+          <TouchableOpacity onPress={() => navigation.navigate('Stamps')} style={{marginLeft:20}} >
+          <Svg xmlns="http://www.w3.org/2000/svg" width="36" height="30" viewBox="0 0 26 20" fill="none">
+            <Path d="M26.0001 19C26.0001 19.2652 25.8947 19.5196 25.7072 19.7071C25.5196 19.8947 25.2653 20 25.0001 20C24.7348 20 24.4805 19.8947 24.2929 19.7071C24.1054 19.5196 24.0001 19.2652 24.0001 19C23.9967 16.0836 22.8368 13.2877 20.7746 11.2255C18.7124 9.1633 15.9164 8.00331 13.0001 8.00001H3.4138L7.70755 12.2925C7.8952 12.4801 8.00061 12.7346 8.00061 13C8.00061 13.2654 7.8952 13.5199 7.70755 13.7075C7.51991 13.8951 7.26542 14.0006 7.00005 14.0006C6.73469 14.0006 6.48019 13.8951 6.29255 13.7075L0.292554 7.70751C0.199578 7.61463 0.125819 7.50434 0.0754943 7.38295C0.02517 7.26155 -0.000732422 7.13142 -0.000732422 7.00001C-0.000732422 6.86859 0.02517 6.73846 0.0754943 6.61707C0.125819 6.49567 0.199578 6.38538 0.292554 6.29251L6.29255 0.292507C6.48019 0.104866 6.73469 -0.000549318 7.00005 -0.000549316C7.26542 -0.000549314 7.51991 0.104866 7.70755 0.292507C7.8952 0.480147 8.00061 0.734643 8.00061 1.00001C8.00061 1.26537 7.8952 1.51987 7.70755 1.70751L3.4138 6.00001H13.0001C16.4468 6.00365 19.7512 7.37445 22.1884 9.81164C24.6256 12.2488 25.9964 15.5533 26.0001 19Z" fill="#EBEBEF"/>
+          </Svg>
+          </TouchableOpacity>
+          </View>
           <RNCamera
             ref={ref => {
               this.camera = ref;
@@ -174,7 +174,12 @@ const Stamps = ({ navigation }) => {
                         </View>
                     </View>
                     <View style={styles.container2}>
-                        <Text style={styles.collectionHeader}>Your Stamp Collection</Text>
+                      <View style={{flexDirection:'row'}}>
+                        <Text style={styles.collectionHeader}>Your Stamp Collection  </Text>
+                        <Svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                          <Path d="M26.25 26.25C26.25 26.4986 26.1512 26.7371 25.9754 26.9129C25.7996 27.0887 25.5611 27.1875 25.3125 27.1875H4.6875C4.43886 27.1875 4.2004 27.0887 4.02459 26.9129C3.84877 26.7371 3.75 26.4986 3.75 26.25C3.75 26.0014 3.84877 25.7629 4.02459 25.5871C4.2004 25.4113 4.43886 25.3125 4.6875 25.3125H25.3125C25.5611 25.3125 25.7996 25.4113 25.9754 25.5871C26.1512 25.7629 26.25 26.0014 26.25 26.25ZM24.375 15H17.7621L19.6031 6.41133C19.7204 5.86464 19.7139 5.29865 19.5841 4.75479C19.4544 4.21093 19.2047 3.70297 18.8532 3.26809C18.5018 2.8332 18.0576 2.4824 17.5531 2.24136C17.0486 2.00033 16.4966 1.87515 15.9375 1.875H14.0625C13.5034 1.87515 12.9514 2.00033 12.4469 2.24136C11.9424 2.4824 11.4982 2.8332 11.1468 3.26809C10.7953 3.70297 10.5456 4.21093 10.4159 4.75479C10.2861 5.29865 10.2796 5.86464 10.3969 6.41133L12.2379 15H5.625C5.12772 15 4.65081 15.1975 4.29917 15.5492C3.94754 15.9008 3.75 16.3777 3.75 16.875V21.5625C3.75 22.0598 3.94754 22.5367 4.29917 22.8883C4.65081 23.24 5.12772 23.4375 5.625 23.4375H24.375C24.8723 23.4375 25.3492 23.24 25.7008 22.8883C26.0525 22.5367 26.25 22.0598 26.25 21.5625V16.875C26.25 16.3777 26.0525 15.9008 25.7008 15.5492C25.3492 15.1975 24.8723 15 24.375 15Z" fill="#EBEBEF"/>
+                        </Svg>
+                      </View>
                         <View style={{marginTop:'5%'}}/>
                         <View >
                         <View style={styles.stampCollection}>
@@ -294,8 +299,21 @@ const Stamps = ({ navigation }) => {
                                 </Svg>
                                 <Text style={{color:'black'}}> Scan A Stamp</Text>
                             </View>
-                        </TouchableOpacity>   
+                        </TouchableOpacity>
                         </View>
+                        <Text 
+                        style={{  color: '#EBEBEF',
+                          textAlign: 'center',
+                          justifyContent: 'center',
+                          fontFamily: 'Lato',
+                          fontSize: 16,
+                          fontStyle: 'normal',
+                          fontWeight: '400',
+                          position: 'absolute',
+                          marginLeft: '18%',
+                          marginTop:'121%'}}>
+                          Find stamps at various booths and{'\n'} scan all for a reward!
+                          </Text>
                     </View>
                 </SafeAreaView>
                 </ScrollView>
@@ -356,9 +374,9 @@ const styles = StyleSheet.create({
     },
     stampCollection:{
         flexDirection: 'row',
-        gap: 15,
+        gap: 10,
         justifyContent: 'center',
-        height: 180,
+        height: 188,
         padding: 0,
     },
     stamp:{
