@@ -44,7 +44,7 @@ const EventsPage = ({ navigation }) => {
                     <View style={styles.topSidebar}>
                         <Text style={styles.header}>Events</Text> 
                             <TouchableOpacity style={styles.hamburgerIconPress} onPress={() => navigation.openDrawer()}>
-                                <Svg width="48" height="52" viewBox="0 0 48 52" fill="none">
+                                <Svg width="48" height="52" viewBox="0 0 48 52" fill="none" style={{marginTop:11}}>
                                     <LinearGradient
                                         colors={['#D9D9D9', 'transparent']}
                                         style={{ borderRadius: 24 }}

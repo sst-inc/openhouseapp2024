@@ -3,7 +3,7 @@ import { View, Text, StyleSheet,ImageBackground,SafeAreaView,TouchableOpacity } 
 import Svg, { G, Path, Defs, ClipPath, Rect,Line } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 
-const MainStream = ({navigation}) => {
+const CCA = ({navigation}) => {
     return (
        <View style={styles.container}>
         <ImageBackground source={require('../assets/background2.png')} style={{ width: '100%', height: '100%' }}>
@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MainStream;
+export default CCA;

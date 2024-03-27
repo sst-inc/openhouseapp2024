@@ -5,6 +5,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MainStream from './boothScreens/MainStream';
+import CCA from './boothScreens/CCA';
+import AppliedSub from './boothScreens/AppliedSub';
+import AppliedDetails from './boothScreens/infoPages/AppliedDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,7 +15,10 @@ const BoothInfo = () => {
   return (
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={BoothInfoParentPage} options={{ headerShown: false }}/>
-        <Stack.Screen name="MainStream" component={MainStream} options={{ headerShown: false }}/>
+        <Stack.Screen name="MainStream" component={MainStream} options={{ headerShown: false }} />
+        <Stack.Screen name="CCA" component={CCA} options={{ headerShown: false }}/>
+        <Stack.Screen name="AppliedSub" component={AppliedSub}  options={{ headerShown: false }} />
+        <Stack.Screen name="ADeets" component={AppliedDetails} options={{ headerShown: false }}  />
       </Stack.Navigator>
   );
 };
@@ -44,7 +50,7 @@ const BoothInfoParentPage = ({ navigation }) => {
             </View>
             <View style={{margin:'30%'}} />
             <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-            <TouchableOpacity onPress={() => navigation.navigate('MainStream')} style={{width:'100%',marginLeft:'11%'}}>
+            <TouchableOpacity onPress={() => navigation.navigate('MainStream')} style={{width:'100%',marginLeft:'12%'}}>
               <View>
                 <LinearGradient
                   start={{x: 0, y: 0}} end={{x: 1, y: 0}}
@@ -87,6 +93,7 @@ const BoothInfoParentPage = ({ navigation }) => {
               </View>
               </TouchableOpacity>
               <View style={{marginTop: '32%'}} />
+              <TouchableOpacity onPress={() => navigation.navigate('AppliedSub')} style={{width:'100%',marginLeft:'12%'}}>
               <View>
               <LinearGradient
                 start={{x: 0, y: 0}} end={{x: 1, y: 0}}
@@ -125,7 +132,9 @@ const BoothInfoParentPage = ({ navigation }) => {
                   </View>
                 </LinearGradient>
               </View>
+              </TouchableOpacity>
               <View style={{marginTop: '32%'}} />
+              <TouchableOpacity onPress={() => navigation.navigate('CCA')} style={{width:'100%',marginLeft:'12%'}}>
               <View>
               <LinearGradient
                 start={{x: 0, y: 0}} end={{x: 1, y: 0}}
@@ -164,6 +173,7 @@ const BoothInfoParentPage = ({ navigation }) => {
                   </View>
                 </LinearGradient>
               </View>
+              </TouchableOpacity>
               <View style={{marginTop: '32%'}} />
             </View>
         </View>
