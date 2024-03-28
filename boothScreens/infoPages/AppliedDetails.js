@@ -37,7 +37,7 @@ const AppliedDetails = ({ route }) => {
               </TouchableOpacity>
             </View>
             <View>
-                <Text style={styles.sectionHeader}>     Applied Subjects > {item.header} </Text>
+                <Text style={styles.sectionHeader}>     {item.type} > {item.header} </Text>
             </View>
             <View style={{alignItems:'center',justifyContent:'center', marginTop:40}}>
             <View style={styles.imageRectangle}>

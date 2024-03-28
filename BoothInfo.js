@@ -50,8 +50,7 @@ const BoothInfoParentPage = ({ navigation }) => {
             </View>
             <View style={{margin:'30%'}} />
             <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-            <TouchableOpacity onPress={() => navigation.navigate('MainStream')} style={{width:'100%',marginLeft:'12%'}}>
-              <View>
+            <TouchableOpacity onPress={() =>{ console.log('Button pressed');navigation.navigate('MainStream');}} style={{width:'100%',marginLeft:'12%',height:0}}>
                 <LinearGradient
                   start={{x: 0, y: 0}} end={{x: 1, y: 0}}
                   colors={['rgba(205, 79, 79, 0.70)', 'rgba(205, 79, 79, 0.05)']}
@@ -90,11 +89,9 @@ const BoothInfoParentPage = ({ navigation }) => {
                       </Svg>
                     </View>
                   </LinearGradient>
-              </View>
               </TouchableOpacity>
-              <View style={{marginTop: '32%'}} />
-              <TouchableOpacity onPress={() => navigation.navigate('AppliedSub')} style={{width:'100%',marginLeft:'12%'}}>
-              <View>
+              <View style={{marginTop: '35%'}} />
+              <TouchableOpacity onPress={() => navigation.navigate('AppliedSub')} style={{width:'100%',marginLeft:'12%', height:0}}>
               <LinearGradient
                 start={{x: 0, y: 0}} end={{x: 1, y: 0}}
                 colors={['rgba(70, 101, 210, 0.50)', 'rgba(70, 101, 210, 0.05)']}
@@ -131,11 +128,9 @@ const BoothInfoParentPage = ({ navigation }) => {
                 </Svg>
                   </View>
                 </LinearGradient>
-              </View>
               </TouchableOpacity>
-              <View style={{marginTop: '32%'}} />
-              <TouchableOpacity onPress={() => navigation.navigate('CCA')} style={{width:'100%',marginLeft:'12%'}}>
-              <View>
+              <View style={{marginTop: '35%'}} />
+              <TouchableOpacity onPress={() => navigation.navigate('CCA')} style={{width:'100%',marginLeft:'12%', height:0}}>
               <LinearGradient
                 start={{x: 0, y: 0}} end={{x: 1, y: 0}}
                 colors={['rgba(157, 157, 175, 0.50)', 'rgba(157, 157, 175, 0.05) ']}
@@ -172,7 +167,6 @@ const BoothInfoParentPage = ({ navigation }) => {
                   </Svg>
                   </View>
                 </LinearGradient>
-              </View>
               </TouchableOpacity>
               <View style={{marginTop: '32%'}} />
             </View>
@@ -214,7 +208,6 @@ const styles = StyleSheet.create({
       borderRadius: 20,
       borderWidth: 1,
       borderColor: '#EBEBEF', 
-      marginBottom: 20,
       alignItems: 'center',
       flexDirection:'row',
       justifyContent:'space-between',

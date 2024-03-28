@@ -6,11 +6,11 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const appliedSubjectsData =[
-    {id: '1', header: 'Computing+', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'SST Inc HQ', image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
-    {id: '2', header: 'Electronics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Electronics Lab',image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
-    {id: '3', header: 'Biotech', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Biotech Lab',image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
-    {id: '4', header: 'Design studies', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Maker Lab',image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
-    {id: '5', header: 'Engineering', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Engineering Lab',image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
+    {id: '1', type:'Applied Subjects', header: 'Computing+', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'SST Inc HQ', image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
+    {id: '2', type:'Applied Subjects', header: 'Electronics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Electronics Lab',image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
+    {id: '3', type:'Applied Subjects', header: 'Biotech', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Biotech Lab',image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
+    {id: '4', type:'Applied Subjects', header: 'Design studies', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Maker Lab',image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
+    {id: '5', type:'Applied Subjects', header: 'Engineering', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Engineering Lab',image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
 ];
 
 
@@ -74,6 +74,7 @@ const AppliedSub = () => {
                     data={appliedSubjectsData}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
+                    contentContainerStyle={{ paddingBottom: 200 }} // Add bottom padding here
                 />  
           </View>
         </SafeAreaView>
