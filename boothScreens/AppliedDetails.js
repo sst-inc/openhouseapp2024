@@ -1,6 +1,9 @@
 import React from 'react';
+import { useState } from 'react';
 import {FlatList, View, Text, StyleSheet,ImageBackground,SafeAreaView,TouchableOpacity, Pressable, Image,ScrollView} from 'react-native';
 import Svg, { G, Path, Defs, ClipPath, Rect,Line } from 'react-native-svg';
+import SearchBar from 'react-native-search-bar';
+import { data } from './BoothInfo';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
@@ -12,10 +15,45 @@ const AppliedDetails = ({ route }) => {
     if (!item) {
        <View><Text>No data</Text></View>// or replace with <View><Text>No data</Text></View> or similar
     }
+    const [isSearchBarVisible, setSearchBarVisible] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+  
+    const handleChange = (text) => {
+      setSearchTerm(text);
+    };
+    
+    const handlePress1 = () => {
+      setSearchBarVisible(!isSearchBarVisible);
+    };
+  
+  
+    
+    const search = (query) => {
+      const trimmedQuery = query.trim().toLowerCase();
+    
+      if (['applied', 'applied subjects'].includes(trimmedQuery)) {
+        navigation.navigate('AppliedSub');
+      } else if (['mainstream', 'mainstream subjects'].includes(trimmedQuery)) {
+        navigation.navigate('MainStream');
+      } else if (['cca', 'co-curricular activities', 'co curricular activities'].includes(trimmedQuery)) {
+        navigation.navigate('CCA');
+      } else {
+        const results = data.filter(item => {
+          return Object.values(item).some(val =>
+            String(val).toLowerCase().includes(trimmedQuery)
+          );
+        });
+    
+        if (results.length > 0) {
+          navigation.navigate('ADeets', { item: results[0] });
+        }
+      }
+    };
+
 
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../../assets/background2.png')} style={styles.imageBackground}>
+        <ImageBackground source={require('../assets/background2.png')} style={styles.imageBackground}>
         <SafeAreaView style={{ flex: 1, }}>
             <ScrollView>
           <View style={{ marginTop: '5%' }}>
@@ -29,7 +67,7 @@ const AppliedDetails = ({ route }) => {
             <View style={{marginBottom:20}}/>
             <View style={styles.topSidebar}>
               <Text style={styles.header}>Booth Info</Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={handlePress1}>
                 <Svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" style={{marginTop:10}}>
                     <Path d="M26.8333 13.6667C26.8333 20.9384 20.9384 26.8333 13.6667 26.8333C6.39492 26.8333 0.5 20.9384 0.5 13.6667C0.5 6.39492 6.39492 0.5 13.6667 0.5C20.9384 0.5 26.8333 6.39492 26.8333 13.6667Z" stroke="#EBEBEF"/>
                     <Line x1="23.0203" y1="23.6464" x2="31.0203" y2="31.6464" stroke="#EBEBEF"/>
@@ -39,6 +77,22 @@ const AppliedDetails = ({ route }) => {
             <View>
                 <Text style={styles.sectionHeader}>     {item.type} > {item.header} </Text>
             </View>
+            {isSearchBarVisible && (
+              <View style={{marginTop: 20, height: 40, width: '90%', marginLeft:'5%' }}>
+                <SearchBar
+                placeholder="Search"
+                onChangeText={handleChange}
+                onSearchButtonPress={() => {
+                  const results = search(searchTerm);
+                  console.log('Search results:', results);
+                }}
+                onCancelButtonPress={() => setSearchBarVisible(false)}
+                tintColor='black'
+                textColor='white'
+                textFieldBackgroundColor='black'
+              />
+            </View>
+            )}
             <View style={{alignItems:'center',justifyContent:'center', marginTop:40}}>
             <View style={styles.imageRectangle}>
                 <Image  source={item.image} style={{width: '100%', height: 252,}}/>

@@ -1,39 +1,96 @@
 import React from 'react';
+import { useState } from 'react';
 import { View, Text, StyleSheet,ImageBackground,SafeAreaView,TouchableOpacity,FlatList, ScrollView } from 'react-native';
 import Svg, { G, Path, Defs, ClipPath, Rect,Line } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
+import { data } from './BoothInfo';
+import SearchBar from 'react-native-search-bar';
 import { useNavigation } from '@react-navigation/native';
 
 
+const allCCAData = [
+  {id: '1', type:'CCA', header: 'Floorball', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '2', type:'CCA', header: 'Basketball', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '3', type:'CCA', header: 'Athletics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '4', type:'CCA', header: 'Football', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '5', type:'CCA', header: 'Badminton', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '6', type:'CCA', header: 'Fencing', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '7', type:'CCA', header: 'Astronomy', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'),sstLoc:'L1 Block A'},
+  {id: '8', type:'CCA', header: 'Media', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '9', type:'CCA', header: 'Singapore youth flying club', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '10', type:'CCA', header: 'Robotics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '11', type:'CCA', header: 'Guitar', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '12', type:'CCA', header: 'Scouts', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '13', type:'CCA', header: 'Drama', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '14', type:'CCA', header: 'Show choir', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '15', type:'CCA', header: 'Taekwondo', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+]
+
 const sportsCCAData = [
-  {id: '1', type:'CCA', header: 'Floorball', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
-  {id: '2', type:'CCA', header: 'Basketball', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
-  {id: '3', type:'CCA', header: 'Athletics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
-  {id: '4', type:'CCA', header: 'Football', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
-  {id: '5', type:'CCA', header: 'Badminton', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
-  {id: '6', type:'CCA', header: 'Fencing', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '1', type:'CCA', header: 'Floorball', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '2', type:'CCA', header: 'Basketball', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '3', type:'CCA', header: 'Athletics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '4', type:'CCA', header: 'Football', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '5', type:'CCA', header: 'Badminton', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '6', type:'CCA', header: 'Fencing', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
 ]
 
 const clubCCAData = [
-  {id: '1', type:'CCA', header: 'Astronomy', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
-  {id: '2', type:'CCA', header: 'Media', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
-  {id: '3', type:'CCA', header: 'Singapore youth flying club', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
-  {id: '4', type:'CCA', header: 'Robotics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
-  {id: '5', type:'CCA', header: 'Guitar', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '1', type:'CCA', header: 'Astronomy', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '2', type:'CCA', header: 'Media', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '3', type:'CCA', header: 'Singapore youth flying club', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '4', type:'CCA', header: 'Robotics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '5', type:'CCA', header: 'Guitar', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
 ]
 
 const uniformedCCAData = [
-  {id: '1', type:'CCA', header: 'Scouts', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '1', type:'CCA', header: 'Scouts', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
 
 ]
 
 const perfromingCCAData = [
-  {id: '1', type:'CCA', header: 'Drama', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
-  {id: '2', type:'CCA', header: 'Show choir', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
-  {id: '3', type:'CCA', header: 'Taekwondo', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('./boothImages/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '1', type:'CCA', header: 'Drama', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '2', type:'CCA', header: 'Show choir', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '3', type:'CCA', header: 'Taekwondo', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
 
 ]
 const CCA = () => {
+  const [isSearchBarVisible, setSearchBarVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleChange = (text) => {
+    setSearchTerm(text);
+  };
+  
+  const handlePress1 = () => {
+    setSearchBarVisible(!isSearchBarVisible);
+  };
+
+
+  
+  const search = (query) => {
+    const trimmedQuery = query.trim().toLowerCase();
+  
+    if (['applied', 'applied subjects'].includes(trimmedQuery)) {
+      navigation.navigate('AppliedSub');
+    } else if (['mainstream', 'mainstream subjects'].includes(trimmedQuery)) {
+      navigation.navigate('MainStream');
+    } else if (['cca', 'co-curricular activities', 'co curricular activities'].includes(trimmedQuery)) {
+      navigation.navigate('CCA');
+    } else {
+      const results = data.filter(item => {
+        return Object.values(item).some(val =>
+          String(val).toLowerCase().includes(trimmedQuery)
+        );
+      });
+  
+      if (results.length > 0) {
+        navigation.navigate('ADeets', { item: results[0] });
+      }
+    }
+  };
+
+
   const navigation = useNavigation();
   const renderItem = ({ item }) => {
     return(
@@ -66,7 +123,7 @@ const CCA = () => {
             <View style={{marginBottom:20}}/>
             <View style={styles.topSidebar}>
               <Text style={styles.header}>Booth Info</Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={handlePress1}>
                 <Svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" style={{marginTop:10}}>
                     <Path d="M26.8333 13.6667C26.8333 20.9384 20.9384 26.8333 13.6667 26.8333C6.39492 26.8333 0.5 20.9384 0.5 13.6667C0.5 6.39492 6.39492 0.5 13.6667 0.5C20.9384 0.5 26.8333 6.39492 26.8333 13.6667Z" stroke="#EBEBEF"/>
                     <Line x1="23.0203" y1="23.6464" x2="31.0203" y2="31.6464" stroke="#EBEBEF"/>
@@ -76,6 +133,22 @@ const CCA = () => {
             <View>
                 <Text style={styles.sectionHeader}>      CCA</Text>
             </View>
+            {isSearchBarVisible && (
+              <View style={{marginTop: 20, height: 40, width: '90%', marginLeft:'5%' }}>
+                <SearchBar
+                placeholder="Search"
+                onChangeText={handleChange}
+                onSearchButtonPress={() => {
+                  const results = search(searchTerm);
+                  console.log('Search results:', results);
+                }}
+                onCancelButtonPress={() => setSearchBarVisible(false)}
+                tintColor='black'
+                textColor='white'
+                textFieldBackgroundColor='black'
+              />
+            </View>
+            )}
             <View style={{width:'100%',height:160, alignItems:'center',justifyContent:'center'}}> 
                 <Text style={styles.normalText}>All CCA's are located at</Text>
                 <View style={{flexDirection:'row',marginTop:3}}>

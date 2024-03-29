@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { ImageBackground, TouchableOpacity, View, Text, StyleSheet, Image, Modal, SafeAreaView } from 'react-native';
+import { ImageBackground, TouchableOpacity, View, Text, StyleSheet, Image, Modal, SafeAreaView,TextInput } from 'react-native';
 import Svg, { G, Path, Defs, ClipPath, Rect,Line } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import MainStream from './boothScreens/MainStream';
-import CCA from './boothScreens/CCA';
-import AppliedSub from './boothScreens/AppliedSub';
-import AppliedDetails from './boothScreens/infoPages/AppliedDetails';
+import SearchBar from 'react-native-search-bar';
+import MainStream from './MainStream';
+import CCA from './CCA';
+import AppliedSub from './AppliedSub';
+import AppliedDetails from './AppliedDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,15 +24,79 @@ const BoothInfo = () => {
   );
 };
 
+const data = [
+  {id: '1', type:'CCA', header: 'Floorball', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '2', type:'CCA', header: 'Basketball', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '3', type:'CCA', header: 'Athletics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '4', type:'CCA', header: 'Football', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '5', type:'CCA', header: 'Badminton', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '6', type:'CCA', header: 'Fencing', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '7', type:'CCA', header: 'Astronomy', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium', image:require('../assets/Level1.png'),sstLoc:'L1 Block A'},
+  {id: '8', type:'CCA', header: 'Media', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '9', type:'CCA', header: 'Singapore youth flying club', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '10', type:'CCA', header: 'Robotics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '11', type:'CCA', header: 'Guitar', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '12', type:'CCA', header: 'Scouts', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '13', type:'CCA', header: 'Drama', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '14', type:'CCA', header: 'Show choir', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '15', type:'CCA', header: 'Taekwondo', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Atrium',sstLoc:'L1 Block A', image:require('../assets/Level1.png'), sstLoc:'L1 Block A'},
+  {id: '16', type:'Applied Subjects', header: 'Computing+', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'SST Inc HQ', image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
+  {id: '17', type:'Applied Subjects', header: 'Electronics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Electronics Lab',image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
+  {id: '18', type:'Applied Subjects', header: 'Biotech', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Biotech Lab',image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
+  {id: '19', type:'Applied Subjects', header: 'Design studies', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Maker Lab',image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
+  {id: '20', type:'Applied Subjects', header: 'Engineering', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Engineering Lab',image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
+];
+
 const BoothInfoParentPage = ({ navigation }) => { 
+  const [isSearchBarVisible, setSearchBarVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleChange = (text) => {
+    setSearchTerm(text);
+  };
+  
+  const handlePress = () => {
+    setSearchBarVisible(!isSearchBarVisible);
+  };
+
+
+  
+  const search = (query) => {
+    const trimmedQuery = query.trim().toLowerCase();
+  
+    if (['applied', 'applied subjects'].includes(trimmedQuery)) {
+      navigation.navigate('AppliedSub');
+    } else if (['mainstream', 'mainstream subjects'].includes(trimmedQuery)) {
+      navigation.navigate('MainStream');
+    } else if (['cca', 'co-curricular activities', 'co curricular activities'].includes(trimmedQuery)) {
+      navigation.navigate('CCA');
+    } else {
+      const results = data.filter(item => {
+        return Object.values(item).some(val =>
+          String(val).toLowerCase().includes(trimmedQuery)
+        );
+      });
+  
+      if (results.length > 0) {
+        navigation.navigate('ADeets', { item: results[0] });
+      }
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('./assets/background2.png')} style={styles.imageBackground}>
+      <ImageBackground source={require('../assets/background2.png')} style={styles.imageBackground}>
       <SafeAreaView style={{flex:1}}>
         <View style={{marginTop:'5%'}}/>
         <View >
           <View style={styles.topSidebar}>
               <Text style={styles.header}>Booth Info</Text> 
+                <TouchableOpacity onPress={handlePress}>
+                    <Svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 32 32" fill="none" style={{marginLeft:30,marginTop:12}}>
+                      <Path d="M26.8333 13.6667C26.8333 20.9384 20.9384 26.8333 13.6667 26.8333C6.39492 26.8333 0.5 20.9384 0.5 13.6667C0.5 6.39492 6.39492 0.5 13.6667 0.5C20.9384 0.5 26.8333 6.39492 26.8333 13.6667Z" stroke="#EBEBEF"/>
+                      <Line x1="23.0203" y1="23.6464" x2="31.0203" y2="31.6464" stroke="#EBEBEF"/>
+                    </Svg>
+                  </TouchableOpacity>
                   <TouchableOpacity style={styles.hamburgerIconPress} onPress={() => navigation.openDrawer()}>
                       <Svg width="48" height="52" viewBox="0 0 48 52" fill="none">
                           <LinearGradient
@@ -45,12 +110,29 @@ const BoothInfoParentPage = ({ navigation }) => {
                       </Svg>
                   </TouchableOpacity>
             </View>
-            <View style={{marginTop: 50, padding:'1%'}}> 
+            {isSearchBarVisible && (
+              <View style={{marginTop: 20, height: 40, width: '90%', marginLeft:'5%' }}>
+                <SearchBar
+                placeholder="Search"
+                onChangeText={handleChange}
+                onSearchButtonPress={() => {
+                  const results = search(searchTerm);
+                  console.log('Search results:', results);
+                }}
+                onCancelButtonPress={() => setSearchBarVisible(false)}
+                tintColor='black'
+                textColor='white'
+                textFieldBackgroundColor='black'
+              />
+            </View>
+            )}
+            <View style={{marginTop: 80, padding:'1%'}}> 
               <Text style={styles.standardText}>Booth writeup Booth writeup Booth writeup  Booth writeup  Booth writeup Booth writeup </Text>
             </View>
             <View style={{margin:'30%'}} />
+            <View style={{marginTop:80}}></View>
             <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-            <TouchableOpacity onPress={() =>{ console.log('Button pressed');navigation.navigate('MainStream');}} style={{width:'100%',marginLeft:'12%',height:0}}>
+            <TouchableOpacity onPress={() =>{ console.log('Button pressed');navigation.navigate('MainStream');}} style={{width:'100%',marginLeft:'12%',height:140}}>
                 <LinearGradient
                   start={{x: 0, y: 0}} end={{x: 1, y: 0}}
                   colors={['rgba(205, 79, 79, 0.70)', 'rgba(205, 79, 79, 0.05)']}
@@ -90,8 +172,7 @@ const BoothInfoParentPage = ({ navigation }) => {
                     </View>
                   </LinearGradient>
               </TouchableOpacity>
-              <View style={{marginTop: '35%'}} />
-              <TouchableOpacity onPress={() => navigation.navigate('AppliedSub')} style={{width:'100%',marginLeft:'12%', height:0}}>
+              <TouchableOpacity onPress={() => navigation.navigate('AppliedSub')} style={{width:'100%',marginLeft:'12%', height:140}}>
               <LinearGradient
                 start={{x: 0, y: 0}} end={{x: 1, y: 0}}
                 colors={['rgba(70, 101, 210, 0.50)', 'rgba(70, 101, 210, 0.05)']}
@@ -129,8 +210,7 @@ const BoothInfoParentPage = ({ navigation }) => {
                   </View>
                 </LinearGradient>
               </TouchableOpacity>
-              <View style={{marginTop: '35%'}} />
-              <TouchableOpacity onPress={() => navigation.navigate('CCA')} style={{width:'100%',marginLeft:'12%', height:0}}>
+              <TouchableOpacity onPress={() => navigation.navigate('CCA')} style={{width:'100%',marginLeft:'12%', height:140}}>
               <LinearGradient
                 start={{x: 0, y: 0}} end={{x: 1, y: 0}}
                 colors={['rgba(157, 157, 175, 0.50)', 'rgba(157, 157, 175, 0.05) ']}
@@ -236,4 +316,4 @@ const styles = StyleSheet.create({
     },
     });
 
-export default BoothInfo;
+export {BoothInfo,data};

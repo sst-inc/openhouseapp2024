@@ -1,20 +1,56 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {FlatList, View, Text, StyleSheet,ImageBackground,SafeAreaView,TouchableOpacity, Pressable} from 'react-native';
 import Svg, { G, Path, Defs, ClipPath, Rect,Line } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { data } from './BoothInfo';
+import SearchBar from 'react-native-search-bar';
 
 
 const appliedSubjectsData =[
-    {id: '1', type:'Applied Subjects', header: 'Computing+', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'SST Inc HQ', image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
-    {id: '2', type:'Applied Subjects', header: 'Electronics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Electronics Lab',image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
-    {id: '3', type:'Applied Subjects', header: 'Biotech', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Biotech Lab',image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
-    {id: '4', type:'Applied Subjects', header: 'Design studies', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Maker Lab',image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
-    {id: '5', type:'Applied Subjects', header: 'Engineering', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Engineering Lab',image:require('./boothImages/Level1.png'), sstLoc:'L3 Block C'},
+    {id: '1', type:'Applied Subjects', header: 'Computing+', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'SST Inc HQ', image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
+    {id: '2', type:'Applied Subjects', header: 'Electronics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Electronics Lab',image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
+    {id: '3', type:'Applied Subjects', header: 'Biotech', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Biotech Lab',image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
+    {id: '4', type:'Applied Subjects', header: 'Design studies', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Maker Lab',image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
+    {id: '5', type:'Applied Subjects', header: 'Engineering', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Engineering Lab',image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
 ];
 
 
 const AppliedSub = () => {
+    const [isSearchBarVisible, setSearchBarVisible] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+  
+    const handleChange = (text) => {
+      setSearchTerm(text);
+    };
+    
+    const handlePress1 = () => {
+      setSearchBarVisible(!isSearchBarVisible);
+    };
+  
+  
+    
+    const search = (query) => {
+      const trimmedQuery = query.trim().toLowerCase();
+    
+      if (['applied', 'applied subjects'].includes(trimmedQuery)) {
+        navigation.navigate('AppliedSub');
+      } else if (['mainstream', 'mainstream subjects'].includes(trimmedQuery)) {
+        navigation.navigate('MainStream');
+      } else if (['cca', 'co-curricular activities', 'co curricular activities'].includes(trimmedQuery)) {
+        navigation.navigate('CCA');
+      } else {
+        const results = data.filter(item => {
+          return Object.values(item).some(val =>
+            String(val).toLowerCase().includes(trimmedQuery)
+          );
+        });
+    
+        if (results.length > 0) {
+          navigation.navigate('ADeets', { item: results[0] });
+        }
+      }
+    };
     const navigation = useNavigation();
     const renderItem = ({ item }) => {
         return(
@@ -59,7 +95,7 @@ const AppliedSub = () => {
             <View style={{marginBottom:20}}/>
             <View style={styles.topSidebar}>
               <Text style={styles.header}>Booth Info</Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={handlePress1}>
                 <Svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" style={{marginTop:10}}>
                     <Path d="M26.8333 13.6667C26.8333 20.9384 20.9384 26.8333 13.6667 26.8333C6.39492 26.8333 0.5 20.9384 0.5 13.6667C0.5 6.39492 6.39492 0.5 13.6667 0.5C20.9384 0.5 26.8333 6.39492 26.8333 13.6667Z" stroke="#EBEBEF"/>
                     <Line x1="23.0203" y1="23.6464" x2="31.0203" y2="31.6464" stroke="#EBEBEF"/>
@@ -69,6 +105,22 @@ const AppliedSub = () => {
             <View>
                 <Text style={styles.sectionHeader}>     Applied Subjects</Text>
             </View>
+            {isSearchBarVisible && (
+              <View style={{marginTop: 20, height: 40, width: '90%', marginLeft:'5%' }}>
+                <SearchBar
+                placeholder="Search"
+                onChangeText={handleChange}
+                onSearchButtonPress={() => {
+                  const results = search(searchTerm);
+                  console.log('Search results:', results);
+                }}
+                onCancelButtonPress={() => setSearchBarVisible(false)}
+                tintColor='black'
+                textColor='white'
+                textFieldBackgroundColor='black'
+              />
+            </View>
+            )}
             <View style={{marginTop:35, flex:1 }}/>
                 <FlatList
                     data={appliedSubjectsData}

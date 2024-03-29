@@ -1148,6 +1148,8 @@ PODS:
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
+  - RNSearchBar (3.5.1):
+    - React
   - RNSVG (15.0.0):
     - React-Core
   - RNVectorIcons (10.0.3):
@@ -1244,6 +1246,7 @@ DEPENDENCIES:
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSearchBar (from `../node_modules/react-native-search-bar`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -1382,6 +1385,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSearchBar:
+    :path: "../node_modules/react-native-search-bar"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
@@ -1460,6 +1465,7 @@ SPEC CHECKSUMS:
   RNPermissions: e8d5f054c1d7e704220028b2b2b13b64b1bc28c9
   RNReanimated: 8a4d86eb951a4a99d8e86266dc71d7735c0c30a9
   RNScreens: 17e2f657f1b09a71ec3c821368a04acbb7ebcb46
+  RNSearchBar: 9860431356b7d12a8449d2fddb2b5f3c78d1e99f
   RNSVG: 3f65a03e0c61a8495dee92bf82545ed9041cbf3b
   RNVectorIcons: 73ab573085f65a572d3b6233e68996d4707fd505
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17

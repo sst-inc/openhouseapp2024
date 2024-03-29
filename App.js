@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
 import { Stamps, QRCodeScanner } from './Stamps';
 import Svg, { Circle,Path, Line, Image, G } from 'react-native-svg';
-import BoothInfo from './BoothInfo';
+import { BoothInfo } from './boothScreens/BoothInfo';
 import EventsPage from './Events';
 
 const Drawer = createDrawerNavigator();
