@@ -8,10 +8,10 @@ import SearchBar from 'react-native-search-bar';
 
 
 const appliedSubjectsData =[
-    {id: '1', type:'Applied Subjects', header: 'Computing+', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'SST Inc HQ', image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
-    {id: '2', type:'Applied Subjects', header: 'Electronics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Electronics Lab',image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
-    {id: '3', type:'Applied Subjects', header: 'Biotech', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Biotech Lab',image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
-    {id: '4', type:'Applied Subjects', header: 'Design studies', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Maker Lab',image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
+    {id: '1', type:'Applied Subjects', header: 'Computing+', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'SST Inc HQ', image:require('../assets/layoutPics/Level3.png'), sstLoc:'L3 Block C'},
+    {id: '2', type:'Applied Subjects', header: 'Electronics', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Electronics Lab',image:require('../assets/layoutPics/Level2.png'), sstLoc:'L2 Block C'},
+    {id: '3', type:'Applied Subjects', header: 'Biotech', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Biotech Lab',image:require('../assets/layoutPics/Level1.png'), sstLoc:'L1 Block C'},
+    {id: '4', type:'Applied Subjects', header: 'Design studies', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Maker Lab',image:require('../assets/layoutPics/MakerLab.png'), sstLoc:'L3 Block C'},
     {id: '5', type:'Applied Subjects', header: 'Engineering', description: 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', location: 'Engineering Lab',image:require('../assets/Level1.png'), sstLoc:'L3 Block C'},
 ];
 
@@ -106,19 +106,19 @@ const AppliedSub = () => {
                 <Text style={styles.sectionHeader}>     Applied Subjects</Text>
             </View>
             {isSearchBarVisible && (
-              <View style={{marginTop: 20, height: 40, width: '90%', marginLeft:'5%' }}>
+                <View style={{marginTop: 20, height: 40, width: '90%', marginLeft:'5%', borderRadius: 20, overflow: 'hidden', backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
                 <SearchBar
-                placeholder="Search"
-                onChangeText={handleChange}
-                onSearchButtonPress={() => {
-                  const results = search(searchTerm);
-                  console.log('Search results:', results);
-                }}
-                onCancelButtonPress={() => setSearchBarVisible(false)}
-                tintColor='black'
-                textColor='white'
-                textFieldBackgroundColor='black'
-              />
+                    placeholder="Search...."
+                    onChangeText={handleChange}
+                    onSearchButtonPress={() => {
+                        const results = search(searchTerm);
+                        console.log('Search results:', results);
+                    }}
+                    onCancelButtonPress={() => setSearchBarVisible(false)}
+                    tintColor='black'
+                    textColor='white'
+                    textFieldBackgroundColor='rgba(128, 128, 128, 0.5)'
+                />
             </View>
             )}
             <View style={{marginTop:35, flex:1 }}/>

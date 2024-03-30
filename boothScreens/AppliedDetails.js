@@ -75,7 +75,7 @@ const AppliedDetails = ({ route }) => {
               </TouchableOpacity>
             </View>
             <View>
-                <Text style={styles.sectionHeader}>     {item.type} > {item.header} </Text>
+                <Text style={styles.sectionHeader}>     {item.type} {'>'} {item.header} </Text>
             </View>
             {isSearchBarVisible && (
               <View style={{marginTop: 20, height: 40, width: '90%', marginLeft:'5%' }}>
@@ -95,7 +95,7 @@ const AppliedDetails = ({ route }) => {
             )}
             <View style={{alignItems:'center',justifyContent:'center', marginTop:40}}>
             <View style={styles.imageRectangle}>
-                <Image  source={item.image} style={{width: '100%', height: 252,}}/>
+                <Image  source={item.image} style={{width: '100%', height: 252,}} resizeMode='contain'/>
             </View>
             </View>
             <View style={{marginTop:10,marginLeft:'5%', width:'85%'}} >

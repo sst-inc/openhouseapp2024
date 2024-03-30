@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@notifee/react-native": "^7.8.2",
     "@react-native-async-storage/async-storage": "^1.22.3",
     "@react-native-community/blur": "^4.4.0",
     "@react-native-community/masked-view": "^0.1.11",
@@ -17,8 +18,12 @@
     "@react-navigation/native": "^6.1.14",
     "@react-navigation/native-stack": "^6.9.22",
     "deprecated-react-native-prop-types": "^5.0.0",
+    "expo": "^50.0.0",
+    "expo-application": "^5.8.3",
     "expo-barcode-scanner": "~12.9.3",
     "expo-linear-gradient": "^12.7.2",
+    "expo-notifications": "^0.27.6",
+    "expo-permissions": "^14.4.0",
     "react": "^18.2.0",
     "react-native": "^0.73.5",
     "react-native-camera": "^4.2.1",
@@ -34,7 +39,8 @@
     "react-native-search-bar": "^3.5.1",
     "react-native-shadow": "^1.2.2",
     "react-native-svg": "^15.0.0",
-    "react-native-vector-icons": "^10.0.3"
+    "react-native-vector-icons": "^10.0.3",
+    "toastify-react-native": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

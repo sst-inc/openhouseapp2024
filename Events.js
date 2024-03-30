@@ -1,40 +1,122 @@
-import React from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView,FlatList, SafeAreaView } from 'react-native';
+import React,{useState,useEffect} from 'react';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView,FlatList, SafeAreaView,Platform } from 'react-native';
 import Svg, { Circle,Path, Line, Image, G } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import { RFValue } from "react-native-responsive-fontsize";
-
-const EventsPage = ({ navigation }) => {
-    const events = [
-        { id: '1', time: '9.00 am', name: 'Principal’s talk', location: '  @Auditorium', timeRange: '9:00am - 10:00am' },
-        { id: '2', time: '9.30 am', name: 'Maths Quiz', location: '  @Room 101', timeRange: '9:30am - 10:30am'},
-        { id: '3', time: '9.45 am', name: 'Science Fair', location: '  @Science Lab', timeRange: '9:45am - 10:45am' },
-        { id: '4', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am' },
-        { id: '5', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am' },
-        { id: '6', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am' },
-        { id: '7', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am' },
-        { id: '8', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am' },
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Notifications from 'expo-notifications';
 
 
-    ]
+const events = [
+    { id: '1', time: '9.00 am', name: 'Principal’s talk', location: '  @Auditorium', timeRange: '9:00am - 10:00am', notifTime: '8:30am'},
+    { id: '2', time: '9.30 am', name: 'Maths Quiz', location: '  @Room 101', timeRange: '9:30am - 10:30am', notifTime: '9:00am'},
+    { id: '3', time: '9.45 am', name: 'Science Fair', location: '  @Science Lab', timeRange: '9:45am - 10:45am', notifTime: '9:15am'},
+    { id: '4', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am', notifTime: '9:20am'},
+    { id: '5', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am', notifTime: '9:20am'}, 
+    { id: '6', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am', notifTime: '9:20am'},
+    { id: '7', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am', notifTime: '9:20am'},
+    { id: '8', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am', notifTime: '9:20am'},
+]
+
+const FlatListItem =({item})=>{
+    const [isSvgOne, setSvgOne] = useState(true);
+    const [notificationId, setNotificationId] = useState(null);
+
+    useEffect(() => {
+      const loadSvgState = async () => {
+        const savedState = await AsyncStorage.getItem(`svgState-${item.id}`);
+        if (savedState !== null) {
+          setSvgOne(savedState === 'true');
+        }
+      };
     
-    const renderItem = ({ item }) => (
+      loadSvgState();
+    }, [item.id]);
+
+    const handlePress = async () => {
+        // Toggle the state
+        setSvgOne(!isSvgOne);
+    
+        // Save the state to AsyncStorage
+        await AsyncStorage.setItem(`svgState-${item.id}`, String(!isSvgOne));
+    
+        // If isSvgOne is set to true, schedule a notification
+        if (!isSvgOne) {
+            // Ensure necessary permissions are granted
+            const { status } = await Notifications.requestPermissionsAsync();
+            if (status !== 'granted') {
+                alert('You need to enable permissions in order to receive notifications');
+                return;
+              }
+              
+            // Create a new date for the next 9:30 AM
+            const date = new Date();
+            date.setDate(date.getDate() + (date.getHours() >= 9 && date.getMinutes() > 30 ? 1 : 0));
+            date.setHours(9);
+            date.setMinutes(30);
+            date.setSeconds(0);
+    
+            // Schedule the notifications
+            await Notifications.scheduleNotificationAsync({
+                content: {
+                    title: 'Your notification title',
+                    body: 'Your notification body',
+                },
+                trigger: {
+                    hour: 9,
+                    minute: 30,
+                    repeats: true
+                },
+            });
+        }
+    };
+    
+
+      return(
         <>
-          <View style={styles.eventsContainer}>
-              <View style={styles.eventsBox}>
-                  <Text style={styles.basicText}>{item.time}</Text>
-                  <View style={styles.eventsDetailsBox}>
-                      <View style={{flexDirection:'row', marginLeft:'4%', marginTop:'3.5%'}}>
-                          <Text style={styles.basicText}>{item.name}</Text>
-                          <Text style={styles.generalText}>{item.location}</Text>
-                      </View>
-                      <Text style={styles.generalText}>   {item.timeRange}</Text>
-                  </View>
-              </View>
-          </View>
-          <View style={{marginTop: '5%'}}/>
+        <View style={styles.eventsContainer}>
+        <View style={styles.eventsBox}>
+            <Text style={styles.basicText}>{item.time}</Text>
+            <View style={styles.eventsDetailsBox}>
+            <View>
+                <View style={{flexDirection:'row', marginLeft:'4%', marginTop:'3.5%'}}>
+                <Text style={styles.basicText}>{item.name}</Text>
+                <Text style={styles.generalText}>{item.location}</Text>
+                </View>
+                <Text style={styles.generalText}>   {item.timeRange}</Text>
+                <View style={{flex: 1, minHeight: 40}}>
+                <TouchableOpacity style={{position:'absolute', top: -30, right: 0}}  onPress={handlePress}>
+                    { isSvgOne ?(
+                    <Svg width={40} height={40} fill="#000000" viewBox="0 0 40 40" xmlnss="http://www.w3.org/2000/svg">
+                    <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
+                    <G id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></G>
+                    <G id="SVGRepo_iconCarrier">
+                        <Path d="M10,21h4a2,2,0,0,1-4,0ZM3.076,18.383a1,1,0,0,1,.217-1.09L5,15.586V10a7.006,7.006,0,0,1,6-6.92V2a1,1,0,0,1,2,0V3.08A7.006,7.006,0,0,1,19,10v5.586l1.707,1.707A1,1,0,0,1,20,19H4A1,1,0,0,1,3.076,18.383ZM6.414,17H17.586l-.293-.293A1,1,0,0,1,17,16V10A5,5,0,0,0,7,10v6a1,1,0,0,1-.293.707Z">
+                        </Path>
+                    </G>
+                    </Svg>) :
+                    (
+                    <Svg width={40} height={40} fill="#000000" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                        <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
+                        <G id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></G>
+                        <G id="SVGRepo_iconCarrier">
+                            <Path d="M10,20h4a2,2,0,0,1-4,0Zm8-4V10a6,6,0,0,0-5-5.91V3a1,1,0,0,0-2,0V4.09A6,6,0,0,0,6,10v6L4,18H20Z"></Path>
+                        </G>
+                    </Svg>
+                    )
+                    }
+                </TouchableOpacity>
+                </View>
+            </View>
+            </View>
+        </View>
+        </View>
+        <View style={{marginTop: '5%'}}/>
         </>
-      );
+        )
+}
+const EventsPage = ({ navigation }) => {
+    const renderItem = ({ item }) => <FlatListItem item={item} />;
     return (
         <View style={styles.container}>
             <ImageBackground source={require('./assets/background.png')} style={styles.imageBackground} resizeMode='cover'>
