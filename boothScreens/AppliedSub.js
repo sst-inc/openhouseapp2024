@@ -198,14 +198,14 @@ const AppliedSub = () => {
                 </Svg>
               </TouchableOpacity>
             </View>
-            <View>
+            <View style={{marginLeft: "5%"}}>
               <Text style={styles.sectionHeader}> Applied Subjects</Text>
             </View>
             {isSearchBarVisible && (
               <View
                 style={{
                   marginTop: 20,
-                  height: 40,
+                  height: '5%',
                   width: '90%',
                   marginLeft: '5%',
                   borderRadius: 20,
