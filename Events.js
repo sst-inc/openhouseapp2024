@@ -12,7 +12,7 @@ const events = [
     { id: '2', time: '9.30 am', name: 'Maths Quiz', location: '  @Room 101', timeRange: '9:30am - 10:30am', notifTime: '9:00am'},
     { id: '3', time: '9.45 am', name: 'Science Fair', location: '  @Science Lab', timeRange: '9:45am - 10:45am', notifTime: '9:15am'},
     { id: '4', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am', notifTime: '9:20am'},
-    { id: '5', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am', notifTime: '9:20am'}, 
+    { id: '5', time: '5.39 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am', notifTime: '9:20am'}, 
     { id: '6', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am', notifTime: '9:20am'},
     { id: '7', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am', notifTime: '9:20am'},
     { id: '8', time: '9.50 am', name: 'Art Exhibition', location: '  @Art Room', timeRange: '9:50am - 10:50am', notifTime: '9:20am'},
@@ -65,8 +65,8 @@ const FlatListItem =({item})=>{
             // Schedule the notification
             await Notifications.scheduleNotificationAsync({
               content: {
-                title: 'Your notification title',
-                body: 'Your notification body',
+                title: item.name,
+                body: item.location,
               },
               trigger: {
                 hour: notificationHour,
