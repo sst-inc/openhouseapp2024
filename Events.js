@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect, useId} from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView,FlatList, SafeAreaView,Platform } from 'react-native';
 import Svg, { Circle,Path, Line, Image, G } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
@@ -49,24 +49,30 @@ const FlatListItem =({item})=>{
                 return;
               }
               
-            // Create a new date for the next 9:30 AM
-            const date = new Date();
-            date.setDate(date.getDate() + (date.getHours() >= 9 && date.getMinutes() > 30 ? 1 : 0));
-            date.setHours(9);
-            date.setMinutes(30);
-            date.setSeconds(0);
-    
-            // Schedule the notifications
+            const eventTime = item.time.split('.');
+            const eventHour = parseInt(eventTime[0], 10);
+            const eventMinute = parseInt(eventTime[1], 10);
+
+            let notificationHour = eventHour;
+            let notificationMinute = eventMinute - 5;
+
+            // Adjust hour and minute if minute becomes negative
+            if (notificationMinute < 0) {
+              notificationMinute += 60;
+              notificationHour -= 1;
+            }
+
+            // Schedule the notification
             await Notifications.scheduleNotificationAsync({
-                content: {
-                    title: 'Your notification title',
-                    body: 'Your notification body',
-                },
-                trigger: {
-                    hour: 9,
-                    minute: 30,
-                    repeats: true
-                },
+              content: {
+                title: 'Your notification title',
+                body: 'Your notification body',
+              },
+              trigger: {
+                hour: notificationHour,
+                minute: notificationMinute,
+                repeats: true,
+              },
             });
         }
     };
