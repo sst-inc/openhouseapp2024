@@ -409,7 +409,6 @@ const CCA = () => {
         source={require('../assets/background2.png')}
         style={{width: '100%', height: '100%'}}>
         <SafeAreaView>
-          <ScrollView>
             <View style={{marginTop: '5%'}}>
               <TouchableOpacity onPress={() => navigation.goBack()}>
                 <View style={{marginLeft: '5%'}}>
@@ -452,30 +451,32 @@ const CCA = () => {
                 </TouchableOpacity>
               </View>
               <View>
-                <Text style={styles.sectionHeader}> CCA</Text>
+                <Text style={styles.sectionHeader}>     CCA</Text>
               </View>
               {isSearchBarVisible && (
-                <View
-                  style={{
-                    marginTop: 20,
-                    height: 40,
-                    width: '90%',
-                    marginLeft: '5%',
-                  }}>
-                  <SearchBar
-                    placeholder="Search"
-                    onChangeText={handleChange}
-                    onSearchButtonPress={() => {
-                      const results = search(searchTerm);
-                      console.log('Search results:', results);
-                    }}
-                    onCancelButtonPress={() => setSearchBarVisible(false)}
-                    tintColor="white"
-                    textColor="white"
-                    textFieldBackgroundColor="black"
-                    hideBackground={true}
-                  />
-                </View>
+              <View
+              style={{
+                marginTop: 20,
+                height: 41,
+                width: '90%',
+                marginLeft: '5%',
+                borderRadius:20,
+                overflow:'hidden'
+              }}>
+              <SearchBar
+                placeholder="Search"
+                onChangeText={handleChange}
+                onSearchButtonPress={() => {
+                  const results = search(searchTerm);
+                  console.log('Search results:', results);
+                }}
+                onCancelButtonPress={() => setSearchBarVisible(false)}
+                tintColor="white"
+                textColor="white"
+                textFieldBackgroundColor="rgba(169, 169, 169, 0.6)" // grey, slightly transparent
+                hideBackground={true}
+              />
+            </View>
               )}
               <View
                 style={{
@@ -500,7 +501,8 @@ const CCA = () => {
                   <Text style={styles.locationText}> Atrium, L1 Block A</Text>
                 </View>
               </View>
-              <View style={{}}>
+              <ScrollView>
+              <View>
                 <Text style={styles.ccaTypeHeader}>Sports</Text>
                 <FlatList
                   data={sportsCCAData}
@@ -530,8 +532,8 @@ const CCA = () => {
                   nestedScrollEnabled={false}
                 />
               </View>
+              </ScrollView>
             </View>
-          </ScrollView>
         </SafeAreaView>
       </ImageBackground>
     </View>

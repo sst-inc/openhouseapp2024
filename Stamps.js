@@ -153,7 +153,7 @@ const Stamps = ({ navigation }) => {
                 <View style={{marginTop:'5%'}}/>
                       <View style={styles.navBar}>
                         <Text style={styles.header}>Stamps</Text> 
-                        <View style={styles.icons}>
+                        <View style={{marginTop:'2%'}}>
                             <TouchableOpacity  onPress={() => navigation.openDrawer()}>
                                 <Svg width="48" height="52" viewBox="0 0 48 52" fill="none">
                                     <LinearGradient
@@ -341,6 +341,8 @@ const styles = StyleSheet.create({
     navBar: {
       flexDirection: 'row',
       justifyContent: 'space-between',
+      marginLeft: '2%',
+      marginRight: '5%',
     },
 
     imageBackground: {

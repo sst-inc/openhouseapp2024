@@ -106,27 +106,29 @@ const AppliedDetails = ({ route }) => {
                   </Text>
                 </View>
                 {isSearchBarVisible && (
-                  <View
-                    style={{
-                      marginTop: 20,
-                      height: 40,
-                      width: '90%',
-                      marginLeft: '5%',
-                    }}>
-                    <SearchBar
-                      placeholder="Search"
-                      onChangeText={handleChange}
-                      onSearchButtonPress={() => {
-                        const results = search(searchTerm);
-                        console.log('Search results:', results);
-                      }}
-                      onCancelButtonPress={() => setSearchBarVisible(false)}
-                      tintColor="white"
-                      textColor="white"
-                      textFieldBackgroundColor="black"
-                      hideBackground={true}
-                    />
-                  </View>
+              <View
+              style={{
+                marginTop: 20,
+                height: 41,
+                width: '90%',
+                marginLeft: '5%',
+                borderRadius:20,
+                overflow:'hidden'
+              }}>
+              <SearchBar
+                placeholder="Search"
+                onChangeText={handleChange}
+                onSearchButtonPress={() => {
+                  const results = search(searchTerm);
+                  console.log('Search results:', results);
+                }}
+                onCancelButtonPress={() => setSearchBarVisible(false)}
+                tintColor="white"
+                textColor="white"
+                textFieldBackgroundColor="rgba(169, 169, 169, 0.6)" // grey, slightly transparent
+                hideBackground={true}
+              />
+            </View>
                 )}
                 <View
                   style={{
