@@ -6,8 +6,12 @@ import SearchBar from 'react-native-search-bar';
 import { data } from './BoothInfo';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
+import { Dimensions } from 'react-native';
+
 
 const AppliedDetails = ({ route }) => {
+  const windowWidth = Dimensions.get('window').width;
     // Get the item data from the navigation parameters
     const { item } = route.params;
     const navigation = useNavigation();
@@ -136,19 +140,27 @@ const AppliedDetails = ({ route }) => {
                     justifyContent: 'center',
                     marginTop: 40,
                   }}>
-                  <View style={styles.imageRectangle}>
-                    <Image
+                    <ReactNativeZoomableView 
+                      style={{...styles.imageRectangle, width:  windowWidth * 0.9}}
+                      maxZoom={2.5}
+                      minZoom={1}
+                      zoomStep={0.5}
+                      initialZoom={1}
+                      panEnabled={true}
+                      centerOn={{ zoom: 1, x: 0, y: 0 }}
+                    >
+                      <Image
                       source={item.image}
                       style={{width: '100%', height: 252}}
                       resizeMode="contain"
                     />
-                  </View>
+                  </ReactNativeZoomableView>
                 </View>
                 <View style={{marginTop: 10, marginLeft: '5%', width: '85%'}}>
                   <Text style={{color: '#EBEBEF', fontSize: 32, marginTop: 10}}>
                     {item.header}
                   </Text>
-                  <Text style={{color: '#EBEBEF', fontSize: 16, marginTop: 25}}>
+                  <Text style={{color: '#EBEBEF', fontSize: 16, marginTop: 25,textAlign:'justify',}}>
                     {item.description}
                   </Text>
                   <View style={{marginTop: 50, flexDirection: 'row'}}>
@@ -240,6 +252,7 @@ const AppliedDetails = ({ route }) => {
         color: '#EBEBEF',
         fontFamily: 'Lato',
         fontSize: 16,
+        paddingBottom: 20,
     },
     redirectText:{
         color: '#ABABED',
@@ -250,7 +263,6 @@ const AppliedDetails = ({ route }) => {
         textDecorationLine: 'underline',
     },
     imageRectangle:{
-        width: '90%',
         height: 296,
         flexShrink: 0,
         borderRadius: 20,

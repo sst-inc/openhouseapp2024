@@ -24,6 +24,7 @@ const events = [
     location: ' @Auditorium',
     timeRange: '9:30am - 9:45am',
     notifTime: '8:30am',
+    actualLocation: 'Auditorium',
   },
   {
     id: '2',
@@ -32,6 +33,7 @@ const events = [
     location: ' @LO2',
     timeRange: '9:45am - 10:30am',
     notifTime: '9:00am',
+    actualLocation: 'Learning Oasis 2',
   },
   {
     id: '3',
@@ -40,6 +42,7 @@ const events = [
     location: ' @LO1',
     timeRange: '10:30am - 10:45am',
     notifTime: '9:15am',
+    actualLocation: 'Learning Oasis 1',
   },
   {
     id: '4',
@@ -48,6 +51,7 @@ const events = [
     location: ' @Atrium',
     timeRange: '10:45am - 11:15am',
     notifTime: '9:20am',
+    actualLocation: 'Atrium',
   },
   {
     id: '5',
@@ -56,6 +60,7 @@ const events = [
     location: ' @LO2',
     timeRange: '11.15am - 11.30am',
     notifTime: '9:20am',
+    actualLocation: 'Learning Oasis 2',
   },
   {
     id: '6',
@@ -64,6 +69,7 @@ const events = [
     location: ' @Auditorium',
     timeRange: '11:30am - 11:45am',
     notifTime: '9:20am',
+    actualLocation: 'Auditorium',
   },
   {
     id: '7',
@@ -72,6 +78,7 @@ const events = [
     location: ' @LO1',
     timeRange: '11.45am - 12.00am',
     notifTime: '9:20am',
+    actualLocation: 'Learning Oasis 1',
   },
 ];
 
@@ -141,7 +148,10 @@ const FlatListItem = ({item}) => {
       <View style={styles.eventsContainer}>
         <View style={styles.eventsBox}>
           <Text style={styles.basicText}>{item.time}</Text>
-          <View style={styles.eventsDetailsBox}>
+          <TouchableOpacity style={styles.eventsDetailsBox} 
+                onPress={
+                  () => alert(item.name + ' is at ' + item.actualLocation + ' at ' + item.timeRange)
+                }>
             <View>
               <View
                 style={{
@@ -152,7 +162,7 @@ const FlatListItem = ({item}) => {
                 <Text style={styles.basicText}>{item.name}</Text>
                 <Text style={styles.generalText}>{item.location}</Text>
               </View>
-              <Text style={styles.generalText}> {item.timeRange}</Text>
+              <Text style={styles.generalText}>   {item.timeRange}</Text>
               <View style={{flex: 1, minHeight: 40}}>
                 <TouchableOpacity
                   style={{position: 'absolute', top: -30, right: 0}}
@@ -193,7 +203,7 @@ const FlatListItem = ({item}) => {
                 </TouchableOpacity>
               </View>
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
       <View style={{marginTop: '5%'}} />
@@ -248,7 +258,7 @@ const EventsPage = ({navigation}) => {
               </Text>
             </View>
             <View style={styles.topBoxPart1}>
-              <Text style={styles.topBoxHeader}>Principal’s{'\n'}talk</Text>
+              <Text style={styles.topBoxHeader}>CCA{'\n'}Performance</Text>
               <Svg
                 style={{transform: [{translateY: -31}]}}
                 xmlns="http://www.w3.org/2000/svg"
@@ -387,7 +397,7 @@ const EventsPage = ({navigation}) => {
                   fill-opacity="0.7"
                 />
               </Svg>
-              <Text style={styles.generalText}> Auditorium</Text>
+              <Text style={styles.generalText}> Atrium</Text>
               <Text> </Text>
               <Svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -401,7 +411,7 @@ const EventsPage = ({navigation}) => {
                   fill-opacity="0.7"
                 />
               </Svg>
-              <Text style={styles.generalText}> 0800 - 0900</Text>
+              <Text style={styles.generalText}> 1045 - 11:15</Text>
             </View>
           </View>
           <View style={styles.seperator}>

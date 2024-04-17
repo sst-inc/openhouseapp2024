@@ -97,9 +97,9 @@ const data = [
     header: 'Media Club',
     description:
       'The SST Media Club is a vibrant platform for students passionate about multimedia. Explore journalism, photography, videography, and more. Develop skills through workshops, projects, and collaborations. Learn from experts and peers, honing camera work, editing, storytelling, and creativity. Whether experienced or new, the Media Club offers a space to grow in multimedia and technology. Join us to unleash your creativity and skills!',
-    location: 'Robotics Room',
+    location: 'Atrium',
     image: require('../assets/layoutPics/Level3.png'),
-    sstLoc: 'L3 Block C',
+    sstLoc: 'L1 Block A',
   },
   {
     id: '6',
@@ -109,7 +109,7 @@ const data = [
       'Robotics @APEX began in 2010, guided by Effective, Efficient, and Exemplary values. With dedicated students and staff, the club earned recognition in local and international robotics communities. Members work with LEGO, Arduino, and OpenCV systems, applying their skills in competitions like the First Lego League Cityshaper, iCooL Challenge, and IDE Robotics Challenge. Creative projects solve real-world issues. Competing and research develop resilience, critical thinking, communication, and project management skills for life.',
     location: 'Atrium',
     image: require('../assets/layoutPics/Atrium.png'),
-    sstLoc: 'L1 Block A',
+    sstLoc: 'L3 Block C',
   },
   {
     id: '7',
@@ -302,8 +302,7 @@ const BoothInfoParentPage = ({navigation}) => {
             )}
             <View style={{marginTop: 80, padding: '1%'}}>
               <Text style={styles.standardText}>
-                Booth writeup Booth writeup Booth writeup Booth writeup Booth
-                writeup Booth writeup{' '}
+                Access information about the booths and subjects. There are many exciting things to explore!
               </Text>
             </View>
             <View style={{margin: '30%'}} />
@@ -542,6 +541,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '90%',
     marginLeft: '5%',
+    marginTop: '1%',
   },
   imageBackground: {
     width: '100%',
@@ -553,7 +553,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato',
     fontSize: 40,
     fontWeight: 'normal',
-    marginLeft: '4%',
+    marginLeft: '2%',
   },
   box: {
     width: '88%',
