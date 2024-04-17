@@ -54,9 +54,9 @@ const data = [
   {
     id: '1',
     type: 'CCA',
-    header: 'Floorball',
+    header: 'Athletics',
     description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      'SST Athletics offers focused training in long-distance and short-distance events, fostering athletic growth and excellence. Athletes gain resilience and sportsmanship through national competitions. Alongside physical training, they develop intellectual and interpersonal skills for their future.',
     location: 'Atrium',
     image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L1 Block A',
@@ -64,9 +64,9 @@ const data = [
   {
     id: '2',
     type: 'CCA',
-    header: 'Basketball',
+    header: 'Fencing',
     description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      "SST Fencing offers engaging sessions with dedicated teachers and coaches to learn fundamental fencing skills. We prepare fencers for lifelong excellence in the sport and provide opportunities for competition at Zonal and National levels. Fencing instils values like teamwork, respect, perseverance, and self-discipline. Contrary to misconceptions, fencing is a physically demanding sport akin to a fast-paced chess game. In Olympic fencing, movements are lightning-fast, requiring strength and quick thinking. If you're up for the challenge, join us and discover the intensity and skill of fencing!",
     location: 'Atrium',
     image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L1 Block A',
@@ -74,9 +74,9 @@ const data = [
   {
     id: '3',
     type: 'CCA',
-    header: 'Athletics',
+    header: 'Astronomy',
     description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      "The Astronomy Club, founded in 2013, has become a popular CCA at SST. It focuses on activities like talks, trips, competitions, and teaching to foster leadership and skills like collaboration, communication, curiosity, and critical, and creative thinking. 'Ad Astra' and 'See the BIG picture' embody the club's goals.",
     location: 'Atrium',
     image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L1 Block A',
@@ -84,9 +84,9 @@ const data = [
   {
     id: '4',
     type: 'CCA',
-    header: 'Football',
+    header: 'Singapore Youth Flying Club',
     description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      'The SYFC offers aviation programs to cultivate passion and develop members as problem-solvers and leaders in aviation. Despite COVID-19, sessions continued through eCCA and physical formats from 2020 to early 2022. Members honed Flight Simulation skills and participated in competitions like Flight Simulation@HQ, Singapore Amazing Flying Machine, and Drone Odyssey Challenge, adapting to the new normal.',
     location: 'Atrium',
     image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L1 Block A',
@@ -94,19 +94,19 @@ const data = [
   {
     id: '5',
     type: 'CCA',
-    header: 'Badminton',
+    header: 'Media Club',
     description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-    location: 'Atrium',
-    image: require('../assets/layoutPics/Atrium.png'),
-    sstLoc: 'L1 Block A',
+      'The SST Media Club is a vibrant platform for students passionate about multimedia. Explore journalism, photography, videography, and more. Develop skills through workshops, projects, and collaborations. Learn from experts and peers, honing camera work, editing, storytelling, and creativity. Whether experienced or new, the Media Club offers a space to grow in multimedia and technology. Join us to unleash your creativity and skills!',
+    location: 'Robotics Room',
+    image: require('../assets/layoutPics/Level3.png'),
+    sstLoc: 'L3 Block C',
   },
   {
     id: '6',
     type: 'CCA',
-    header: 'Fencing',
+    header: 'Robotics@APEX',
     description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      'Robotics @APEX began in 2010, guided by Effective, Efficient, and Exemplary values. With dedicated students and staff, the club earned recognition in local and international robotics communities. Members work with LEGO, Arduino, and OpenCV systems, applying their skills in competitions like the First Lego League Cityshaper, iCooL Challenge, and IDE Robotics Challenge. Creative projects solve real-world issues. Competing and research develop resilience, critical thinking, communication, and project management skills for life.',
     location: 'Atrium',
     image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L1 Block A',
@@ -114,9 +114,9 @@ const data = [
   {
     id: '7',
     type: 'CCA',
-    header: 'Astronomy',
+    header: 'Scouts',
     description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      "The Scout programme at SST focuses on aviation, outdoor education, and developing discipline, leadership, and teamwork. Scouts are empowered to take charge of their development using the Scout Method, becoming self-reliant, supportive, responsible, and committed. Activities encourage personal involvement and responsibility, supporting SST's values and character education.",
     location: 'Atrium',
     image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L1 Block A',
@@ -124,93 +124,25 @@ const data = [
   {
     id: '8',
     type: 'CCA',
-    header: 'Media',
+    header: 'Guitar Ensemble',
     description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      'Formed in 2010, the Guitar Ensemble is a full-fledged Niibori guitar ensemble comprising a close-knitted community of young, passionate musicians. Under the guidance of established guitar conductors, we work towards excellence and continue to be exposed to various song genres, from classical to jazz and modern music.',
     location: 'Atrium',
-    sstLoc: 'L1 Block A',
     image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L1 Block A',
   },
   {
     id: '9',
     type: 'CCA',
-    header: 'Singapore youth flying club',
+    header: 'Show Choir',
     description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      'Show Choir and Dance, founded in 2011, became an official performing arts CCA in 2013. It comprises a show choir, blending choral singing with choreography, and a dance crew, focusing on street dance. Both arms collaborate on musical productions, earning peer recognition. Despite COVID-19, the group adapted with music video productions for events. With the return of live performances, members continue to develop artistic skills and confidence, fostering dynamic and unconventional leaders.',
     location: 'Atrium',
-    sstLoc: 'L1 Block A',
     image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L1 Block A',
   },
   {
     id: '10',
-    type: 'CCA',
-    header: 'Robotics',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-    location: 'Atrium',
-    sstLoc: 'L1 Block A',
-    image: require('../assets/layoutPics/Level3.png'),
-    sstLoc: 'L3 Block C',
-  },
-  {
-    id: '11',
-    type: 'CCA',
-    header: 'Guitar',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-    location: 'Atrium',
-    sstLoc: 'L1 Block A',
-    image: require('../assets/layoutPics/Atrium.png'),
-    sstLoc: 'L1 Block A',
-  },
-  {
-    id: '12',
-    type: 'CCA',
-    header: 'Scouts',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-    location: 'Atrium',
-    sstLoc: 'L1 Block A',
-    image: require('../assets/layoutPics/Atrium.png'),
-    sstLoc: 'L1 Block A',
-  },
-  {
-    id: '13',
-    type: 'CCA',
-    header: 'Drama',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-    location: 'Atrium',
-    sstLoc: 'L1 Block A',
-    image: require('../assets/layoutPics/Atrium.png'),
-    sstLoc: 'L1 Block A',
-  },
-  {
-    id: '14',
-    type: 'CCA',
-    header: 'Show choir',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-    location: 'Atrium',
-    sstLoc: 'L1 Block A',
-    image: require('../assets/layoutPics/Atrium.png'),
-    sstLoc: 'L1 Block A',
-  },
-  {
-    id: '15',
-    type: 'CCA',
-    header: 'Taekwondo',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-    location: 'Atrium',
-    sstLoc: 'L1 Block A',
-    image: require('../assets/layoutPics/Atrium.png'),
-    sstLoc: 'L1 Block A',
-  },
-  {
-    id: '16',
     type: 'Applied Subjects',
     header: 'Computing+',
     description:
@@ -220,7 +152,7 @@ const data = [
     sstLoc: 'L3 Block C',
   },
   {
-    id: '17',
+    id: '11',
     type: 'Applied Subjects',
     header: 'Electronics',
     description:
@@ -230,7 +162,7 @@ const data = [
     sstLoc: 'L2 Block C',
   },
   {
-    id: '18',
+    id: '12',
     type: 'Applied Subjects',
     header: 'Biotech',
     description:
@@ -240,7 +172,7 @@ const data = [
     sstLoc: 'L1 Block C',
   },
   {
-    id: '19',
+    id: '13',
     type: 'Applied Subjects',
     header: 'Design studies',
     description:
@@ -250,7 +182,7 @@ const data = [
     sstLoc: 'L3 Block C',
   },
   {
-    id: '20',
+    id: '14',
     type: 'Applied Subjects',
     header: 'Engineering',
     description:

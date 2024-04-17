@@ -210,7 +210,8 @@ const AppliedDetails = ({ route }) => {
         color: 'rgba(235, 235, 239, 0.70)',
         fontFamily: 'Lato',
         fontSize: 16,
-        fontWeight: '400',  
+      fontWeight: '400',  
+        marginLeft: '5%',
     },
     subContainer:{
         borderRadius: 20,
