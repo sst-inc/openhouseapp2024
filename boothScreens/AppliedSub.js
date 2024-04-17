@@ -21,7 +21,8 @@ const appliedSubjectsData = [
     type: 'Applied Subjects',
     header: 'Computing+',
     description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      "SST's Computing+ course teaches computational thinking for problem-solving and creativity. Students develop programs to tackle complex issues using analysis, pattern finding, abstraction, and algorithms. These skills are applicable across subjects and in real-world scenarios. They also learn data handling and ethics in computing. The " +
+      ' modules expose students to current tech trends, preparing them for advanced studies in Informatics.',
     location: 'SST Inc HQ',
     image: require('../assets/layoutPics/Level3.png'),
     sstLoc: 'L3 Block C',
@@ -31,7 +32,7 @@ const appliedSubjectsData = [
     type: 'Applied Subjects',
     header: 'Electronics',
     description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      'Electronics engineers solve problems and improve lives by applying their knowledge and skills in electronics. Their solutions often come in the form of electronic systems. Join our hands-on activity to experience the work of an electronic engineer! You will learn how a computer simulation is used in circuit design and build an automatic lighting system.',
     location: 'Electronics Lab',
     image: require('../assets/layoutPics/Level2.png'),
     sstLoc: 'L2 Block C',
@@ -39,9 +40,9 @@ const appliedSubjectsData = [
   {
     id: '3',
     type: 'Applied Subjects',
-    header: 'Biotech',
+    header: 'Biotechnology',
     description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      "Ever wondered how science and technology join forces to make the world a better place? Get ready to dive into the fascinating world of biotechnology! In this session, we'll uncover the secrets of genetic engineering and how it helps create genetically modified food. Plus, you won't want to miss our hands-on activity, where we'll explore agarose gel electrophoresis together. Join us for an unforgettable journey of discovery and fun!",
     location: 'Biotech Lab',
     image: require('../assets/layoutPics/Level1.png'),
     sstLoc: 'L1 Block C',
@@ -51,19 +52,9 @@ const appliedSubjectsData = [
     type: 'Applied Subjects',
     header: 'Design studies',
     description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      "The Design Studies Applied Subject explores design thinking and processes, focusing on visual communication, interior and exhibition space, and architectural design. Performance tasks foster awareness of design's connection to various disciplines. Through practical activities, students develop creative mindsets, critical thinking, and analytical skills. They also gain competencies in visual and oral communication, digital design techniques, project management, and time management, building confidence and purpose in resolving design briefs.",
     location: 'Maker Lab',
     image: require('../assets/layoutPics/MakerLab.png'),
-    sstLoc: 'L3 Block C',
-  },
-  {
-    id: '5',
-    type: 'Applied Subjects',
-    header: 'Engineering',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-    location: 'Engineering Lab',
-    image: require('../assets/Level1.png'),
     sstLoc: 'L3 Block C',
   },
 ];
@@ -112,10 +103,10 @@ const AppliedSub = () => {
         style={styles.subContainer}
         onPress={() => handlePress(item)}>
         <View style={{marginLeft: 20}} />
-        <View style={{marginLeft: 20, marginRight: 24}}>
+        <View style={{marginLeft: 30, marginRight: 24}}>
           <Text style={styles.subjectHeader}>{item.header}</Text>
           <View style={{marginTop: 15}} />
-          <Text style={styles.sectionHeader}>{item.description}</Text>
+          <Text style={styles.sectionHeader} numberOfLines={3}>{item.description}</Text>
           <View style={{flexDirection: 'row', marginTop: 15}}>
             <Svg
               xmlns="http://www.w3.org/2000/svg"
@@ -198,33 +189,33 @@ const AppliedSub = () => {
                 </Svg>
               </TouchableOpacity>
             </View>
-            <View style={{marginLeft: "5%"}}>
+            <View style={{marginLeft: '5%'}}>
               <Text style={styles.sectionHeader}> Applied Subjects</Text>
             </View>
             {isSearchBarVisible && (
               <View
-              style={{
-                marginTop: 20,
-                height: 41,
-                width: '90%',
-                marginLeft: '5%',
-                borderRadius:20,
-                overflow:'hidden'
-              }}>
-              <SearchBar
-                placeholder="Search"
-                onChangeText={handleChange}
-                onSearchButtonPress={() => {
-                  const results = search(searchTerm);
-                  console.log('Search results:', results);
-                }}
-                onCancelButtonPress={() => setSearchBarVisible(false)}
-                tintColor="white"
-                textColor="white"
-                textFieldBackgroundColor="rgba(169, 169, 169, 0.6)" // grey, slightly transparent
-                hideBackground={true}
-              />
-            </View>
+                style={{
+                  marginTop: 20,
+                  height: 41,
+                  width: '90%',
+                  marginLeft: '5%',
+                  borderRadius: 20,
+                  overflow: 'hidden',
+                }}>
+                <SearchBar
+                  placeholder="Search"
+                  onChangeText={handleChange}
+                  onSearchButtonPress={() => {
+                    const results = search(searchTerm);
+                    console.log('Search results:', results);
+                  }}
+                  onCancelButtonPress={() => setSearchBarVisible(false)}
+                  tintColor="white"
+                  textColor="white"
+                  textFieldBackgroundColor="rgba(169, 169, 169, 0.6)" // grey, slightly transparent
+                  hideBackground={true}
+                />
+              </View>
             )}
             <View style={{marginTop: 35, flex: 1}} />
             <FlatList

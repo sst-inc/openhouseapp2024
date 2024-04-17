@@ -2,10 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { View, StyleSheet, ImageBackground, TouchableOpacity, Animated,Text,Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
 import { Stamps, QRCodeScanner } from './Stamps';
-import Svg, { Circle,Path, Line, Image, G } from 'react-native-svg';
+import Svg, { Path,} from 'react-native-svg';
 import { BoothInfo } from './boothScreens/BoothInfo';
 import EventsPage from './Events';
 

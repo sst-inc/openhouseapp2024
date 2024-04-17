@@ -11,7 +11,6 @@ import {
   ScrollView,
 } from 'react-native';
 import Svg, {G, Path, Defs, ClipPath, Rect, Line} from 'react-native-svg';
-import LinearGradient from 'react-native-linear-gradient';
 import {data} from './BoothInfo';
 import SearchBar from 'react-native-search-bar';
 import {useNavigation} from '@react-navigation/native';
@@ -264,7 +263,7 @@ const CCA = () => {
                 justifyContent: 'center',
               }}>
               <Text style={styles.normalText}>
-                All CCA's (except Robotics)are located at
+                All CCA's (except Robotics) are located at
               </Text>
               <View style={{flexDirection: 'row', marginTop: 3}}>
                 <Svg
