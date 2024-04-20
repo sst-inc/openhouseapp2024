@@ -76,7 +76,7 @@ const clubCCAData = [
     header: 'Robotics@APEX',
     description:
       'Robotics @APEX began in 2010, guided by Effective, Efficient, and Exemplary values. With dedicated students and staff, the club earned recognition in local and international robotics communities. Members work with LEGO, Arduino, and OpenCV systems, applying their skills in competitions like the First Lego League Cityshaper, iCooL Challenge, and IDE Robotics Challenge. Creative projects solve real-world issues. Competing and research develop resilience, critical thinking, communication, and project management skills for life.',
-    location: 'Atrium',
+    location: 'Robotics room',
     image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L3 Block C',
   },

@@ -19,7 +19,7 @@ import * as Notifications from 'expo-notifications';
 const events = [
   {
     id: '1',
-    time: '9.30 am',
+    time: '9.30 am  ',
     name: 'Academic Panel',
     location: ' @Auditorium',
     timeRange: '9:30am - 9:45am',
@@ -28,7 +28,7 @@ const events = [
   },
   {
     id: '2',
-    time: '9.45 am',
+    time: '9.45 am  ',
     name: 'Student Life Panel',
     location: ' @LO2',
     timeRange: '9:45am - 10:30am',
@@ -85,6 +85,7 @@ const events = [
 const FlatListItem = ({item}) => {
   const [isSvgOne, setSvgOne] = useState(true);
   const [notificationId, setNotificationId] = useState(null);
+  
 
   useEffect(() => {
     const loadSvgState = async () => {
@@ -100,10 +101,10 @@ const FlatListItem = ({item}) => {
   const handlePress = async () => {
     // Toggle the state
     setSvgOne(!isSvgOne);
-
+  
     // Save the state to AsyncStorage
     await AsyncStorage.setItem(`svgState-${item.id}`, String(!isSvgOne));
-
+  
     // If isSvgOne is set to true, schedule a notification
     if (!isSvgOne) {
       // Ensure necessary permissions are granted
@@ -114,32 +115,42 @@ const FlatListItem = ({item}) => {
         );
         return;
       }
-
-      const eventTime = item.time.split('.');
-      const eventHour = parseInt(eventTime[0], 10);
-      const eventMinute = parseInt(eventTime[1], 10);
-
-      let notificationHour = eventHour;
-      let notificationMinute = eventMinute - 5;
-
-      // Adjust hour and minute if minute becomes negative
-      if (notificationMinute < 0) {
-        notificationMinute += 60;
-        notificationHour -= 1;
+  
+      if (notificationId) {
+        // Cancel the scheduled notification
+        await Notifications.cancelScheduledNotificationAsync(notificationId);
+        setNotificationId(null);
+      } else {
+        // Schedule the notification
+        const eventTime = item.time.split('.');
+        const eventHour = parseInt(eventTime[0], 10);
+        const eventMinute = parseInt(eventTime[1], 10);
+  
+        let notificationHour = eventHour;
+        let notificationMinute = eventMinute - 5;
+  
+        // Adjust hour and minute if minute becomes negative
+        if (notificationMinute < 0) {
+          notificationMinute += 60;
+          notificationHour -= 1;
+        }
+  
+        const targetDate = new Date(2024, 4, 25, notificationHour, notificationMinute);
+        const secondsUntilTarget = Math.floor((targetDate - new Date()) / 1000);
+  
+        const id = await Notifications.scheduleNotificationAsync({
+          content: {
+            title: item.name,
+            body: item.location,
+          },
+          trigger: {
+            seconds: secondsUntilTarget,
+            repeats: false,
+          },
+        });
+  
+        setNotificationId(id);
       }
-
-      // Schedule the notification
-      await Notifications.scheduleNotificationAsync({
-        content: {
-          title: item.name,
-          body: item.location,
-        },
-        trigger: {
-          hour: notificationHour,
-          minute: notificationMinute,
-          repeats: true,
-        },
-      });
     }
   };
 
@@ -148,10 +159,7 @@ const FlatListItem = ({item}) => {
       <View style={styles.eventsContainer}>
         <View style={styles.eventsBox}>
           <Text style={styles.basicText}>{item.time}</Text>
-          <TouchableOpacity style={styles.eventsDetailsBox} 
-                onPress={
-                  () => alert(item.name + ' is at ' + item.actualLocation + ' at ' + item.timeRange)
-                }>
+          <View style={styles.eventsDetailsBox} >
             <View>
               <View
                 style={{
@@ -203,7 +211,7 @@ const FlatListItem = ({item}) => {
                 </TouchableOpacity>
               </View>
             </View>
-          </TouchableOpacity>
+          </View>
         </View>
       </View>
       <View style={{marginTop: '5%'}} />

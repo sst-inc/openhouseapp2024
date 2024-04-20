@@ -27,7 +27,7 @@ const MainStream = ({navigation}) => {
               </TouchableOpacity>
             </View>
             <View>
-                <Text style={styles.sectionHeader}>     Main Stream</Text>
+                <Text style={styles.sectionHeader}>      Main Stream</Text>
             </View>
           </View>
         </SafeAreaView>
