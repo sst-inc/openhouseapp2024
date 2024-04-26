@@ -73,7 +73,7 @@ const AppliedSub = () => {
 
   const search = query => {
     const trimmedQuery = query.trim().toLowerCase();
-
+  
     if (['applied', 'applied subjects'].includes(trimmedQuery)) {
       navigation.navigate('AppliedSub');
     } else if (['mainstream', 'mainstream subjects'].includes(trimmedQuery)) {
@@ -86,11 +86,9 @@ const AppliedSub = () => {
       navigation.navigate('CCA');
     } else {
       const results = data.filter(item => {
-        return Object.values(item).some(val =>
-          String(val).toLowerCase().includes(trimmedQuery),
-        );
+        return item.header && String(item.header).toLowerCase().includes(trimmedQuery);
       });
-
+  
       if (results.length > 0) {
         navigation.navigate('ADeets', {item: results[0]});
       }

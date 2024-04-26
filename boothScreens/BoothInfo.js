@@ -182,6 +182,116 @@ const data = [
     image: require('../assets/layoutPics/MakerLab.png'),
     sstLoc: 'L3 Block C',
   },
+  {
+    id: '14',
+    type: 'Mainstream Subjects',
+    header: 'English',
+    description:
+      "Ready to embark on an exciting journey through the world of words and ignite your passion for English language and literature? Visit the English Language Department booth at the School of Science and Technology's Open House and discover the power of language! At our booth, you'll have the opportunity to explore the wonders of English language learning through engaging activities and interactive displays. Whether you're a budding wordsmith or just beginning your linguistic adventure, there are fun quizzes and games, as well as word puzzles for you to enjoy! Our friendly faculty members and student ambassadors will be on hand to answer any questions you may have about our English language programs, curriculum, and extracurricular activities. We look forward to welcoming you with open arms and sharing with you our innovative teaching methods and personalised approach to language learning. See you at the booth!",
+    location: 'ADMT Studio',
+    image: require('../assets/layoutPics/AdmtStudio.png'),
+    sstLoc: 'Level 2 Block C',
+  },
+  {
+    id: '15',
+    type: 'Mainstream Subjects',
+    header: 'Mother tongue language',
+    description:
+      'The Mother Tongue Languages (MTL) Department will showcase how interests are inculcated through immersive experiences like MTL Fortnight, where students engage in cultural workshops, multimedia projects, and language enrichment activities. Through collaborative projects and authentic learning experiences, students hone their language skills while exploring diverse perspectives and societal issues.',
+    location: 'Multi-Purpose Room 4',
+    image: require('../assets/layoutPics/Level3.png'),
+    sstLoc: 'L3 Block C',
+  },
+  {
+    id: '16',
+    type: 'Mainstream Subjects',
+    header: 'Physics',
+    description:
+      "Join our interactive workshop and learn the art of crafting a functional beam balance. Explore the concept of equilibrium in mechanics as you assemble this classic scientific instrument. Unleash your inner physicist through this hands-on learning experience!",
+    location: 'Physics Lab',
+    image: require('../assets/layoutPics/Level2.png'),
+    sstLoc: 'L2 Block C',
+  },
+  {
+    id: '17',
+    type: 'Mainstream Subjects',
+    header: 'Chemistry', 
+    description:
+    "In SST, Chemistry is taught through Applied Learning with technology integration and varied assessments to understand interactions between matter. \"Innovation with Colours\", our booth’s theme highlights the significance of colours in chemical reactions. Explore creative and fun hands-on activities and experiments at Chemistry Lab 1. Join us to delve into colourful science!",
+    location: 'Chemistry Lab',
+    image: require('../assets/layoutPics/Level1.png'),
+    sstLoc: 'L1 Block C',
+  },
+  {
+    id: '18',
+    type: 'Mainstream Subjects',
+    header: 'Biology',
+    description:
+      "Biology is an academic discipline that enables us to comprehend the functioning, evolution, and interactions of various organisms within the living world, including humans. ",
+    location: 'Biology Lab',
+    image: require('../assets/layoutPics/Level1.png'),
+    sstLoc: 'L1 Block C',
+  },
+  {
+    id: '19',
+    type: 'Mainstream Subjects',
+    header: 'Science',
+    description:
+      "The SST Science curriculum is based on the philosophy of education through inquiry, experimentation, and discovery. Students are presented with a variety of learning experiences which pique their curiosity about the natural world and help cultivate habits of mind to be out-of-the-box innovators. The Science curriculum aims to develop students’ scientific knowledge and conceptual understanding; and Science process skills through the disciplines of Biology, Chemistry and Physics.",
+    location: 'science TDP?',
+    image: require('../assets/layoutPics/MakerLab.png'),
+    sstLoc: 'L3 Block C',
+  },
+  {
+    id: '20',
+    type: 'Mainstream Subjects',
+    header: 'Mathematics',
+    description:
+      "The SST Mathematics Programme strives to instill in students a love for Mathematics through a dynamic and innovative approach that integrates technology, authentic problem solving, mathematical modelling and computational thinking. By presenting students with performance tasks tied to real-world scenarios, students are taught to apply problem-solving skills and computational thinking to break down complex problems. The department places emphasis on the development of a Mathematical Mindset, fostering a belief that all students can excel in Mathematics. This approach encourages self-reflection, embracing mistakes, and productive struggles. The department also supports students who show aptitude and mathematical rigour through the SST Math Talent Development Programme (TDP), providing project showcases and competition opportunities.",
+    location: 'ADMT Studio',
+    image: require('../assets/layoutPics/AdmtStudio.png'),
+    sstLoc: 'L2 Block C',
+  },
+  {
+    id: '21',
+    type: 'Mainstream Subjects',
+    header: 'Humanities',
+    description:
+      "Through the lens of Applied Learning, the Humanities curriculum in SST is designed to cultivate a deeper understanding of people, places and modern phenomena by bridging the gap between theoretical knowledge and practical application. Explore the journey of source-based inquiry and map creation at our booth with the theme being, \"Humanities in the Modern World: Illuminating Paths, Shaping Futures\" ",
+    location: 'Admt Studio',
+    image: require('../assets/layoutPics/AdmtStudio.png'),
+    sstLoc: 'L2 Block C',
+  },
+  {
+    id: '22',
+    type: 'Mainstream Subjects',
+    header: 'ADMT',
+    description:
+      "The Arts, Design, Media and Technology (ADMT) programme equip students with principles, knowledge and skills from prototyping to product design to interactive design media and video production. Boost your creative output at the ADMT booth to design and create a button badge of your own!",
+    location: 'Maker Lab',
+    image: require('../assets/layoutPics/MakerLab.png'),
+    sstLoc: 'L2 Block C',
+  },
+  {
+    id: '23',
+    type: 'Mainstream Subjects',
+    header: 'Informatics    ',
+    description:
+      "The Informatics Department comprises the lower secondary Information and Communication Technology (ICT) and upper secondary Computing+ subjects. Our mission is to inspire and enable our students to use technology as a force for good in the world. Technology has the power to solve some of the most pressing challenges our society faces. Our goal is to cultivate a community of students who are passionate about using their skills and knowledge to make a positive difference in the world. Through hands-on experiential learning and rigorous coursework, we aim to equip our students with the technical expertise and ethical grounding necessary to use technology to benefit humanity.",
+    location: 'SST INC',
+    image: require('../assets/layoutPics/Level3.png'),
+    sstLoc: 'L3 Block C',
+  },
+  {
+    id: '24',
+    type: 'Mainstream Subjects',
+    header: 'S&W',
+    description:
+      "The S&W curriculum is based on the philosophy of education through the physical; a multi-dimensional approach to develop students holistically through sports and games excellence. The curriculum engages students actively with relevant activities that help them learn experientially. Lessons are focused on acquiring games skills for sports recreation, uncovering games concepts for understanding, and promoting sportsmanship and sporting behaviour through authentic sports participation and competition. ",
+    location: 'Outside Maker Lab',
+    image: require('../assets/layoutPics/MakerLab.png'),
+    sstLoc: 'L2 Block C',
+  },
 ];
 
 const BoothInfoParentPage = ({navigation}) => {
@@ -198,7 +308,7 @@ const BoothInfoParentPage = ({navigation}) => {
 
   const search = query => {
     const trimmedQuery = query.trim().toLowerCase();
-
+  
     if (['applied', 'applied subjects'].includes(trimmedQuery)) {
       navigation.navigate('AppliedSub');
     } else if (['mainstream', 'mainstream subjects'].includes(trimmedQuery)) {
@@ -211,11 +321,9 @@ const BoothInfoParentPage = ({navigation}) => {
       navigation.navigate('CCA');
     } else {
       const results = data.filter(item => {
-        return Object.values(item).some(val =>
-          String(val).toLowerCase().includes(trimmedQuery),
-        );
+        return item.header && String(item.header).toLowerCase().includes(trimmedQuery);
       });
-
+  
       if (results.length > 0) {
         navigation.navigate('ADeets', {item: results[0]});
       }
