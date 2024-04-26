@@ -23,7 +23,7 @@ const events = [
     name: 'Academic Panel',
     location: ' @Auditorium',
     timeRange: '9:30am - 9:45am',
-    notifTime: '8:30am',
+    notifTime: '9.30am',
     actualLocation: 'Auditorium',
   },
   {
@@ -32,7 +32,7 @@ const events = [
     name: 'Student Life Panel',
     location: ' @LO2',
     timeRange: '9:45am - 10:30am',
-    notifTime: '9:00am',
+    notifTime: '9.45am',
     actualLocation: 'Learning Oasis 2',
   },
   {
@@ -41,7 +41,7 @@ const events = [
     name: 'PforSSTPanel',
     location: ' @LO1',
     timeRange: '10:30am - 10:45am',
-    notifTime: '9:15am',
+    notifTime: '10.30am',
     actualLocation: 'Learning Oasis 1',
   },
   {
@@ -50,7 +50,7 @@ const events = [
     name: 'CCA Performances',
     location: ' @Atrium',
     timeRange: '10:45am - 11:15am',
-    notifTime: '9:20am',
+    notifTime: '10.45am',
     actualLocation: 'Atrium',
   },
   {
@@ -59,7 +59,7 @@ const events = [
     name: 'Student Life Panel',
     location: ' @LO2',
     timeRange: '11.15am - 11.30am',
-    notifTime: '9:20am',
+    notifTime: '11.15am',
     actualLocation: 'Learning Oasis 2',
   },
   {
@@ -68,7 +68,7 @@ const events = [
     name: 'Academic Panel',
     location: ' @Auditorium',
     timeRange: '11:30am - 11:45am',
-    notifTime: '9:20am',
+    notifTime: '11.30am',
     actualLocation: 'Auditorium',
   },
   {
@@ -77,13 +77,13 @@ const events = [
     name: 'PforSSTPanel',
     location: ' @LO1',
     timeRange: '11.45am - 12.00am',
-    notifTime: '9:20am',
+    notifTime: '11.45am',
     actualLocation: 'Learning Oasis 1',
   },
 ];
 
 const FlatListItem = ({item}) => {
-  const [isSvgOne, setSvgOne] = useState(true);
+  const [isSvgOne, setSvgOne] = useState(null);
   const [notificationId, setNotificationId] = useState(null);
   
 
@@ -91,22 +91,25 @@ const FlatListItem = ({item}) => {
     const loadSvgState = async () => {
       const savedState = await AsyncStorage.getItem(`svgState-${item.id}`);
       if (savedState !== null) {
-        setSvgOne(savedState === 'true');
+        setSvgOne(savedState === 'true' ? true : false);
+      }
+      else {
+        setSvgOne(false);
       }
     };
 
     loadSvgState();
   }, [item.id]);
-
+ 
   const handlePress = async () => {
     // Toggle the state
     setSvgOne(!isSvgOne);
-  
+    
     // Save the state to AsyncStorage
-    await AsyncStorage.setItem(`svgState-${item.id}`, String(!isSvgOne));
-  
+    await AsyncStorage.setItem(`svgState-${item.id}`, String(isSvgOne));
+
     // If isSvgOne is set to true, schedule a notification
-    if (!isSvgOne) {
+    if (isSvgOne == true) {
       // Ensure necessary permissions are granted
       const {status} = await Notifications.requestPermissionsAsync();
       if (status !== 'granted') {
@@ -115,40 +118,35 @@ const FlatListItem = ({item}) => {
         );
         return;
       }
-  
+
       if (notificationId) {
         // Cancel the scheduled notification
         await Notifications.cancelScheduledNotificationAsync(notificationId);
         setNotificationId(null);
       } else {
         // Schedule the notification
-        const eventTime = item.time.split('.');
+        const eventTime = item.notifTime.split(':');
         const eventHour = parseInt(eventTime[0], 10);
-        const eventMinute = parseInt(eventTime[1], 10);
-  
-        let notificationHour = eventHour;
-        let notificationMinute = eventMinute - 5;
-  
-        // Adjust hour and minute if minute becomes negative
-        if (notificationMinute < 0) {
-          notificationMinute += 60;
-          notificationHour -= 1;
-        }
-  
-        const targetDate = new Date(2024, 4, 25, notificationHour, notificationMinute);
-        const secondsUntilTarget = Math.floor((targetDate - new Date()) / 1000);
-  
+        const eventMinute = parseInt(eventTime[1].slice(0, 2), 10);
+        let notifSec = (eventMinute - new Date().getMinutes()) * 60;
+        Notifications.setNotificationHandler({
+          handleNotification: async () => ({
+            shouldShowAlert: true,
+            shouldPlaySound: true,
+            shouldSetBadge: false,
+          }),
+        });
         const id = await Notifications.scheduleNotificationAsync({
           content: {
             title: item.name,
             body: item.location,
           },
           trigger: {
-            seconds: secondsUntilTarget,
+            seconds: notifSec,
             repeats: false,
           },
         });
-  
+
         setNotificationId(id);
       }
     }
@@ -175,7 +173,7 @@ const FlatListItem = ({item}) => {
                 <TouchableOpacity
                   style={{position: 'absolute', top: -30, right: 0}}
                   onPress={handlePress}>
-                  {isSvgOne ? (
+                  {isSvgOne == true ? (
                     <Svg
                       width={40}
                       height={40}
