@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   FlatList,
   ScrollView,
+  Platform
 } from 'react-native';
 import Svg, {G, Path, Defs, ClipPath, Rect, Line} from 'react-native-svg';
 import {data} from './BoothInfo';
@@ -235,7 +236,7 @@ const CCA = () => {
               <View
                 style={{
                   marginTop: 20,
-                  height: 41,
+                  height: Platform.OS === "ios" ? 51 : 41,
                   width: '90%',
                   marginLeft: '5%',
                   borderRadius: 20,

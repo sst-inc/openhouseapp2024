@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Pressable,
+  Platform
 } from 'react-native';
 import Svg, {G, Path, Defs, ClipPath, Rect, Line} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
@@ -170,7 +171,7 @@ const MainStream = () => {
         style={styles.subContainer}
         onPress={() => handlePress(item)}>
         <View style={{marginLeft: '5%'}} />
-        <View style={{marginLeft: item.id === '22' ? '2.555%' : ['23', '24', '14', '16','17','18'].includes(item.id) ? '7%' : '8%', marginRight:'8%'}}>
+        <View style={{marginLeft: item.id === '22' ? '7%' : ['23', '24', '14', '16','17','18'].includes(item.id) ? '7%' : '8%', marginRight:'8%'}}>
           <Text style={styles.subjectHeader}>{item.header}</Text>
           <View style={{marginTop: 15}} />
           <Text style={styles.sectionHeader} numberOfLines={3}>{item.description}</Text>
@@ -263,7 +264,7 @@ const MainStream = () => {
               <View
                 style={{
                   marginTop: 20,
-                  height: 41,
+                  height: Platform.OS === "ios" ? 51 : 41,
                   width: '90%',
                   marginLeft: '5%',
                   borderRadius: 20,

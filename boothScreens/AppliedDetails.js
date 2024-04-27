@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import {FlatList, View, Text, StyleSheet,ImageBackground,SafeAreaView,TouchableOpacity, Pressable, Image,ScrollView} from 'react-native';
+import {FlatList, View, Text, StyleSheet,ImageBackground,SafeAreaView,TouchableOpacity, Pressable, Image,ScrollView, Platform} from 'react-native';
 import Svg, { G, Path, Defs, ClipPath, Rect,Line } from 'react-native-svg';
 import SearchBar from 'react-native-search-bar';
 import { data } from './BoothInfo';
@@ -115,7 +115,7 @@ const AppliedDetails = ({ route }) => {
               <View
               style={{
                 marginTop: 20,
-                height: 41,
+                height: Platform.OS === "ios" ? 51 : 41,
                 width: '90%',
                 marginLeft: '5%',
                 borderRadius:20,

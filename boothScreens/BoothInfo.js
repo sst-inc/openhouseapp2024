@@ -9,6 +9,7 @@ import {
   Modal,
   SafeAreaView,
   TextInput,
+  Platform,
 } from 'react-native';
 import Svg, {G, Path, Defs, ClipPath, Rect, Line} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
@@ -378,7 +379,7 @@ const BoothInfoParentPage = ({navigation}) => {
               <View
               style={{
                 marginTop: 20,
-                height: 41,
+                height: Platform.OS === "ios" ? 51 : 41,
                 width: '90%',
                 marginLeft: '5%',
                 borderRadius:20,

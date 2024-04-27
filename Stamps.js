@@ -276,7 +276,7 @@ const Stamps = ({ navigation }) => {
                                 <Text style={styles.stampLocation}>@Auditorium</Text>
                                 {!stamp4 &&       
                                     <BlurView
-                                    style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+                                    style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, height:'110%',width:'100%' }}
                                     blurType="dark"
                                     blurAmount={10}
                                     reducedTransparencyFallbackColor="white"
@@ -304,19 +304,6 @@ const Stamps = ({ navigation }) => {
                             </View>
                         </TouchableOpacity>
                         </View>
-                        <Text 
-                        style={{  color: '#EBEBEF',
-                          textAlign: 'center',
-                          justifyContent: 'center',
-                          fontFamily: 'Lato',
-                          fontSize: 16,
-                          fontStyle: 'normal',
-                          fontWeight: '400',
-                          position: 'absolute',
-                          marginLeft: '18%',
-                          marginTop:'121%'}}>
-                          Find stamps at various booths and{'\n'} scan all for a reward!
-                          </Text>
                     </View>
                 </SafeAreaView>
                 </ScrollView>
@@ -354,7 +341,7 @@ const styles = StyleSheet.create({
         color: '#EBEBEF',
         textAlign: 'center',
         fontFamily: 'Lato',
-        fontSize: 40,
+        fontSize: 50,
         fontWeight: 'normal',
         marginLeft: '4%',
         padding : 0,
