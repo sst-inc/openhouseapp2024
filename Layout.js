@@ -9,51 +9,57 @@ import {
   FlatList,
   SafeAreaView,
   Platform,
-  Image
+  Image,
 } from 'react-native';
-import Svg, {Circle, Path, Line,  G} from 'react-native-svg';
+import Svg, {Circle, Path, Line, G} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
-import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
-import { Dimensions } from 'react-native';
-import AnimatedGallery from "@akumzy/react-native-animated-gallery"
+import {ReactNativeZoomableView} from '@openspacelabs/react-native-zoomable-view';
+import {Dimensions} from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
-import { PinchGestureHandler, State } from 'react-native-gesture-handler';
-
-
-
-
 
 const Layout = ({navigation}) => {
   const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get("window").height;
-const images = [
-    {
-            id: 1,
-            url: require("./assets/layoutPics/Level1.png")
-    },
-    {
-            id: 2,
-            url: require("./assets/layoutPics/Level2.png")
-    },
-    {
-            id: 3,
-            url: require("./assets/layoutPics/Level3.png")
-    },
-    {
-            id: 4,
-            url: require("./assets/layoutPics/Level4.png")
-    },
-    {
-            id: 5,
-            url: require("./assets/layoutPics/Level5.png")
-    },
-];
+  const windowHeight = Dimensions.get('window').height;
 
-const carouselItems = images.map((image) => ({
+  const images = [
+    {
+      id: 1,
+      url: require('./assets/layoutPics/Level1.png'),
+    },
+    {
+      id: 2,
+      url: require('./assets/layoutPics/Level2.png'),
+    },
+    {
+      id: 3,
+      url: require('./assets/layoutPics/Level3.png'),
+    },
+    {
+      id: 4,
+      url: require('./assets/layoutPics/Level4.png'),
+    },
+    {
+      id: 5,
+      url: require('./assets/layoutPics/Level5.png'),
+    },
+    {
+      id: 6,
+      url: require('./assets/layoutPics/Atrium.png'),
+    },
+    {
+      id: 7,
+      url: require('./assets/layoutPics/MakerLab.png'),
+    },
+    {
+      id: 8,
+      url: require('./assets/layoutPics/AdmtStudio.png'),
+    },
+  ];
+
+  const carouselItems = images.map(image => ({
     id: image.id,
     image: image.url,
-}));
-
+  }));
 
   return (
     <View style={styles.container}>
@@ -85,33 +91,31 @@ const carouselItems = images.map((image) => ({
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{ flex: 1, marginTop:'35%' }}>
-            
-          <Carousel
-            loop
-            width={windowWidth}
-            height={windowWidth / 2}
-            autoPlay={false}
-            data={carouselItems}
-            scrollAnimationDuration={1000}
-            onSnapToItem={(index) => console.log('current index:', index)}
-            
-            renderItem={({ item }) => (
+          <View style={{flex: 1, marginTop: '20%'}}>
+            <Text style={styles.basicText}>Swipe to view the layouts!</Text>
+            <Carousel
+              loop
+              width={windowWidth}
+              style={{bottom: '40%'}}
+              autoPlay={false}
+              data={carouselItems}
+              scrollAnimationDuration={1000}
+              onSnapToItem={index => console.log('current index:', index)}
+              renderItem={({item}) => (
                 <View
-                    style={{
-                        flex: 1,
-                        justifyContent: 'center',
-                    }}
-                >
-                        <Image
-                            source={item.image}
-                            style={{ width: '100%', height: '100%' }}
-                            resizeMode="contain"
-                        />
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                  }}>
+                  <Image
+                    source={item.image}
+                    style={{width: '100%', height: '100%'}}
+                    resizeMode="contain"
+                  />
                 </View>
-            )}
-        />
-        </View>
+              )}
+            />
+          </View>
         </SafeAreaView>
       </ImageBackground>
     </View>
@@ -166,9 +170,11 @@ const styles = StyleSheet.create({
   basicText: {
     color: '#EBEBEF',
     fontFamily: 'Lato',
-    fontSize: 16,
+    fontSize: 25,
     fontStyle: 'normal',
     fontWeight: '400',
+    marginBottom: '3%',
+    marginLeft: '5.7%',
   },
   eventsContainer: {
     flexDirection: 'column',
