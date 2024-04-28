@@ -15,11 +15,46 @@ import Svg, {Circle, Path, Line,  G} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 import { Dimensions } from 'react-native';
+import AnimatedGallery from "@akumzy/react-native-animated-gallery"
+import Carousel from 'react-native-reanimated-carousel';
+import { PinchGestureHandler, State } from 'react-native-gesture-handler';
+
+
+
 
 
 const Layout = ({navigation}) => {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get("window").height;
+const images = [
+    {
+            id: 1,
+            url: require("./assets/layoutPics/Level1.png")
+    },
+    {
+            id: 2,
+            url: require("./assets/layoutPics/Level2.png")
+    },
+    {
+            id: 3,
+            url: require("./assets/layoutPics/Level3.png")
+    },
+    {
+            id: 4,
+            url: require("./assets/layoutPics/Level4.png")
+    },
+    {
+            id: 5,
+            url: require("./assets/layoutPics/Level5.png")
+    },
+];
+
+const carouselItems = images.map((image) => ({
+    id: image.id,
+    image: image.url,
+}));
+
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -27,7 +62,6 @@ const Layout = ({navigation}) => {
         style={styles.imageBackground}
         resizeMode="cover">
         <SafeAreaView style={{flex: 1}}>
-            <ScrollView>
           <View style={{marginTop: '5%'}} />
           <View>
             <View style={styles.topSidebar}>
@@ -51,135 +85,33 @@ const Layout = ({navigation}) => {
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 40,}}>
-            <View style={{ height: windowHeight * 0.4, marginTop:'10%'}}
-            >
-            <ReactNativeZoomableView 
-            style={{
-                flexShrink: 0,
-                borderRadius: 20,
-                backgroundColor: '#D9D9D9',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: windowHeight * 0.4, 
-                width:  windowWidth * 0.9}}
-            maxZoom={2.5}
-            minZoom={1}
-            zoomStep={0.5}
-            initialZoom={1}
-            panEnabled={true}
-            centerOn={{ zoom: 1, x: 0, y: 0 }}
-            >
-                <Image 
-                source={require('./assets/layoutPics/Level1.png')}
-                resizeMode='contain'
-                style={{width:windowWidth * 0.9, height: windowHeight *0.4}}
-                />
-            </ReactNativeZoomableView>
-            </View>
-            <View style={{ height: windowHeight * 0.4, marginTop:'10%'}}
-            >
-            <ReactNativeZoomableView 
-            style={{
-                flexShrink: 0,
-                borderRadius: 20,
-                backgroundColor: '#D9D9D9',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: windowHeight * 0.4, 
-                width:  windowWidth * 0.9}}
-            maxZoom={2.5}
-            minZoom={1}
-            zoomStep={0.5}
-            initialZoom={1}
-            panEnabled={true}
-            centerOn={{ zoom: 1, x: 0, y: 0 }}
-            >
-                <Image 
-                source={require('./assets/layoutPics/Level1.png')}
-                resizeMode='contain'
-                style={{width:windowWidth * 0.9, height: windowHeight *0.4}}
-                />
-            </ReactNativeZoomableView>
-            </View>
-            <View style={{ height: windowHeight * 0.4, marginTop:'10%'}}
-            >
-            <ReactNativeZoomableView 
-            style={{
-                flexShrink: 0,
-                borderRadius: 20,
-                backgroundColor: '#D9D9D9',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: windowHeight * 0.4, 
-                width:  windowWidth * 0.9}}
-            maxZoom={2.5}
-            minZoom={1}
-            zoomStep={0.5}
-            initialZoom={1}
-            panEnabled={true}
-            centerOn={{ zoom: 1, x: 0, y: 0 }}
-            >
-                <Image 
-                source={require('./assets/layoutPics/Level1.png')}
-                resizeMode='contain'
-                style={{width:windowWidth * 0.9, height: windowHeight *0.4}}
-                />
-            </ReactNativeZoomableView>
-            </View>
-            <View style={{ height: windowHeight * 0.4, marginTop:'10%'}}
-            >
-            <ReactNativeZoomableView 
-            style={{
-                flexShrink: 0,
-                borderRadius: 20,
-                backgroundColor: '#D9D9D9',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: windowHeight * 0.4, 
-                width:  windowWidth * 0.9}}
-            maxZoom={2.5}
-            minZoom={1}
-            zoomStep={0.5}
-            initialZoom={1}
-            panEnabled={true}
-            centerOn={{ zoom: 1, x: 0, y: 0 }}
-            >
-                <Image 
-                source={require('./assets/layoutPics/Level1.png')}
-                resizeMode='contain'
-                style={{width:windowWidth * 0.9, height: windowHeight *0.4}}
-                />
-            </ReactNativeZoomableView>
-            </View>
-            <View style={{ height: windowHeight * 0.3, marginTop:'10%'}}
-            >
-            <ReactNativeZoomableView 
-            style={{
-                flexShrink: 0,
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: windowHeight * 0.4, 
-                width:  windowWidth * 0.9}}
-            maxZoom={2.5}
-            minZoom={1}
-            zoomStep={0.5}
-            initialZoom={1}
-            panEnabled={true}
-            centerOn={{ zoom: 1, x: 0, y: 0 }}
-            >
-                <Image 
-                source={require('./assets/layoutPics/Level5.png')}
-                resizeMode='contain'
-                style={{width:windowWidth * 0.9, height: windowHeight *0.4}}
-                />
-            </ReactNativeZoomableView>
-            </View>
+          <View style={{ flex: 1, marginTop:'35%' }}>
+            
+          <Carousel
+            loop
+            width={windowWidth}
+            height={windowWidth / 2}
+            autoPlay={false}
+            data={carouselItems}
+            scrollAnimationDuration={1000}
+            onSnapToItem={(index) => console.log('current index:', index)}
+            
+            renderItem={({ item }) => (
+                <View
+                    style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                    }}
+                >
+                        <Image
+                            source={item.image}
+                            style={{ width: '100%', height: '100%' }}
+                            resizeMode="contain"
+                        />
+                </View>
+            )}
+        />
         </View>
-        </ScrollView>
         </SafeAreaView>
       </ImageBackground>
     </View>
