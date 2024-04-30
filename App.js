@@ -7,6 +7,7 @@ import {
   Animated,
   Text,
   Dimensions,
+  Linking,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {
@@ -21,6 +22,7 @@ import {BoothInfo} from './boothScreens/BoothInfo';
 import EventsPage from './Events';
 import Layout from './Layout';
 import QuickLinks from './QuickLinks';
+import * as Notifications from 'expo-notifications';
 
 const Drawer = createDrawerNavigator();
 
@@ -38,6 +40,62 @@ function CustomDrawerContent(props) {
 }
 
 const App = () => {
+  useEffect(() => {
+    const scheduleNotification = async () => {
+      let currentTime = new Date();
+      let targetTime = new Date('2024-05-25T14:00:00');
+      let diff = targetTime - currentTime;
+      let diffInSecs = Math.floor(diff / 1000);
+      Notifications.setNotificationHandler({
+        handleNotification: async () => ({
+          shouldShowAlert: true,
+          shouldPlaySound: true,
+          shouldSetBadge: false,
+        }),
+      });
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: 'Post event survey (click on this notification)',
+          body: 'After the event, please fill out the survey to help us improve!',
+          data: {
+            url: 'https://forms.gle/hngz5gFpsJuZc8D27',
+          },
+        },
+        trigger: {
+          seconds: diffInSecs,
+          repeats: false,
+        },
+      });
+    };
+
+    scheduleNotification();
+
+    const handleNotificationResponse = async response => {
+      const url = response.notification.request.content.data.url;
+      if (url) {
+        await Linking.openURL(url);
+      }
+    };
+
+    // Handle notification response if app is in foreground or background
+    const subscription = Notifications.addNotificationResponseReceivedListener(
+      handleNotificationResponse,
+    );
+
+    // Handle notification response if app was closed
+    const handleInitialNotification = async () => {
+      const initialNotification =
+        await Notifications.getInitialNotificationAsync();
+      if (initialNotification) {
+        handleNotificationResponse(initialNotification);
+      }
+    };
+
+    handleInitialNotification();
+
+    // Unsubscribe when the component unmounts
+    return () => subscription.remove();
+  }, []);
   return (
     <NavigationContainer>
       <Drawer.Navigator

@@ -23,7 +23,7 @@ const events = [
     name: 'Academic Panel',
     location: ' @Auditorium',
     timeRange: '9:30am - 9:45am',
-    notifTime: '9.30am',
+    notifTime: '9.48am',
     actualLocation: 'Auditorium',
   },
   {
@@ -32,7 +32,7 @@ const events = [
     name: 'Student Life Panel',
     location: ' @LO2',
     timeRange: '9:45am - 10:30am',
-    notifTime: '9.45am',
+    notifTime: '9.50am',
     actualLocation: 'Learning Oasis 2',
   },
   {
@@ -41,7 +41,7 @@ const events = [
     name: 'PforSSTPanel',
     location: ' @LO1',
     timeRange: '10:30am - 10:45am',
-    notifTime: '10.30am',
+    notifTime: '10.51am',
     actualLocation: 'Learning Oasis 1',
   },
   {
@@ -83,33 +83,27 @@ const events = [
 ];
 
 const FlatListItem = ({item}) => {
-  const [isSvgOne, setSvgOne] = useState(null);
+  const [isSvgOne, setSvgOne] = useState(false);
   const [notificationId, setNotificationId] = useState(null);
-  
 
   useEffect(() => {
     const loadSvgState = async () => {
       const savedState = await AsyncStorage.getItem(`svgState-${item.id}`);
-      if (savedState !== null) {
-        setSvgOne(savedState === 'true' ? true : false);
-      }
-      else {
-        setSvgOne(false);
-      }
+      setSvgOne(String(savedState) === 'true');
     };
 
     loadSvgState();
   }, [item.id]);
- 
+
   const handlePress = async () => {
     // Toggle the state
-    setSvgOne(!isSvgOne);
-    
+    setSvgOne(prevState => !prevState);
+
     // Save the state to AsyncStorage
-    await AsyncStorage.setItem(`svgState-${item.id}`, String(isSvgOne));
+    await AsyncStorage.setItem(`svgState-${item.id}`, String(!isSvgOne)); 
 
     // If isSvgOne is set to true, schedule a notification
-    if (isSvgOne == true) {
+    if (isSvgOne === true) {
       // Ensure necessary permissions are granted
       const {status} = await Notifications.requestPermissionsAsync();
       if (status !== 'granted') {
@@ -118,15 +112,14 @@ const FlatListItem = ({item}) => {
         );
         return;
       }
-
+ 
       if (notificationId) {
         // Cancel the scheduled notification
         await Notifications.cancelScheduledNotificationAsync(notificationId);
         setNotificationId(null);
       } else {
         // Schedule the notification
-        const eventTime = item.notifTime.split(':');
-        const eventHour = parseInt(eventTime[0], 10);
+        const eventTime = item.notifTime.split('.');
         const eventMinute = parseInt(eventTime[1].slice(0, 2), 10);
         let notifSec = (eventMinute - new Date().getMinutes()) * 60;
         Notifications.setNotificationHandler({
@@ -157,7 +150,7 @@ const FlatListItem = ({item}) => {
       <View style={styles.eventsContainer}>
         <View style={styles.eventsBox}>
           <Text style={styles.basicText}>{item.time}</Text>
-          <View style={styles.eventsDetailsBox} >
+          <View style={styles.eventsDetailsBox}>
             <View>
               <View
                 style={{
@@ -168,28 +161,12 @@ const FlatListItem = ({item}) => {
                 <Text style={styles.basicText}>{item.name}</Text>
                 <Text style={styles.generalText}>{item.location}</Text>
               </View>
-              <Text style={styles.generalText}>   {item.timeRange}</Text>
+              <Text style={styles.generalText}> {item.timeRange}</Text>
               <View style={{flex: 1, minHeight: 40}}>
                 <TouchableOpacity
                   style={{position: 'absolute', top: -30, right: 0}}
                   onPress={handlePress}>
                   {isSvgOne == true ? (
-                    <Svg
-                      width={40}
-                      height={40}
-                      fill="#000000"
-                      viewBox="0 0 40 40"
-                      xmlnss="http://www.w3.org/2000/svg">
-                      <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
-                      <G
-                        id="SVGRepo_tracerCarrier"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"></G>
-                      <G id="SVGRepo_iconCarrier">
-                        <Path d="M10,21h4a2,2,0,0,1-4,0ZM3.076,18.383a1,1,0,0,1,.217-1.09L5,15.586V10a7.006,7.006,0,0,1,6-6.92V2a1,1,0,0,1,2,0V3.08A7.006,7.006,0,0,1,19,10v5.586l1.707,1.707A1,1,0,0,1,20,19H4A1,1,0,0,1,3.076,18.383ZM6.414,17H17.586l-.293-.293A1,1,0,0,1,17,16V10A5,5,0,0,0,7,10v6a1,1,0,0,1-.293.707Z"></Path>
-                      </G>
-                    </Svg>
-                  ) : (
                     <Svg
                       width={40}
                       height={40}
@@ -203,6 +180,22 @@ const FlatListItem = ({item}) => {
                         stroke-linejoin="round"></G>
                       <G id="SVGRepo_iconCarrier">
                         <Path d="M10,20h4a2,2,0,0,1-4,0Zm8-4V10a6,6,0,0,0-5-5.91V3a1,1,0,0,0-2,0V4.09A6,6,0,0,0,6,10v6L4,18H20Z"></Path>
+                      </G>
+                    </Svg>
+                  ) : (
+                    <Svg
+                      width={40}
+                      height={40}
+                      fill="#000000"
+                      viewBox="0 0 40 40"
+                      xmlnss="http://www.w3.org/2000/svg">
+                      <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
+                      <G
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></G>
+                      <G id="SVGRepo_iconCarrier">
+                        <Path d="M10,21h4a2,2,0,0,1-4,0ZM3.076,18.383a1,1,0,0,1,.217-1.09L5,15.586V10a7.006,7.006,0,0,1,6-6.92V2a1,1,0,0,1,2,0V3.08A7.006,7.006,0,0,1,19,10v5.586l1.707,1.707A1,1,0,0,1,20,19H4A1,1,0,0,1,3.076,18.383ZM6.414,17H17.586l-.293-.293A1,1,0,0,1,17,16V10A5,5,0,0,0,7,10v6a1,1,0,0,1-.293.707Z"></Path>
                       </G>
                     </Svg>
                   )}
