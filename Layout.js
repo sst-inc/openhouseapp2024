@@ -54,6 +54,14 @@ const Layout = ({navigation}) => {
       id: 8,
       url: require('./assets/layoutPics/AdmtStudio.png'),
     },
+    {
+      id: 9,
+      url: require('./assets/layoutPics/LO1.png'),
+    },
+    {
+      id: 10,
+      url: require('./assets/layoutPics/LO2.png'),
+    },
   ];
 
   const carouselItems = images.map(image => ({

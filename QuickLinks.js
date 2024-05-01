@@ -38,6 +38,26 @@ const QuickLinks = ({navigation}) => {
       title: 'Post-Event Survey Form',
       url: 'https://docs.google.com/forms/d/e/1FAIpQLScS2uDSYRciFqyfj0ZXXHMZPUnCTD_5ztUtuvGYrZ_ri-z6dg/viewform',
     },
+    {
+      id: 5,
+      title: 'SST INC Website',
+      url: 'https://www.sstinc.org/',
+    },
+    {
+      id: 6,
+      title: 'SST Instagram',
+      url: 'https://www.instagram.com/sst_edu_sg/?hl=en',
+    },
+    {
+      id: 7,
+      title: 'SST Facebook',
+      url: 'https://www.facebook.com/ssts.1technologydrive/',
+    },
+    {
+      id: 8,
+      title: 'SST Corporate video',
+      url: 'https://www.youtube.com/watch?v=mVQkRxVNfL8&t=1s',
+    },
   ];
 
   const handleLinkPress = url => {
@@ -95,7 +115,8 @@ const QuickLinks = ({navigation}) => {
             </View>
           </View>
           <View style={{marginTop: '10%'}} />
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <View
+            style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
             <FlatList
               data={data}
               renderItem={renderItem}
