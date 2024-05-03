@@ -137,7 +137,7 @@ const QRCodeScanner = ({navigation}) => {
               flex: 1,
               width: '100%',
             }}
-            onGoogleVisionBarcodesDetected={barcodeRecognized}
+            onBarCodeRead={barcodeRecognized}
             captureAudio={false}
           />
         </SafeAreaView>
