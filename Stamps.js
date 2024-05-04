@@ -15,6 +15,7 @@ import Svg, {Circle, Path, Line, Image} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import {BlurView} from '@react-native-community/blur';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {LogBox} from 'react-native';
 
 export const saveData = async () => {
   try {
@@ -51,7 +52,8 @@ const requestCameraPermission = async () => {
 const QRCodeScanner = ({navigation}) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(RNCamera.Constants.Type.back);
-  const [scannedDataSet, setScannedDataSet] = useState(new Set());
+  const [scannedDataArray, setScannedDataArray] = useState([]);
+  LogBox.ignoreAllLogs();
 
   useEffect(() => {
     (async () => {
@@ -64,10 +66,10 @@ const QRCodeScanner = ({navigation}) => {
     (async () => {
       await AsyncStorage.setItem(
         'scannedDataArray',
-        JSON.stringify(Array.from(scannedDataSet)),
+        JSON.stringify(scannedDataArray),
       );
     })();
-  }, [scannedDataSet]); // Save to AsyncStorage whenever scannedDataSet changes
+  }, [scannedDataArray]); // Save to AsyncStorage whenever scannedDataArray changes
 
   if (hasPermission === null) {
     return <Text>Requesting for camera permission</Text>;
@@ -76,34 +78,21 @@ const QRCodeScanner = ({navigation}) => {
     return <Text>No access to camera</Text>;
   }
 
-  const barcodeRecognized = ({barcodes}) => {
-    setScannedDataSet(prevSet => {
-      const newSet = new Set(prevSet);
-      let isNewValueScanned = false;
-      barcodes.forEach(barcode => {
-        console.log(barcode.data);
-        if (
-          !newSet.has(barcode.data) &&
-          ['1', '2', '3', '4'].includes(barcode.data)
-        ) {
-          isNewValueScanned = true;
-          newSet.add(barcode.data);
-        } else if (!['1', '2', '3', '4'].includes(barcode.data)) {
-          Alert.alert(
-            'Wrong QR Code Scanned',
-            'The scanned QR code is not valid.',
-          );
-        }
-      });
-      if (isNewValueScanned) {
-        Alert.alert(
-          'New QR Code Scanned',
-          'A new QR code has been scanned and its data has been added.',
-        );
-        navigation.navigate('Stamps');
-      }
-      return newSet;
-    });
+  const barcodeRecognized = barcode => {
+    const newDataArray = [...scannedDataArray];
+    newDataArray.push(barcode.data);
+    console.log(barcode.data);
+    setScannedDataArray(newDataArray);
+    if (
+      (barcode.data === 'c3N0aW5jbWFkZXRoaXN3') |
+      (barcode.data === 'aWxvdmVhcnRo') |
+      (barcode.data === 'am9pbnNzdGluYw==')
+    ) {
+      navigation.navigate('Stamps');
+      Alert.alert(
+        'Correct value scanned!' + '\n' + '\n' + 'Value: ' + barcode.data,
+      );
+    }
   };
 
   return (
@@ -150,8 +139,7 @@ const Stamps = ({navigation}) => {
   const [stamp1, setStamp1] = useState(false);
   const [stamp2, setStamp2] = useState(false);
   const [stamp3, setStamp3] = useState(false);
-  const [stamp4, setStamp4] = useState(false);
-  const [scannedDataSet, setScannedDataSet] = useState(new Set());
+  const [scannedDataArray, setScannedDataArray] = useState([]); // Add this line
 
   useEffect(() => {
     (async () => {
@@ -159,23 +147,20 @@ const Stamps = ({navigation}) => {
         'scannedDataArray',
       );
       const parsedArray = storedScannedDataArray
-        ? new Set(JSON.parse(storedScannedDataArray))
-        : new Set();
-      setScannedDataSet(parsedArray);
-      if (parsedArray.has('1')) {
+        ? JSON.parse(storedScannedDataArray)
+        : [];
+      setScannedDataArray(parsedArray); // Add this line
+      if (scannedDataArray.includes('c3N0aW5jbWFkZXRoaXN3')) {
         setStamp1(true);
       }
-      if (parsedArray.has('2')) {
+      if (scannedDataArray.includes('aWxvdmVhcnRo')) {
         setStamp2(true);
       }
-      if (parsedArray.has('3')) {
+      if (scannedDataArray.includes('am9pbnNzdGluYw==')) {
         setStamp3(true);
       }
-      if (parsedArray.has('4')) {
-        setStamp4(true);
-      }
     })();
-  }, [scannedDataSet]);
+  }, [scannedDataArray]);
 
   return (
     <View style={styles.container}>
@@ -241,7 +226,7 @@ const Stamps = ({navigation}) => {
                   <View style={stamp1 ? styles.stamp : styles.stampLocked}>
                     <ImageBackground
                       source={require('./assets/stampsPlaceholder.png')}
-                      style={{width: '100%', height: '100%'}}>
+                      style={{width: '100%', height: '100%', left: '1%'}}>
                       <LinearGradient
                         colors={[
                           'rgba(28, 28, 34, 0.75)',
@@ -250,8 +235,10 @@ const Stamps = ({navigation}) => {
                         start={{x: 0.0, y: 1.0}}
                         end={{x: 0.0, y: 0.0}}
                         locations={[0.0112, 0.4001]}>
-                        <Text style={styles.stampName}>Stamp Name</Text>
-                        <Text style={styles.stampLocation}>@Auditorium</Text>
+                        <Text style={styles.stampName}>Academic Booth</Text>
+                        <Text style={styles.stampLocation}>
+                          Any academic booth
+                        </Text>
                         {!stamp1 && (
                           <BlurView
                             style={{
@@ -281,9 +268,11 @@ const Stamps = ({navigation}) => {
                                   fill="#EBEBEF"
                                 />
                               </Svg>
-                              <Text style={styles.lockText}>
-                                This stamp has not been unlocked yet
-                              </Text>
+                              {Platform.OS === 'ios' && (
+                                <Text style={styles.lockText}>
+                                  This stamp has not been unlocked yet
+                                </Text>
+                              )}
                             </View>
                           </BlurView>
                         )}
@@ -291,10 +280,12 @@ const Stamps = ({navigation}) => {
                       </LinearGradient>
                     </ImageBackground>
                   </View>
+                </View>
+                <View style={styles.stampCollection}>
                   <View style={stamp2 ? styles.stamp : styles.stampLocked}>
                     <ImageBackground
                       source={require('./assets/stampsPlaceholder.png')}
-                      style={{width: '100%', height: '100%'}}>
+                      style={{width: '100%', height: '100%', left: '1%'}}>
                       <LinearGradient
                         colors={[
                           'rgba(28, 28, 34, 0.75)',
@@ -303,8 +294,10 @@ const Stamps = ({navigation}) => {
                         start={{x: 0.0, y: 1.0}}
                         end={{x: 0.0, y: 0.0}}
                         locations={[0.0112, 0.4001]}>
-                        <Text style={styles.stampName}>Stamp Name</Text>
-                        <Text style={styles.stampLocation}>@Auditorium</Text>
+                        <Text style={styles.stampName}>Panel discussion</Text>
+                        <Text style={styles.stampLocation}>
+                          Any panel discussion
+                        </Text>
                         {!stamp2 && (
                           <BlurView
                             style={{
@@ -334,9 +327,11 @@ const Stamps = ({navigation}) => {
                                   fill="#EBEBEF"
                                 />
                               </Svg>
-                              <Text style={styles.lockText}>
-                                This stamp has not been unlocked yet
-                              </Text>
+                              {Platform.OS === 'ios' && (
+                                <Text style={styles.lockText}>
+                                  This stamp has not been unlocked yet
+                                </Text>
+                              )}
                             </View>
                           </BlurView>
                         )}
@@ -344,12 +339,10 @@ const Stamps = ({navigation}) => {
                       </LinearGradient>
                     </ImageBackground>
                   </View>
-                </View>
-                <View style={styles.stampCollection}>
                   <View style={stamp3 ? styles.stamp : styles.stampLocked}>
                     <ImageBackground
                       source={require('./assets/stampsPlaceholder.png')}
-                      style={{width: '100%', height: '100%'}}>
+                      style={{width: '100%', height: '100%', left: '1%'}}>
                       <LinearGradient
                         colors={[
                           'rgba(28, 28, 34, 0.75)',
@@ -358,8 +351,10 @@ const Stamps = ({navigation}) => {
                         start={{x: 0.0, y: 1.0}}
                         end={{x: 0.0, y: 0.0}}
                         locations={[0.0112, 0.4001]}>
-                        <Text style={styles.stampName}>Stamp Name</Text>
-                        <Text style={styles.stampLocation}>@Auditorium</Text>
+                        <Text style={styles.stampName}>Hands-on activity</Text>
+                        <Text style={styles.stampLocation}>
+                          At hands on activity
+                        </Text>
                         {!stamp3 && (
                           <BlurView
                             style={{
@@ -389,64 +384,11 @@ const Stamps = ({navigation}) => {
                                   fill="#EBEBEF"
                                 />
                               </Svg>
-                              <Text style={styles.lockText}>
-                                This stamp has not been unlocked yet
-                              </Text>
-                            </View>
-                          </BlurView>
-                        )}
-                        <View style={{marginTop: '8%'}} />
-                      </LinearGradient>
-                    </ImageBackground>
-                  </View>
-                  <View style={stamp4 ? styles.stamp : styles.stampLocked}>
-                    <ImageBackground
-                      source={require('./assets/stampsPlaceholder.png')}
-                      style={{width: '100%', height: '100%'}}>
-                      <LinearGradient
-                        colors={[
-                          'rgba(28, 28, 34, 0.75)',
-                          'rgba(28, 28, 34, 0.00)',
-                        ]}
-                        start={{x: 0.0, y: 1.0}}
-                        end={{x: 0.0, y: 0.0}}
-                        locations={[0.0112, 0.4001]}>
-                        <Text style={styles.stampName}>Stamp Name</Text>
-                        <Text style={styles.stampLocation}>@Auditorium</Text>
-                        {!stamp4 && (
-                          <BlurView
-                            style={{
-                              position: 'absolute',
-                              top: 0,
-                              left: 0,
-                              right: 0,
-                              bottom: 0,
-                              height: '110%',
-                              width: '100%',
-                            }}
-                            blurType="dark"
-                            blurAmount={10}
-                            reducedTransparencyFallbackColor="white">
-                            <View
-                              style={{
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                flex: 1,
-                              }}>
-                              <Svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="25"
-                                height="50"
-                                viewBox="0 0 24 27"
-                                fill="none">
-                                <Path
-                                  d="M22 9H18V6C18 4.4087 17.3679 2.88258 16.2426 1.75736C15.1174 0.632141 13.5913 0 12 0C10.4087 0 8.88258 0.632141 7.75736 1.75736C6.63214 2.88258 6 4.4087 6 6V9H2C1.46957 9 0.960859 9.21071 0.585786 9.58579C0.210714 9.96086 0 10.4696 0 11V25C0 25.5304 0.210714 26.0391 0.585786 26.4142C0.960859 26.7893 1.46957 27 2 27H22C22.5304 27 23.0391 26.7893 23.4142 26.4142C23.7893 26.0391 24 25.5304 24 25V11C24 10.4696 23.7893 9.96086 23.4142 9.58579C23.0391 9.21071 22.5304 9 22 9ZM13 18.8288V22C13 22.2652 12.8946 22.5196 12.7071 22.7071C12.5196 22.8946 12.2652 23 12 23C11.7348 23 11.4804 22.8946 11.2929 22.7071C11.1054 22.5196 11 22.2652 11 22V18.8288C10.3328 18.5929 9.77045 18.1287 9.41237 17.5183C9.05429 16.9079 8.92353 16.1905 9.0432 15.493C9.16288 14.7955 9.52527 14.1628 10.0663 13.7066C10.6074 13.2505 11.2923 13.0003 12 13.0003C12.7077 13.0003 13.3926 13.2505 13.9337 13.7066C14.4747 14.1628 14.8371 14.7955 14.9568 15.493C15.0765 16.1905 14.9457 16.9079 14.5876 17.5183C14.2296 18.1287 13.6672 18.5929 13 18.8288ZM16 9H8V6C8 4.93913 8.42143 3.92172 9.17157 3.17157C9.92172 2.42143 10.9391 2 12 2C13.0609 2 14.0783 2.42143 14.8284 3.17157C15.5786 3.92172 16 4.93913 16 6V9Z"
-                                  fill="#EBEBEF"
-                                />
-                              </Svg>
-                              <Text style={styles.lockText}>
-                                This stamp has not been unlocked yet
-                              </Text>
+                              {Platform.OS === 'ios' && (
+                                <Text style={styles.lockText}>
+                                  This stamp has not been unlocked yet
+                                </Text>
+                              )}
                             </View>
                           </BlurView>
                         )}
@@ -500,7 +442,7 @@ const styles = StyleSheet.create({
     marginTop: '3%',
   },
   container2: {
-    marginTop: '25%',
+    marginTop: '20%',
   },
   navBar: {
     flexDirection: 'row',
@@ -540,6 +482,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#EBEBEF',
     justifyContent: 'center',
     padding: 10,
+    marginTop: '5%',
   },
   stampCollection: {
     flexDirection: 'row',
@@ -565,13 +508,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     lineHeight: 19,
-    marginRight: '20%',
     marginTop: '70%',
   },
   stampLocation: {
     color: 'rgba(235, 235, 239, 0.70)',
     textAlign: 'center',
-    marginRight: '20%',
     fontFamily: 'Lato',
     fontSize: 16,
     fontWeight: '400',

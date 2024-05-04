@@ -21,7 +21,7 @@ import MainStream from './MainStream';
 import CCA from './CCA';
 import AppliedSub from './AppliedSub';
 import AppliedDetails from './AppliedDetails';
-import special from './specialEvents';
+import Special from './specialEvents';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,7 +51,7 @@ const BoothInfo = () => {
       />
       <Stack.Screen
         name="SpecialEvents"
-        component={special}
+        component={Special}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

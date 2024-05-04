@@ -19,6 +19,11 @@ const windowHeight = Dimensions.get('window').height;
 const QuickLinks = ({navigation}) => {
   const data = [
     {
+      id: 4,
+      title: 'Post-Event Survey Form',
+      url: 'https://docs.google.com/forms/d/e/1FAIpQLScS2uDSYRciFqyfj0ZXXHMZPUnCTD_5ztUtuvGYrZ_ri-z6dg/viewform',
+    },
+    {
       id: 1,
       title: 'MOE DSA Page',
       url: 'https://www.moe.gov.sg/secondary/dsa/application',
@@ -32,11 +37,6 @@ const QuickLinks = ({navigation}) => {
       id: 3,
       title: 'SST Open House Website',
       url: 'https://sites.google.com/sst.edu.sg/2024sstopenhouse/open-house-programmes',
-    },
-    {
-      id: 4,
-      title: 'Post-Event Survey Form',
-      url: 'https://docs.google.com/forms/d/e/1FAIpQLScS2uDSYRciFqyfj0ZXXHMZPUnCTD_5ztUtuvGYrZ_ri-z6dg/viewform',
     },
     {
       id: 5,

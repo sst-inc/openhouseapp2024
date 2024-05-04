@@ -19,65 +19,99 @@ import * as Notifications from 'expo-notifications';
 const events = [
   {
     id: '1',
+    time: '9.00 am  ',
+    name: 'Open House starts',
+    timeRange: '  9:00am - end',
+    notifTime: '8.55am',
+  },
+  {
+    id: '2',
     time: '9.30 am  ',
     name: 'Academic Panel',
     location: ' @Auditorium',
     timeRange: '  9:30am - 9:45am',
-    notifTime: '9.48am',
+    notifTime: '9.29am',
     actualLocation: 'Auditorium',
   },
   {
-    id: '2',
-    time: '9.45 am  ',
-    name: 'Student Life Panel',
-    location: ' @LO2',
-    timeRange: '  9:45am - 10:30am',
-    notifTime: '9.50am',
-    actualLocation: 'Learning Oasis 2',
-  },
-  {
     id: '3',
-    time: '10.30 am',
-    name: 'PforSSTPanel',
-    location: ' @LO1',
-    timeRange: '  10:30am - 10:45am',
-    notifTime: '10.51am',
-    actualLocation: 'Learning Oasis 1',
+    time: '9.30 am  ',
+    name: 'Science hands on',
+    location: ' @Labs',
+    timeRange: '  9:30am - 10:30am',
+    notifTime: '9.29am',
+    actualLocation: 'Respective Science Labs',
   },
   {
     id: '4',
-    time: '10.45 am',
-    name: 'CCA Performances',
-    location: ' @Atrium',
-    timeRange: '  10:45am - 11:15am',
-    notifTime: '10.45am',
-    actualLocation: 'Atrium',
+    time: '10.00 am',
+    name: 'PforSSTPanel:Transition ',
+    location: ' @LO1',
+    timeRange: ' 10:00am - 10:30am',
+    notifTime: '9.59am',
+    actualLocation: 'Learning Oasis 1',
   },
   {
     id: '5',
-    time: '11.15 am',
+    time: '10.45 am',
     name: 'Student Life Panel',
     location: ' @LO2',
-    timeRange: '  11.15am - 11.30am',
-    notifTime: '11.15am',
+    timeRange: ' 10:45am - 11:15am',
+    notifTime: '10.45am',
     actualLocation: 'Learning Oasis 2',
   },
   {
     id: '6',
-    time: '11.30 am',
-    name: 'Academic Panel',
-    location: ' @Auditorium',
-    timeRange: '  11:30am - 11:45am',
-    notifTime: '11.30am',
-    actualLocation: 'Auditorium',
+    time: '10.45 am',
+    name: 'CCA Performances',
+    location: ' @Atrium',
+    timeRange: ' 10:45am - 11:15am',
+    notifTime: '10.45am',
+    actualLocation: 'Atrium',
   },
   {
     id: '7',
-    time: '11.45 am',
-    name: 'PforSSTPanel',
+    time: '11.15 am',
+    name: 'Student Life Panel',
+    location: ' @LO2',
+    timeRange: ' 11.15am - 11:30am',
+    notifTime: '11.15am',
+    actualLocation: 'Learning Oasis 2',
+  },
+  {
+    id: '8',
+    time: '11.30 am',
+    name: 'Academic Panel',
+    location: ' @Auditorium',
+    timeRange: ' 11:30am - 11:45am',
+    notifTime: '11.29am',
+    actualLocation: 'Auditorium',
+  },
+  {
+    id: '9',
+    time: '11.30 am',
+    name: 'PforSSTPanel:Transition',
     location: ' @LO1',
-    timeRange: '  11.45am - 12.00am',
-    notifTime: '11.45am',
+    timeRange: ' 11:30am - 12:00pm',
+    notifTime: '11.29am',
+    actualLocation: 'Learning Oasis 1',
+  },
+  {
+    id: '10',
+    time: '11.30 am',
+    name: 'Science hands on',
+    location: ' @Labs',
+    timeRange: ' 11:30am - 12:30pm',
+    notifTime: '11.29am',
+    actualLocation: 'Labs',
+  },
+  {
+    id: '11',
+    time: '12.15 pm',
+    name: 'PforSSTPanel:Beyond SST',
+    location: ' @LO1',
+    timeRange: ' 12:15pm - 12:45pm',
+    notifTime: '12.14pm',
     actualLocation: 'Learning Oasis 1',
   },
 ];
@@ -100,7 +134,7 @@ const FlatListItem = ({item}) => {
     setSvgOne(prevState => !prevState);
 
     // Save the state to AsyncStorage
-    await AsyncStorage.setItem(`svgState-${item.id}`, String(!isSvgOne)); 
+    await AsyncStorage.setItem(`svgState-${item.id}`, String(!isSvgOne));
 
     // If isSvgOne is set to true, schedule a notification
     if (isSvgOne === true) {
@@ -112,7 +146,7 @@ const FlatListItem = ({item}) => {
         );
         return;
       }
- 
+
       if (notificationId) {
         // Cancel the scheduled notification
         await Notifications.cancelScheduledNotificationAsync(notificationId);

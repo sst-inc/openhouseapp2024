@@ -23,6 +23,7 @@ import EventsPage from './Events';
 import Layout from './Layout';
 import QuickLinks from './QuickLinks';
 import * as Notifications from 'expo-notifications';
+import {LogBox} from 'react-native';
 
 const Drawer = createDrawerNavigator();
 
@@ -40,6 +41,7 @@ function CustomDrawerContent(props) {
 }
 
 const App = () => {
+  LogBox.ignoreAllLogs();
   useEffect(() => {
     const scheduleNotification = async () => {
       let currentTime = new Date();
@@ -256,7 +258,7 @@ const App = () => {
             },
           }}
         />
-        <Drawer.Screen
+        {/*         <Drawer.Screen
           name="Layout"
           component={Layout}
           options={{
@@ -295,14 +297,14 @@ const App = () => {
               marginVertical: -9, // Adjust vertical margin
             },
           }}
-        />
+        /> */}
         <Drawer.Screen
           name="Quick Links"
           component={QuickLinks}
           options={{
             drawerLabel: ({focused, color}) => (
               <LinearGradient
-                colors={['#df6920', 'rgba(103, 39, 39, 0.00)']}
+                colors={['#8f337c', 'rgba(103, 39, 39, 0.00)']}
                 start={{x: 0, y: 0}}
                 end={{x: 1, y: 0}}
                 style={{

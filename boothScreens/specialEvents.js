@@ -90,7 +90,7 @@ const specialData = [
   },
 ];
 
-const special = () => {
+const Special = () => {
   const [isSearchBarVisible, setSearchBarVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -329,4 +329,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default special;
+export default Special;
