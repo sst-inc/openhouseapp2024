@@ -37,7 +37,7 @@ const sigmas = [
   {
     id: 5,
     name: 'Aathithya',
-    position: 'Design chaser',
+    position: 'Handsome guy',
   },
   {
     id: 6,
