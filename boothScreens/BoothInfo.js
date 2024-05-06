@@ -166,7 +166,7 @@ const data = [
     header: 'Electronics',
     description:
       'Electronics engineers solve problems and improve lives by applying their knowledge and skills in electronics. Their solutions often come in the form of electronic systems. Join our hands-on activity to experience the work of an electronic engineer! You will learn how a computer simulation is used in circuit design and build an automatic lighting system.',
-    location: 'Electronics Lab',
+    location: 'Engineering Lab',
     image: require('../assets/layoutPics/Level2.png'),
     sstLoc: 'L2 Block C',
   },
@@ -266,7 +266,7 @@ const data = [
     header: 'Humanities',
     description:
       'Through the lens of Applied Learning, the Humanities curriculum in SST is designed to cultivate a deeper understanding of people, places and modern phenomena by bridging the gap between theoretical knowledge and practical application. Explore the journey of source-based inquiry and map creation at our booth with the theme being, "Humanities in the Modern World: Illuminating Paths, Shaping Futures" ',
-    location: 'Admt Studio',
+    location: 'ADMT Studio',
     image: require('../assets/layoutPics/AdmtStudio.png'),
     sstLoc: 'L2 Block C',
   },

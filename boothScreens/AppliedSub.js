@@ -8,7 +8,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Pressable,
-  Platform
+  Platform,
 } from 'react-native';
 import Svg, {G, Path, Defs, ClipPath, Rect, Line} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
@@ -34,7 +34,7 @@ const appliedSubjectsData = [
     header: 'Electronics',
     description:
       'Electronics engineers solve problems and improve lives by applying their knowledge and skills in electronics. Their solutions often come in the form of electronic systems. Join our hands-on activity to experience the work of an electronic engineer! You will learn how a computer simulation is used in circuit design and build an automatic lighting system.',
-    location: 'Electronics Lab',
+    location: 'Engineering Lab',
     image: require('../assets/layoutPics/Level2.png'),
     sstLoc: 'L2 Block C',
   },
@@ -74,7 +74,7 @@ const AppliedSub = () => {
 
   const search = query => {
     const trimmedQuery = query.trim().toLowerCase();
-  
+
     if (['applied', 'applied subjects'].includes(trimmedQuery)) {
       navigation.navigate('AppliedSub');
     } else if (['mainstream', 'mainstream subjects'].includes(trimmedQuery)) {
@@ -87,9 +87,12 @@ const AppliedSub = () => {
       navigation.navigate('CCA');
     } else {
       const results = data.filter(item => {
-        return item.header && String(item.header).toLowerCase().includes(trimmedQuery);
+        return (
+          item.header &&
+          String(item.header).toLowerCase().includes(trimmedQuery)
+        );
       });
-  
+
       if (results.length > 0) {
         navigation.navigate('ADeets', {item: results[0]});
       }
@@ -105,7 +108,9 @@ const AppliedSub = () => {
         <View style={{marginLeft: 30, marginRight: 24}}>
           <Text style={styles.subjectHeader}>{item.header}</Text>
           <View style={{marginTop: 15}} />
-          <Text style={styles.sectionHeader} numberOfLines={3}>{item.description}</Text>
+          <Text style={styles.sectionHeader} numberOfLines={3}>
+            {item.description}
+          </Text>
           <View style={{flexDirection: 'row', marginTop: 15}}>
             <Svg
               xmlns="http://www.w3.org/2000/svg"
@@ -195,7 +200,7 @@ const AppliedSub = () => {
               <View
                 style={{
                   marginTop: 20,
-                  height: Platform.OS === "ios" ? 51 : 41,
+                  height: Platform.OS === 'ios' ? 51 : 41,
                   width: '90%',
                   marginLeft: '5%',
                   borderRadius: 20,
