@@ -9,6 +9,7 @@ import {
   StyleSheet,
   SafeAreaView,
   Dimensions,
+  Pressable,
 } from 'react-native';
 import Svg, {Circle, Path, Line, G} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
@@ -94,7 +95,16 @@ const QuickLinks = ({navigation}) => {
           <View style={{marginTop: '5%'}} />
           <View>
             <View style={styles.topSidebar}>
-              <Text style={styles.header}>Quick links</Text>
+              <Pressable
+                onPress={() => navigation.navigate('Credits')}
+                hitSlop={{
+                  top: '-5%',
+                  bottom: '-5%',
+                  left: '-5%',
+                  right: '-5%',
+                }}>
+                <Text style={styles.header}>Quick links</Text>
+              </Pressable>
               <TouchableOpacity
                 style={styles.hamburgerIconPress}
                 onPress={() => navigation.openDrawer()}>

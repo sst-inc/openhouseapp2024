@@ -21,6 +21,7 @@ const events = [
     id: '1',
     time: '9.00 am  ',
     name: 'Open House starts',
+    location: '@SST',
     timeRange: '  9:00am - end',
     notifTime: '8.55am',
   },
@@ -28,7 +29,7 @@ const events = [
     id: '2',
     time: '9.30 am  ',
     name: 'Academic Panel',
-    location: ' @Auditorium',
+    location: '@Auditorium',
     timeRange: '  9:30am - 9:45am',
     notifTime: '9.29am',
     actualLocation: 'Auditorium',
@@ -37,7 +38,7 @@ const events = [
     id: '3',
     time: '9.30 am  ',
     name: 'Science hands on',
-    location: ' @Labs',
+    location: '@Labs',
     timeRange: '  9:30am - 10:30am',
     notifTime: '9.29am',
     actualLocation: 'Respective Science Labs',
@@ -45,8 +46,8 @@ const events = [
   {
     id: '4',
     time: '10.00 am',
-    name: 'PforSST:Transition ',
-    location: ' @LO1',
+    name: 'PforSSTPanel:Transition ',
+    location: '@LO1',
     timeRange: ' 10:00am - 10:30am',
     notifTime: '9.59am',
     actualLocation: 'Learning Oasis 1',
@@ -55,7 +56,7 @@ const events = [
     id: '5',
     time: '10.45 am',
     name: 'Student Life Panel',
-    location: ' @LO2',
+    location: '@LO2',
     timeRange: ' 10:45am - 11:15am',
     notifTime: '10.45am',
     actualLocation: 'Learning Oasis 2',
@@ -64,7 +65,7 @@ const events = [
     id: '6',
     time: '10.45 am',
     name: 'CCA Performances',
-    location: ' @Atrium',
+    location: '@Atrium',
     timeRange: ' 10:45am - 11:15am',
     notifTime: '10.45am',
     actualLocation: 'Atrium',
@@ -73,7 +74,7 @@ const events = [
     id: '7',
     time: '11.15 am',
     name: 'Student Life Panel',
-    location: ' @LO2',
+    location: '@LO2',
     timeRange: ' 11.15am - 11:30am',
     notifTime: '11.15am',
     actualLocation: 'Learning Oasis 2',
@@ -82,7 +83,7 @@ const events = [
     id: '8',
     time: '11.30 am',
     name: 'Academic Panel',
-    location: ' @Auditorium',
+    location: '@Auditorium',
     timeRange: ' 11:30am - 11:45am',
     notifTime: '11.29am',
     actualLocation: 'Auditorium',
@@ -90,8 +91,8 @@ const events = [
   {
     id: '9',
     time: '11.30 am',
-    name: 'PforSST:Transition',
-    location: ' @LO1',
+    name: 'PforSSTPanel:Transition',
+    location: '@LO1',
     timeRange: ' 11:30am - 12:00pm',
     notifTime: '11.29am',
     actualLocation: 'Learning Oasis 1',
@@ -100,7 +101,7 @@ const events = [
     id: '10',
     time: '11.30 am',
     name: 'Science hands on',
-    location: ' @Labs',
+    location: '@Labs',
     timeRange: ' 11:30am - 12:30pm',
     notifTime: '11.29am',
     actualLocation: 'Labs',
@@ -108,8 +109,8 @@ const events = [
   {
     id: '11',
     time: '12.15 pm',
-    name: 'PforSST:Beyond SST',
-    location: ' @LO1',
+    name: 'PforSSTPanel:Beyond SST',
+    location: '@LO1',
     timeRange: ' 12:15pm - 12:45pm',
     notifTime: '12.14pm',
     actualLocation: 'Learning Oasis 1',
@@ -185,20 +186,19 @@ const FlatListItem = ({item}) => {
         <View style={styles.eventsBox}>
           <Text style={styles.basicText}>{item.time}</Text>
           <View style={styles.eventsDetailsBox}>
-            <View style={{marginRight: -5}}>
+            <View>
               <View
                 style={{
-                  flexDirection: 'row',
+                  flexDirection: 'column',
                   marginLeft: '4%',
-                  marginTop: '8%',
-                  alignItems: 'center',
+                  marginTop: '3.5%',
                 }}>
                 <Text style={styles.basicText}>{item.name}</Text>
                 <Text style={styles.generalText}>{item.location}</Text>
               </View>
               <View style={{flex: 1, minHeight: 40}}>
                 <TouchableOpacity
-                  style={{position: 'absolute', top: -20, right: 0, }}
+                  style={{position: 'absolute', top: -30, right: 0}}
                   onPress={handlePress}>
                   {isSvgOne == true ? (
                     <Svg

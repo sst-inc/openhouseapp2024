@@ -22,6 +22,7 @@ import {BoothInfo} from './boothScreens/BoothInfo';
 import EventsPage from './Events';
 import Layout from './Layout';
 import QuickLinks from './QuickLinks';
+import Credits from './secretCreds';
 import * as Notifications from 'expo-notifications';
 import {LogBox} from 'react-native';
 
@@ -339,6 +340,15 @@ const App = () => {
               width: '100%',
               marginVertical: -9, // Adjust vertical margin
             },
+          }}
+        />
+        <Drawer.Screen
+          name="Credits"
+          component={Credits}
+          options={{
+            drawerLabel: 'Home',
+            drawerItemStyle: {height: 0},
+            headerShown: false,
           }}
         />
       </Drawer.Navigator>
