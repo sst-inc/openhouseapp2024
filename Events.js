@@ -45,7 +45,7 @@ const events = [
   {
     id: '4',
     time: '10.00 am',
-    name: 'PforSSTPanel:Transition ',
+    name: 'PforSST:Transition ',
     location: ' @LO1',
     timeRange: ' 10:00am - 10:30am',
     notifTime: '9.59am',
@@ -90,7 +90,7 @@ const events = [
   {
     id: '9',
     time: '11.30 am',
-    name: 'PforSSTPanel:Transition',
+    name: 'PforSST:Transition',
     location: ' @LO1',
     timeRange: ' 11:30am - 12:00pm',
     notifTime: '11.29am',
@@ -108,7 +108,7 @@ const events = [
   {
     id: '11',
     time: '12.15 pm',
-    name: 'PforSSTPanel:Beyond SST',
+    name: 'PforSST:Beyond SST',
     location: ' @LO1',
     timeRange: ' 12:15pm - 12:45pm',
     notifTime: '12.14pm',
@@ -185,20 +185,20 @@ const FlatListItem = ({item}) => {
         <View style={styles.eventsBox}>
           <Text style={styles.basicText}>{item.time}</Text>
           <View style={styles.eventsDetailsBox}>
-            <View>
+            <View style={{marginRight: -5}}>
               <View
                 style={{
                   flexDirection: 'row',
                   marginLeft: '4%',
-                  marginTop: '3.5%',
+                  marginTop: '8%',
+                  alignItems: 'center',
                 }}>
                 <Text style={styles.basicText}>{item.name}</Text>
                 <Text style={styles.generalText}>{item.location}</Text>
               </View>
-              <Text style={styles.generalText}> {item.timeRange}</Text>
               <View style={{flex: 1, minHeight: 40}}>
                 <TouchableOpacity
-                  style={{position: 'absolute', top: -30, right: 0}}
+                  style={{position: 'absolute', top: -20, right: 0, }}
                   onPress={handlePress}>
                   {isSvgOne == true ? (
                     <Svg
