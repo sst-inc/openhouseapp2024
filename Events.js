@@ -15,6 +15,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {RFValue} from 'react-native-responsive-fontsize';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Notifications from 'expo-notifications';
+import {act} from 'react-test-renderer';
 
 const events = [
   {
@@ -53,6 +54,24 @@ const events = [
     actualLocation: 'Learning Oasis 1',
   },
   {
+    id: '6',
+    time: '10.00 am',
+    name: 'Performance by SST Guitar Ensemble',
+    location: '@Atrium',
+    actualLocation: 'Atrium',
+    timeRange: '10:00am - 10:15am',
+    notifTime: '9.59am',
+  },
+  {
+    id: '12',
+    time: '10.30 am',
+    name: 'Performance by SST Dance Crew',
+    location: '@Atrium',
+    actualLocation: 'Atrium',
+    timeRange: '10:30am - 10:45am',
+    notifTime: '10.29am',
+  },
+  {
     id: '5',
     time: '10.45 am',
     name: 'Student Life Panel',
@@ -62,13 +81,13 @@ const events = [
     actualLocation: 'Learning Oasis 2',
   },
   {
-    id: '6',
-    time: '10.45 am',
-    name: 'CCA Performances',
+    id: '12',
+    time: '11.00 am',
     location: '@Atrium',
-    timeRange: ' 10:45am - 11:15am',
-    notifTime: '10.45am',
+    name: 'Performance by SST Dance Crew',
     actualLocation: 'Atrium',
+    timeRange: '11:00am - 11:15am',
+    notifTime: '10.59am',
   },
   {
     id: '7',
@@ -105,6 +124,15 @@ const events = [
     timeRange: ' 11:30am - 12:30pm',
     notifTime: '11.29am',
     actualLocation: 'Labs',
+  },
+  {
+    id: '13',
+    time: '11.30 am',
+    name: 'Performance by SST Guitar crew',
+    location: '@Atrium',
+    actualLocation: 'Atrium',
+    timeRange: '11:30am - 11:45am',
+    notifTime: '11.29am',
   },
   {
     id: '11',
