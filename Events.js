@@ -56,7 +56,7 @@ const events = [
   {
     id: '6',
     time: '10.00 am',
-    name: 'Performance by SST Guitar Ensemble',
+    name: 'Performance by Guitar ',
     location: '@Atrium',
     actualLocation: 'Atrium',
     timeRange: '10:00am - 10:15am',
@@ -65,7 +65,7 @@ const events = [
   {
     id: '12',
     time: '10.30 am',
-    name: 'Performance by SST Dance Crew',
+    name: 'Performance by Dance Crew',
     location: '@Atrium',
     actualLocation: 'Atrium',
     timeRange: '10:30am - 10:45am',
@@ -81,10 +81,10 @@ const events = [
     actualLocation: 'Learning Oasis 2',
   },
   {
-    id: '12',
+    id: '15',
     time: '11.00 am',
     location: '@Atrium',
-    name: 'Performance by SST Dance Crew',
+    name: 'Performance by Dance Crew',
     actualLocation: 'Atrium',
     timeRange: '11:00am - 11:15am',
     notifTime: '10.59am',
@@ -128,7 +128,7 @@ const events = [
   {
     id: '13',
     time: '11.30 am',
-    name: 'Performance by SST Guitar crew',
+    name: 'Performance by Guitar crew',
     location: '@Atrium',
     actualLocation: 'Atrium',
     timeRange: '11:30am - 11:45am',
@@ -319,7 +319,7 @@ const EventsPage = ({navigation}) => {
               </Text>
             </View>
             <View style={styles.topBoxPart1}>
-              <Text style={styles.topBoxHeader}>CCA{'\n'}Performance</Text>
+              <Text style={styles.topBoxHeader}>Open{'\n'}House Start</Text>
               <Svg
                 style={{transform: [{translateY: -31}]}}
                 xmlns="http://www.w3.org/2000/svg"
@@ -458,7 +458,7 @@ const EventsPage = ({navigation}) => {
                   fill-opacity="0.7"
                 />
               </Svg>
-              <Text style={styles.generalText}> Atrium</Text>
+              <Text style={styles.generalText}> SST</Text>
               <Text> </Text>
               <Svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -472,7 +472,7 @@ const EventsPage = ({navigation}) => {
                   fill-opacity="0.7"
                 />
               </Svg>
-              <Text style={styles.generalText}> 1045 - 11:15</Text>
+              <Text style={styles.generalText}> 9.00am</Text>
             </View>
           </View>
           <View style={styles.seperator}>

@@ -9,13 +9,13 @@ import {
   TouchableOpacity,
   FlatList,
   ScrollView,
-  Platform
+  Platform,
 } from 'react-native';
 import Svg, {G, Path, Defs, ClipPath, Rect, Line} from 'react-native-svg';
 import {data} from './BoothInfo';
 import SearchBar from 'react-native-search-bar';
 import {useNavigation} from '@react-navigation/native';
-import { LogBox } from 'react-native';
+import {LogBox} from 'react-native';
 
 const sportsCCAData = [
   {
@@ -78,7 +78,7 @@ const clubCCAData = [
     description:
       'Robotics @APEX began in 2010, guided by Effective, Efficient, and Exemplary values. With dedicated students and staff, the club earned recognition in local and international robotics communities. Members work with LEGO, Arduino, and OpenCV systems, applying their skills in competitions like the First Lego League Cityshaper, iCooL Challenge, and IDE Robotics Challenge. Creative projects solve real-world issues. Competing and research develop resilience, critical thinking, communication, and project management skills for life.',
     location: 'Robotics room',
-    image: require('../assets/layoutPics/Atrium.png'),
+    image: require('../assets/layoutPics/Level3.png'),
     sstLoc: 'L3 Block C',
   },
 ];
@@ -132,7 +132,7 @@ const CCA = () => {
 
   const search = query => {
     const trimmedQuery = query.trim().toLowerCase();
-  
+
     if (['applied', 'applied subjects'].includes(trimmedQuery)) {
       navigation.navigate('AppliedSub');
     } else if (['mainstream', 'mainstream subjects'].includes(trimmedQuery)) {
@@ -145,9 +145,12 @@ const CCA = () => {
       navigation.navigate('CCA');
     } else {
       const results = data.filter(item => {
-        return item.header && String(item.header).toLowerCase().includes(trimmedQuery);
+        return (
+          item.header &&
+          String(item.header).toLowerCase().includes(trimmedQuery)
+        );
       });
-  
+
       if (results.length > 0) {
         navigation.navigate('ADeets', {item: results[0]});
       }
@@ -236,7 +239,7 @@ const CCA = () => {
               <View
                 style={{
                   marginTop: 20,
-                  height: Platform.OS === "ios" ? 51 : 41,
+                  height: Platform.OS === 'ios' ? 51 : 41,
                   width: '90%',
                   marginLeft: '5%',
                   borderRadius: 20,

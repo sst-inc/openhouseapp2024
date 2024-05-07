@@ -74,8 +74,8 @@ const appliedSubjectsData = [
     description:
       'The SST Science curriculum is based on the philosophy of education through inquiry, experimentation, and discovery. Students are presented with a variety of learning experiences which pique their curiosity about the natural world and help cultivate habits of mind to be out-of-the-box innovators. The Science curriculum aims to develop students’ scientific knowledge and conceptual understanding; and Science process skills through the disciplines of Biology, Chemistry and Physics.',
     location: 'Research lab',
-    image: require('../assets/layoutPics/MakerLab.png'),
-    sstLoc: 'L3 Block C',
+    image: require('../assets/layoutPics/Level2.png'),
+    sstLoc: 'L2 Block C',
   },
   {
     id: '20',

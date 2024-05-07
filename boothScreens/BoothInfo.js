@@ -116,7 +116,7 @@ const data = [
     description:
       'Robotics @APEX began in 2010, guided by Effective, Efficient, and Exemplary values. With dedicated students and staff, the club earned recognition in local and international robotics communities. Members work with LEGO, Arduino, and OpenCV systems, applying their skills in competitions like the First Lego League Cityshaper, iCooL Challenge, and IDE Robotics Challenge. Creative projects solve real-world issues. Competing and research develop resilience, critical thinking, communication, and project management skills for life.',
     location: 'Robotics room',
-    image: require('../assets/layoutPics/Atrium.png'),
+    image: require('../assets/layoutPics/Level3.png'),
     sstLoc: 'L3 Block C',
   },
   {
@@ -246,9 +246,9 @@ const data = [
     header: 'Science',
     description:
       'The SST Science curriculum is based on the philosophy of education through inquiry, experimentation, and discovery. Students are presented with a variety of learning experiences which pique their curiosity about the natural world and help cultivate habits of mind to be out-of-the-box innovators. The Science curriculum aims to develop students’ scientific knowledge and conceptual understanding; and Science process skills through the disciplines of Biology, Chemistry and Physics.',
-    location: 'science TDP?',
-    image: require('../assets/layoutPics/MakerLab.png'),
-    sstLoc: 'L3 Block C',
+    location: 'Research Lab',
+    image: require('../assets/layoutPics/Level2.png'),
+    sstLoc: 'L2 Block C',
   },
   {
     id: '20',
