@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* openhouseapp2024Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* openhouseapp2024Tests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-openhouseapp2024.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-openhouseapp2024.a */; };
+		00E356F31AD99517003FC87E /* SSTOpenHouse2024Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SSTOpenHouse2024Tests.m */; };
+		0C80B921A6F3F58F76C31292 /* libPods-SSTOpenHouse2024.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-SSTOpenHouse2024.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		16FBFDAD503DFBDCEDF8394A /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA189E109C2FE7F068C78F /* ExpoModulesProvider.swift */; };
-		7699B88040F8A987B510C191 /* libPods-openhouseapp2024-openhouseapp2024Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-openhouseapp2024-openhouseapp2024Tests.a */; };
+		7699B88040F8A987B510C191 /* libPods-SSTOpenHouse2024-SSTOpenHouse2024Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-SSTOpenHouse2024-SSTOpenHouse2024Tests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		905F629F534565A014698318 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B7835EE41E74AD5F1C035 /* ExpoModulesProvider.swift */; };
 /* End PBXBuildFile section */
@@ -24,29 +24,29 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = openhouseapp2024;
+			remoteInfo = "SSTOpenHouse2024";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* openhouseapp2024Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = openhouseapp2024Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* SSTOpenHouse2024Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SSTOpenHouse2024Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* openhouseapp2024Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = openhouseapp2024Tests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* openhouseapp2024.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = openhouseapp2024.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = openhouseapp2024/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = openhouseapp2024/AppDelegate.mm; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = openhouseapp2024/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = openhouseapp2024/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = openhouseapp2024/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-openhouseapp2024-openhouseapp2024Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-openhouseapp2024-openhouseapp2024Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-openhouseapp2024.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openhouseapp2024.debug.xcconfig"; path = "Target Support Files/Pods-openhouseapp2024/Pods-openhouseapp2024.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-openhouseapp2024.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openhouseapp2024.release.xcconfig"; path = "Target Support Files/Pods-openhouseapp2024/Pods-openhouseapp2024.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-openhouseapp2024-openhouseapp2024Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openhouseapp2024-openhouseapp2024Tests.debug.xcconfig"; path = "Target Support Files/Pods-openhouseapp2024-openhouseapp2024Tests/Pods-openhouseapp2024-openhouseapp2024Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-openhouseapp2024.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-openhouseapp2024.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A7B7835EE41E74AD5F1C035 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-openhouseapp2024-openhouseapp2024Tests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		7DDA189E109C2FE7F068C78F /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-openhouseapp2024/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = openhouseapp2024/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-openhouseapp2024-openhouseapp2024Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openhouseapp2024-openhouseapp2024Tests.release.xcconfig"; path = "Target Support Files/Pods-openhouseapp2024-openhouseapp2024Tests/Pods-openhouseapp2024-openhouseapp2024Tests.release.xcconfig"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* SSTOpenHouse2024Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SSTOpenHouse2024Tests.m"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* SSTOpenHouse2024.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SSTOpenHouse2024.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "SSTOpenHouse2024/AppDelegate.h"; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = "SSTOpenHouse2024/AppDelegate.mm"; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "SSTOpenHouse2024/Images.xcassets"; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "SSTOpenHouse2024/Info.plist"; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "SSTOpenHouse2024/main.m"; sourceTree = "<group>"; };
+		19F6CBCC0A4E27FBF8BF4A61 /* libPods-SSTOpenHouse2024-SSTOpenHouse2024Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SSTOpenHouse2024-SSTOpenHouse2024Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4392A12AC88292D35C810B /* Pods-SSTOpenHouse2024.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSTOpenHouse2024.debug.xcconfig"; path = "Target Support Files/Pods-SSTOpenHouse2024/Pods-SSTOpenHouse2024.debug.xcconfig"; sourceTree = "<group>"; };
+		5709B34CF0A7D63546082F79 /* Pods-SSTOpenHouse2024.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSTOpenHouse2024.release.xcconfig"; path = "Target Support Files/Pods-SSTOpenHouse2024/Pods-SSTOpenHouse2024.release.xcconfig"; sourceTree = "<group>"; };
+		5B7EB9410499542E8C5724F5 /* Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.debug.xcconfig"; path = "Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		5DCACB8F33CDC322A6C60F78 /* libPods-SSTOpenHouse2024.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SSTOpenHouse2024.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A7B7835EE41E74AD5F1C035 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		7DDA189E109C2FE7F068C78F /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-SSTOpenHouse2024/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = "SSTOpenHouse2024/LaunchScreen.storyboard"; sourceTree = "<group>"; };
+		89C6BE57DB24E9ADA2F236DE /* Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.release.xcconfig"; path = "Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-openhouseapp2024-openhouseapp2024Tests.a in Frameworks */,
+				7699B88040F8A987B510C191 /* libPods-SSTOpenHouse2024-SSTOpenHouse2024Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,20 +63,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-openhouseapp2024.a in Frameworks */,
+				0C80B921A6F3F58F76C31292 /* libPods-SSTOpenHouse2024.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* openhouseapp2024Tests */ = {
+		00E356EF1AD99517003FC87E /* SSTOpenHouse2024Tests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* openhouseapp2024Tests.m */,
+				00E356F21AD99517003FC87E /* SSTOpenHouse2024Tests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = openhouseapp2024Tests;
+			path = "SSTOpenHouse2024Tests";
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -87,7 +87,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* openhouseapp2024 */ = {
+		13B07FAE1A68108700A75B9A /* SSTOpenHouse2024 */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -97,15 +97,15 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = openhouseapp2024;
+			name = "SSTOpenHouse2024";
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-openhouseapp2024.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-openhouseapp2024-openhouseapp2024Tests.a */,
+				5DCACB8F33CDC322A6C60F78 /* libPods-SSTOpenHouse2024.a */,
+				19F6CBCC0A4E27FBF8BF4A61 /* libPods-SSTOpenHouse2024-SSTOpenHouse2024Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -120,9 +120,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* openhouseapp2024 */,
+				13B07FAE1A68108700A75B9A /* SSTOpenHouse2024 */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* openhouseapp2024Tests */,
+				00E356EF1AD99517003FC87E /* SSTOpenHouse2024Tests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -136,8 +136,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* openhouseapp2024.app */,
-				00E356EE1AD99517003FC87E /* openhouseapp2024Tests.xctest */,
+				13B07F961A680F5B00A75B9A /* SSTOpenHouse2024.app */,
+				00E356EE1AD99517003FC87E /* SSTOpenHouse2024Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,8 +145,8 @@
 		86952F0D3134791A54F2E6D4 /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				FE2AA3A0A5A86F58B2CCA458 /* openhouseapp2024 */,
-				CD2571D5690D7B476027FFF9 /* openhouseapp2024Tests */,
+				FE2AA3A0A5A86F58B2CCA458 /* SSTOpenHouse2024 */,
+				CD2571D5690D7B476027FFF9 /* SSTOpenHouse2024Tests */,
 			);
 			name = ExpoModulesProviders;
 			sourceTree = "<group>";
@@ -154,36 +154,36 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-openhouseapp2024.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-openhouseapp2024.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-openhouseapp2024-openhouseapp2024Tests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-openhouseapp2024-openhouseapp2024Tests.release.xcconfig */,
+				3B4392A12AC88292D35C810B /* Pods-SSTOpenHouse2024.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-SSTOpenHouse2024.release.xcconfig */,
+				5B7EB9410499542E8C5724F5 /* Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.debug.xcconfig */,
+				89C6BE57DB24E9ADA2F236DE /* Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		CD2571D5690D7B476027FFF9 /* openhouseapp2024Tests */ = {
+		CD2571D5690D7B476027FFF9 /* SSTOpenHouse2024Tests */ = {
 			isa = PBXGroup;
 			children = (
 				7A7B7835EE41E74AD5F1C035 /* ExpoModulesProvider.swift */,
 			);
-			name = openhouseapp2024Tests;
+			name = SSTOpenHouse2024Tests;
 			sourceTree = "<group>";
 		};
-		FE2AA3A0A5A86F58B2CCA458 /* openhouseapp2024 */ = {
+		FE2AA3A0A5A86F58B2CCA458 /* SSTOpenHouse2024 */ = {
 			isa = PBXGroup;
 			children = (
 				7DDA189E109C2FE7F068C78F /* ExpoModulesProvider.swift */,
 			);
-			name = openhouseapp2024;
+			name = "SSTOpenHouse2024";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* openhouseapp2024Tests */ = {
+		00E356ED1AD99517003FC87E /* SSTOpenHouse2024Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "openhouseapp2024Tests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SSTOpenHouse2024Tests" */;
 			buildPhases = (
 				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
 				A71CFFC08AFEBAA8F9E0BDFC /* [Expo] Configure project */,
@@ -198,14 +198,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = openhouseapp2024Tests;
-			productName = openhouseapp2024Tests;
-			productReference = 00E356EE1AD99517003FC87E /* openhouseapp2024Tests.xctest */;
+			name = SSTOpenHouse2024Tests;
+			productName = SSTOpenHouse2024Tests;
+			productReference = 00E356EE1AD99517003FC87E /* SSTOpenHouse2024Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* openhouseapp2024 */ = {
+		13B07F861A680F5B00A75B9A /* SSTOpenHouse2024 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "openhouseapp2024" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SSTOpenHouse2024" */;
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
 				A531F8555475EF5A724612FF /* [Expo] Configure project */,
@@ -220,9 +220,9 @@
 			);
 			dependencies = (
 			);
-			name = openhouseapp2024;
-			productName = openhouseapp2024;
-			productReference = 13B07F961A680F5B00A75B9A /* openhouseapp2024.app */;
+			name = "SSTOpenHouse2024";
+			productName = "SSTOpenHouse2024";
+			productReference = 13B07F961A680F5B00A75B9A /* SSTOpenHouse2024.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -242,7 +242,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "openhouseapp2024" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SSTOpenHouse2024" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -255,8 +255,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* openhouseapp2024 */,
-				00E356ED1AD99517003FC87E /* openhouseapp2024Tests */,
+				13B07F861A680F5B00A75B9A /* SSTOpenHouse2024 */,
+				00E356ED1AD99517003FC87E /* SSTOpenHouse2024Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -303,15 +303,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-openhouseapp2024/Pods-openhouseapp2024-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SSTOpenHouse2024/Pods-SSTOpenHouse2024-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-openhouseapp2024/Pods-openhouseapp2024-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SSTOpenHouse2024/Pods-SSTOpenHouse2024-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-openhouseapp2024/Pods-openhouseapp2024-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SSTOpenHouse2024/Pods-SSTOpenHouse2024-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A531F8555475EF5A724612FF /* [Expo] Configure project */ = {
@@ -331,7 +331,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-openhouseapp2024/expo-configure-project.sh\"\n";
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-SSTOpenHouse2024/expo-configure-project.sh\"\n";
 		};
 		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -348,7 +348,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-openhouseapp2024-openhouseapp2024Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -372,7 +372,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-openhouseapp2024-openhouseapp2024Tests/expo-configure-project.sh\"\n";
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/expo-configure-project.sh\"\n";
 		};
 		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -389,7 +389,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-openhouseapp2024-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SSTOpenHouse2024-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -402,15 +402,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-openhouseapp2024-openhouseapp2024Tests/Pods-openhouseapp2024-openhouseapp2024Tests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-openhouseapp2024-openhouseapp2024Tests/Pods-openhouseapp2024-openhouseapp2024Tests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-openhouseapp2024-openhouseapp2024Tests/Pods-openhouseapp2024-openhouseapp2024Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
@@ -419,15 +419,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-openhouseapp2024/Pods-openhouseapp2024-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SSTOpenHouse2024/Pods-SSTOpenHouse2024-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-openhouseapp2024/Pods-openhouseapp2024-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SSTOpenHouse2024/Pods-SSTOpenHouse2024-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-openhouseapp2024/Pods-openhouseapp2024-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SSTOpenHouse2024/Pods-SSTOpenHouse2024-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
@@ -436,15 +436,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-openhouseapp2024-openhouseapp2024Tests/Pods-openhouseapp2024-openhouseapp2024Tests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-openhouseapp2024-openhouseapp2024Tests/Pods-openhouseapp2024-openhouseapp2024Tests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-openhouseapp2024-openhouseapp2024Tests/Pods-openhouseapp2024-openhouseapp2024Tests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -454,7 +454,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* openhouseapp2024Tests.m in Sources */,
+				00E356F31AD99517003FC87E /* SSTOpenHouse2024Tests.m in Sources */,
 				905F629F534565A014698318 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,7 +474,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* openhouseapp2024 */;
+			target = 13B07F861A680F5B00A75B9A /* SSTOpenHouse2024 */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -482,7 +482,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-openhouseapp2024-openhouseapp2024Tests.debug.xcconfig */;
+			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 38RA74GY33;
@@ -490,7 +490,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = openhouseapp2024Tests/Info.plist;
+				INFOPLIST_FILE = "SSTOpenHouse2024Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -503,20 +503,20 @@
 					"$(inherited)",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.sstinc.openhouseapp2024";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/openhouseapp2024.app/openhouseapp2024";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSTOpenHouse2024.app/SSTOpenHouse2024";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-openhouseapp2024-openhouseapp2024Tests.release.xcconfig */;
+			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 38RA74GY33;
-				INFOPLIST_FILE = openhouseapp2024Tests/Info.plist;
+				INFOPLIST_FILE = "SSTOpenHouse2024Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -529,22 +529,23 @@
 					"$(inherited)",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.sstinc.openhouseapp2024";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/openhouseapp2024.app/openhouseapp2024";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSTOpenHouse2024.app/SSTOpenHouse2024";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-openhouseapp2024.debug.xcconfig */;
+			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-SSTOpenHouse2024.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 38RA74GY33;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = openhouseapp2024/Info.plist;
+				INFOPLIST_FILE = "SSTOpenHouse2024/Info.plist";
+             INFOPLIST_KEY_CFBundleDisplayName = "SST Open House 2024";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -556,8 +557,8 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = openhouseapp2024;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.sstinc.openhouseapp2024";
+				PRODUCT_NAME = "SSTOpenHouse2024";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -566,13 +567,14 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-openhouseapp2024.release.xcconfig */;
+			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-SSTOpenHouse2024.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 38RA74GY33;
-				INFOPLIST_FILE = openhouseapp2024/Info.plist;
+				INFOPLIST_FILE = "SSTOpenHouse2024/Info.plist";
+             INFOPLIST_KEY_CFBundleDisplayName = "SST Open House 2024";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -584,8 +586,8 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = openhouseapp2024;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.sstinc.openhouseapp2024";
+				PRODUCT_NAME = "SSTOpenHouse2024";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -745,7 +747,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "openhouseapp2024Tests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SSTOpenHouse2024Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -754,7 +756,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "openhouseapp2024" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SSTOpenHouse2024" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -763,7 +765,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "openhouseapp2024" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SSTOpenHouse2024" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

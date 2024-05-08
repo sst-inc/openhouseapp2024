@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "openhouseapp2024.app"
-               BlueprintName = "openhouseapp2024"
-               ReferencedContainer = "container:openhouseapp2024.xcodeproj">
+               BuildableName = "SSTOpenHouse2024.app"
+               BlueprintName = "SSTOpenHouse2024"
+               ReferencedContainer = "container:SSTOpenHouse2024.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "openhouseapp2024Tests.xctest"
-               BlueprintName = "openhouseapp2024Tests"
-               ReferencedContainer = "container:openhouseapp2024.xcodeproj">
+               BuildableName = "SSTOpenHouse2024Tests.xctest"
+               BlueprintName = "SSTOpenHouse2024Tests"
+               ReferencedContainer = "container:SSTOpenHouse2024.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "openhouseapp2024.app"
-            BlueprintName = "openhouseapp2024"
-            ReferencedContainer = "container:openhouseapp2024.xcodeproj">
+            BuildableName = "SSTOpenHouse2024.app"
+            BlueprintName = "SSTOpenHouse2024"
+            ReferencedContainer = "container:SSTOpenHouse2024.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "openhouseapp2024.app"
-            BlueprintName = "openhouseapp2024"
-            ReferencedContainer = "container:openhouseapp2024.xcodeproj">
+            BuildableName = "SSTOpenHouse2024.app"
+            BlueprintName = "SSTOpenHouse2024"
+            ReferencedContainer = "container:SSTOpenHouse2024.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -1,4 +1,4 @@
-package com.openhouseapp2024
+package org.sstinc.openhouseapp2024
 import expo.modules.ReactActivityDelegateWrapper
 
 import com.facebook.react.ReactActivity
@@ -12,7 +12,7 @@ class MainActivity : ReactActivity() {
    * Returns the name of the main component registered from JavaScript. This is used to schedule
    * rendering of the component.
    */
-  override fun getMainComponentName(): String = "openhouseapp2024"
+  override fun getMainComponentName(): String = "SST Open House 2024"
 
   /**
    * Returns the instance of the [ReactActivityDelegate]. We use [DefaultReactActivityDelegate]

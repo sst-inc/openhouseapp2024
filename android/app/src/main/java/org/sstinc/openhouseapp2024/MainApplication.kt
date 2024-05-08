@@ -1,4 +1,4 @@
-package com.openhouseapp2024
+package org.sstinc.openhouseapp2024
 import android.content.res.Configuration
 import expo.modules.ApplicationLifecycleDispatcher
 import expo.modules.ReactNativeHostWrapper

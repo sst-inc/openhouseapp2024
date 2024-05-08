@@ -26,7 +26,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'openhouseapp2024' do
+target 'SSTOpenHouse2024' do
   use_expo_modules!
   post_integrate do |installer|
     begin
@@ -49,7 +49,7 @@ target 'openhouseapp2024' do
   )
 
 
-  target 'openhouseapp2024Tests' do
+  target 'SSTOpenHouse2024Tests' do
     inherit! :complete
     # Pods for testing
   end
