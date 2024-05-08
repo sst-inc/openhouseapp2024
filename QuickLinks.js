@@ -95,14 +95,7 @@ const QuickLinks = ({navigation}) => {
           <View style={{marginTop: '5%'}} />
           <View>
             <View style={styles.topSidebar}>
-              <Pressable
-                onPress={() => navigation.navigate('Credits')}
-                hitSlop={{
-                  top: '-5%',
-                  bottom: '-5%',
-                  left: '-5%',
-                  right: '-5%',
-                }}>
+              <Pressable onPress={() => navigation.navigate('Credits')}>
                 <Text style={styles.header}>Quick links</Text>
               </Pressable>
               <TouchableOpacity

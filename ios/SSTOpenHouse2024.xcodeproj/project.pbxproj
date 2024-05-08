@@ -24,20 +24,20 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = "SSTOpenHouse2024";
+			remoteInfo = SSTOpenHouse2024;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* SSTOpenHouse2024Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SSTOpenHouse2024Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* SSTOpenHouse2024Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSTOpenHouse2024Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* SSTOpenHouse2024Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SSTOpenHouse2024Tests.m"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* SSTOpenHouse2024.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SSTOpenHouse2024.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "SSTOpenHouse2024/AppDelegate.h"; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = "SSTOpenHouse2024/AppDelegate.mm"; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "SSTOpenHouse2024/Images.xcassets"; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "SSTOpenHouse2024/Info.plist"; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "SSTOpenHouse2024/main.m"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* SSTOpenHouse2024Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSTOpenHouse2024Tests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* SSTOpenHouse2024.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSTOpenHouse2024.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SSTOpenHouse2024/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = SSTOpenHouse2024/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SSTOpenHouse2024/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SSTOpenHouse2024/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SSTOpenHouse2024/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-SSTOpenHouse2024-SSTOpenHouse2024Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SSTOpenHouse2024-SSTOpenHouse2024Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-SSTOpenHouse2024.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSTOpenHouse2024.debug.xcconfig"; path = "Target Support Files/Pods-SSTOpenHouse2024/Pods-SSTOpenHouse2024.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-SSTOpenHouse2024.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSTOpenHouse2024.release.xcconfig"; path = "Target Support Files/Pods-SSTOpenHouse2024/Pods-SSTOpenHouse2024.release.xcconfig"; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-SSTOpenHouse2024.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SSTOpenHouse2024.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7B7835EE41E74AD5F1C035 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		7DDA189E109C2FE7F068C78F /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-SSTOpenHouse2024/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = "SSTOpenHouse2024/LaunchScreen.storyboard"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SSTOpenHouse2024/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.release.xcconfig"; path = "Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -76,7 +76,7 @@
 				00E356F21AD99517003FC87E /* SSTOpenHouse2024Tests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = "SSTOpenHouse2024Tests";
+			path = SSTOpenHouse2024Tests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -97,7 +97,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = "SSTOpenHouse2024";
+			name = SSTOpenHouse2024;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -175,7 +175,7 @@
 			children = (
 				7DDA189E109C2FE7F068C78F /* ExpoModulesProvider.swift */,
 			);
-			name = "SSTOpenHouse2024";
+			name = SSTOpenHouse2024;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,8 +220,8 @@
 			);
 			dependencies = (
 			);
-			name = "SSTOpenHouse2024";
-			productName = "SSTOpenHouse2024";
+			name = SSTOpenHouse2024;
+			productName = SSTOpenHouse2024;
 			productReference = 13B07F961A680F5B00A75B9A /* SSTOpenHouse2024.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -490,7 +490,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "SSTOpenHouse2024Tests/Info.plist";
+				INFOPLIST_FILE = SSTOpenHouse2024Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -503,7 +503,7 @@
 					"$(inherited)",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.sstinc.openhouseapp2024";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sstinc.openhouseapp2024;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSTOpenHouse2024.app/SSTOpenHouse2024";
 			};
@@ -516,7 +516,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 38RA74GY33;
-				INFOPLIST_FILE = "SSTOpenHouse2024Tests/Info.plist";
+				INFOPLIST_FILE = SSTOpenHouse2024Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -529,7 +529,7 @@
 					"$(inherited)",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.sstinc.openhouseapp2024";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sstinc.openhouseapp2024;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSTOpenHouse2024.app/SSTOpenHouse2024";
 			};
@@ -544,8 +544,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 38RA74GY33;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "SSTOpenHouse2024/Info.plist";
-             INFOPLIST_KEY_CFBundleDisplayName = "SST Open House 2024";
+				INFOPLIST_FILE = SSTOpenHouse2024/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "SST Open House 2024";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -557,8 +557,8 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.sstinc.openhouseapp2024";
-				PRODUCT_NAME = "SSTOpenHouse2024";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sstinc.openhouseapp2024;
+				PRODUCT_NAME = SSTOpenHouse2024;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -573,8 +573,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 38RA74GY33;
-				INFOPLIST_FILE = "SSTOpenHouse2024/Info.plist";
-             INFOPLIST_KEY_CFBundleDisplayName = "SST Open House 2024";
+				INFOPLIST_FILE = SSTOpenHouse2024/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "SST Open House 2024";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -586,8 +586,8 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.sstinc.openhouseapp2024";
-				PRODUCT_NAME = "SSTOpenHouse2024";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sstinc.openhouseapp2024;
+				PRODUCT_NAME = SSTOpenHouse2024;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

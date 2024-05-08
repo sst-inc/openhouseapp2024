@@ -44,6 +44,7 @@
     "react-native-shadow": "^1.2.2",
     "react-native-svg": "^15.0.0",
     "react-native-vector-icons": "^10.0.3",
+    "react-native-version": "^4.0.0",
     "toastify-react-native": "^5.0.0"
   },
   "devDependencies": {

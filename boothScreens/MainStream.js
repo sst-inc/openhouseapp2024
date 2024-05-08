@@ -272,7 +272,7 @@ const MainStream = () => {
               </TouchableOpacity>
             </View>
             <View style={{marginLeft: '5%'}}>
-              <Text style={styles.sectionHeader}> Applied Subjects</Text>
+              <Text style={styles.sectionHeader}> Mainstream Subjects</Text>
             </View>
             {isSearchBarVisible && (
               <View
