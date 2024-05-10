@@ -35,6 +35,11 @@ const sigmas = [
     position: 'Designer',
   },
   {
+    id: 5,
+    name: 'Aathithya',
+    position: 'Handsome guy',
+  },
+  {
     id: 6,
     name: 'Tristan Chay Yu Hung',
     position: 'Consultant',
@@ -78,7 +83,7 @@ const Credits = ({navigation}) => {
               <Text style={styles.header}>Credits</Text>
             </View>
             <View style={{marginLeft: '5%'}}></View>
-            <View style={{marginTop: 35, flex: 1}} />
+            <View style={{marginTop: 35}} />
             <FlatList
               data={sigmas}
               renderItem={renderItem}
