@@ -288,17 +288,16 @@ const EventsPage = ({navigation}) => {
                 style={styles.hamburgerIconPress}
                 onPress={() => navigation.openDrawer()}>
                 <Svg
+                  xmlns="http://www.w3.org/2000/svg"
                   width="48"
-                  height="52"
-                  viewBox="0 0 48 52"
+                  height="48"
+                  viewBox="0 0 48 48"
                   fill="none"
-                  style={{marginTop: 11}}>
-                  <LinearGradient
-                    colors={['#D9D9D9', 'transparent']}
-                    style={{borderRadius: 24}}></LinearGradient>
-                  <Line x1="12" y1="16.5" x2="36" y2="16.5" stroke="#EBEBEF" />
-                  <Line x1="12" y1="24.5" x2="36" y2="24.5" stroke="#EBEBEF" />
-                  <Line x1="12" y1="32.5" x2="36" y2="32.5" stroke="#EBEBEF" />
+                  style={{marginTop: '28%'}}>
+                  <Path
+                    d="M42.5 24.25C42.5 24.8467 42.2629 25.419 41.841 25.841C41.419 26.2629 40.8467 26.5 40.25 26.5H7.25C6.65326 26.5 6.08097 26.2629 5.65901 25.841C5.23705 25.419 5 24.8467 5 24.25C5 23.6533 5.23705 23.081 5.65901 22.659C6.08097 22.2371 6.65326 22 7.25 22H40.25C40.8467 22 41.419 22.2371 41.841 22.659C42.2629 23.081 42.5 23.6533 42.5 24.25ZM7.25 14.5H40.25C40.8467 14.5 41.419 14.2629 41.841 13.841C42.2629 13.419 42.5 12.8467 42.5 12.25C42.5 11.6533 42.2629 11.081 41.841 10.659C41.419 10.2371 40.8467 10 40.25 10H7.25C6.65326 10 6.08097 10.2371 5.65901 10.659C5.23705 11.081 5 11.6533 5 12.25C5 12.8467 5.23705 13.419 5.65901 13.841C6.08097 14.2629 6.65326 14.5 7.25 14.5ZM40.25 34H7.25C6.65326 34 6.08097 34.2371 5.65901 34.659C5.23705 35.081 5 35.6533 5 36.25C5 36.8467 5.23705 37.419 5.65901 37.841C6.08097 38.2629 6.65326 38.5 7.25 38.5H40.25C40.8467 38.5 41.419 38.2629 41.841 37.841C42.2629 37.419 42.5 36.8467 42.5 36.25C42.5 35.6533 42.2629 35.081 41.841 34.659C41.419 34.2371 40.8467 34 40.25 34Z"
+                    fill="#1C1C12"
+                  />
                 </Svg>
               </TouchableOpacity>
             </View>
@@ -525,11 +524,10 @@ const styles = StyleSheet.create({
     marginLeft: '5%',
   },
   header: {
-    color: '#EBEBEF',
-    textAlign: 'center',
-    fontFamily: 'Lato',
-    fontSize: RFValue(40),
-    fontWeight: 'normal',
+    color: '#356AA9',
+    fontFamily: 'Prototype',
+    fontSize: 50,
+    fontWeight: 400,
   },
   discover: {
     color: 'rgba(235, 235, 239, 0.60)',

@@ -73,7 +73,7 @@ const AppliedDetails = ({route}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../assets/background2.png')}
+        source={require('../assets/background.png')}
         style={styles.imageBackground}>
         <SafeAreaView style={{flex: 1}}>
           <ScrollView>
