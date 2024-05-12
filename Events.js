@@ -617,7 +617,7 @@ const styles = StyleSheet.create({
     color: '#1C1C12',
     fontFamily: 'Montserrat-SemiBold',
     fontSize: 26,
-    fontWeight: '550',
+    fontWeight: '500',
     marginTop: '5%',
     marginLeft: '6.7%',
   },
