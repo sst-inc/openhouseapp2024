@@ -75,7 +75,7 @@ const events = [
   {
     id: '12',
     time: '10.30 am',
-    name: 'Performance by Dance Crew',
+    name: 'Performance by Dance ',
     location: '@Atrium',
     actualLocation: 'Atrium',
     timeRange: '10:30am - 10:45am',
@@ -94,7 +94,7 @@ const events = [
     id: '15',
     time: '11.00 am',
     location: '@Atrium',
-    name: 'Performance by Dance Crew',
+    name: 'Performance by Dance ',
     actualLocation: 'Atrium',
     timeRange: '11:00am - 11:15am',
     notifTime: '10.59am',
@@ -138,7 +138,7 @@ const events = [
   {
     id: '13',
     time: '11.30 am',
-    name: 'Performance by Guitar crew',
+    name: 'Performance by Guitar ',
     location: '@Atrium',
     actualLocation: 'Atrium',
     timeRange: '11:30am - 11:45am',
