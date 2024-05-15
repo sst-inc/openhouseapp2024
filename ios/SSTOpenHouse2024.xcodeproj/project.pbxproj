@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* SSTOpenHouse2024Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SSTOpenHouse2024Tests.m */; };
+		06FCF0BFD3FE4BF5A1E1BDDE /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0A033B59B514946A9A35A17 /* Montserrat-SemiBold.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-SSTOpenHouse2024.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-SSTOpenHouse2024.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -16,9 +17,8 @@
 		7699B88040F8A987B510C191 /* libPods-SSTOpenHouse2024-SSTOpenHouse2024Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-SSTOpenHouse2024-SSTOpenHouse2024Tests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		905F629F534565A014698318 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B7835EE41E74AD5F1C035 /* ExpoModulesProvider.swift */; };
-		C4A6A429204D49589461AEB5 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F31E51C1ACA4F2E9C5A9C9E /* Montserrat-Regular.ttf */; };
 		BF00B700E057458CA60B8A9D /* Prototype.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7484063A42EA4160877592D8 /* Prototype.ttf */; };
-		06FCF0BFD3FE4BF5A1E1BDDE /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0A033B59B514946A9A35A17 /* Montserrat-SemiBold.ttf */; };
+		C4A6A429204D49589461AEB5 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F31E51C1ACA4F2E9C5A9C9E /* Montserrat-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,14 +46,14 @@
 		5709B34CF0A7D63546082F79 /* Pods-SSTOpenHouse2024.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSTOpenHouse2024.release.xcconfig"; path = "Target Support Files/Pods-SSTOpenHouse2024/Pods-SSTOpenHouse2024.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.debug.xcconfig"; path = "Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-SSTOpenHouse2024.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SSTOpenHouse2024.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7484063A42EA4160877592D8 /* Prototype.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Prototype.ttf; path = ../assets/fonts/Prototype.ttf; sourceTree = "<group>"; };
 		7A7B7835EE41E74AD5F1C035 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		7DDA189E109C2FE7F068C78F /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-SSTOpenHouse2024/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SSTOpenHouse2024/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.release.xcconfig"; path = "Target Support Files/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests/Pods-SSTOpenHouse2024-SSTOpenHouse2024Tests.release.xcconfig"; sourceTree = "<group>"; };
+		9F31E51C1ACA4F2E9C5A9C9E /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		B0A033B59B514946A9A35A17 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBold.ttf"; path = "../assets/fonts/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		9F31E51C1ACA4F2E9C5A9C9E /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7484063A42EA4160877592D8 /* Prototype.ttf */ = {isa = PBXFileReference; name = "Prototype.ttf"; path = "../assets/fonts/Prototype.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B0A033B59B514946A9A35A17 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; name = "Montserrat-SemiBold.ttf"; path = "../assets/fonts/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +104,17 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = SSTOpenHouse2024;
+			sourceTree = "<group>";
+		};
+		1930B6CF5D0B45FEAC84CC0F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9F31E51C1ACA4F2E9C5A9C9E /* Montserrat-Regular.ttf */,
+				7484063A42EA4160877592D8 /* Prototype.ttf */,
+				B0A033B59B514946A9A35A17 /* Montserrat-SemiBold.ttf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -184,17 +195,6 @@
 			);
 			name = SSTOpenHouse2024;
 			sourceTree = "<group>";
-		};
-		1930B6CF5D0B45FEAC84CC0F /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				9F31E51C1ACA4F2E9C5A9C9E /* Montserrat-Regular.ttf */,
-				7484063A42EA4160877592D8 /* Prototype.ttf */,
-				B0A033B59B514946A9A35A17 /* Montserrat-SemiBold.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 

@@ -74,55 +74,46 @@ const AppliedDetails = ({route}) => {
     <View style={styles.container}>
       <ImageBackground
         source={require('../assets/background.png')}
-        style={styles.imageBackground}>
+        style={{width: '100%', height: '100%'}}>
         <SafeAreaView style={{flex: 1}}>
-          <ScrollView>
+          <ScrollView style={{flex: 1}}>
             <View style={{marginTop: '5%'}}>
               <TouchableOpacity onPress={() => navigation.goBack()}>
                 <View style={{marginLeft: '5%'}}>
-                  <Svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="26"
-                    height="20"
-                    viewBox="0 0 26 20"
-                    fill="none">
-                    <Path
-                      d="M26.0001 19C26.0001 19.2652 25.8947 19.5196 25.7072 19.7071C25.5196 19.8947 25.2653 20 25.0001 20C24.7348 20 24.4805 19.8947 24.2929 19.7071C24.1054 19.5196 24.0001 19.2652 24.0001 19C23.9967 16.0836 22.8368 13.2877 20.7746 11.2255C18.7124 9.1633 15.9164 8.00331 13.0001 8.00001H3.4138L7.70755 12.2925C7.8952 12.4801 8.00061 12.7346 8.00061 13C8.00061 13.2654 7.8952 13.5199 7.70755 13.7075C7.51991 13.8951 7.26542 14.0006 7.00005 14.0006C6.73469 14.0006 6.48019 13.8951 6.29255 13.7075L0.292554 7.70751C0.199578 7.61463 0.125819 7.50434 0.0754943 7.38295C0.02517 7.26155 -0.000732422 7.13142 -0.000732422 7.00001C-0.000732422 6.86859 0.02517 6.73846 0.0754943 6.61707C0.125819 6.49567 0.199578 6.38538 0.292554 6.29251L6.29255 0.292507C6.48019 0.104866 6.73469 -0.000549318 7.00005 -0.000549316C7.26542 -0.000549314 7.51991 0.104866 7.70755 0.292507C7.8952 0.480147 8.00061 0.734643 8.00061 1.00001C8.00061 1.26537 7.8952 1.51987 7.70755 1.70751L3.4138 6.00001H13.0001C16.4468 6.00365 19.7512 7.37445 22.1884 9.81164C24.6256 12.2488 25.9964 15.5533 26.0001 19Z"
-                      fill="#EBEBEF"
-                    />
-                  </Svg>
+                  <Image
+                    source={require('../assets/boothInfo/arrow.png')}
+                    style={{width: 48, height: 48}}
+                  />
                 </View>
               </TouchableOpacity>
-              <View style={{marginBottom: 20}} />
               <View style={styles.topSidebar}>
                 <Text style={styles.header}>Booth Info</Text>
                 <TouchableOpacity onPress={handlePress1}>
                   <Svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
+                    width="40"
+                    height="40"
+                    viewBox="0 0 20 20"
                     fill="none"
-                    style={{marginTop: 10}}>
-                    <Path
-                      d="M26.8333 13.6667C26.8333 20.9384 20.9384 26.8333 13.6667 26.8333C6.39492 26.8333 0.5 20.9384 0.5 13.6667C0.5 6.39492 6.39492 0.5 13.6667 0.5C20.9384 0.5 26.8333 6.39492 26.8333 13.6667Z"
-                      stroke="#EBEBEF"
-                    />
-                    <Line
-                      x1="23.0203"
-                      y1="23.6464"
-                      x2="31.0203"
-                      y2="31.6464"
-                      stroke="#EBEBEF"
-                    />
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{marginTop: '20%'}}>
+                    <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
+                    <G
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></G>
+                    <G id="SVGRepo_iconCarrier">
+                      <Path
+                        d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+                        stroke="#000000"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></Path>
+                    </G>
                   </Svg>
                 </TouchableOpacity>
               </View>
-              <View>
-                <Text style={styles.sectionHeader}>
-                  {' '}
-                  {item.type} {'>'} {item.header}{' '}
-                </Text>
+              <View style={{marginLeft: '5%'}}>
+                <Text style={styles.sectionHeader}> Booth Info</Text>
               </View>
               {isSearchBarVisible && (
                 <View
@@ -153,10 +144,10 @@ const AppliedDetails = ({route}) => {
                 style={{
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginTop: 40,
+                  marginTop: 10,
                 }}>
                 <ReactNativeZoomableView
-                  style={{...styles.imageRectangle, width: windowWidth * 0.9}}
+                  style={{width: windowWidth * 0.9}}
                   maxZoom={2.5}
                   minZoom={1}
                   zoomStep={0.5}
@@ -171,15 +162,37 @@ const AppliedDetails = ({route}) => {
                 </ReactNativeZoomableView>
               </View>
               <View style={{marginTop: 10, marginLeft: '5%', width: '85%'}}>
-                <Text style={{color: '#EBEBEF', fontSize: 32, marginTop: 10}}>
-                  {item.header}
-                </Text>
+                <View
+                  style={{
+                    width: windowWidth * 1.1,
+                    backgroundColor: '#D9D9D9',
+                    alignSelf: 'center',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '11%',
+                  }}>
+                  <Text
+                    style={{
+                      color: '#1C1C12',
+                      fontFamily: 'Prototype',
+                      fontSize: 35,
+                      fontStyle: 'normal',
+                      fontWeight: '400',
+                    }}>
+                    {item.header}
+                  </Text>
+                </View>
                 <Text
                   style={{
-                    color: '#EBEBEF',
+                    color: '#1C1C12',
+                    fontFamily: 'Montserrat-Regular',
                     fontSize: 16,
-                    marginTop: 25,
-                    textAlign: 'justify',
+                    fontStyle: 'normal',
+                    marginTop: '5%',
+                    lineHeight: 19,
+                    alignSelf: 'center',
+                    marginLeft: '5%',
+                    textAlign: 'left',
                   }}>
                   {item.description}
                 </Text>
@@ -191,12 +204,12 @@ const AppliedDetails = ({route}) => {
                     viewBox="0 0 20 20"
                     fill="none">
                     <Path
-                      d="M10 5C9.38193 5 8.77775 5.18328 8.26384 5.52666C7.74994 5.87004 7.3494 6.3581 7.11288 6.92911C6.87635 7.50013 6.81447 8.12847 6.93505 8.73466C7.05562 9.34085 7.35325 9.89767 7.79029 10.3347C8.22733 10.7717 8.78415 11.0694 9.39034 11.19C9.99653 11.3105 10.6249 11.2486 11.1959 11.0121C11.7669 10.7756 12.255 10.3751 12.5983 9.86116C12.9417 9.34725 13.125 8.74307 13.125 8.125C13.125 7.2962 12.7958 6.50134 12.2097 5.91529C11.6237 5.32924 10.8288 5 10 5ZM10 10C9.62916 10 9.26665 9.89003 8.95831 9.68401C8.64996 9.47798 8.40964 9.18514 8.26773 8.84253C8.12581 8.49992 8.08868 8.12292 8.16103 7.75921C8.23337 7.39549 8.41195 7.0614 8.67417 6.79917C8.9364 6.53695 9.27049 6.35837 9.63421 6.28603C9.99792 6.21368 10.3749 6.25081 10.7175 6.39273C11.0601 6.53464 11.353 6.77496 11.559 7.08331C11.765 7.39165 11.875 7.75416 11.875 8.125C11.875 8.62228 11.6775 9.09919 11.3258 9.45083C10.9742 9.80246 10.4973 10 10 10ZM10 1.25C8.17727 1.25207 6.42979 1.97706 5.14092 3.26592C3.85206 4.55479 3.12707 6.30227 3.125 8.125C3.125 10.5781 4.25859 13.1781 6.40625 15.6445C7.37127 16.759 8.45739 17.7626 9.64453 18.6367C9.74962 18.7103 9.87482 18.7498 10.0031 18.7498C10.1314 18.7498 10.2566 18.7103 10.3617 18.6367C11.5467 17.7623 12.6307 16.7587 13.5938 15.6445C15.7383 13.1781 16.875 10.5781 16.875 8.125C16.8729 6.30227 16.1479 4.55479 14.8591 3.26592C13.5702 1.97706 11.8227 1.25207 10 1.25ZM10 17.3438C8.70859 16.3281 4.375 12.5977 4.375 8.125C4.375 6.63316 4.96763 5.20242 6.02252 4.14752C7.07742 3.09263 8.50816 2.5 10 2.5C11.4918 2.5 12.9226 3.09263 13.9775 4.14752C15.0324 5.20242 15.625 6.63316 15.625 8.125C15.625 12.5961 11.2914 16.3281 10 17.3438Z"
-                      fill="#EBEBEF"
+                      d="M9.0625 8.30627V13.75C9.0625 13.9987 9.16127 14.2371 9.33709 14.4129C9.5129 14.5887 9.75136 14.6875 10 14.6875C10.2486 14.6875 10.4871 14.5887 10.6629 14.4129C10.8387 14.2371 10.9375 13.9987 10.9375 13.75V8.30627C11.7357 8.07999 12.4252 7.57263 12.8787 6.87782C13.3321 6.183 13.519 5.34762 13.4048 4.52583C13.2905 3.70403 12.8829 2.95128 12.2572 2.40648C11.6314 1.86167 10.8297 1.56158 10 1.56158C9.1703 1.56158 8.3686 1.86167 7.74284 2.40648C7.11707 2.95128 6.70946 3.70403 6.59523 4.52583C6.48101 5.34762 6.66786 6.183 7.12133 6.87782C7.57479 7.57263 8.26426 8.07999 9.0625 8.30627ZM10 3.43752C10.309 3.43752 10.6111 3.52916 10.8681 3.70085C11.125 3.87254 11.3253 4.11657 11.4436 4.40208C11.5618 4.68759 11.5928 5.00176 11.5325 5.30485C11.4722 5.60795 11.3234 5.88636 11.1049 6.10488C10.8863 6.3234 10.6079 6.47221 10.3048 6.5325C10.0017 6.59279 9.68757 6.56185 9.40206 6.44358C9.11655 6.32532 8.87252 6.12505 8.70083 5.8681C8.52914 5.61115 8.4375 5.30906 8.4375 5.00002C8.4375 4.58562 8.60212 4.18819 8.89515 3.89517C9.18817 3.60214 9.5856 3.43752 10 3.43752ZM19.0625 13.75C19.0625 15.4367 17.1953 16.4063 16.082 16.8344C14.4422 17.4656 12.2828 17.8125 10 17.8125C5.49687 17.8125 0.9375 16.4172 0.9375 13.75C0.9375 12.0133 2.97812 10.6094 6.39687 9.99534C6.51884 9.97164 6.64429 9.97241 6.76595 9.99763C6.88761 10.0228 7.00304 10.072 7.10554 10.1422C7.20804 10.2124 7.29556 10.3023 7.36301 10.4066C7.43047 10.511 7.47651 10.6277 7.49846 10.75C7.52041 10.8723 7.51784 10.9977 7.49088 11.119C7.46393 11.2403 7.41314 11.355 7.34147 11.4565C7.26979 11.558 7.17866 11.6442 7.07336 11.7101C6.96807 11.7761 6.85072 11.8204 6.72813 11.8406C4.05703 12.3211 2.8125 13.2641 2.8125 13.75C2.8125 14.0625 3.36875 14.6149 4.59141 15.0844C6.02109 15.6313 7.94219 15.9375 10 15.9375C12.0578 15.9375 13.9789 15.6344 15.4086 15.0844C16.6305 14.6149 17.1875 14.0625 17.1875 13.75C17.1875 13.2641 15.943 12.3211 13.2719 11.8406C13.1493 11.8204 13.0319 11.7761 12.9266 11.7101C12.8213 11.6442 12.7302 11.558 12.6585 11.4565C12.5869 11.355 12.5361 11.2403 12.5091 11.119C12.4822 10.9977 12.4796 10.8723 12.5015 10.75C12.5235 10.6277 12.5695 10.511 12.637 10.4066C12.7044 10.3023 12.792 10.2124 12.8945 10.1422C12.997 10.072 13.1124 10.0228 13.234 9.99763C13.3557 9.97241 13.4812 9.97164 13.6031 9.99534C17.0219 10.6094 19.0625 12.0133 19.0625 13.75Z"
+                      fill="#1C1C12"
                     />
                   </Svg>
                   <Text style={styles.locationText}>
-                    {' '}
+                    {'  '}
                     {item.location} @ {item.sstLoc}
                   </Text>
                 </View>
@@ -215,64 +228,51 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   topSidebar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '90%',
     marginLeft: '5%',
-    gap: 10,
+    gap: 5,
   },
   imageBackground: {
     width: '100%',
     height: '100%',
   },
   header: {
-    color: '#EBEBEF',
-    textAlign: 'center',
-    fontFamily: 'Lato',
-    fontSize: 40,
-    fontWeight: 'normal',
+    color: '#356AA9',
+    fontFamily: 'Prototype',
+    fontSize: 50,
+    fontWeight: 400,
   },
   sectionHeader: {
     color: 'rgba(235, 235, 239, 0.70)',
-    fontFamily: 'Lato',
+    fontFamily: 'Montserrat-SemiBold',
     fontSize: 16,
     fontWeight: '400',
-    marginLeft: '5%',
   },
   subContainer: {
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#EBEBEF',
-    backgroundColor: 'rgba(235, 235, 239, 0.10)',
-    shadowColor: 'rgba(170, 181, 224, 0.30)',
-    shadowOffset: {width: 0, height: 4},
-    shadowOpacity: 0.3,
-    shadowRadius: 30,
-    width: '93.5%',
-    height: 170,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    width: '90%',
+    height: 80,
+    backgroundColor: '#4F90DD',
+    marginBottom: '5%',
+    alignSelf: 'center',
     alignItems: 'center',
-    marginLeft: '3%',
-    marginBottom: 20,
+    flexDirection: 'row',
+    padding: 16,
+    justifyContent: 'space-between',
+    flex: 1,
   },
   subjectHeader: {
     color: '#EBEBEF',
-    fontFamily: 'Lato',
-    fontSize: 24,
-    fontWeight: '400',
+    fontFamily: 'Montserrat-SemiBold',
+    fontSize: 20,
+    marginBottom: '0.1%',
   },
   locationText: {
-    color: '#EBEBEF',
-    fontFamily: 'Lato',
+    color: '#1C1C12',
+    fontFamily: 'Montserrat-Regular',
     fontSize: 16,
-    paddingBottom: 20,
   },
   redirectText: {
     color: '#ABABED',
@@ -289,6 +289,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#D9D9D9',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  BoothNamebox: {
+    height: '20%',
+    width: '100%',
+    backgroundColor: 'grey;',
   },
 });
 export default AppliedDetails;
