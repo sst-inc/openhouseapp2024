@@ -169,7 +169,7 @@ const AppliedDetails = ({route}) => {
                     alignSelf: 'center',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    height: '11%',
+                    height: 60,
                   }}>
                   <Text
                     style={{
