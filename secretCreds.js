@@ -9,9 +9,13 @@ import {
   TouchableOpacity,
   Pressable,
   Platform,
+  Dimensions,
 } from 'react-native';
 import Svg, {G, Path, Defs, ClipPath, Rect, Line} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
+
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 const sigmas = [
   {
@@ -44,9 +48,9 @@ const sigmas = [
 const Credits = ({navigation}) => {
   const renderItem = ({item}) => {
     return (
-      <View style={styles.subContainer}>
-        <Text style={styles.subjectHeader}>{item.name}</Text>
-        <Text style={styles.subjectHeader}>{item.position}</Text>
+      <View style={styles.box}>
+        <Text style={styles.stampHeader}>{item.name}</Text>
+        <Text style={styles.stampHeader}>{item.position}</Text>
       </View>
     );
   };
@@ -57,26 +61,26 @@ const Credits = ({navigation}) => {
         style={{width: '100%', height: '100%'}}>
         <SafeAreaView style={{flex: 1}}>
           <View style={{marginTop: '5%'}}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Quick Links')}>
-              <View style={{marginLeft: '5%'}}>
-                <Svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="26"
-                  height="20"
-                  viewBox="0 0 26 20"
-                  fill="none">
-                  <Path
-                    d="M26.0001 19C26.0001 19.2652 25.8947 19.5196 25.7072 19.7071C25.5196 19.8947 25.2653 20 25.0001 20C24.7348 20 24.4805 19.8947 24.2929 19.7071C24.1054 19.5196 24.0001 19.2652 24.0001 19C23.9967 16.0836 22.8368 13.2877 20.7746 11.2255C18.7124 9.1633 15.9164 8.00331 13.0001 8.00001H3.4138L7.70755 12.2925C7.8952 12.4801 8.00061 12.7346 8.00061 13C8.00061 13.2654 7.8952 13.5199 7.70755 13.7075C7.51991 13.8951 7.26542 14.0006 7.00005 14.0006C6.73469 14.0006 6.48019 13.8951 6.29255 13.7075L0.292554 7.70751C0.199578 7.61463 0.125819 7.50434 0.0754943 7.38295C0.02517 7.26155 -0.000732422 7.13142 -0.000732422 7.00001C-0.000732422 6.86859 0.02517 6.73846 0.0754943 6.61707C0.125819 6.49567 0.199578 6.38538 0.292554 6.29251L6.29255 0.292507C6.48019 0.104866 6.73469 -0.000549318 7.00005 -0.000549316C7.26542 -0.000549314 7.51991 0.104866 7.70755 0.292507C7.8952 0.480147 8.00061 0.734643 8.00061 1.00001C8.00061 1.26537 7.8952 1.51987 7.70755 1.70751L3.4138 6.00001H13.0001C16.4468 6.00365 19.7512 7.37445 22.1884 9.81164C24.6256 12.2488 25.9964 15.5533 26.0001 19Z"
-                    fill="#EBEBEF"
-                  />
-                </Svg>
-              </View>
-            </TouchableOpacity>
-            <View style={{marginBottom: 20}} />
             <View style={styles.topSidebar}>
               <Text style={styles.header}>Credits</Text>
+              <TouchableOpacity
+                style={styles.hamburgerIconPress}
+                onPress={() => navigation.openDrawer()}>
+                <Svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  style={{marginTop: '28%'}}>
+                  <Path
+                    d="M42.5 24.25C42.5 24.8467 42.2629 25.419 41.841 25.841C41.419 26.2629 40.8467 26.5 40.25 26.5H7.25C6.65326 26.5 6.08097 26.2629 5.65901 25.841C5.23705 25.419 5 24.8467 5 24.25C5 23.6533 5.23705 23.081 5.65901 22.659C6.08097 22.2371 6.65326 22 7.25 22H40.25C40.8467 22 41.419 22.2371 41.841 22.659C42.2629 23.081 42.5 23.6533 42.5 24.25ZM7.25 14.5H40.25C40.8467 14.5 41.419 14.2629 41.841 13.841C42.2629 13.419 42.5 12.8467 42.5 12.25C42.5 11.6533 42.2629 11.081 41.841 10.659C41.419 10.2371 40.8467 10 40.25 10H7.25C6.65326 10 6.08097 10.2371 5.65901 10.659C5.23705 11.081 5 11.6533 5 12.25C5 12.8467 5.23705 13.419 5.65901 13.841C6.08097 14.2629 6.65326 14.5 7.25 14.5ZM40.25 34H7.25C6.65326 34 6.08097 34.2371 5.65901 34.659C5.23705 35.081 5 35.6533 5 36.25C5 36.8467 5.23705 37.419 5.65901 37.841C6.08097 38.2629 6.65326 38.5 7.25 38.5H40.25C40.8467 38.5 41.419 38.2629 41.841 37.841C42.2629 37.419 42.5 36.8467 42.5 36.25C42.5 35.6533 42.2629 35.081 41.841 34.659C41.419 34.2371 40.8467 34 40.25 34Z"
+                    fill="#1C1C12"
+                  />
+                </Svg>
+              </TouchableOpacity>
             </View>
+            <View style={{marginBottom: 20}} />
             <View style={{marginLeft: '5%'}}></View>
             <View style={{marginTop: 35, flex: 1}} />
             <FlatList
@@ -97,70 +101,95 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   topSidebar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '90%',
     marginLeft: '5%',
-    gap: 10,
+    marginTop: '1%',
   },
   imageBackground: {
     width: '100%',
     height: '100%',
   },
   header: {
-    color: '#EBEBEF',
-    textAlign: 'center',
-    fontFamily: 'Lato',
-    fontSize: 40,
-    fontWeight: 'normal',
+    color: '#356AA9',
+    fontFamily: 'Prototype',
+    fontSize: 50,
+    fontWeight: 400,
   },
-  sectionHeader: {
+  boxHeader: {
+    color: '#1C1C12',
+    fontFamily: 'Prototype',
+    fontSize: 27,
+    fontWeight: '400',
+    marginLeft: '5%',
+    marginTop: '20%',
+  },
+  moreInfoText: {
     color: 'rgba(235, 235, 239, 0.70)',
     fontFamily: 'Lato',
     fontSize: 16,
-    fontWeight: '400',
+    fontStyle: 'normal',
+    padding: 10,
+    marginLeft: '1%',
   },
-  subContainer: {
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#EBEBEF',
-    backgroundColor: 'rgba(235, 235, 239, 0.10)',
-    shadowColor: 'rgba(170, 181, 224, 0.30)',
-    shadowOffset: {width: 0, height: 4},
-    shadowOpacity: 0.3,
-    shadowRadius: 30,
-    width: '93.5%',
-    height: 100,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+  entireBox: {
+    width: '100%',
+    height: 175,
+    justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: '3%',
-    marginBottom: 20,
+    marginBottom: '7%',
   },
-  subjectHeader: {
-    color: '#EBEBEF',
-    fontFamily: 'Lato',
-    fontSize: 24,
-    fontWeight: '400',
+  button: {
+    width: '90%',
+    height: height * 0.07,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: '7%',
+    backgroundColor: '#356AA9', // Add this line
+    shadowColor: 'rgba(28, 28, 34, 0.30)', // Add this line
+    shadowOffset: {width: 4, height: 4}, // Add this line
+    shadowOpacity: 0.3, // Add this line
+    shadowRadius: 32, // Add this line
   },
-  locationText: {
-    color: '#EBEBEF',
-    fontFamily: 'Lato',
-    fontSize: 16,
+  box: {
+    backgroundColor: '#4F90DD',
+    width: '90%',
+    height: height * 0.1,
+    marginLeft: '5%',
+    marginBottom: '5%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    gap: 10,
   },
-  redirectText: {
-    color: '#ABABED',
+  centeredText: {
+    color: '#1C1C12',
     textAlign: 'center',
-    fontFamily: 'Lato',
+    fontFamily: 'Montserrat',
     fontSize: 16,
+    fontStyle: 'normal',
+    fontWeight: '600',
+    lineHeight: 19.2, // You need to specify a numeric value for lineHeight
+    marginLeft: '5%',
+    marginRight: '5%',
+  },
+  stampHeader: {
+    color: '#EBEBEF',
+    fontFamily: 'Prototype',
+    fontSize: 20,
+    fontStyle: 'normal',
     fontWeight: '400',
-    textDecorationLine: 'underline',
+    lineHeight: 24,
+  },
+  stampBody: {
+    color: '#EBEBEF',
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 16,
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: 19.2,
   },
 });
 
