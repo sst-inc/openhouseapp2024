@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     color: '#356AA9',
     fontFamily: 'Prototype',
     fontSize: 50,
-    fontWeight: 400,
+    fontWeight: '400',
   },
   boxHeader: {
     color: '#1C1C12',

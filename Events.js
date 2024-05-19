@@ -24,8 +24,7 @@ import Svg, {
 import LinearGradient from 'react-native-linear-gradient';
 import {RFValue} from 'react-native-responsive-fontsize';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as Notifications from 'expo-notifications';
-import {act} from 'react-test-renderer';
+import notifee, {EventType} from '@notifee/react-native';
 
 const events = [
   {
@@ -177,39 +176,32 @@ const FlatListItem = ({item}) => {
 
     // If isSvgOne is set to true, schedule a notification
     if (isSvgOne === true) {
-      // Ensure necessary permissions are granted
-      const {status} = await Notifications.requestPermissionsAsync();
-      if (status !== 'granted') {
-        alert(
-          'You need to enable permissions in order to receive notifications',
-        );
-        return;
-      }
+      await notifee.createChannel({
+        id: 'default',
+        name: 'Default Channel',
+      });
 
       if (notificationId) {
         // Cancel the scheduled notification
-        await Notifications.cancelScheduledNotificationAsync(notificationId);
+        await notifee.cancelNotification(notificationId);
         setNotificationId(null);
       } else {
         // Schedule the notification
         const eventTime = item.notifTime.split('.');
         const eventMinute = parseInt(eventTime[1].slice(0, 2), 10);
         let notifSec = (eventMinute - new Date().getMinutes()) * 60;
-        Notifications.setNotificationHandler({
-          handleNotification: async () => ({
-            shouldShowAlert: true,
-            shouldPlaySound: true,
-            shouldSetBadge: false,
-          }),
-        });
-        const id = await Notifications.scheduleNotificationAsync({
-          content: {
-            title: item.name,
-            body: item.location,
+
+        const id = await notifee.scheduleNotification({
+          title: item.name,
+          body: item.location,
+          android: {
+            channelId: 'default',
+            notificationSound: 'default',
+            importance: 'high',
           },
           trigger: {
-            seconds: notifSec,
-            repeats: false,
+            timestamp: Date.now() + notifSec * 1000,
+            repeatFrequency: 'none',
           },
         });
 
@@ -363,7 +355,7 @@ const EventsPage = ({navigation}) => {
             horizontal={true}
             showsHorizontalScrollIndicator={true}
             pagingEnabled={true}
-            style={{width: width, height: '48%', marginTop: '9%'}}>
+            style={{width: width, height: 500, marginTop: '9%'}}>
             {carouselItems.map((item, index) => (
               <View key={index} style={styles.topBox}>
                 <ImageBackground
@@ -488,7 +480,7 @@ const EventsPage = ({navigation}) => {
             <Text style={styles.basicText}>now</Text>
             <Svg
               xmlns="http://www.w3.org/2000/svg"
-              width="358"
+              width="300"
               height="2"
               viewBox="0 0 334 2"
               fill="none">
@@ -526,7 +518,7 @@ const styles = StyleSheet.create({
     color: '#356AA9',
     fontFamily: 'Prototype',
     fontSize: 50,
-    fontWeight: 400,
+    fontWeight: '400',
   },
   discover: {
     color: 'rgba(235, 235, 239, 0.60)',

@@ -651,7 +651,7 @@ const styles = StyleSheet.create({
     color: '#356AA9',
     fontFamily: 'Prototype',
     fontSize: 50,
-    fontWeight: 400,
+    fontWeight: '400',
   },
   box: {
     backgroundColor: 'rgba(28, 28, 18, 0.40)', // Set the background color

@@ -4,41 +4,6 @@ PODS:
     - React-Core
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
-  - EXApplication (5.9.1):
-    - ExpoModulesCore
-  - EXBarCodeScanner (12.9.3):
-    - EXImageLoader
-    - ExpoModulesCore
-    - ZXingObjC/OneD
-    - ZXingObjC/PDF417
-  - EXConstants (15.4.6):
-    - ExpoModulesCore
-  - EXFont (11.10.3):
-    - ExpoModulesCore
-  - EXImageLoader (4.6.0):
-    - ExpoModulesCore
-    - React-Core
-  - EXNotifications (0.27.7):
-    - ExpoModulesCore
-  - EXPermissions (14.4.0):
-    - ExpoModulesCore
-  - Expo (50.0.18):
-    - ExpoModulesCore
-  - ExpoAsset (10.0.6):
-    - ExpoModulesCore
-  - ExpoFileSystem (16.0.9):
-    - ExpoModulesCore
-  - ExpoKeepAwake (12.8.2):
-    - ExpoModulesCore
-  - ExpoLinearGradient (12.7.2):
-    - ExpoModulesCore
-  - ExpoModulesCore (1.11.13):
-    - glog
-    - RCT-Folly (= 2022.05.16.00)
-    - React-Core
-    - React-NativeModulesApple
-    - React-RCTAppDelegate
-    - ReactCommon/turbomodule/core
   - FBLazyVector (0.73.8)
   - FBReactNativeSpec (0.73.8):
     - RCT-Folly (= 2022.05.16.00)
@@ -1199,29 +1164,11 @@ PODS:
     - React-Core
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
-  - ZXingObjC/Core (3.6.9)
-  - ZXingObjC/OneD (3.6.9):
-    - ZXingObjC/Core
-  - ZXingObjC/PDF417 (3.6.9):
-    - ZXingObjC/Core
 
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
-  - EXApplication (from `../node_modules/expo-application/ios`)
-  - EXBarCodeScanner (from `../node_modules/expo-barcode-scanner/ios`)
-  - EXConstants (from `../node_modules/expo-constants/ios`)
-  - EXFont (from `../node_modules/expo-font/ios`)
-  - EXImageLoader (from `../node_modules/expo-image-loader/ios`)
-  - EXNotifications (from `../node_modules/expo-notifications/ios`)
-  - EXPermissions (from `../node_modules/expo-permissions/ios`)
-  - Expo (from `../node_modules/expo`)
-  - ExpoAsset (from `../../../node_modules/expo-asset/ios`)
-  - ExpoFileSystem (from `../node_modules/expo-file-system/ios`)
-  - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
-  - ExpoLinearGradient (from `../node_modules/expo-linear-gradient/ios`)
-  - ExpoModulesCore (from `../node_modules/expo-modules-core`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - Flipper (= 0.201.0)
@@ -1326,7 +1273,6 @@ SPEC REPOS:
     - libevent
     - OpenSSL-Universal
     - SocketRocket
-    - ZXingObjC
 
 EXTERNAL SOURCES:
   boost:
@@ -1335,32 +1281,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-linear-gradient"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
-  EXApplication:
-    :path: "../node_modules/expo-application/ios"
-  EXBarCodeScanner:
-    :path: "../node_modules/expo-barcode-scanner/ios"
-  EXConstants:
-    :path: "../node_modules/expo-constants/ios"
-  EXFont:
-    :path: "../node_modules/expo-font/ios"
-  EXImageLoader:
-    :path: "../node_modules/expo-image-loader/ios"
-  EXNotifications:
-    :path: "../node_modules/expo-notifications/ios"
-  EXPermissions:
-    :path: "../node_modules/expo-permissions/ios"
-  Expo:
-    :path: "../node_modules/expo"
-  ExpoAsset:
-    :path: "../../../node_modules/expo-asset/ios"
-  ExpoFileSystem:
-    :path: "../node_modules/expo-file-system/ios"
-  ExpoKeepAwake:
-    :path: "../node_modules/expo-keep-awake/ios"
-  ExpoLinearGradient:
-    :path: "../node_modules/expo-linear-gradient/ios"
-  ExpoModulesCore:
-    :path: "../node_modules/expo-modules-core"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   FBReactNativeSpec:
@@ -1488,19 +1408,6 @@ SPEC CHECKSUMS:
   BVLinearGradient: 880f91a7854faff2df62518f0281afb1c60d49a3
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
-  EXApplication: c08200c34daca7af7fd76ac4b9d606077410e8ad
-  EXBarCodeScanner: d59fd943cebee3f913ebf4ffde0d05d344da8b78
-  EXConstants: a5f6276e565d98f9eb4280f81241fc342d641590
-  EXFont: f20669cb266ef48b004f1eb1f2b20db96cd1df9f
-  EXImageLoader: 55080616b2fe9da19ef8c7f706afd9814e279b6b
-  EXNotifications: 1c117bf042bd05a5b1a1ffd06f4c36ff9921ed2b
-  EXPermissions: 51c6115893689c3e9787f4819aa67ceeae601038
-  Expo: 09bd48f31bb7f1a3c97fd5a6cb28feae89cb4e40
-  ExpoAsset: 9b7433ecc5f1b608ccbb823492e062bde944abd2
-  ExpoFileSystem: 74cc0fae916f9f044248433971dcfc8c3befd057
-  ExpoKeepAwake: 0f5cad99603a3268e50af9a6eb8b76d0d9ac956c
-  ExpoLinearGradient: 4ad1449a2408e0435ac959076562b3921f2e32a1
-  ExpoModulesCore: 4a8928a228569301ac4fc4a1e846713e05754d05
   FBLazyVector: df34a309e356a77581809834f6ec3fbe7153f620
   FBReactNativeSpec: bbe8b686178e5ce03d1d8a356789f211f91f31b8
   Flipper: c7a0093234c4bdd456e363f2f19b2e4b27652d44
@@ -1573,8 +1480,7 @@ SPEC CHECKSUMS:
   RNVectorIcons: 96e8c5c45609932bb2f8347e1c709bcca0e95654
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: e5b887426cee15d2a326bdd34afc0282fc0486ad
-  ZXingObjC: 8898711ab495761b2dbbdec76d90164a6d7e14c5
 
-PODFILE CHECKSUM: d92b7442ec055977903f34953b84bc40d99fbe37
+PODFILE CHECKSUM: 8862d635fea77313020ccfb746a150b8ac690527
 
 COCOAPODS: 1.15.2

@@ -26,15 +26,13 @@ import Svg, {
   ClipPath,
   Mask,
 } from 'react-native-svg';
-import LinearGradient from 'react-native-linear-gradient';
 import {Stamps, QRCodeScanner} from './Stamps';
 import {BoothInfo} from './boothScreens/BoothInfo';
 import EventsPage from './Events';
-import Layout from './Layout';
 import QuickLinks from './QuickLinks';
 import Credits from './secretCreds';
-import * as Notifications from 'expo-notifications';
 import {LogBox} from 'react-native';
+import notifee, {EventType} from '@notifee/react-native';
 
 const Drawer = createDrawerNavigator();
 
@@ -229,61 +227,55 @@ function CustomDrawerContent(props) {
 
 const App = () => {
   LogBox.ignoreAllLogs();
+
   useEffect(() => {
     const scheduleNotification = async () => {
       let currentTime = new Date();
       let targetTime = new Date('2024-05-25T14:00:00');
       let diff = targetTime - currentTime;
       let diffInSecs = Math.floor(diff / 1000);
-      Notifications.setNotificationHandler({
-        handleNotification: async () => ({
-          shouldShowAlert: true,
-          shouldPlaySound: true,
-          shouldSetBadge: false,
-        }),
+
+      await notifee.createChannel({
+        id: 'default',
+        name: 'Default Channel',
       });
-      await Notifications.scheduleNotificationAsync({
-        content: {
-          title: 'Post event survey (click on this notification)',
-          body: 'After the event, please fill out the survey to help us improve!',
-          data: {
-            url: 'https://forms.gle/hngz5gFpsJuZc8D27',
-          },
+
+      await notifee.scheduleNotification({
+        title: 'Post event survey (click on this notification)',
+        body: 'After the event, please fill out the survey to help us improve!',
+        data: {
+          url: 'https://forms.gle/hngz5gFpsJuZc8D27',
+        },
+        android: {
+          channelId: 'default',
+          notificationSound: 'default',
+          importance: 'high',
         },
         trigger: {
-          seconds: diffInSecs,
-          repeats: false,
+          timestamp: Date.now() + diffInSecs * 1000,
+          repeatFrequency: 'none',
         },
       });
     };
 
     scheduleNotification();
 
-    const handleNotificationResponse = async response => {
-      const url = response.notification.request.content.data.url;
+    const handleNotificationResponse = async ({data}) => {
+      const url = data.url;
       if (url) {
         await Linking.openURL(url);
       }
     };
 
     // Handle notification response if app is in foreground or background
-    const subscription = Notifications.addNotificationResponseReceivedListener(
-      handleNotificationResponse,
-    );
-
-    // Handle notification response if app was closed
-    const handleInitialNotification = async () => {
-      const initialNotification =
-        await Notifications.getInitialNotificationAsync();
-      if (initialNotification) {
-        handleNotificationResponse(initialNotification);
+    const unsubscribe = notifee.onForegroundEvent(({type, detail}) => {
+      if (type === EventType.PRESS) {
+        handleNotificationResponse(detail.notification);
       }
-    };
-
-    handleInitialNotification();
+    });
 
     // Unsubscribe when the component unmounts
-    return () => subscription.remove();
+    return () => unsubscribe();
   }, []);
   return (
     <NavigationContainer>
@@ -591,8 +583,8 @@ const App = () => {
           options={{
             drawerLabel: ({focused}) => (
               <View style={{backgroundColor: 'rgba(0, 0, 0, 0)'}}>
-                <View style={{flexDirection: 'row', marginTop: 70}}>
-                  <Text>Made by:</Text>
+                <View style={{flexDirection: 'row', marginTop: 0}}>
+                  <Text style={{color: 'black'}}>Made by:</Text>
                   <Image
                     source={require('./assets/incLogo.png')}
                     style={{bottom: 10, left: 10}}

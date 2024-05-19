@@ -422,7 +422,7 @@ const styles = StyleSheet.create({
     color: '#356AA9',
     fontFamily: 'Prototype',
     fontSize: 50,
-    fontWeight: 400,
+    fontWeight: '400',
   },
   sectionHeader: {
     color: 'rgba(235, 235, 239, 0.70)',
