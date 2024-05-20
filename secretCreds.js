@@ -40,8 +40,13 @@ const sigmas = [
   },
   {
     id: 6,
-    name: 'Tristan Chay Yu Hung',
+    name: 'Chay Yu Hung Tristan',
     position: 'Consultant',
+  },
+  {
+    id: 6,
+    name: 'Aathithya Jegatheesan',
+    position: 'Mental support',
   },
 ];
 

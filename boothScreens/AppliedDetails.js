@@ -164,12 +164,13 @@ const AppliedDetails = ({route}) => {
               <View style={{marginTop: 10, marginLeft: '5%', width: '85%'}}>
                 <View
                   style={{
-                    width: windowWidth * 1.1,
+                    width: windowWidth * 1,
                     backgroundColor: '#D9D9D9',
                     alignSelf: 'center',
                     alignItems: 'center',
                     justifyContent: 'center',
                     height: 60,
+                    marginLeft: '5%',
                   }}>
                   <Text
                     style={{
@@ -273,6 +274,7 @@ const styles = StyleSheet.create({
     color: '#1C1C12',
     fontFamily: 'Montserrat-Regular',
     fontSize: 16,
+    paddingBottom: 20,
   },
   redirectText: {
     color: '#ABABED',

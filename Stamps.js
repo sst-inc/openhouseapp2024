@@ -57,6 +57,8 @@ const QRCodeScanner = ({navigation}) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(RNCamera.Constants.Type.back);
   const [scannedDataArray, setScannedDataArray] = useState([]);
+  const [lastScannedTime, setLastScannedTime] = useState(0);
+  const cameraRef = useRef(null);
   LogBox.ignoreAllLogs();
 
   useEffect(() => {
@@ -83,19 +85,23 @@ const QRCodeScanner = ({navigation}) => {
   }
 
   const barcodeRecognized = barcode => {
-    const newDataArray = [...scannedDataArray];
-    newDataArray.push(barcode.data);
-    console.log(barcode.data);
-    setScannedDataArray(newDataArray);
-    if (
-      (barcode.data === 'c3N0aW5jbWFkZXRoaXN3') |
-      (barcode.data === 'aWxvdmVhcnRo') |
-      (barcode.data === 'am9pbnNzdGluYw==')
-    ) {
-      navigation.navigate('Stamps');
-      Alert.alert(
-        'Correct value scanned!' + '\n' + '\n' + 'Value: ' + barcode.data,
-      );
+    const currentTime = Date.now();
+    if (currentTime - lastScannedTime >= 300) {
+      setLastScannedTime(currentTime);
+      const newDataArray = [...scannedDataArray];
+      newDataArray.push(barcode.data);
+      console.log(barcode.data);
+      setScannedDataArray(newDataArray);
+      if (
+        barcode.data === 'c3N0aW5jbWFkZXRoaXN3' ||
+        barcode.data === 'aWxvdmVhcnRo' ||
+        barcode.data === 'am9pbnNzdGluYw=='
+      ) {
+        navigation.navigate('Stamps');
+        Alert.alert(
+          'Correct value scanned!' + '\n' + '\n' + 'Value: ' + barcode.data,
+        );
+      }
     }
   };
 
@@ -205,7 +211,7 @@ const Stamps = ({navigation}) => {
                   }}>
                   <Text style={styles.stampHeader}>Academic booth</Text>
                   <Text style={styles.stampBody}>
-                    Unlock this stamps at any Academic Booth!
+                    {stamp1 ? 'Stamp unlocked!' : 'Stamp locked!'}
                   </Text>
                 </View>
                 <View>
@@ -273,7 +279,7 @@ const Stamps = ({navigation}) => {
                   }}>
                   <Text style={styles.stampHeader}>Panel discussions</Text>
                   <Text style={styles.stampBody}>
-                    Unlock this stamps at any Panel discussion!
+                    {stamp2 ? 'Stamp unlocked!' : 'Stamp locked!'}
                   </Text>
                 </View>
                 <View>
@@ -341,7 +347,7 @@ const Stamps = ({navigation}) => {
                   }}>
                   <Text style={styles.stampHeader}>Hands on activity</Text>
                   <Text style={styles.stampBody}>
-                    Unlock this stamps at any hands on activity!
+                    {stamp3 ? 'Stamp unlocked!' : 'Stamp locked!'}
                   </Text>
                 </View>
                 <View>
