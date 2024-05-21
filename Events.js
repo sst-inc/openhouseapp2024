@@ -24,7 +24,7 @@ import Svg, {
 import LinearGradient from 'react-native-linear-gradient';
 import {RFValue} from 'react-native-responsive-fontsize';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import notifee, {EventType} from '@notifee/react-native';
+import notifee, {TimestampTrigger, TriggerType} from '@notifee/react-native';
 
 const events = [
   {
@@ -33,7 +33,7 @@ const events = [
     name: 'Open House starts',
     location: '@SST',
     timeRange: '  9:00am - end',
-    notifTime: '8.55am',
+    notifTime: '8:58',
   },
   {
     id: '2',
@@ -41,7 +41,7 @@ const events = [
     name: 'Academic Panel',
     location: '@Auditorium',
     timeRange: '  9:30am - 9:45am',
-    notifTime: '9.29am',
+    notifTime: '9:28',
     actualLocation: 'Auditorium',
   },
   {
@@ -50,7 +50,7 @@ const events = [
     name: 'Science hands on',
     location: '@Labs',
     timeRange: '  9:30am - 10:30am',
-    notifTime: '9.29am',
+    notifTime: '9:28',
     actualLocation: 'Respective Science Labs',
   },
   {
@@ -59,7 +59,7 @@ const events = [
     name: 'PforSSTPanel:Transition ',
     location: '@LO1',
     timeRange: ' 10:00am - 10:30am',
-    notifTime: '9.59am',
+    notifTime: '9:58',
     actualLocation: 'Learning Oasis 1',
   },
   {
@@ -69,7 +69,7 @@ const events = [
     location: '@Atrium',
     actualLocation: 'Atrium',
     timeRange: '10:00am - 10:15am',
-    notifTime: '9.59am',
+    notifTime: '9:58',
   },
   {
     id: '12',
@@ -78,7 +78,7 @@ const events = [
     location: '@Atrium',
     actualLocation: 'Atrium',
     timeRange: '10:30am - 10:45am',
-    notifTime: '10.29am',
+    notifTime: '10:28',
   },
   {
     id: '5',
@@ -86,7 +86,7 @@ const events = [
     name: 'Student Life Panel',
     location: '@LO2',
     timeRange: ' 10:45am - 11:15am',
-    notifTime: '10.45am',
+    notifTime: '10:43',
     actualLocation: 'Learning Oasis 2',
   },
   {
@@ -96,7 +96,7 @@ const events = [
     name: 'Performance by Dance ',
     actualLocation: 'Atrium',
     timeRange: '11:00am - 11:15am',
-    notifTime: '10.59am',
+    notifTime: '10:58',
   },
   {
     id: '7',
@@ -104,7 +104,7 @@ const events = [
     name: 'Student Life Panel',
     location: '@LO2',
     timeRange: ' 11.15am - 11:30am',
-    notifTime: '11.15am',
+    notifTime: '11:13',
     actualLocation: 'Learning Oasis 2',
   },
   {
@@ -113,7 +113,7 @@ const events = [
     name: 'Academic Panel',
     location: '@Auditorium',
     timeRange: ' 11:30am - 11:45am',
-    notifTime: '11.29am',
+    notifTime: '11:29',
     actualLocation: 'Auditorium',
   },
   {
@@ -122,7 +122,7 @@ const events = [
     name: 'PforSSTPanel:Transition',
     location: '@LO1',
     timeRange: ' 11:30am - 12:00pm',
-    notifTime: '11.29am',
+    notifTime: '11:29',
     actualLocation: 'Learning Oasis 1',
   },
   {
@@ -131,7 +131,7 @@ const events = [
     name: 'Science hands on',
     location: '@Labs',
     timeRange: ' 11:30am - 12:30pm',
-    notifTime: '11.29am',
+    notifTime: '11:29',
     actualLocation: 'Labs',
   },
   {
@@ -141,7 +141,7 @@ const events = [
     location: '@Atrium',
     actualLocation: 'Atrium',
     timeRange: '11:30am - 11:45am',
-    notifTime: '11.29am',
+    notifTime: '11:29',
   },
   {
     id: '11',
@@ -149,66 +149,72 @@ const events = [
     name: 'PforSSTPanel:Beyond SST',
     location: '@LO1',
     timeRange: ' 12:15pm - 12:45pm',
-    notifTime: '12.14pm',
+    notifTime: '12:14',
     actualLocation: 'Learning Oasis 1',
   },
 ];
-
 const FlatListItem = ({item}) => {
   const [isSvgOne, setSvgOne] = useState(false);
-  const [notificationId, setNotificationId] = useState(null);
 
+  const [notificationID, setNotificationID] = useState(null); 
   useEffect(() => {
     const loadSvgState = async () => {
       const savedState = await AsyncStorage.getItem(`svgState-${item.id}`);
-      setSvgOne(String(savedState) === 'true');
+      console.log(savedState);
+      if (savedState === null) {
+        setSvgOne(false);
+      } else {
+        setSvgOne(savedState === 'true');
+      }
+      console.log(isSvgOne);
     };
 
     loadSvgState();
   }, [item.id]);
-
-  const handlePress = async () => {
+  useEffect(() => {
+    if (isSvgOne) {
+      scheduleNotification();
+    }
+  }, [isSvgOne]);
+  async function handleState() {
     // Toggle the state
     setSvgOne(prevState => !prevState);
-
+    console.log(isSvgOne);
     // Save the state to AsyncStorage
-    await AsyncStorage.setItem(`svgState-${item.id}`, String(!isSvgOne));
-
+    await AsyncStorage.setItem(`svgState-${item.id}`, String(isSvgOne));
+    console.log(isSvgOne);
     // If isSvgOne is set to true, schedule a notification
+  }
+  async function scheduleNotification() {
     if (isSvgOne === true) {
-      await notifee.createChannel({
-        id: 'default',
-        name: 'Default Channel',
-      });
+      // Schedule the notification
+      const eventTime = item.notifTime;
+      const triggerTime = new Date(`2024-05-25T${eventTime}:00`);
+      // let notifSec = (eventMinute - new Date().getMinutes()) * 60;
+      console.log(triggerTime.getTime());
+      const trigger = { 
+        type: TriggerType.TIMESTAMP,
+        timestamp: triggerTime.getTime(),
+      };
 
-      if (notificationId) {
-        // Cancel the scheduled notification
-        await notifee.cancelNotification(notificationId);
-        setNotificationId(null);
-      } else {
-        // Schedule the notification
-        const eventTime = item.notifTime.split('.');
-        const eventMinute = parseInt(eventTime[1].slice(0, 2), 10);
-        let notifSec = (eventMinute - new Date().getMinutes()) * 60;
-
-        const id = await notifee.scheduleNotification({
+      // Create a trigger notification
+      await notifee.createTriggerNotification(
+        {
           title: item.name,
           body: item.location,
           android: {
-            channelId: 'default',
-            notificationSound: 'default',
-            importance: 'high',
+            channelId: 'your-channel-id',
           },
-          trigger: {
-            timestamp: Date.now() + notifSec * 1000,
-            repeatFrequency: 'none',
-          },
-        });
-
-        setNotificationId(id);
-      }
+        },
+        trigger,
+      );
+      setNotificationID(notificationID);
+      console.log('Notification scheduled');
+    } else {
+      await notifee.cancelAllNotifications();
+      setNotificationID(null);
     }
-  };
+  }
 
   return (
     <>
@@ -241,8 +247,17 @@ const FlatListItem = ({item}) => {
                 <View style={{flex: 1, minHeight: 40}}>
                   <TouchableOpacity
                     style={{position: 'absolute', top: -30, right: 0}}
-                    onPress={handlePress}>
-                    {isSvgOne == true ? (
+                    onPress={() => {
+                      handleState();
+                      setTimeout(() => {
+                        notifee
+                          .getTriggerNotificationIds()
+                          .then(ids =>
+                            console.log('All trigger notifications: ', ids),
+                          );
+                      }, 200);
+                    }}>
+                    {isSvgOne === true ? (
                       <Svg
                         width={40}
                         height={40}

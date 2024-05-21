@@ -32,7 +32,7 @@ import EventsPage from './Events';
 import QuickLinks from './QuickLinks';
 import Credits from './secretCreds';
 import {LogBox} from 'react-native';
-import notifee, {EventType} from '@notifee/react-native';
+import notifee, {TimestampTrigger, TriggerType} from '@notifee/react-native';
 
 const Drawer = createDrawerNavigator();
 
@@ -227,56 +227,6 @@ function CustomDrawerContent(props) {
 
 const App = () => {
   LogBox.ignoreAllLogs();
-
-  useEffect(() => {
-    const scheduleNotification = async () => {
-      let currentTime = new Date();
-      let targetTime = new Date('2024-05-25T14:00:00');
-      let diff = targetTime - currentTime;
-      let diffInSecs = Math.floor(diff / 1000);
-
-      await notifee.createChannel({
-        id: 'default',
-        name: 'Default Channel',
-      });
-
-      await notifee.scheduleNotification({
-        title: 'Post event survey (click on this notification)',
-        body: 'After the event, please fill out the survey to help us improve!',
-        data: {
-          url: 'https://forms.gle/hngz5gFpsJuZc8D27',
-        },
-        android: {
-          channelId: 'default',
-          notificationSound: 'default',
-          importance: 'high',
-        },
-        trigger: {
-          timestamp: Date.now() + diffInSecs * 1000,
-          repeatFrequency: 'none',
-        },
-      });
-    };
-
-    scheduleNotification();
-
-    const handleNotificationResponse = async ({data}) => {
-      const url = data.url;
-      if (url) {
-        await Linking.openURL(url);
-      }
-    };
-
-    // Handle notification response if app is in foreground or background
-    const unsubscribe = notifee.onForegroundEvent(({type, detail}) => {
-      if (type === EventType.PRESS) {
-        handleNotificationResponse(detail.notification);
-      }
-    });
-
-    // Unsubscribe when the component unmounts
-    return () => unsubscribe();
-  }, []);
   return (
     <NavigationContainer>
       <Drawer.Navigator
@@ -664,8 +614,29 @@ const HomeScreen = ({navigation}) => {
       duration: 100,
       useNativeDriver: true,
     }).start(() => navigation.navigate('Events')); // Navigate after the animation completes
-  }
+    async function onCreateTriggerNotification() {
+      await notifee.requestPermission();
+      const date = new Date('2024-05-25T12:30:00');
+      // Create a time-based trigger
+      const trigger = {
+        type: TriggerType.TIMESTAMP,
+        timestamp: date.getTime(), // fire at 11:10am (10 minutes before meeting)
+      };
 
+      // Create a trigger notification
+      await notifee.createTriggerNotification(
+        {
+          title: 'Post event survey form',
+          body: 'Please remember to fill out the post event survey for your feedback!',
+          android: {
+            channelId: 'your-channel-id',
+          },
+        },
+        trigger,
+      );
+    }
+    onCreateTriggerNotification();
+  }
   return (
     <View style={styles.container}>
       <AnimatedImageBackground
@@ -682,7 +653,12 @@ const HomeScreen = ({navigation}) => {
             justifyContent: 'center',
             flexDirection: 'row',
           }}
-          onPress={whereToGo}>
+          onPress={() => {
+            whereToGo();
+            notifee
+              .getTriggerNotificationIds()
+              .then(ids => console.log('All trigger notifications: ', ids));
+          }}>
           <Svg
             xmlns="http://www.w3.org/2000/Svg"
             width="24"
@@ -708,7 +684,12 @@ const HomeScreen = ({navigation}) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={whereToGo}
+          onPress={() => {
+            whereToGo();
+            notifee
+              .getTriggerNotificationIds()
+              .then(ids => console.log('All trigger notifications: ', ids));
+          }}
           style={{
             width: '80%',
             height: '8%',
