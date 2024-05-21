@@ -217,54 +217,46 @@ const Stamps = ({navigation}) => {
                 <View>
                   {stamp1 ? (
                     <Svg
-                      width="48px"
+                      fill="#ffffff"
                       height="48px"
-                      viewBox="0 0 24 24"
-                      fill="none"
+                      width="48px"
+                      version="1.1"
+                      id="Layer_1"
                       xmlns="http://www.w3.org/2000/svg"
-                      stroke="#ffffff">
+                      viewBox="0 0 330 330">
                       <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
                       <G
                         id="SVGRepo_tracerCarrier"
                         stroke-linecap="round"
                         stroke-linejoin="round"></G>
                       <G id="SVGRepo_iconCarrier">
-                        <Path
-                          d="M11 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H15"
-                          stroke="#ffffff"
-                          stroke-width="1.5"
-                          stroke-linecap="round"></Path>
-                        <Path
-                          d="M6 10V8C6 7.65929 6.0284 7.32521 6.08296 7M17.811 6.5C17.1449 3.91216 14.7958 2 12 2C10.223 2 8.62643 2.7725 7.52779 4"
-                          stroke="#ffffff"
-                          stroke-width="1.5"
-                          stroke-linecap="round"></Path>
+                        <G id="XMLID_516_">
+                          <Path
+                            id="XMLID_517_"
+                            d="M15,160c8.284,0,15-6.716,15-15V85c0-30.327,24.673-55,55-55c30.327,0,55,24.673,55,55v45h-25 c-8.284,0-15,6.716-15,15v170c0,8.284,6.716,15,15,15h200c8.284,0,15-6.716,15-15V145c0-8.284-6.716-15-15-15H170V85 c0-46.869-38.131-85-85-85S0,38.131,0,85v60C0,153.284,6.716,160,15,160z"></Path>
+                        </G>
                       </G>
                     </Svg>
                   ) : (
                     <Svg
-                      width="48px"
+                      fill="#ffffff"
                       height="48px"
-                      viewBox="0 0 24 24"
-                      fill="none"
+                      width="48px"
+                      version="1.1"
+                      id="Layer_1"
                       xmlns="http://www.w3.org/2000/svg"
-                      stroke="#ffffff">
+                      viewBox="0 0 330 330">
                       <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
                       <G
                         id="SVGRepo_tracerCarrier"
                         stroke-linecap="round"
                         stroke-linejoin="round"></G>
                       <G id="SVGRepo_iconCarrier">
-                        <Path
-                          d="M6 10V8C6 7.65929 6.0284 7.32521 6.08296 7M18 10V8C18 4.68629 15.3137 2 12 2C10.208 2 8.59942 2.78563 7.5 4.03126"
-                          stroke="white"
-                          stroke-width="1.5"
-                          stroke-linecap="round"></Path>
-                        <Path
-                          d="M11 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H15"
-                          stroke="white"
-                          stroke-width="1.5"
-                          stroke-linecap="round"></Path>
+                        <G id="XMLID_504_">
+                          <Path
+                            id="XMLID_505_"
+                            d="M65,330h200c8.284,0,15-6.716,15-15V145c0-8.284-6.716-15-15-15h-15V85c0-46.869-38.131-85-85-85 S80,38.131,80,85v45H65c-8.284,0-15,6.716-15,15v170C50,323.284,56.716,330,65,330z M207.481,219.356l-42.5,42.5 c-2.929,2.929-6.768,4.394-10.606,4.394s-7.678-1.465-10.606-4.394l-21.25-21.25c-5.858-5.858-5.858-15.354,0-21.213 c5.857-5.858,15.355-5.858,21.213,0l10.644,10.643l31.894-31.893c5.857-5.858,15.355-5.858,21.213,0 C213.34,204.002,213.34,213.498,207.481,219.356z M110,85c0-30.327,24.673-55,55-55s55,24.673,55,55v45H110V85z"></Path>
+                        </G>
                       </G>
                     </Svg>
                   )}
@@ -285,54 +277,46 @@ const Stamps = ({navigation}) => {
                 <View>
                   {stamp2 ? (
                     <Svg
-                      width="48px"
+                      fill="#ffffff"
                       height="48px"
-                      viewBox="0 0 24 24"
-                      fill="none"
+                      width="48px"
+                      version="1.1"
+                      id="Layer_1"
                       xmlns="http://www.w3.org/2000/svg"
-                      stroke="#ffffff">
+                      viewBox="0 0 330 330">
                       <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
                       <G
                         id="SVGRepo_tracerCarrier"
                         stroke-linecap="round"
                         stroke-linejoin="round"></G>
                       <G id="SVGRepo_iconCarrier">
-                        <Path
-                          d="M11 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H15"
-                          stroke="#ffffff"
-                          stroke-width="1.5"
-                          stroke-linecap="round"></Path>
-                        <Path
-                          d="M6 10V8C6 7.65929 6.0284 7.32521 6.08296 7M17.811 6.5C17.1449 3.91216 14.7958 2 12 2C10.223 2 8.62643 2.7725 7.52779 4"
-                          stroke="#ffffff"
-                          stroke-width="1.5"
-                          stroke-linecap="round"></Path>
+                        <G id="XMLID_516_">
+                          <Path
+                            id="XMLID_517_"
+                            d="M15,160c8.284,0,15-6.716,15-15V85c0-30.327,24.673-55,55-55c30.327,0,55,24.673,55,55v45h-25 c-8.284,0-15,6.716-15,15v170c0,8.284,6.716,15,15,15h200c8.284,0,15-6.716,15-15V145c0-8.284-6.716-15-15-15H170V85 c0-46.869-38.131-85-85-85S0,38.131,0,85v60C0,153.284,6.716,160,15,160z"></Path>
+                        </G>
                       </G>
                     </Svg>
                   ) : (
                     <Svg
-                      width="48px"
+                      fill="#ffffff"
                       height="48px"
-                      viewBox="0 0 24 24"
-                      fill="none"
+                      width="48px"
+                      version="1.1"
+                      id="Layer_1"
                       xmlns="http://www.w3.org/2000/svg"
-                      stroke="#ffffff">
+                      viewBox="0 0 330 330">
                       <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
                       <G
                         id="SVGRepo_tracerCarrier"
                         stroke-linecap="round"
                         stroke-linejoin="round"></G>
                       <G id="SVGRepo_iconCarrier">
-                        <Path
-                          d="M6 10V8C6 7.65929 6.0284 7.32521 6.08296 7M18 10V8C18 4.68629 15.3137 2 12 2C10.208 2 8.59942 2.78563 7.5 4.03126"
-                          stroke="white"
-                          stroke-width="1.5"
-                          stroke-linecap="round"></Path>
-                        <Path
-                          d="M11 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H15"
-                          stroke="white"
-                          stroke-width="1.5"
-                          stroke-linecap="round"></Path>
+                        <G id="XMLID_504_">
+                          <Path
+                            id="XMLID_505_"
+                            d="M65,330h200c8.284,0,15-6.716,15-15V145c0-8.284-6.716-15-15-15h-15V85c0-46.869-38.131-85-85-85 S80,38.131,80,85v45H65c-8.284,0-15,6.716-15,15v170C50,323.284,56.716,330,65,330z M207.481,219.356l-42.5,42.5 c-2.929,2.929-6.768,4.394-10.606,4.394s-7.678-1.465-10.606-4.394l-21.25-21.25c-5.858-5.858-5.858-15.354,0-21.213 c5.857-5.858,15.355-5.858,21.213,0l10.644,10.643l31.894-31.893c5.857-5.858,15.355-5.858,21.213,0 C213.34,204.002,213.34,213.498,207.481,219.356z M110,85c0-30.327,24.673-55,55-55s55,24.673,55,55v45H110V85z"></Path>
+                        </G>
                       </G>
                     </Svg>
                   )}
@@ -353,54 +337,46 @@ const Stamps = ({navigation}) => {
                 <View>
                   {stamp3 ? (
                     <Svg
-                      width="48px"
+                      fill="#ffffff"
                       height="48px"
-                      viewBox="0 0 24 24"
-                      fill="none"
+                      width="48px"
+                      version="1.1"
+                      id="Layer_1"
                       xmlns="http://www.w3.org/2000/svg"
-                      stroke="#ffffff">
+                      viewBox="0 0 330 330">
                       <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
                       <G
                         id="SVGRepo_tracerCarrier"
                         stroke-linecap="round"
                         stroke-linejoin="round"></G>
                       <G id="SVGRepo_iconCarrier">
-                        <Path
-                          d="M11 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H15"
-                          stroke="#ffffff"
-                          stroke-width="1.5"
-                          stroke-linecap="round"></Path>
-                        <Path
-                          d="M6 10V8C6 7.65929 6.0284 7.32521 6.08296 7M17.811 6.5C17.1449 3.91216 14.7958 2 12 2C10.223 2 8.62643 2.7725 7.52779 4"
-                          stroke="#ffffff"
-                          stroke-width="1.5"
-                          stroke-linecap="round"></Path>
+                        <G id="XMLID_516_">
+                          <Path
+                            id="XMLID_517_"
+                            d="M15,160c8.284,0,15-6.716,15-15V85c0-30.327,24.673-55,55-55c30.327,0,55,24.673,55,55v45h-25 c-8.284,0-15,6.716-15,15v170c0,8.284,6.716,15,15,15h200c8.284,0,15-6.716,15-15V145c0-8.284-6.716-15-15-15H170V85 c0-46.869-38.131-85-85-85S0,38.131,0,85v60C0,153.284,6.716,160,15,160z"></Path>
+                        </G>
                       </G>
                     </Svg>
                   ) : (
                     <Svg
-                      width="48px"
+                      fill="#ffffff"
                       height="48px"
-                      viewBox="0 0 24 24"
-                      fill="none"
+                      width="48px"
+                      version="1.1"
+                      id="Layer_1"
                       xmlns="http://www.w3.org/2000/svg"
-                      stroke="#ffffff">
+                      viewBox="0 0 330 330">
                       <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
                       <G
                         id="SVGRepo_tracerCarrier"
                         stroke-linecap="round"
                         stroke-linejoin="round"></G>
                       <G id="SVGRepo_iconCarrier">
-                        <Path
-                          d="M6 10V8C6 7.65929 6.0284 7.32521 6.08296 7M18 10V8C18 4.68629 15.3137 2 12 2C10.208 2 8.59942 2.78563 7.5 4.03126"
-                          stroke="white"
-                          stroke-width="1.5"
-                          stroke-linecap="round"></Path>
-                        <Path
-                          d="M11 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H15"
-                          stroke="white"
-                          stroke-width="1.5"
-                          stroke-linecap="round"></Path>
+                        <G id="XMLID_504_">
+                          <Path
+                            id="XMLID_505_"
+                            d="M65,330h200c8.284,0,15-6.716,15-15V145c0-8.284-6.716-15-15-15h-15V85c0-46.869-38.131-85-85-85 S80,38.131,80,85v45H65c-8.284,0-15,6.716-15,15v170C50,323.284,56.716,330,65,330z M207.481,219.356l-42.5,42.5 c-2.929,2.929-6.768,4.394-10.606,4.394s-7.678-1.465-10.606-4.394l-21.25-21.25c-5.858-5.858-5.858-15.354,0-21.213 c5.857-5.858,15.355-5.858,21.213,0l10.644,10.643l31.894-31.893c5.857-5.858,15.355-5.858,21.213,0 C213.34,204.002,213.34,213.498,207.481,219.356z M110,85c0-30.327,24.673-55,55-55s55,24.673,55,55v45H110V85z"></Path>
+                        </G>
                       </G>
                     </Svg>
                   )}

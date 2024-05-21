@@ -56,7 +56,7 @@ const specialData = [
     description:
       'Hear about the SST experience from the perspective of a parent! Come and speak to our friendly PforSST members and join our panel discussion where you can gain some insights on various aspects of the school and have some of your questions answered!',
     location: 'LO1',
-    image: require('../assets/layoutPics/LO1.png'),
+    image: require('../assets/layoutPics/Level3.png'),
     sstLoc: 'L3 Block C',
   },
   {
@@ -66,7 +66,7 @@ const specialData = [
     description:
       'Take the chance to speak with and ask students about student life @ SST.',
     location: 'LO1',
-    image: require('../assets/layoutPics/LO2.png'),
+    image: require('../assets/layoutPics/Level3.png'),
     sstLoc: 'L3 Block c',
   },
   {
