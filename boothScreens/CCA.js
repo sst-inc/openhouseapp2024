@@ -71,7 +71,7 @@ const clubCCAData = [
     description:
       'The SST Media Club is a vibrant platform for students passionate about multimedia. Explore journalism, photography, videography, audio visuals and more. Develop skills through workshops, projects, and collaborations. Learn from experts and peers, honing camera work, editing, storytelling, and creativity. Whether experienced or new, the Media Club offers a space to grow in multimedia and technology. Join us to unleash your creativity and skills!',
     location: 'Atrium',
-    image: require('../assets/layoutPics/Level3.png'),
+    image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L1 Block A',
   },
   {
