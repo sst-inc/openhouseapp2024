@@ -32,44 +32,7 @@ const AppliedDetails = ({route}) => {
       <Text>No data</Text>
     </View>; // or replace with <View><Text>No data</Text></View> or similar
   }
-  const [isSearchBarVisible, setSearchBarVisible] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const handleChange = text => {
-    setSearchTerm(text);
-  };
-
-  const handlePress1 = () => {
-    setSearchBarVisible(!isSearchBarVisible);
-  };
-
-  const search = query => {
-    const trimmedQuery = query.trim().toLowerCase();
-
-    if (['applied', 'applied subjects'].includes(trimmedQuery)) {
-      navigation.navigate('AppliedSub');
-    } else if (['mainstream', 'mainstream subjects'].includes(trimmedQuery)) {
-      navigation.navigate('MainStream');
-    } else if (
-      ['cca', 'co-curricular activities', 'co curricular activities'].includes(
-        trimmedQuery,
-      )
-    ) {
-      navigation.navigate('CCA');
-    } else {
-      const results = data.filter(item => {
-        return (
-          item.header &&
-          String(item.header).toLowerCase().includes(trimmedQuery)
-        );
-      });
-
-      if (results.length > 0) {
-        navigation.navigate('ADeets', {item: results[0]});
-      }
-    }
-  };
-
+  
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -88,58 +51,12 @@ const AppliedDetails = ({route}) => {
               </TouchableOpacity>
               <View style={styles.topSidebar}>
                 <Text style={styles.header}>Booth Info</Text>
-                <TouchableOpacity onPress={handlePress1}>
-                  <Svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{marginTop: '20%'}}>
-                    <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
-                    <G
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"></G>
-                    <G id="SVGRepo_iconCarrier">
-                      <Path
-                        d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
-                        stroke="#000000"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"></Path>
-                    </G>
-                  </Svg>
-                </TouchableOpacity>
+                
               </View>
               <View style={{marginLeft: '5%'}}>
                 <Text style={styles.sectionHeader}> Booth Info</Text>
               </View>
-              {isSearchBarVisible && (
-                <View
-                  style={{
-                    marginTop: 20,
-                    height: Platform.OS === 'ios' ? 51 : 41,
-                    width: '90%',
-                    marginLeft: '5%',
-                    borderRadius: 20,
-                    overflow: 'hidden',
-                  }}>
-                  <SearchBar
-                    placeholder="Search"
-                    onChangeText={handleChange}
-                    onSearchButtonPress={() => {
-                      const results = search(searchTerm);
-                      console.log('Search results:', results);
-                    }}
-                    onCancelButtonPress={() => setSearchBarVisible(false)}
-                    tintColor="black"
-                    textColor="black"
-                    textFieldBackgroundColor="rgba(169, 169, 169, 0.6)" // grey, slightly transparent
-                    hideBackground={true}
-                  />
-                </View>
-              )}
+              
               <View
                 style={{
                   alignItems: 'center',

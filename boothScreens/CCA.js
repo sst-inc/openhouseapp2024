@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -12,6 +12,7 @@ import {
   Platform,
   Dimensions,
   Image,
+  Animated,
 } from 'react-native';
 import Svg, {G, Path, Defs, ClipPath, Rect, Line} from 'react-native-svg';
 import {data} from './BoothInfo';
@@ -120,12 +121,57 @@ const perfromingCCAData = [
     sstLoc: 'L1 Block A',
   },
 ];
+// collated list of all the data, starting from Sports, Clubs, Uniformed Groups then Performing Arts
+const ccaData = sportsCCAData.concat(
+  clubCCAData,
+  uniformedCCAData,
+  perfromingCCAData,
+);
+
 const CCA = () => {
   const [isSearchBarVisible, setSearchBarVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [searchAnim] = useState(new Animated.Value(-100)); // Initial position off the right of the screen
+  const [displayItems, setDisplayItems] = useState([]);
+  const lengthControl = [''];
   const handleChange = text => {
     setSearchTerm(text);
+    const query = text.trim();
+    const filteredData = ccaData.filter(item =>
+      item.header.includes(query),
+    );
+    setDisplayItems(
+      filteredData.map(item => (
+        <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+          <TouchableOpacity
+            style={styles.subContainer}
+            onPress={() => handlePress(item)}>
+            <View style={{flexDirection: 'column'}}>
+              <Text allowFontScaling={false} style={styles.subjectHeader}>
+                {item.header}
+              </Text>
+              <Text allowFontScaling={false} style={styles.locationText}>
+                @ {item.location}
+              </Text>
+            </View>
+            <View style={{marginRight: 25}}>
+              <Svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none">
+                <Path
+                  d="M22.5301 16.53L12.5301 26.53C12.3879 26.6625 12.1999 26.7346 12.0056 26.7312C11.8113 26.7278 11.6259 26.6491 11.4885 26.5117C11.3511 26.3742 11.2723 26.1889 11.2689 25.9946C11.2655 25.8003 11.3376 25.6122 11.4701 25.47L20.9388 16L11.4701 6.53003C11.3376 6.38785 11.2655 6.19981 11.2689 6.00551C11.2723 5.81121 11.3511 5.62582 11.4885 5.48841C11.6259 5.35099 11.8113 5.27228 12.0056 5.26885C12.1999 5.26543 12.3879 5.33755 12.5301 5.47003L22.5301 15.47C22.6705 15.6107 22.7494 15.8013 22.7494 16C22.7494 16.1988 22.6705 16.3894 22.5301 16.53Z"
+                  fill="#EBEBEF"
+                  fill-opacity="0.7"
+                />
+              </Svg>
+            </View>
+          </TouchableOpacity>
+        </View>
+      )),
+    );
   };
 
   const handlePress1 = () => {
@@ -158,6 +204,23 @@ const CCA = () => {
       }
     }
   };
+  useEffect(() => {
+    if (isSearchBarVisible) {
+      // Animate the SearchBar to slide in when it becomes visible
+      Animated.timing(searchAnim, {
+        toValue: 0, // Move to the right side of the screen
+        duration: 500, // Duration of the animation
+        useNativeDriver: true, // Use native driver for better performance
+      }).start();
+    } else {
+      // Animate the SearchBar to slide out when it becomes hidden
+      Animated.timing(searchAnim, {
+        toValue: -1000, // Move off the right side of the screen
+        duration: 500, // Duration of the animation
+        useNativeDriver: true, // Use native driver for better performance
+      }).start();
+    }
+  }, [isSearchBarVisible]);
   const navigation = useNavigation();
   const renderItem = ({item}) => {
     return (
@@ -245,29 +308,31 @@ const CCA = () => {
               </Text>
             </View>
             {isSearchBarVisible && (
-              <View
-                style={{
-                  marginTop: 20,
-                  height: Platform.OS === 'ios' ? 51 : 41,
-                  width: '90%',
-                  marginLeft: '5%',
-                  borderRadius: 20,
-                  overflow: 'hidden',
-                }}>
-                <SearchBar
-                  placeholder="Search"
-                  onChangeText={handleChange}
-                  onSearchButtonPress={() => {
-                    const results = search(searchTerm);
-                    console.log('Search results:', results);
-                  }}
-                  onCancelButtonPress={() => setSearchBarVisible(false)}
-                  tintColor="black"
-                  textColor="black"
-                  textFieldBackgroundColor="rgba(169, 169, 169, 0.6)" // grey, slightly transparent
-                  hideBackground={true}
-                />
-              </View>
+              <Animated.View style={{transform: [{translateX: searchAnim}]}}>
+                <View
+                  style={{
+                    marginTop: 20,
+                    height: Platform.OS === 'ios' ? 51 : 41,
+                    width: '90%',
+                    marginLeft: '5%',
+                    borderRadius: 20,
+                    overflow: 'hidden',
+                  }}>
+                  <SearchBar
+                    placeholder="Search"
+                    onChangeText={handleChange}
+                    onSearchButtonPress={() => {
+                      const results = search(searchTerm);
+                      console.log('Search results:', results);
+                    }}
+                    onCancelButtonPress={() => setSearchBarVisible(false)}
+                    tintColor="black"
+                    textColor="black"
+                    textFieldBackgroundColor="rgba(169, 169, 169, 0.6)" // grey, slightly transparent
+                    hideBackground={true}
+                  />
+                </View>
+              </Animated.View>
             )}
             <View
               style={{
@@ -300,44 +365,53 @@ const CCA = () => {
               </View>
             </View>
             <ScrollView style={{marginBottom: 1000, height: '78%'}}>
-              <View>
-                <Text allowFontScaling={false} style={styles.ccaTypeHeader}>
-                  Sports
-                </Text>
+              {searchTerm === '' ? (
+                <View>
+                  <Text allowFontScaling={false} style={styles.ccaTypeHeader}>
+                    Sports
+                  </Text>
+                  <FlatList
+                    data={sportsCCAData}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    nestedScrollEnabled={false}
+                  />
+                  <Text allowFontScaling={false} style={styles.ccaTypeHeader}>
+                    Clubs
+                  </Text>
+                  <FlatList
+                    data={clubCCAData}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    nestedScrollEnabled={false}
+                  />
+                  <Text allowFontScaling={false} style={styles.ccaTypeHeader}>
+                    Uniformed Groups
+                  </Text>
+                  <FlatList
+                    data={uniformedCCAData}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    nestedScrollEnabled={false}
+                  />
+                  <Text allowFontScaling={false} style={styles.ccaTypeHeader}>
+                    Performing Arts
+                  </Text>
+                  <FlatList
+                    data={perfromingCCAData}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    nestedScrollEnabled={false}
+                  />
+                </View>
+              ) : (
                 <FlatList
-                  data={sportsCCAData}
-                  renderItem={renderItem}
-                  keyExtractor={item => item.id}
+                  data={lengthControl}
+                  renderItem={() => displayItems}
+                  keyExtractor={item => item.header}
                   nestedScrollEnabled={false}
                 />
-                <Text allowFontScaling={false} style={styles.ccaTypeHeader}>
-                  Clubs
-                </Text>
-                <FlatList
-                  data={clubCCAData}
-                  renderItem={renderItem}
-                  keyExtractor={item => item.id}
-                  nestedScrollEnabled={false}
-                />
-                <Text allowFontScaling={false} style={styles.ccaTypeHeader}>
-                  Uniformed Groups
-                </Text>
-                <FlatList
-                  data={uniformedCCAData}
-                  renderItem={renderItem}
-                  keyExtractor={item => item.id}
-                  nestedScrollEnabled={false}
-                />
-                <Text allowFontScaling={false} style={styles.ccaTypeHeader}>
-                  Performing Arts
-                </Text>
-                <FlatList
-                  data={perfromingCCAData}
-                  renderItem={renderItem}
-                  keyExtractor={item => item.id}
-                  nestedScrollEnabled={false}
-                />
-              </View>
+              )}
             </ScrollView>
           </View>
         </SafeAreaView>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   ImageBackground,
   TouchableOpacity,
@@ -12,6 +12,7 @@ import {
   Platform,
   ScrollView,
   Dimensions,
+  Animated,
 } from 'react-native';
 import Svg, {G, Path, Defs, ClipPath, Rect, Line} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
@@ -372,16 +373,80 @@ const data = [
     sstLoc: 'L2 Block C',
   },
 ];
-
+const boothInfoData = [
+  {
+    id: '1',
+    header: 'Mainstream subjects',
+    image: require('../assets/boothInfo/mainStream.png'),
+  },
+  {
+    id: '2',
+    header: 'Applied subjects',
+    image: require('../assets/boothInfo/appliedSub.png'),
+  },
+  {
+    id: '3',
+    header: 'CCA',
+    image: require('../assets/boothInfo/CCA.png'),
+  },
+  {
+    id: '4',
+    header: 'Special',
+    image: require('../assets/boothInfo/special.jpeg'),
+  },
+];
 const BoothInfoParentPage = ({navigation}) => {
   const [isSearchBarVisible, setSearchBarVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [searchAnim] = useState(new Animated.Value(-100)); // Initial position off the right of the screen
+  const [displayItems, setDisplayItems] = useState([]);
   const width = Dimensions.get('window').width;
   const height = Dimensions.get('window').height;
 
   const handleChange = text => {
     setSearchTerm(text);
+    const query = text.trim();
+    const filteredData = boothInfoData.filter(item =>
+      item.header.includes(query),
+    );
+    setDisplayItems(
+      filteredData.map(item => (
+        <TouchableOpacity
+          onPress={() => navigation.navigate(item.header)}
+          style={styles.entireBox}
+          key={item.id}>
+          <ImageBackground
+            source={item.image}
+            style={{width: '100%',   height: '100%'}}>
+            <View style={styles.box}>
+              <View
+                style={{
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  gap: width * 0.15,
+                }}>
+                <Text
+                  allowFontScaling={false}
+                  style={[styles.boxHeader, {flexShrink: 1}]}>
+                  {item.header}
+                </Text>
+                <Svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none">
+                  <Path
+                    d="M23.0613 17.0613L13.0613 27.0613C12.7795 27.343 12.3973 27.5014 11.9988 27.5014C11.6002 27.5014 11.218 27.343 10.9363 27.0613C10.6545 26.7795 10.4962 26.3973 10.4962 25.9988C10.4962 25.6002 10.6545 25.218 10.9363 24.9363L19.875 16L10.9388 7.06126C10.7992 6.92173 10.6885 6.75608 10.613 6.57378C10.5375 6.39147 10.4987 6.19608 10.4987 5.99876C10.4987 5.80143 10.5375 5.60604 10.613 5.42374C10.6885 5.24143 10.7992 5.07579 10.9388 4.93626C11.0783 4.79673 11.2439 4.68605 11.4262 4.61053C11.6085 4.53502 11.8039 4.49615 12.0013 4.49615C12.1986 4.49615 12.394 4.53502 12.5763 4.61053C12.7586 4.68605 12.9242 4.79673 13.0638 4.93626L23.0638 14.9363C23.2034 15.0758 23.3142 15.2415 23.3897 15.4239C23.4652 15.6063 23.5039 15.8019 23.5037 15.9993C23.5035 16.1967 23.4643 16.3921 23.3883 16.5744C23.3124 16.7566 23.2013 16.9221 23.0613 17.0613Z"
+                    fill="#EBEBEF"
+                  />
+                </Svg>
+              </View>
+            </View>
+          </ImageBackground>
+        </TouchableOpacity>
+      )),
+    );
   };
 
   const handlePress = () => {
@@ -415,6 +480,23 @@ const BoothInfoParentPage = ({navigation}) => {
     }
   };
 
+  useEffect(() => {
+    if (isSearchBarVisible) {
+      // Animate the SearchBar to slide in when it becomes visible
+      Animated.timing(searchAnim, {
+        toValue: 0, // Move to the right side of the screen
+        duration: 500, // Duration of the animation
+        useNativeDriver: true, // Use native driver for better performance
+      }).start();
+    } else {
+      // Animate the SearchBar to slide out when it becomes hidden
+      Animated.timing(searchAnim, {
+        toValue: -1000, // Move off the right side of the screen
+        duration: 500, // Duration of the animation
+        useNativeDriver: true, // Use native driver for better performance
+      }).start();
+    }
+  }, [isSearchBarVisible]);
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -469,167 +551,188 @@ const BoothInfoParentPage = ({navigation}) => {
                 </TouchableOpacity>
               </View>
               {isSearchBarVisible && (
-                <View
-                  style={{
-                    marginTop: 20,
-                    height: Platform.OS === 'ios' ? 51 : 41,
-                    width: '90%',
-                    marginLeft: '5%',
-                    borderRadius: 20,
-                    overflow: 'hidden',
-                  }}>
-                  <SearchBar
-                    placeholder="Search"
-                    onChangeText={handleChange}
-                    onSearchButtonPress={() => {
-                      const results = search(searchTerm);
-                      console.log('Search results:', results);
-                    }}
-                    onCancelButtonPress={() => setSearchBarVisible(false)}
-                    tintColor="black"
-                    textColor="black"
-                    textFieldBackgroundColor="rgba(170, 170, 170, 1)" // grey, slightly transparent
-                    hideBackground={true}
-                  />
-                </View>
+                <Animated.View style={{transform: [{translateX: searchAnim}]}}>
+                  <View
+                    style={{
+                      marginTop: 20,
+                      height: Platform.OS === 'ios' ? 51 : 41,
+                      width: '90%',
+                      marginLeft: '5%',
+                      borderRadius: 20,
+                      overflow: 'hidden',
+                    }}>
+                    <SearchBar
+                      placeholder="Search"
+                      onChangeText={handleChange}
+                      onSearchButtonPress={() => {
+                        const results = search(searchTerm);
+                        console.log('Search results:', results);
+                      }}
+                      onCancelButtonPress={() => setSearchBarVisible(false)}
+                      tintColor="black"
+                      textColor="black"
+                      textFieldBackgroundColor="rgba(170, 170, 170, 1)" // grey, slightly transparent
+                      hideBackground={true}
+                    />
+                  </View>
+                </Animated.View>
               )}
               <View style={{margin: '30%'}} />
               <View style={{marginTop: '-49%'}}></View>
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <TouchableOpacity
-                  onPress={() => {
-                    console.log('Button pressed');
-                    navigation.navigate('MainStream');
-                  }}
-                  style={styles.entireBox}>
-                  <ImageBackground
-                    source={require('../assets/boothInfo/mainStream.png')}
-                    style={{width: '100%', height: '100%'}}>
-                    <View style={styles.box}>
-                      <View
-                        style={{
-                          justifyContent: 'center',
-                          flexDirection: 'row',
-                          gap: width * 0.2,
-                        }}>
-                        <Text allowFontScaling={false} style={styles.boxHeader}>
-                          Mainstream subjects
-                        </Text>
-                        <Svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                          fill="none">
-                          <Path
-                            d="M23.0613 17.0613L13.0613 27.0613C12.7795 27.343 12.3973 27.5014 11.9988 27.5014C11.6002 27.5014 11.218 27.343 10.9363 27.0613C10.6545 26.7795 10.4962 26.3973 10.4962 25.9988C10.4962 25.6002 10.6545 25.218 10.9363 24.9363L19.875 16L10.9388 7.06126C10.7992 6.92173 10.6885 6.75608 10.613 6.57378C10.5375 6.39147 10.4987 6.19608 10.4987 5.99876C10.4987 5.80143 10.5375 5.60604 10.613 5.42374C10.6885 5.24143 10.7992 5.07579 10.9388 4.93626C11.0783 4.79673 11.2439 4.68605 11.4262 4.61053C11.6085 4.53502 11.8039 4.49615 12.0013 4.49615C12.1986 4.49615 12.394 4.53502 12.5763 4.61053C12.7586 4.68605 12.9242 4.79673 13.0638 4.93626L23.0638 14.9363C23.2034 15.0758 23.3142 15.2415 23.3897 15.4239C23.4652 15.6063 23.5039 15.8019 23.5037 15.9993C23.5035 16.1967 23.4643 16.3921 23.3883 16.5744C23.3124 16.7566 23.2013 16.9221 23.0613 17.0613Z"
-                            fill="#EBEBEF"
-                          />
-                        </Svg>
+              {searchTerm === '' ? (
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      console.log('Button pressed');
+                      navigation.navigate('MainStream');
+                    }}
+                    style={styles.entireBox}>
+                    <ImageBackground
+                      source={require('../assets/boothInfo/mainStream.png')}
+                      style={{width: '100%', height: '100%'}}>
+                      <View style={styles.box}>
+                        <View
+                          style={{
+                            justifyContent: 'center',
+                            flexDirection: 'row',
+                            gap: width * 0.2,
+                          }}>
+                          <Text
+                            allowFontScaling={false}
+                            style={styles.boxHeader}>
+                            Mainstream subjects
+                          </Text>
+                          <Svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            fill="none">
+                            <Path
+                              d="M23.0613 17.0613L13.0613 27.0613C12.7795 27.343 12.3973 27.5014 11.9988 27.5014C11.6002 27.5014 11.218 27.343 10.9363 27.0613C10.6545 26.7795 10.4962 26.3973 10.4962 25.9988C10.4962 25.6002 10.6545 25.218 10.9363 24.9363L19.875 16L10.9388 7.06126C10.7992 6.92173 10.6885 6.75608 10.613 6.57378C10.5375 6.39147 10.4987 6.19608 10.4987 5.99876C10.4987 5.80143 10.5375 5.60604 10.613 5.42374C10.6885 5.24143 10.7992 5.07579 10.9388 4.93626C11.0783 4.79673 11.2439 4.68605 11.4262 4.61053C11.6085 4.53502 11.8039 4.49615 12.0013 4.49615C12.1986 4.49615 12.394 4.53502 12.5763 4.61053C12.7586 4.68605 12.9242 4.79673 13.0638 4.93626L23.0638 14.9363C23.2034 15.0758 23.3142 15.2415 23.3897 15.4239C23.4652 15.6063 23.5039 15.8019 23.5037 15.9993C23.5035 16.1967 23.4643 16.3921 23.3883 16.5744C23.3124 16.7566 23.2013 16.9221 23.0613 17.0613Z"
+                              fill="#EBEBEF"
+                            />
+                          </Svg>
+                        </View>
                       </View>
-                    </View>
-                  </ImageBackground>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('AppliedSub')}
-                  style={styles.entireBox}>
-                  <ImageBackground
-                    source={require('../assets/boothInfo/appliedSub.png')}
-                    style={{width: '100%', height: '100%'}}>
-                    <View style={styles.box}>
-                      <View
-                        style={{
-                          justifyContent: 'center',
-                          flexDirection: 'row',
-                          gap: width * 0.321,
-                        }}>
-                        <Text allowFontScaling={false} style={styles.boxHeader}>
-                          Applied subjects
-                        </Text>
-                        <Svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                          fill="none">
-                          <Path
-                            d="M23.0613 17.0613L13.0613 27.0613C12.7795 27.343 12.3973 27.5014 11.9988 27.5014C11.6002 27.5014 11.218 27.343 10.9363 27.0613C10.6545 26.7795 10.4962 26.3973 10.4962 25.9988C10.4962 25.6002 10.6545 25.218 10.9363 24.9363L19.875 16L10.9388 7.06126C10.7992 6.92173 10.6885 6.75608 10.613 6.57378C10.5375 6.39147 10.4987 6.19608 10.4987 5.99876C10.4987 5.80143 10.5375 5.60604 10.613 5.42374C10.6885 5.24143 10.7992 5.07579 10.9388 4.93626C11.0783 4.79673 11.2439 4.68605 11.4262 4.61053C11.6085 4.53502 11.8039 4.49615 12.0013 4.49615C12.1986 4.49615 12.394 4.53502 12.5763 4.61053C12.7586 4.68605 12.9242 4.79673 13.0638 4.93626L23.0638 14.9363C23.2034 15.0758 23.3142 15.2415 23.3897 15.4239C23.4652 15.6063 23.5039 15.8019 23.5037 15.9993C23.5035 16.1967 23.4643 16.3921 23.3883 16.5744C23.3124 16.7566 23.2013 16.9221 23.0613 17.0613Z"
-                            fill="#EBEBEF"
-                          />
-                        </Svg>
+                    </ImageBackground>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('AppliedSub')}
+                    style={styles.entireBox}>
+                    <ImageBackground
+                      source={require('../assets/boothInfo/appliedSub.png')}
+                      style={{width: '100%', height: '100%'}}>
+                      <View style={styles.box}>
+                        <View
+                          style={{
+                            justifyContent: 'center',
+                            flexDirection: 'row',
+                            gap: width * 0.321,
+                          }}>
+                          <Text
+                            allowFontScaling={false}
+                            style={styles.boxHeader}>
+                            Applied subjects
+                          </Text>
+                          <Svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            fill="none">
+                            <Path
+                              d="M23.0613 17.0613L13.0613 27.0613C12.7795 27.343 12.3973 27.5014 11.9988 27.5014C11.6002 27.5014 11.218 27.343 10.9363 27.0613C10.6545 26.7795 10.4962 26.3973 10.4962 25.9988C10.4962 25.6002 10.6545 25.218 10.9363 24.9363L19.875 16L10.9388 7.06126C10.7992 6.92173 10.6885 6.75608 10.613 6.57378C10.5375 6.39147 10.4987 6.19608 10.4987 5.99876C10.4987 5.80143 10.5375 5.60604 10.613 5.42374C10.6885 5.24143 10.7992 5.07579 10.9388 4.93626C11.0783 4.79673 11.2439 4.68605 11.4262 4.61053C11.6085 4.53502 11.8039 4.49615 12.0013 4.49615C12.1986 4.49615 12.394 4.53502 12.5763 4.61053C12.7586 4.68605 12.9242 4.79673 13.0638 4.93626L23.0638 14.9363C23.2034 15.0758 23.3142 15.2415 23.3897 15.4239C23.4652 15.6063 23.5039 15.8019 23.5037 15.9993C23.5035 16.1967 23.4643 16.3921 23.3883 16.5744C23.3124 16.7566 23.2013 16.9221 23.0613 17.0613Z"
+                              fill="#EBEBEF"
+                            />
+                          </Svg>
+                        </View>
                       </View>
-                    </View>
-                  </ImageBackground>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('CCA')}
-                  style={styles.entireBox}>
-                  <ImageBackground
-                    source={require('../assets/boothInfo/CCA.png')}
-                    style={{width: '100%', height: '100%'}}>
-                    <View style={styles.box}>
-                      <View
-                        style={{
-                          justifyContent: 'center',
-                          flexDirection: 'row',
-                          gap: width * 0.65,
-                        }}>
-                        <Text allowFontScaling={false} style={styles.boxHeader}>
-                          CCA
-                        </Text>
-                        <Svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                          fill="none">
-                          <Path
-                            d="M23.0613 17.0613L13.0613 27.0613C12.7795 27.343 12.3973 27.5014 11.9988 27.5014C11.6002 27.5014 11.218 27.343 10.9363 27.0613C10.6545 26.7795 10.4962 26.3973 10.4962 25.9988C10.4962 25.6002 10.6545 25.218 10.9363 24.9363L19.875 16L10.9388 7.06126C10.7992 6.92173 10.6885 6.75608 10.613 6.57378C10.5375 6.39147 10.4987 6.19608 10.4987 5.99876C10.4987 5.80143 10.5375 5.60604 10.613 5.42374C10.6885 5.24143 10.7992 5.07579 10.9388 4.93626C11.0783 4.79673 11.2439 4.68605 11.4262 4.61053C11.6085 4.53502 11.8039 4.49615 12.0013 4.49615C12.1986 4.49615 12.394 4.53502 12.5763 4.61053C12.7586 4.68605 12.9242 4.79673 13.0638 4.93626L23.0638 14.9363C23.2034 15.0758 23.3142 15.2415 23.3897 15.4239C23.4652 15.6063 23.5039 15.8019 23.5037 15.9993C23.5035 16.1967 23.4643 16.3921 23.3883 16.5744C23.3124 16.7566 23.2013 16.9221 23.0613 17.0613Z"
-                            fill="#EBEBEF"
-                          />
-                        </Svg>
+                    </ImageBackground>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('CCA')}
+                    style={styles.entireBox}>
+                    <ImageBackground
+                      source={require('../assets/boothInfo/CCA.png')}
+                      style={{width: '100%', height: '100%'}}>
+                      <View style={styles.box}>
+                        <View
+                          style={{
+                            justifyContent: 'center',
+                            flexDirection: 'row',
+                            gap: width * 0.65,
+                          }}>
+                          <Text
+                            allowFontScaling={false}
+                            style={styles.boxHeader}>
+                            CCA
+                          </Text>
+                          <Svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            fill="none">
+                            <Path
+                              d="M23.0613 17.0613L13.0613 27.0613C12.7795 27.343 12.3973 27.5014 11.9988 27.5014C11.6002 27.5014 11.218 27.343 10.9363 27.0613C10.6545 26.7795 10.4962 26.3973 10.4962 25.9988C10.4962 25.6002 10.6545 25.218 10.9363 24.9363L19.875 16L10.9388 7.06126C10.7992 6.92173 10.6885 6.75608 10.613 6.57378C10.5375 6.39147 10.4987 6.19608 10.4987 5.99876C10.4987 5.80143 10.5375 5.60604 10.613 5.42374C10.6885 5.24143 10.7992 5.07579 10.9388 4.93626C11.0783 4.79673 11.2439 4.68605 11.4262 4.61053C11.6085 4.53502 11.8039 4.49615 12.0013 4.49615C12.1986 4.49615 12.394 4.53502 12.5763 4.61053C12.7586 4.68605 12.9242 4.79673 13.0638 4.93626L23.0638 14.9363C23.2034 15.0758 23.3142 15.2415 23.3897 15.4239C23.4652 15.6063 23.5039 15.8019 23.5037 15.9993C23.5035 16.1967 23.4643 16.3921 23.3883 16.5744C23.3124 16.7566 23.2013 16.9221 23.0613 17.0613Z"
+                              fill="#EBEBEF"
+                            />
+                          </Svg>
+                        </View>
                       </View>
-                    </View>
-                  </ImageBackground>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('SpecialEvents')}
-                  style={styles.entireBox}>
-                  <ImageBackground
-                    source={require('../assets/boothInfo/special.jpeg')}
-                    style={{width: '100%', height: '100%'}}>
-                    <View style={styles.box}>
-                      <View
-                        style={{
-                          justifyContent: 'center',
-                          flexDirection: 'row',
-                          gap: width * 0.57,
-                        }}>
-                        <Text allowFontScaling={false} style={styles.boxHeader}>
-                          Special
-                        </Text>
-                        <Svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                          fill="none">
-                          <Path
-                            d="M23.0613 17.0613L13.0613 27.0613C12.7795 27.343 12.3973 27.5014 11.9988 27.5014C11.6002 27.5014 11.218 27.343 10.9363 27.0613C10.6545 26.7795 10.4962 26.3973 10.4962 25.9988C10.4962 25.6002 10.6545 25.218 10.9363 24.9363L19.875 16L10.9388 7.06126C10.7992 6.92173 10.6885 6.75608 10.613 6.57378C10.5375 6.39147 10.4987 6.19608 10.4987 5.99876C10.4987 5.80143 10.5375 5.60604 10.613 5.42374C10.6885 5.24143 10.7992 5.07579 10.9388 4.93626C11.0783 4.79673 11.2439 4.68605 11.4262 4.61053C11.6085 4.53502 11.8039 4.49615 12.0013 4.49615C12.1986 4.49615 12.394 4.53502 12.5763 4.61053C12.7586 4.68605 12.9242 4.79673 13.0638 4.93626L23.0638 14.9363C23.2034 15.0758 23.3142 15.2415 23.3897 15.4239C23.4652 15.6063 23.5039 15.8019 23.5037 15.9993C23.5035 16.1967 23.4643 16.3921 23.3883 16.5744C23.3124 16.7566 23.2013 16.9221 23.0613 17.0613Z"
-                            fill="#EBEBEF"
-                          />
-                        </Svg>
+                    </ImageBackground>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('SpecialEvents')}
+                    style={styles.entireBox}>
+                    <ImageBackground
+                      source={require('../assets/boothInfo/special.jpeg')}
+                      style={{width: '100%', height: '100%'}}>
+                      <View style={styles.box}>
+                        <View
+                          style={{
+                            justifyContent: 'center',
+                            flexDirection: 'row',
+                            gap: width * 0.57,
+                          }}>
+                          <Text
+                            allowFontScaling={false}
+                            style={styles.boxHeader}>
+                            Special
+                          </Text>
+                          <Svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            fill="none">
+                            <Path
+                              d="M23.0613 17.0613L13.0613 27.0613C12.7795 27.343 12.3973 27.5014 11.9988 27.5014C11.6002 27.5014 11.218 27.343 10.9363 27.0613C10.6545 26.7795 10.4962 26.3973 10.4962 25.9988C10.4962 25.6002 10.6545 25.218 10.9363 24.9363L19.875 16L10.9388 7.06126C10.7992 6.92173 10.6885 6.75608 10.613 6.57378C10.5375 6.39147 10.4987 6.19608 10.4987 5.99876C10.4987 5.80143 10.5375 5.60604 10.613 5.42374C10.6885 5.24143 10.7992 5.07579 10.9388 4.93626C11.0783 4.79673 11.2439 4.68605 11.4262 4.61053C11.6085 4.53502 11.8039 4.49615 12.0013 4.49615C12.1986 4.49615 12.394 4.53502 12.5763 4.61053C12.7586 4.68605 12.9242 4.79673 13.0638 4.93626L23.0638 14.9363C23.2034 15.0758 23.3142 15.2415 23.3897 15.4239C23.4652 15.6063 23.5039 15.8019 23.5037 15.9993C23.5035 16.1967 23.4643 16.3921 23.3883 16.5744C23.3124 16.7566 23.2013 16.9221 23.0613 17.0613Z"
+                              fill="#EBEBEF"
+                            />
+                          </Svg>
+                        </View>
                       </View>
-                    </View>
-                  </ImageBackground>
-                </TouchableOpacity>
-                <View style={{marginTop: '32%'}} />
-              </View>
+                    </ImageBackground>
+                  </TouchableOpacity>
+                  <View style={{marginTop: '32%'}} />
+                </View>
+              ) : (
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  {displayItems}
+                </View>
+              )}
             </View>
           </ScrollView>
         </SafeAreaView>
