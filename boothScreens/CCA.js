@@ -262,8 +262,8 @@ const CCA = () => {
                     console.log('Search results:', results);
                   }}
                   onCancelButtonPress={() => setSearchBarVisible(false)}
-                  tintColor="white"
-                  textColor="white"
+                  tintColor="black"
+                  textColor="black"
                   textFieldBackgroundColor="rgba(169, 169, 169, 0.6)" // grey, slightly transparent
                   hideBackground={true}
                 />
