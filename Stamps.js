@@ -54,6 +54,7 @@ const requestCameraPermission = async () => {
     }
   }
 };
+
 const QRCodeScanner = ({navigation}) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(RNCamera.Constants.Type.back);
@@ -66,6 +67,9 @@ const QRCodeScanner = ({navigation}) => {
     (async () => {
       const granted = await requestCameraPermission();
       setHasPermission(granted);
+      if (hasPermission === null) {
+        requestCameraPermission();
+      }
     })();
   }, []);
   useEffect(() => {

@@ -405,9 +405,9 @@ const BoothInfoParentPage = ({navigation}) => {
 
   const handleChange = text => {
     setSearchTerm(text);
-    const query = text.trim();
+    const query = text.trim().toLowerCase();
     const filteredData = boothInfoData.filter(item =>
-      item.header.includes(query),
+      item.header.toLowerCase().includes(query),
     );
     setDisplayItems(
       filteredData.map(item => (
@@ -417,7 +417,7 @@ const BoothInfoParentPage = ({navigation}) => {
           key={item.id}>
           <ImageBackground
             source={item.image}
-            style={{width: '100%',   height: '100%'}}>
+            style={{width: '100%', height: '100%'}}>
             <View style={styles.box}>
               <View
                 style={{

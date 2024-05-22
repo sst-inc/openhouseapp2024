@@ -101,9 +101,9 @@ const Special = () => {
 
   const handleChange = text => {
     setSearchTerm(text);
-    const query = text.trim();
+    const query = text.trim().toLowerCase();
     const filteredData = specialData.filter(item =>
-      item.header.includes(query),
+      item.header.toLowerCase().includes(query),
     );
     setDisplayItems(
       filteredData.map(item => (

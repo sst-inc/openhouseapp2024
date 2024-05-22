@@ -10,7 +10,7 @@ import {
   Pressable,
   Platform,
   Image,
-  Animated
+  Animated,
 } from 'react-native';
 import Svg, {
   G,
@@ -152,9 +152,9 @@ const MainStream = () => {
 
   const handleChange = text => {
     setSearchTerm(text);
-    const query = text.trim();
+    const query = text.trim().toLowerCase();
     const filteredData = appliedSubjectsData.filter(item =>
-      item.header.includes(query),
+      item.header.toLowerCase().includes(query),
     );
     setDisplayItems(
       filteredData.map(item => (
@@ -362,7 +362,7 @@ const MainStream = () => {
                 data={lengthControl}
                 renderItem={() => displayItems}
                 keyExtractor={item => item.id}
-                contentContainerStyle={{ paddingBottom: 200 }} // Add bottom padding here
+                contentContainerStyle={{paddingBottom: 200}} // Add bottom padding here
               />
             )}
           </View>
