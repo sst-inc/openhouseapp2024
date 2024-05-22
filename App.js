@@ -9,6 +9,8 @@ import {
   Dimensions,
   Linking,
   Image,
+  Alert,
+  BackHandler,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {
@@ -227,8 +229,29 @@ function CustomDrawerContent(props) {
 
 const App = () => {
   LogBox.ignoreAllLogs();
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert('Hold on!', 'Are you sure you want to go back?', [
+        {
+          text: 'Cancel',
+          onPress: () => null,
+          style: 'cancel',
+        },
+        {text: 'YES', onPress: () => BackHandler.exitApp()},
+      ]);
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+
+    return () => backHandler.remove();
+  }, []);
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      onStateChange={state => console.log('New state is', state)}>
       <Drawer.Navigator
         drawerContent={props => <CustomDrawerContent {...props} />}
         initialRouteName="Home"
@@ -246,6 +269,7 @@ const App = () => {
         <Drawer.Screen
           name="Home"
           component={HomeScreen}
+          backBehavior="firstRoute"
           options={{
             drawerLabel: 'Home',
             drawerItemStyle: {height: 0},
@@ -255,6 +279,7 @@ const App = () => {
         <Drawer.Screen
           name="Stamps"
           component={Stamps}
+          backBehavior="firstRoute"
           options={{
             drawerLabel: ({focused, color}) => (
               <View
@@ -285,6 +310,7 @@ const App = () => {
                   />
                 </Svg>
                 <Text
+                  allowFontScaling={false}
                   style={{
                     color: '#EBEBEF',
                     fontFamily: 'Prototype',
@@ -308,6 +334,7 @@ const App = () => {
         <Drawer.Screen
           name="QRCode"
           component={QRCodeScanner}
+          backBehavior="firstRoute"
           options={{
             drawerLabel: 'QR Code',
             drawerItemStyle: {height: 0},
@@ -316,6 +343,7 @@ const App = () => {
         />
         <Drawer.Screen
           name="BoothInfo"
+          backBehavior="firstRoute"
           component={BoothInfo}
           options={{
             drawerLabel: ({focused, color}) => (
@@ -348,6 +376,7 @@ const App = () => {
                   />
                 </Svg>
                 <Text
+                  allowFontScaling={false}
                   style={{
                     color: '#EBEBEF',
                     fontFamily: 'Prototype',
@@ -370,6 +399,7 @@ const App = () => {
         />
         <Drawer.Screen
           name="Events"
+          backBehavior="firstRoute"
           component={EventsPage}
           options={{
             drawerLabel: ({focused, color}) => (
@@ -402,6 +432,7 @@ const App = () => {
                   />
                 </Svg>
                 <Text
+                  allowFontScaling={false}
                   style={{
                     color: '#EBEBEF',
                     fontFamily: 'Prototype',
@@ -452,7 +483,7 @@ const App = () => {
                       fill="#EBEBEF"
                     />
                   </Svg>
-                  <Text style={{color: 'white', fontSize: 16}}>Layout</Text>
+                   <Text allowFontScaling={false} style={{color: 'white', fontSize: 16}}>Layout</Text>
                 </View>
               </LinearGradient>
             ),
@@ -466,6 +497,7 @@ const App = () => {
         <Drawer.Screen
           name="Quick Links"
           component={QuickLinks}
+          backBehavior="firstRoute"
           options={{
             drawerLabel: ({focused, color}) => (
               <View
@@ -506,6 +538,7 @@ const App = () => {
                   </G>
                 </Svg>
                 <Text
+                  allowFontScaling={false}
                   style={{
                     color: '#EBEBEF',
                     fontFamily: 'Prototype',
@@ -530,11 +563,14 @@ const App = () => {
         <Drawer.Screen
           name="Credits"
           component={Credits}
+          backBehavior="firstRoute"
           options={{
             drawerLabel: ({focused}) => (
               <View style={{backgroundColor: 'rgba(0, 0, 0, 0)'}}>
                 <View style={{flexDirection: 'row', marginTop: 0}}>
-                  <Text style={{color: 'black'}}>Made by:</Text>
+                  <Text allowFontScaling={false} style={{color: 'black'}}>
+                    Made by:
+                  </Text>
                   <Image
                     source={require('./assets/incLogo.png')}
                     style={{bottom: 10, left: 10}}
@@ -568,6 +604,7 @@ const App = () => {
                     />
                   </Svg>
                   <Text
+                    allowFontScaling={false}
                     style={{
                       color: '#EBEBEF',
                       fontFamily: 'Prototype',
@@ -671,6 +708,7 @@ const HomeScreen = ({navigation}) => {
             />
           </Svg>
           <Text
+            allowFontScaling={false}
             style={{
               color: '#F2F2F3',
               fontFamily: 'Prototype',

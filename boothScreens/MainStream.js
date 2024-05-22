@@ -188,8 +188,12 @@ const MainStream = () => {
           style={styles.subContainer}
           onPress={() => handlePress(item)}>
           <View style={{flexDirection: 'column'}}>
-            <Text style={styles.subjectHeader}>{item.header}</Text>
-            <Text style={styles.locationText}>@ {item.location}</Text>
+            <Text allowFontScaling={false} style={styles.subjectHeader}>
+              {item.header}
+            </Text>
+            <Text allowFontScaling={false} style={styles.locationText}>
+              @ {item.location}
+            </Text>
           </View>
           <View style={{marginRight: 25}}>
             <Svg
@@ -228,7 +232,9 @@ const MainStream = () => {
               </View>
             </TouchableOpacity>
             <View style={styles.topSidebar}>
-              <Text style={styles.header}>Mainstream</Text>
+              <Text allowFontScaling={false} style={styles.header}>
+                Mainstream
+              </Text>
               <TouchableOpacity onPress={handlePress1}>
                 <Svg
                   width="40"
@@ -254,7 +260,10 @@ const MainStream = () => {
               </TouchableOpacity>
             </View>
             <View style={{marginLeft: '5%'}}>
-              <Text style={styles.sectionHeader}> Mainstream Subjects</Text>
+              <Text allowFontScaling={false} style={styles.sectionHeader}>
+                {' '}
+                Mainstream Subjects
+              </Text>
             </View>
             {isSearchBarVisible && (
               <View

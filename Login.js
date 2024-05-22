@@ -62,8 +62,10 @@ export default function LoginFunction({ navigation }) {
                 resizeMode="cover"
                 style={styles.image}>
                     <Animated.View style={[styles.innerContainer, { transform: [{ translateY: positionAnim.interpolate({ inputRange: [0, 1], outputRange: [0, -500] }) }] }]}>
-                         <Text style={styles.signInTexter}>Ready to start your SST journey?</Text>
-                        <TextInput
+                         <Text
+allowFontScaling={false} style={styles.signInTexter}>Ready to start your SST journey?</Text>
+                        <Text
+allowFontScaling={false}Input
                             style={styles.input}
                             placeholder='Email'
                             autoCapitalize='none'
@@ -71,7 +73,8 @@ export default function LoginFunction({ navigation }) {
                             placeholderTextColor='#c9c9c9'
                         />
                         <View style={{marginTop:'1.5%'}}/>
-                        <TextInput
+                        <Text
+allowFontScaling={false}Input
                             style={styles.input}
                             secureTextEntry={true}
                             placeholder='Password'
@@ -82,18 +85,22 @@ export default function LoginFunction({ navigation }) {
                         {loading ? <ActivityIndicator size='large' color='blue' /> : (
                             <>
                             <TouchableOpacity style={styles.button} onPress={signIn}>
-                                <Text style={styles.buttonText}>LOGIN</Text>
+                                <Text
+allowFontScaling={false} style={styles.buttonText}>LOGIN</Text>
                             </TouchableOpacity>
                             <View style={{flexDirection:'row', marginTop:'5%'}}>
-                            <Text style={{color:'grey'}}>Don't have an account?</Text>
+                            <Text
+allowFontScaling={false} style={{color:'grey'}}>Don't have an account?</Text>
                             <Pressable onPress={signUp} >
-                                <Text style={styles.signUpButton}>  SIGN UP</Text>
+                                <Text
+allowFontScaling={false} style={styles.signUpButton}>  SIGN UP</Text>
                             </Pressable>
                             </View>
                             </>
                         )}
                             <Pressable onPress={() => navigation.navigate("Events")} >
-                                <Text style={{color:'grey',fontWeight:'500',textDecorationLine: 'underline',marginTop:'3%'}} >Skip</Text>    
+                                <Text
+allowFontScaling={false} style={{color:'grey',fontWeight:'500',textDecorationLine: 'underline',marginTop:'3%'}} >Skip</Text>    
                             </Pressable> 
                         </Animated.View>
             </ImageBackground>

@@ -54,8 +54,12 @@ const Credits = ({navigation}) => {
   const renderItem = ({item}) => {
     return (
       <View style={styles.box}>
-        <Text style={styles.stampHeader}>{item.name}</Text>
-        <Text style={styles.stampHeader}>{item.position}</Text>
+        <Text allowFontScaling={false} style={styles.stampHeader}>
+          {item.name}
+        </Text>
+        <Text allowFontScaling={false} style={styles.stampHeader}>
+          {item.position}
+        </Text>
       </View>
     );
   };
@@ -67,7 +71,9 @@ const Credits = ({navigation}) => {
         <SafeAreaView style={{flex: 1}}>
           <View style={{marginTop: '5%'}}>
             <View style={styles.topSidebar}>
-              <Text style={styles.header}>Credits</Text>
+              <Text allowFontScaling={false} style={styles.header}>
+                Credits
+              </Text>
               <TouchableOpacity
                 style={styles.hamburgerIconPress}
                 onPress={() => navigation.openDrawer()}>

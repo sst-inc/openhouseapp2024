@@ -425,7 +425,9 @@ const BoothInfoParentPage = ({navigation}) => {
             <View style={{marginTop: '5%'}} />
             <View>
               <View style={styles.topSidebar}>
-                <Text style={styles.header}>Booth Info</Text>
+                <Text allowFontScaling={false} style={styles.header}>
+                  Booth Info
+                </Text>
                 <TouchableOpacity onPress={handlePress}>
                   <Svg
                     width="40"
@@ -484,9 +486,9 @@ const BoothInfoParentPage = ({navigation}) => {
                       console.log('Search results:', results);
                     }}
                     onCancelButtonPress={() => setSearchBarVisible(false)}
-                    tintColor="white"
-                    textColor="white"
-                    textFieldBackgroundColor="rgba(169, 169, 169, 0.6)" // grey, slightly transparent
+                    tintColor="black"
+                    textColor="black"
+                    textFieldBackgroundColor="rgba(170, 170, 170, 1)" // grey, slightly transparent
                     hideBackground={true}
                   />
                 </View>
@@ -515,7 +517,7 @@ const BoothInfoParentPage = ({navigation}) => {
                           flexDirection: 'row',
                           gap: width * 0.2,
                         }}>
-                        <Text style={styles.boxHeader}>
+                        <Text allowFontScaling={false} style={styles.boxHeader}>
                           Mainstream subjects
                         </Text>
                         <Svg
@@ -546,7 +548,9 @@ const BoothInfoParentPage = ({navigation}) => {
                           flexDirection: 'row',
                           gap: width * 0.321,
                         }}>
-                        <Text style={styles.boxHeader}>Applied subjects</Text>
+                        <Text allowFontScaling={false} style={styles.boxHeader}>
+                          Applied subjects
+                        </Text>
                         <Svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="32"
@@ -575,7 +579,9 @@ const BoothInfoParentPage = ({navigation}) => {
                           flexDirection: 'row',
                           gap: width * 0.65,
                         }}>
-                        <Text style={styles.boxHeader}>CCA</Text>
+                        <Text allowFontScaling={false} style={styles.boxHeader}>
+                          CCA
+                        </Text>
                         <Svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="32"
@@ -604,7 +610,9 @@ const BoothInfoParentPage = ({navigation}) => {
                           flexDirection: 'row',
                           gap: width * 0.57,
                         }}>
-                        <Text style={styles.boxHeader}>Special</Text>
+                        <Text allowFontScaling={false} style={styles.boxHeader}>
+                          Special
+                        </Text>
                         <Svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="32"

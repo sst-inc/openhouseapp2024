@@ -156,7 +156,7 @@ const events = [
 const FlatListItem = ({item}) => {
   const [isSvgOne, setSvgOne] = useState(false);
 
-  const [notificationID, setNotificationID] = useState(null); 
+  const [notificationID, setNotificationID] = useState(null);
   useEffect(() => {
     const loadSvgState = async () => {
       const savedState = await AsyncStorage.getItem(`svgState-${item.id}`);
@@ -192,7 +192,7 @@ const FlatListItem = ({item}) => {
       const triggerTime = new Date(`2024-05-25T${eventTime}:00`);
       // let notifSec = (eventMinute - new Date().getMinutes()) * 60;
       console.log(triggerTime.getTime());
-      const trigger = { 
+      const trigger = {
         type: TriggerType.TIMESTAMP,
         timestamp: triggerTime.getTime(),
       };
@@ -220,7 +220,9 @@ const FlatListItem = ({item}) => {
     <>
       <View style={styles.eventsContainer}>
         <View style={styles.eventsBox}>
-          <Text style={styles.basicText}>{item.time}</Text>
+          <Text allowFontScaling={false} style={styles.basicText}>
+            {item.time}
+          </Text>
           <View style={styles.eventsDetailsBox}>
             <LinearGradient
               colors={['#E3E3E8', '#D5D5DD']}
@@ -241,8 +243,12 @@ const FlatListItem = ({item}) => {
                     marginLeft: '4%',
                     marginTop: '3.5%',
                   }}>
-                  <Text style={styles.basicText}>{item.name}</Text>
-                  <Text style={styles.generalText}>{item.location}</Text>
+                  <Text allowFontScaling={false} style={styles.basicText}>
+                    {item.name}
+                  </Text>
+                  <Text allowFontScaling={false} style={styles.generalText}>
+                    {item.location}
+                  </Text>
                 </View>
                 <View style={{flex: 1, minHeight: 40}}>
                   <TouchableOpacity
@@ -347,7 +353,9 @@ const EventsPage = ({navigation}) => {
           <View style={{marginTop: '5%'}} />
           <View>
             <View style={styles.topSidebar}>
-              <Text style={styles.header}>Events</Text>
+              <Text allowFontScaling={false} style={styles.header}>
+                Events
+              </Text>
               <TouchableOpacity
                 style={styles.hamburgerIconPress}
                 onPress={() => navigation.openDrawer()}>
@@ -393,7 +401,9 @@ const EventsPage = ({navigation}) => {
                     }}
                   />
                   <View style={styles.middleBox}>
-                    <Text style={styles.middleBoxText}>{item.name}</Text>
+                    <Text allowFontScaling={false} style={styles.middleBoxText}>
+                      {item.name}
+                    </Text>
                   </View>
                   <View
                     style={{
@@ -413,7 +423,7 @@ const EventsPage = ({navigation}) => {
                         fill="#EBEBEF"
                       />
                     </Svg>
-                    <Text style={styles.topBoxText}>
+                    <Text allowFontScaling={false} style={styles.topBoxText}>
                       {' '}
                       {item.actualLocation}, {item.location}
                     </Text>
@@ -436,7 +446,10 @@ const EventsPage = ({navigation}) => {
                         fill="#EBEBEF"
                       />
                     </Svg>
-                    <Text style={styles.topBoxText}> {item.timeRange}</Text>
+                    <Text allowFontScaling={false} style={styles.topBoxText}>
+                      {' '}
+                      {item.timeRange}
+                    </Text>
                   </View>
                   <Svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -479,7 +492,9 @@ const EventsPage = ({navigation}) => {
               </View>
             ))}
           </ScrollView>
-          <Text style={styles.scheduleText}>Schedule</Text>
+          <Text allowFontScaling={false} style={styles.scheduleText}>
+            Schedule
+          </Text>
           <View style={styles.seperator}>
             <Svg
               xmlns="http://www.w3.org/2000/svg"
@@ -492,7 +507,9 @@ const EventsPage = ({navigation}) => {
                 fill="#1C1C12"
               />
             </Svg>
-            <Text style={styles.basicText}>now</Text>
+            <Text allowFontScaling={false} style={styles.basicText}>
+              now
+            </Text>
             <Svg
               xmlns="http://www.w3.org/2000/svg"
               width="300"

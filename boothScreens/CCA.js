@@ -166,8 +166,12 @@ const CCA = () => {
           style={styles.subContainer}
           onPress={() => handlePress(item)}>
           <View style={{flexDirection: 'column'}}>
-            <Text style={styles.subjectHeader}>{item.header}</Text>
-            <Text style={styles.locationText}>@ {item.location}</Text>
+            <Text allowFontScaling={false} style={styles.subjectHeader}>
+              {item.header}
+            </Text>
+            <Text allowFontScaling={false} style={styles.locationText}>
+              @ {item.location}
+            </Text>
           </View>
           <View style={{marginRight: 25}}>
             <Svg
@@ -207,7 +211,9 @@ const CCA = () => {
               </View>
             </TouchableOpacity>
             <View style={styles.topSidebar}>
-              <Text style={styles.header}>CCAS</Text>
+              <Text allowFontScaling={false} style={styles.header}>
+                CCAS
+              </Text>
               <TouchableOpacity onPress={handlePress1}>
                 <Svg
                   width="40"
@@ -233,7 +239,10 @@ const CCA = () => {
               </TouchableOpacity>
             </View>
             <View style={{marginLeft: '5%'}}>
-              <Text style={styles.sectionHeader}> CCAS</Text>
+              <Text allowFontScaling={false} style={styles.sectionHeader}>
+                {' '}
+                CCAS
+              </Text>
             </View>
             {isSearchBarVisible && (
               <View
@@ -267,7 +276,7 @@ const CCA = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <Text style={styles.normalText}>
+              <Text allowFontScaling={false} style={styles.normalText}>
                 All CCA's (except Robotics) are located at
               </Text>
               <View style={{flexDirection: 'row', marginTop: 3}}>
@@ -282,7 +291,9 @@ const CCA = () => {
                     fill="#1C1C12"
                   />
                 </Svg>
-                <Text style={{...styles.normalText, fontWeight: '600'}}>
+                <Text
+                  allowFontScaling={false}
+                  style={{...styles.normalText, fontWeight: '600'}}>
                   {' '}
                   Atrium, L1 Block A
                 </Text>
@@ -290,28 +301,36 @@ const CCA = () => {
             </View>
             <ScrollView style={{marginBottom: 1000, height: '78%'}}>
               <View>
-                <Text style={styles.ccaTypeHeader}>Sports</Text>
+                <Text allowFontScaling={false} style={styles.ccaTypeHeader}>
+                  Sports
+                </Text>
                 <FlatList
                   data={sportsCCAData}
                   renderItem={renderItem}
                   keyExtractor={item => item.id}
                   nestedScrollEnabled={false}
                 />
-                <Text style={styles.ccaTypeHeader}>Clubs</Text>
+                <Text allowFontScaling={false} style={styles.ccaTypeHeader}>
+                  Clubs
+                </Text>
                 <FlatList
                   data={clubCCAData}
                   renderItem={renderItem}
                   keyExtractor={item => item.id}
                   nestedScrollEnabled={false}
                 />
-                <Text style={styles.ccaTypeHeader}>Uniformed Groups</Text>
+                <Text allowFontScaling={false} style={styles.ccaTypeHeader}>
+                  Uniformed Groups
+                </Text>
                 <FlatList
                   data={uniformedCCAData}
                   renderItem={renderItem}
                   keyExtractor={item => item.id}
                   nestedScrollEnabled={false}
                 />
-                <Text style={styles.ccaTypeHeader}>Performing Arts</Text>
+                <Text allowFontScaling={false} style={styles.ccaTypeHeader}>
+                  Performing Arts
+                </Text>
                 <FlatList
                   data={perfromingCCAData}
                   renderItem={renderItem}

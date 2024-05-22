@@ -79,7 +79,9 @@ const Layout = ({navigation}) => {
           <View style={{marginTop: '5%'}} />
           <View>
             <View style={styles.topSidebar}>
-              <Text style={styles.header}>Layout</Text>
+              <Text allowFontScaling={false} style={styles.header}>
+                Layout
+              </Text>
               <TouchableOpacity
                 style={styles.hamburgerIconPress}
                 onPress={() => navigation.openDrawer()}>
@@ -100,7 +102,9 @@ const Layout = ({navigation}) => {
             </View>
           </View>
           <View style={{flex: 1, marginTop: '20%'}}>
-            <Text style={styles.basicText}>Swipe to view the layouts!</Text>
+            <Text allowFontScaling={false} style={styles.basicText}>
+              Swipe to view the layouts!
+            </Text>
             <Carousel
               loop
               width={windowWidth}

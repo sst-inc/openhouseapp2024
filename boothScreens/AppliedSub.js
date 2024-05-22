@@ -107,8 +107,12 @@ const AppliedSub = () => {
           style={styles.subContainer}
           onPress={() => handlePress(item)}>
           <View style={{flexDirection: 'column'}}>
-            <Text style={styles.subjectHeader}>{item.header}</Text>
-            <Text style={styles.locationText}>@ {item.location}</Text>
+            <Text allowFontScaling={false} style={styles.subjectHeader}>
+              {item.header}
+            </Text>
+            <Text allowFontScaling={false} style={styles.locationText}>
+              @ {item.location}
+            </Text>
           </View>
           <View style={{marginRight: 25}}>
             <Svg
@@ -147,7 +151,9 @@ const AppliedSub = () => {
               </View>
             </TouchableOpacity>
             <View style={styles.topSidebar}>
-              <Text style={styles.header}>Applied</Text>
+              <Text allowFontScaling={false} style={styles.header}>
+                Applied
+              </Text>
               <TouchableOpacity onPress={handlePress1}>
                 <Svg
                   width="40"
@@ -173,7 +179,10 @@ const AppliedSub = () => {
               </TouchableOpacity>
             </View>
             <View style={{marginLeft: '5%'}}>
-              <Text style={styles.sectionHeader}> Applied Subjects</Text>
+              <Text allowFontScaling={false} style={styles.sectionHeader}>
+                {' '}
+                Applied Subjects
+              </Text>
             </View>
             {isSearchBarVisible && (
               <View

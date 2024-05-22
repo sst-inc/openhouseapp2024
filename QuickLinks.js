@@ -70,7 +70,9 @@ const QuickLinks = ({navigation}) => {
       style={styles.subContainer}
       onPress={() => Linking.openURL(item.url)}>
       <View style={{flexDirection: 'column'}}>
-        <Text style={styles.subjectHeader}>{item.title}</Text>
+        <Text allowFontScaling={false} style={styles.subjectHeader}>
+          {item.title}
+        </Text>
       </View>
       <View style={{marginRight: 25}}>
         <Svg
@@ -99,7 +101,9 @@ const QuickLinks = ({navigation}) => {
           <View style={{marginTop: '5%'}} />
           <View>
             <View style={styles.topSidebar}>
-              <Text style={styles.header}>Quick Links</Text>
+              <Text allowFontScaling={false} style={styles.header}>
+                Quick Links
+              </Text>
               <TouchableOpacity
                 style={styles.hamburgerIconPress}
                 onPress={() => navigation.openDrawer()}>
