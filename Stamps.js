@@ -113,9 +113,6 @@ const QRCodeScanner = ({navigation}) => {
         barcode.data === 'am9pbnNzdGluYw=='
       ) {
         navigation.navigate('Stamps');
-        Alert.alert(
-          'Correct value scanned!' + '\n' + '\n' + 'Value: ' + barcode.data,
-        );
       }
     }
   };
