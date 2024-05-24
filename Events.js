@@ -327,7 +327,7 @@ const EventsPage = ({navigation}) => {
       time: '11.30 am',
       name: 'Academic Panel',
       location: 'Auditorium',
-      timeRange: ' 9.30am $ 11.30am',
+      timeRange: ' 9.30am & 11.30am',
       notifTime: '11.29am',
       actualLocation: 'Blk A Level 4',
       imagePath: require('./assets/eventPics/academicPanel.jpeg'),

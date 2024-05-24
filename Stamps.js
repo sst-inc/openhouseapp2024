@@ -72,14 +72,7 @@ const QRCodeScanner = ({navigation}) => {
       }
     })();
   }, []);
-  useEffect(() => {
-    return () => {
-      if (cameraRef.current) {
-        cameraRef.current.pausePreview();
-        cameraRef.current = null;
-      }
-    };
-  }, []);
+
   useEffect(() => {
     (async () => {
       const storedScannedDataArray = await AsyncStorage.getItem(
@@ -90,6 +83,14 @@ const QRCodeScanner = ({navigation}) => {
         : [];
       setScannedDataArray(parsedArray);
     })();
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (cameraRef.current) {
+        cameraRef.current.pausePreview();
+      }
+    };
   }, []);
 
   useEffect(() => {
