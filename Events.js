@@ -47,7 +47,7 @@ const events = [
   {
     id: '3',
     time: '9.30 am  ',
-    name: 'Science hands on',
+    name: 'Science hands-on',
     location: '@Labs',
     timeRange: '  9:30am - 10:30am',
     notifTime: '9:28',
@@ -128,7 +128,7 @@ const events = [
   {
     id: '10',
     time: '11.30 am',
-    name: 'Science hands on',
+    name: 'Science hands-on',
     location: '@Labs',
     timeRange: ' 11:30am - 12:30pm',
     notifTime: '11:29',

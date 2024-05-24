@@ -73,9 +73,9 @@ const specialData = [
   {
     id: '29',
     type: 'Special',
-    header: 'SST Inc',
+    header: 'SST Inc HQ',
     description:
-      'SST Inc. is part of SST’s technology talent development programme. It aims to be locally and globally recognised as an incubator that fosters a deep interest in Infocomm Technology among our students and nurtures their app development and entrepreneurship talents to impact their community positively.',
+      'SST Inc HQ. is part of SST’s technology talent development programme. It aims to be locally and globally recognised as an incubator that fosters a deep interest in Infocomm Technology among our students and nurtures their app development and entrepreneurship talents to impact their community positively.',
     location: 'SST Inc HQ',
     image: require('../assets/layoutPics/Level3.png'),
     sstLoc: 'L3 Block C',

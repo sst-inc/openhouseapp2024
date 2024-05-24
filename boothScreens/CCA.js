@@ -57,7 +57,7 @@ const clubCCAData = [
   {
     id: '3',
     type: 'CCA',
-    header: 'Singapore Youth Flying',
+    header: 'Singapore Youth Flying Club',
     description:
       'The SYFC offers aviation programs to cultivate passion and develop members as problem-solvers and leaders in aviation. Despite COVID-19, sessions continued through eCCA and physical formats from 2020 to early 2022. Members honed Flight Simulation skills and participated in competitions like Flight Simulation@HQ, Singapore Amazing Flying Machine, and Drone Odyssey Challenge, adapting to the new normal.',
     location: 'Atrium',

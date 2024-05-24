@@ -94,7 +94,7 @@ const data = [
   {
     id: '4',
     type: 'CCA',
-    header: 'Singapore Youth Flying',
+    header: 'Singapore Youth Flying Club',
     description:
       'The SYFC offers aviation programs to cultivate passion and develop members as problem-solvers and leaders in aviation. Despite COVID-19, sessions continued through eCCA and physical formats from 2020 to early 2022. Members honed Flight Simulation skills and participated in competitions like Flight Simulation@HQ, Singapore Amazing Flying Machine, and Drone Odyssey Challenge, adapting to the new normal.',
     location: 'Atrium',
@@ -185,7 +185,7 @@ const data = [
   {
     id: '13',
     type: 'Applied Subjects',
-    header: 'Design studies',
+    header: 'Design Studies',
     description:
       "The Design Studies Applied Subject explores design thinking and processes, focusing on visual communication, interior and exhibition space, and architectural design. Performance tasks foster awareness of design's connection to various disciplines. Through practical activities, students develop creative mindsets, critical thinking, and analytical skills. They also gain competencies in visual and oral communication, digital design techniques, project management, and time management, building confidence and purpose in resolving design briefs.",
     location: 'Maker Lab',
@@ -288,7 +288,7 @@ const data = [
     header: 'Informatics    ',
     description:
       'The Informatics Department comprises the lower secondary Information and Communication Technology (ICT) and upper secondary Computing+ subjects. Our mission is to inspire and enable our students to use technology as a force for good in the world. Technology has the power to solve some of the most pressing challenges our society faces. Our goal is to cultivate a community of students who are passionate about using their skills and knowledge to make a positive difference in the world. Through hands-on experiential learning and rigorous coursework, we aim to equip our students with the technical expertise and ethical grounding necessary to use technology to benefit humanity.',
-    location: 'SST INC',
+    location: 'SST Inc HQ',
     image: require('../assets/layoutPics/Level3.png'),
     sstLoc: 'L3 Block C',
   },
@@ -355,9 +355,9 @@ const data = [
   {
     id: '29',
     type: 'Special',
-    header: 'SST Inc',
+    header: 'SST Inc HQ',
     description:
-      'SST Inc. is part of SST’s technology talent development programme. It aims to be locally and globally recognised as an incubator that fosters a deep interest in Infocomm Technology among our students and nurtures their app development and entrepreneurship talents to impact their community positively.',
+      'SST Inc HQ. is part of SST’s technology talent development programme. It aims to be locally and globally recognised as an incubator that fosters a deep interest in Infocomm Technology among our students and nurtures their app development and entrepreneurship talents to impact their community positively.',
     location: 'SST Inc HQ',
     image: require('../assets/layoutPics/Level3.png'),
     sstLoc: 'L3 Block C',

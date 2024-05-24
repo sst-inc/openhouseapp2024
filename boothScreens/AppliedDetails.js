@@ -32,7 +32,7 @@ const AppliedDetails = ({route}) => {
       <Text>No data</Text>
     </View>; // or replace with <View><Text>No data</Text></View> or similar
   }
-  
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -51,12 +51,11 @@ const AppliedDetails = ({route}) => {
               </TouchableOpacity>
               <View style={styles.topSidebar}>
                 <Text style={styles.header}>Booth Info</Text>
-                
               </View>
               <View style={{marginLeft: '5%'}}>
                 <Text style={styles.sectionHeader}> Booth Info</Text>
               </View>
-              
+
               <View
                 style={{
                   alignItems: 'center',
@@ -86,7 +85,8 @@ const AppliedDetails = ({route}) => {
                     alignSelf: 'center',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    height: 60,
+                    height:
+                      item.header === 'Singapore Youth Flying Club' ? 90 : 70,
                     marginLeft: '5%',
                   }}>
                   <Text

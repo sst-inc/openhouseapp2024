@@ -41,7 +41,7 @@ const QuickLinks = ({navigation}) => {
     },
     {
       id: 5,
-      title: 'SST INC Website',
+      title: 'SST Inc HQ Website',
       url: 'https://www.sstinc.org/',
     },
     {

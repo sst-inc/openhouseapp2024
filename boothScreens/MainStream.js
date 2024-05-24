@@ -127,7 +127,7 @@ const appliedSubjectsData = [
     header: 'Informatics    ',
     description:
       'The Informatics Department comprises the lower secondary Information and Communication Technology (ICT) and upper secondary Computing+ subjects. Our mission is to inspire and enable our students to use technology as a force for good in the world. Technology has the power to solve some of the most pressing challenges our society faces. Our goal is to cultivate a community of students who are passionate about using their skills and knowledge to make a positive difference in the world. Through hands-on experiential learning and rigorous coursework, we aim to equip our students with the technical expertise and ethical grounding necessary to use technology to benefit humanity.',
-    location: 'SST INC',
+    location: 'SST Inc HQ',
     image: require('../assets/layoutPics/Level3.png'),
     sstLoc: 'L3 Block C',
   },
