@@ -61,14 +61,17 @@ const QRCodeScanner = ({navigation}) => {
   const [scannedDataArray, setScannedDataArray] = useState([]);
   const [lastScannedTime, setLastScannedTime] = useState(0);
   const cameraRef = useRef(null);
-  LogBox.ignoreAllLogs();
+  const [isPreviewActive, setIsPreviewActive] = useState(false);
 
+  LogBox.ignoreAllLogs();
   useEffect(() => {
     (async () => {
       const granted = await requestCameraPermission();
       setHasPermission(granted);
       if (hasPermission === null) {
         requestCameraPermission();
+      } else if (hasPermission === true) {
+        startCameraPreview();
       }
     })();
   }, []);
@@ -88,7 +91,8 @@ const QRCodeScanner = ({navigation}) => {
   useEffect(() => {
     return () => {
       if (cameraRef.current) {
-        cameraRef.current.pausePreview();
+        setIsPreviewActive(false);
+        cameraRef.current.stopPreview();
       }
     };
   }, []);
@@ -128,6 +132,9 @@ const QRCodeScanner = ({navigation}) => {
       navigation.navigate('Stamps');
     }
   };
+  const startCameraPreview = () => {
+    setIsPreviewActive(true);
+  };
 
   return (
     <View>
@@ -162,6 +169,7 @@ const QRCodeScanner = ({navigation}) => {
             }}
             onBarCodeRead={barcodeRecognized}
             captureAudio={false}
+            {...(isPreviewActive && {type: type})}
           />
         </SafeAreaView>
       </ImageBackground>
