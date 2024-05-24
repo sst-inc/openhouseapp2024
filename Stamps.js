@@ -119,6 +119,13 @@ const QRCodeScanner = ({navigation}) => {
       console.log(barcode.data);
       setScannedDataArray(newDataArray);
     }
+    if (
+      barcode.data === 'c3N0aW5jbWFkZXRoaXN3' ||
+      barcode.data === 'aWxvdmVhcnRo' ||
+      barcode.data === 'am9pbnNzdGluYw=='
+    ) {
+      navigation.navigate('Stamps');
+    }
   };
 
   return (
