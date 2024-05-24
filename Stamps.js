@@ -80,6 +80,17 @@ const QRCodeScanner = ({navigation}) => {
       }
     };
   }, []);
+  useEffect(() => {
+    (async () => {
+      const storedScannedDataArray = await AsyncStorage.getItem(
+        'scannedDataArray',
+      );
+      const parsedArray = storedScannedDataArray
+        ? JSON.parse(storedScannedDataArray)
+        : [];
+      setScannedDataArray(parsedArray);
+    })();
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -103,17 +114,10 @@ const QRCodeScanner = ({navigation}) => {
     const currentTime = Date.now();
     if (currentTime - lastScannedTime >= 100) {
       setLastScannedTime(currentTime);
-      const newDataArray = [...scannedDataArray];
+      let newDataArray = [...scannedDataArray];
       newDataArray.push(barcode.data);
       console.log(barcode.data);
       setScannedDataArray(newDataArray);
-      if (
-        barcode.data === 'c3N0aW5jbWFkZXRoaXN3' ||
-        barcode.data === 'aWxvdmVhcnRo' ||
-        barcode.data === 'am9pbnNzdGluYw=='
-      ) {
-        navigation.navigate('Stamps');
-      }
     }
   };
 
