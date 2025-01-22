@@ -1,3 +1,8 @@
+## SST Open House app
+
+This app is for guests entering SST during its open house. This app would provide valuable information for guests to help guide them or for them to check out the schedule. There was also a stamps feature that awarded people for visiting different areas of the school and more features
+
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
